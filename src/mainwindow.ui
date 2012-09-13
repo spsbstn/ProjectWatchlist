@@ -24,6 +24,44 @@
     <string notr="true">background:url(:/textures/img/main_Tex.png);</string>
    </property>
   </widget>
+  <widget class="QToolBar" name="ControlBar">
+   <property name="font">
+    <font>
+     <family>Helvetica Neue</family>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>BottomToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAdd"/>
+  </widget>
+  <action name="actionAdd">
+   <property name="text">
+    <string>+ Neue Serie Hinzufügen</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Helvetica Neue</family>
+     <pointsize>24</pointsize>
+    </font>
+   </property>
+   <property name="softKeyRole">
+    <enum>QAction::NoSoftKey</enum>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
