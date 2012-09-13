@@ -27,6 +27,9 @@ public:
     int   getEpisode() { return episode; }
     QString getGenre() { return genre; }
 
+    // Return string for printing TvShow to console
+    QString toString();
+
 private:
     QString title;
     int     season;

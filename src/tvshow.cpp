@@ -9,3 +9,12 @@ void TvShow::updateLastWatched(int ep, int seas)
     if (seas != OLD_SEASON) season = seas;
     episode = ep;
 }
+
+
+QString TvShow::toString()
+{
+    return title + " " + QString::number(season) + " " +
+            QString::number(episode) + " " + genre;
+}
+
+

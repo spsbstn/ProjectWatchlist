@@ -26,11 +26,40 @@ void TvShowData::addShow(TvShow show)
 }
 
 
-// Removes show from vector
-// TODO : Check if argument is in vector-boundaries!
-void TvShowData::removeShow(int index)
+int TvShowData::findShowIndex(QString name)
 {
-    data.erase(data.begin() + index);
+    for(int i = 0; i < data.size(); i++)
+    {
+        if (data.at(i).getTitle() == name)
+            return i;
+    }
+
+    return -1;
+}
+
+
+// Removes show from vector
+// TODO : Check if show was found!!
+void TvShowData::removeShow(TvShow show)
+{
+    int index = findShowIndex(show.getTitle());
+
+    if (index != -1)
+        data.erase(data.begin() + index);
+}
+
+
+QString TvShowData::toString()
+{
+    QString result("");
+
+    for (int i = 0; i < data.size(); i++)
+    {
+        result.append(data.at(i).toString());
+        result.append("\n");
+    }
+
+    return result;
 }
 
 // Sorts Vector by Genre / Title

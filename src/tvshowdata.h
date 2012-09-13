@@ -14,14 +14,17 @@ public:
     // TODO : Throw exception if already added
     void addShow(TvShow show);
     // Removes show at given index
-    void removeShow(int index);
+    void removeShow(TvShow show);
     void sortByGenre();
     void sortByTitle();
+    QString toString();
+    // Has the Show already been added to the vector?
+    bool added(TvShow show);
 
 private:
     std::vector<TvShow> data;
-    // Has the Show already been added to the vector?
-    bool added(TvShow show);
+    // returns index of given show, -1 if not present
+    int  findShowIndex(QString name);
 };
 
 
