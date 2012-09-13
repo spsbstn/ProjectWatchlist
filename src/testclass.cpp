@@ -21,20 +21,20 @@ Testclass::Testclass()
     testcontainer.addShow(breakbad);
 
     cout << "Now containing: " << endl;
-    cout << testcontainer.toString().toStdString() << endl;
+   // cout << testcontainer.toString().toStdString() << endl;
 
     cout << "Removing doctor who and the empty 1 1 empty - show: " << endl;
     testcontainer.removeShow(docwho);
     testcontainer.removeShow(bla);
 
-    cout << testcontainer.toString().toStdString() << endl;
+   // cout << testcontainer.toString().toStdString() << endl;
 
     cout << "Sorting by Genre: " << endl;
     testcontainer.sortByGenre();
-    cout << testcontainer.toString().toStdString() << endl;
+   // cout << testcontainer.toString().toStdString() << endl;
 
     cout << "Sorting by Title: " << endl;
     testcontainer.sortByTitle();
-    cout << testcontainer.toString().toStdString() << endl;
+  //cout << testcontainer.toString().toStdString() << endl;
 
 }
