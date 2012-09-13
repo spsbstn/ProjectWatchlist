@@ -21,6 +21,12 @@ public:
     void setEpisode(int ep)       { episode = ep; }
     void setGenre  (QString gen)  { genre = gen; }
 
+    // getter-functions
+    QString getTitle() { return title; }
+    int    getSeason() { return season; }
+    int   getEpisode() { return episode; }
+    QString getGenre() { return genre; }
+
 private:
     QString title;
     int     season;

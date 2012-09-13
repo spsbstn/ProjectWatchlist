@@ -12,10 +12,12 @@ TEMPLATE = app
 
 SOURCES += src/main.cpp\
         src/mainwindow.cpp \
-    src/tvshow.cpp
+    src/tvshow.cpp \
+    src/tvshowdata.cpp
 
 HEADERS  += src/mainwindow.h \
-    src/tvshow.h
+    src/tvshow.h \
+    src/tvshowdata.h
 
 FORMS    += src/mainwindow.ui
 
