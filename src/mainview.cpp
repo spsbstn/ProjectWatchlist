@@ -1,28 +1,7 @@
 #include "mainview.h"
-#include <QtGui>
 
 MainView::MainView()
 {}
-
-//show window and render data
-void MainView::init(MainWindow *w) {
-
-    //set layout
-    layout = new QGridLayout;
-
-    // add data
-    populateView();
-
-    //append data to centralwidget
-    QWidget *centralWidget = new QWidget;
-    centralWidget->setLayout(layout);
-
-    //apply stylesheet
-    centralWidget->setStyleSheet("QWidget {background:url(:/textures/img/main_Tex.png);}QGroupBox { background:rgba(255, 0, 0, 100);}QLabel {background:rgba(255, 0, 0, 0);color:white;}");
-
-    w->setCentralWidget(centralWidget);
-
-}
 
 // add one tile
 void MainView::addTile(QString name, int seas, int ep, QString gen,int rows, int columns){

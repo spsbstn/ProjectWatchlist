@@ -5,24 +5,15 @@ TvShowData::TvShowData()
 }
 
 
-// Has Show already been added?
-bool TvShowData::added(TvShow show)
+// Tries to find given Show in the vector, and adds it if not found.
+// Returns the Index of the Show if it is already present (useful for later highlighting?)
+int TvShowData::addShow(TvShow &show)
 {
-    for (int i = 0; i < data.size(); i++)
-    {
-        if (data.at(i).getTitle() == show.getTitle())
-            return true;
-    }
-    return false;
-}
-
-// Adds Show to Vector
-void TvShowData::addShow(TvShow show)
-{
-    if (!added(show))
+    int index = findShowIndex(show.getTitle());
+    // -1 means the Show wasn´t found
+    if (index == -1)
         data.push_back(show);
-
-    // TODO: Throw Exception if Show has already been added
+    return index;
 }
 
 
@@ -33,19 +24,20 @@ int TvShowData::findShowIndex(QString name)
         if (data.at(i).getTitle() == name)
             return i;
     }
-
     return -1;
 }
 
 
 // Removes show from vector
-// TODO : Check if show was found!!
-void TvShowData::removeShow(TvShow show)
+// Gives back the ShowIndex, in order to check if a show was found and deleted
+int TvShowData::removeShow(TvShow &show)
 {
     int index = findShowIndex(show.getTitle());
 
     if (index != -1)
         data.erase(data.begin() + index);
+
+    return index;
 }
 
 

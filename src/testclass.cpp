@@ -37,4 +37,12 @@ Testclass::Testclass()
     testcontainer.sortByTitle();
     cout << testcontainer.toString().toStdString() << endl;
 
+    cout << "Testing season and episode update functions:" << endl;
+    fotc.watchedOneEp();
+    cout << fotc.toString().toStdString() << endl;
+    lost.updateLastWatched(5);
+    cout << lost.toString().toStdString() << endl;
+    bla2.updateLastWatched(3,4);
+    cout << bla2.toString().toStdString() << endl;
+
 }

@@ -1,6 +1,6 @@
 #include "TvShow.h"
 
-TvShow::TvShow(QString name, int seas, int ep, QString gen)
+TvShow::TvShow(const QString &name, int seas, int ep, const QString &gen)
     : title(name), season(seas), episode(ep), genre(gen)
 {}
 

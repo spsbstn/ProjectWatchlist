@@ -10,16 +10,16 @@ class TvShowData
 {
 public:
     TvShowData();
-    // Adds show to the back of the vector
-    // TODO : Throw exception if already added
-    void addShow(TvShow show);
-    // Removes show at given index
-    void removeShow(TvShow show);
+    // Adds show to the back of the vector, returns ShowIndex
+    // (-1 if successfully added)
+    // TODO : Inform User if already added
+    int addShow(TvShow& show);
+    // Removes given show, returns ShowIndex
+    //(-1 if show was not deleted, because it couldn´t be found)
+    int removeShow(TvShow& show);
     void sortByGenre();
     void sortByTitle();
     QString toString();
-    // Has the Show already been added to the vector?
-    bool added(TvShow show);
 
 private:
     std::vector<TvShow> data;

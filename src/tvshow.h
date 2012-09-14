@@ -8,7 +8,7 @@ class TvShow
 {
 public:
     // constructor with default values
-    TvShow(QString name = "", int seas = 1, int ep = 1, QString gen = "");
+    TvShow(const QString& name = "", int seas = 1, int ep = 1,const QString& gen = "");
 
     // updates season and episode members. If no second argument is passed, season will not be changed
     void updateLastWatched(int ep, int seas = OLD_SEASON);
@@ -16,16 +16,16 @@ public:
     void watchedOneEp() { updateLastWatched(this->episode += 1); }
 
     // set all the members individually
-    void setTitle  (QString name) { title = name; }
+    void setTitle  (QString& name) { title = name; }
     void setSeason (int seas)     { season = seas; }
     void setEpisode(int ep)       { episode = ep; }
-    void setGenre  (QString gen)  { genre = gen; }
+    void setGenre  (QString& gen)  { genre = gen; }
 
     // getter-functions
-    QString getTitle() { return title; }
-    int    getSeason() { return season; }
-    int   getEpisode() { return episode; }
-    QString getGenre() { return genre; }
+    QString getTitle() const { return title; }
+    int    getSeason() const { return season; }
+    int   getEpisode() const { return episode; }
+    QString getGenre() const { return genre; }
 
     // Return string for printing TvShow to console
     QString toString();
