@@ -20,7 +20,10 @@
    <string>Watchlist v0.1b</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true"> QToolBar {
+     background: red;
+     spacing: 3px; /* spacing between items in the tool bar */
+ }</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
@@ -41,6 +44,12 @@
     <string>toolBar</string>
    </property>
    <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonFollowStyle</enum>
+   </property>
+   <property name="floatable">
     <bool>false</bool>
    </property>
    <attribute name="toolBarArea">

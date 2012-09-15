@@ -45,7 +45,9 @@ void MainWindow::on_actionAdd_triggered()
 
     qDebug() << "AddSeries clicked";
     v.addTile("Test",2,3,"cool",4,2);
-    QFrame* popup = new QFrame(this, Qt::Tool | Qt::Window | Qt::FramelessWindowHint);
+    QWidget* popup = new QWidget(this);
+    popup->setStyleSheet("QWidget {background:rgba(0, 0, 0, 155);} QLineEdit {background:white;border:none} QLabel {background:none;border:none;color:white}QPushButton{color:white}");
+    popup->move(QPoint(-250,this->x()+196));//why 296??
     popup->resize(300,200);
     QGridLayout *layout = new QGridLayout;
     QLineEdit *inputName = new QLineEdit();
@@ -69,9 +71,17 @@ void MainWindow::on_actionAdd_triggered()
     layout->addWidget(inputGenre,3,1);
     layout->addWidget(addButton,4,0,1,0,Qt::AlignCenter);
 
-    //TODO:Position popup
     popup->setLayout(layout);
 
-       popup->show();
+   popup->show();
+
+   // then a animation:
+   QPropertyAnimation *animation = new QPropertyAnimation(popup, "pos");
+   animation->setDuration(1000);
+   animation->setStartValue(popup->pos());
+   animation->setEndValue(QPoint(0,this->x()+196));
+
+   // to slide in call
+   animation->start();
 
 }
