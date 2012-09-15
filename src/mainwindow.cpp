@@ -70,6 +70,7 @@ void MainWindow::on_actionAdd_triggered()
     layout->addWidget(addButton,4,0,1,0,Qt::AlignCenter);
 
     //TODO:Position popup
+    popup->setLayout(layout);
 
        popup->show();
 
