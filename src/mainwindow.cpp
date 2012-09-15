@@ -40,6 +40,9 @@ void MainWindow::init() {
 
 void MainWindow::on_actionAdd_triggered()
 {
+    //TODO: rewrite!!
+
+
     qDebug() << "AddSeries clicked";
     v.addTile("Test",2,3,"cool",4,2);
     QFrame* popup = new QFrame(this, Qt::Tool | Qt::Window | Qt::FramelessWindowHint);
@@ -65,10 +68,8 @@ void MainWindow::on_actionAdd_triggered()
     layout->addWidget(infoGenre,3,0);
     layout->addWidget(inputGenre,3,1);
     layout->addWidget(addButton,4,0,1,0,Qt::AlignCenter);
-    popup->setLayout(layout);
-    popup->setParent(this);
-    popup->setGeometry(this->geometry().x()-280,this->height()-200,300,200);
 
+    //TODO:Position popup
 
        popup->show();
 
