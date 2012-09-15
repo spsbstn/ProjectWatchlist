@@ -42,5 +42,34 @@ void MainWindow::on_actionAdd_triggered()
 {
     qDebug() << "AddSeries clicked";
     v.addTile("Test",2,3,"cool",4,2);
+    QFrame* popup = new QFrame(this, Qt::Tool | Qt::Window | Qt::FramelessWindowHint);
+    popup->resize(300,200);
+    QGridLayout *layout = new QGridLayout;
+    QLineEdit *inputName = new QLineEdit();
+    QLineEdit *inputSeason = new QLineEdit();
+    QLineEdit *inputEpisode = new QLineEdit();
+    QLineEdit *inputGenre = new QLineEdit();
+    QLabel *infoName = new QLabel("Serie: ");
+    QLabel *infoSeason = new QLabel("Staffel");
+    QLabel *infoEpisode = new QLabel("Episode: ");
+    QLabel *infoGenre = new QLabel("Genre: ");
+    QPushButton *addButton = new QPushButton("Hinzufuegen");
+    connect(addButton, SIGNAL(clicked()), popup, SLOT(close()));
+
+    layout->addWidget(infoName,0,0);
+    layout->addWidget(inputName,0,1);
+    layout->addWidget(infoSeason,1,0);
+    layout->addWidget(inputSeason,1,1);
+    layout->addWidget(infoEpisode,2,0);
+    layout->addWidget(inputEpisode,2,1);
+    layout->addWidget(infoGenre,3,0);
+    layout->addWidget(inputGenre,3,1);
+    layout->addWidget(addButton,4,0,1,0,Qt::AlignCenter);
+    popup->setLayout(layout);
+    popup->setParent(this);
+    popup->setGeometry(this->geometry().x()-280,this->height()-200,300,200);
+
+
+       popup->show();
 
 }
