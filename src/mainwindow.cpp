@@ -32,7 +32,7 @@ void MainWindow::init() {
     centralWidget->setLayout(v.layout);
 
     //apply stylesheet
-    centralWidget->setStyleSheet("QWidget {background:url(:/textures/img/main_Tex.png);}QGroupBox { background:rgba(255, 0, 0, 100);}QLabel {background:rgba(255, 0, 0, 0);color:white;}");
+    centralWidget->setStyleSheet("QWidget {background:url(:/textures/img/main_Tex.png);}QGroupBox { border:4px solid white; background:#00aaff;}QLabel {background:none;color:black;}");
 
     setCentralWidget(centralWidget);
 
@@ -46,7 +46,7 @@ void MainWindow::on_actionAdd_triggered()
     qDebug() << "AddSeries clicked";
     v.addTile("Test",2,3,"cool",4,2);
     QWidget* popup = new QWidget(this);
-    popup->setStyleSheet("QWidget {background:rgba(0, 0, 0, 155);} QLineEdit {background:white;border:none} QLabel {background:none;border:none;color:white}QPushButton{color:white}");
+    popup->setStyleSheet("QWidget {background:#574236;} QLineEdit {background:white;border:none} QLabel {background:none;border:none;color:white}QPushButton{color:white;border:1px solid white; border-radius:8px;padding-left:5px;padding-right:5px;}");
     popup->move(QPoint(-250,this->x()+196));//why 296??
     popup->resize(300,200);
     QGridLayout *layout = new QGridLayout;

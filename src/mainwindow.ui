@@ -20,10 +20,7 @@
    <string>Watchlist v0.1b</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"> QToolBar {
-     background: red;
-     spacing: 3px; /* spacing between items in the tool bar */
- }</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
