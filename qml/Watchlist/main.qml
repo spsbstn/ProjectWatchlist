@@ -52,11 +52,39 @@ Rectangle {
         // left bar
         Rectangle {
             id: leftBar
+            x: 0
+            y: 0
             anchors.left: parent.left
             anchors.top: parent.top
             width: barSize
             height: parent.height
             color: appBackground
+            anchors.leftMargin: 0
+            anchors.topMargin: 0
+
+            Image {
+                x: 43
+                y: 658
+                width: 35
+                height: 35
+                smooth:true
+
+                source:"../../res/img/addIcon.png"
+
+                MouseArea {
+                    x: 0
+                    y: 0
+                    width: 35
+                    height: 35
+                    anchors.bottomMargin: 0
+                    anchors.leftMargin: 0
+                    anchors.topMargin: 0
+                    anchors.rightMargin: 0
+                anchors.fill: parent
+                onClicked: console.log("clicked");
+                }
+
+            }
         }
 
         // Grid view
@@ -72,7 +100,9 @@ Rectangle {
             clip: false
             focus: true
             model: appModel //dataSource
-            delegate: FlipTile{} //how to display
+            delegate: FlipTile{}
+
+            //how to display
 
             // Only show the scrollbars when the view is moving.
             states: State {

@@ -13,6 +13,8 @@ front: Rectangle {
          width: parent.width - tileMargin
          height: parent.height - tileMargin
          color: mainWindow.tileBackground
+         smooth:true
+
       //add Listener
          MouseArea {
              anchors.fill: parent
@@ -50,6 +52,7 @@ front: Rectangle {
          width: parent.width - tileMargin
          height: parent.height - tileMargin
          color: mainWindow.tileBackground
+         smooth:true
 
          MouseArea {
              anchors.fill: parent
