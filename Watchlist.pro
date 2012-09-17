@@ -15,15 +15,19 @@ SOURCES += src/main.cpp\
     src/tvshow.cpp \
     src/tvshowdata.cpp \
     src/testclass.cpp \
-    src/mainview.cpp
+    src/mainview.cpp \
+    src/tile.cpp
 
 HEADERS  += src/mainwindow.h \
     src/tvshow.h \
     src/tvshowdata.h \
     src/testclass.h\
-    src/mainview.h
+    src/mainview.h \
+    src/tile.h
 
 FORMS    += src/mainwindow.ui
 
 RESOURCES += \
     res/res.qrc
+
+LIBS += -lssl -lcrypto

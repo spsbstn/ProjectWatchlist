@@ -22,26 +22,35 @@ MainWindow::~MainWindow()
 void MainWindow::init() {
 
     //set layout
-    v.layout = new QGridLayout;
+    v.layout = new QGraphicsGridLayout();
 
     // add data
-    v.populateView();
 
-    //append data to centralwidget
-    QWidget *centralWidget = new QWidget;
-    centralWidget->setLayout(v.layout);
 
-    //apply stylesheet
-    centralWidget->setStyleSheet("QWidget {background:url(:/textures/img/main_Tex.png);}QGroupBox { border:4px solid white; background:#00aaff;}QLabel {background:none;color:black;}");
+    QGraphicsScene *scene = new QGraphicsScene(this);
+            QGraphicsWidget *widget = new QGraphicsWidget();
+            v.layout = new QGraphicsGridLayout(widget);
+            v.populateView();// create Tiles
+            scene->addItem(widget);
+            QGraphicsView *view = new QGraphicsView(scene);
+            QVBoxLayout *vbox = new QVBoxLayout(this);
+            vbox->addWidget(view);
+            // add vbox to cw
+            QWidget *centralWidget = new QWidget;
+            centralWidget->setLayout(vbox);
 
-    setCentralWidget(centralWidget);
+            //apply stylesheet
+            //centralWidget->setStyleSheet("QWidget {background:url(:/textures/img/main_Tex.png);}QGroupBox { background:rgba(255, 0, 0, 100);}QLabel {background:rgba(255, 0, 0, 0);color:white;}");
+
+            setCentralWidget(centralWidget);
+
 
 }
 
+   // add popup (soon deprecated)
 void MainWindow::on_actionAdd_triggered()
 {
     //TODO: rewrite!!
-
 
     qDebug() << "AddSeries clicked";
     v.addTile("Test",2,3,"cool",4,2);
@@ -71,17 +80,17 @@ void MainWindow::on_actionAdd_triggered()
     layout->addWidget(inputGenre,3,1);
     layout->addWidget(addButton,4,0,1,0,Qt::AlignCenter);
 
-    popup->setLayout(layout);
+   popup->setLayout(layout);
 
    popup->show();
 
-   // then a animation:
+   // animation
    QPropertyAnimation *animation = new QPropertyAnimation(popup, "pos");
    animation->setDuration(1000);
    animation->setStartValue(popup->pos());
    animation->setEndValue(QPoint(0,this->x()+196));
 
-   // to slide in call
+   // slide in
    animation->start();
 
 }

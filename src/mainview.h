@@ -14,7 +14,7 @@ public:
     void addTile(QString name, int seas, int ep, QString gen,int x, int y);
     // add all tiles according to vector
     void populateView();
-    QGridLayout *layout;
+    QGraphicsGridLayout *layout;
 };
 
 #endif // MAINVIEW_H

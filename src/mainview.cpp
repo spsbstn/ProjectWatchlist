@@ -1,10 +1,15 @@
 #include "mainview.h"
+#include"tile.h"
 
 MainView::MainView()
 {}
 
 // add one tile
 void MainView::addTile(QString name, int seas, int ep, QString gen,int rows, int columns){
+
+   /*
+
+    **temporarily removed**
 
     // define labels
     QLabel *series = new QLabel("Serie: " + name);
@@ -32,8 +37,10 @@ void MainView::addTile(QString name, int seas, int ep, QString gen,int rows, int
     //add layout to box
     box->setLayout(lbox);
 
+    */
+
     //add box to window
-    layout->addWidget(box,rows,columns);
+    layout->addItem(new tile(),rows,columns);
 
 }
 
@@ -43,18 +50,5 @@ void MainView::populateView(){
 
     //hardcoded data
     addTile("Breaking Bad",1,12,"Drama",0,0);
-    addTile("Breaking Bad",1,12,"Drama",0,1);
-    addTile("Breaking Bad",1,12,"Drama",0,2);
-    addTile("Breaking Bad",1,12,"Drama",0,3);
-    addTile("Breaking Bad",1,12,"Drama",0,4);
-    addTile("Breaking Bad",1,12,"Drama",1,0);
-    addTile("Breaking Bad",1,12,"Drama",1,1);
-    addTile("Breaking Bad",1,12,"Drama",1,2);
-    addTile("Breaking Bad",1,12,"Drama",1,3);
-    addTile("Breaking Bad",1,12,"Drama",1,4);
-    addTile("Breaking Bad",1,12,"Drama",2,0);
-    addTile("Breaking Bad",1,12,"Drama",3,0);
-    addTile("Breaking Bad",1,12,"Drama",4,0);
-    addTile("Breaking Bad",1,12,"Drama",4,1);
-    addTile("Breaking Bad",1,12,"Drama",2,4);
+
 }
