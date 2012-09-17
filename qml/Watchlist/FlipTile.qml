@@ -2,7 +2,7 @@ import QtQuick 1.0
 
  Flipable {
      id: flipable
-     width: parseInt(grid.height / 3) - tileMargin
+     width: parseInt(grid.height / 2) - tileMargin
      height: width - tileMargin
 
 property bool flipped: false //current state
@@ -85,7 +85,7 @@ front: Rectangle {
      // rotation
      transform: Rotation {
          id: rotation
-         origin.x: flipable.width/2
+         origin.x: (flipable.width-tileMargin)/2
          origin.y: flipable.height/2
          axis.x: 0; axis.y: 1; axis.z: 0
          angle: 0    // the default angle

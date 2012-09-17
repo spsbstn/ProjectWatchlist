@@ -8,7 +8,7 @@ Rectangle {
 
     property int topBarSize: 144
     property int barSize: 120
-    property int tileMargin: 12
+    property int tileMargin: 6
     property int tileHeaderFontSize: 15
     property int tileDateFontSize: 12
     property int appHeaderFontSize: 36
@@ -21,6 +21,10 @@ Rectangle {
     // data to display
     ListModel {
              id: appModel
+             ListElement { name: "Breaking Bad"; episode: "2"; season:"1"}
+             ListElement { name: "IASIP"; episode: "3"; season:"4"}
+             ListElement { name: "HIMYM"; episode: "5"; season:"2"}
+             ListElement { name: "Chuck"; episode: "12"; season:"5"}
              ListElement { name: "Breaking Bad"; episode: "2"; season:"1"}
              ListElement { name: "IASIP"; episode: "3"; season:"4"}
              ListElement { name: "HIMYM"; episode: "5"; season:"2"}
@@ -63,8 +67,8 @@ Rectangle {
             flow: GridView.TopToBottom
             width: parent.width - leftBar.width
             height: parent.height - topBar.height - bottomBar.height
-            cellHeight: parseInt(grid.height / 3)
-            cellWidth: parseInt(cellHeight * 1.5)
+            cellHeight: parseInt(grid.height / 2)
+            cellWidth: parseInt(cellHeight * 1.1)
             clip: false
             focus: true
             model: appModel //dataSource
