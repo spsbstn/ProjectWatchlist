@@ -1,33 +1,23 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2012-09-13T16:27:17
-#
-#-------------------------------------------------
 
-QT       += core gui
+folder_01.source = qml/Watchlist
+folder_01.target = qml
+DEPLOYMENTFOLDERS = folder_01
 
-TARGET = Watchlist
-TEMPLATE = app
-
-
-SOURCES += src/main.cpp\
-        src/mainwindow.cpp \
-    src/tvshow.cpp \
+SOURCES += src/main.cpp \
     src/tvshowdata.cpp \
+    src/tvshow.cpp \
     src/testclass.cpp \
-    src/mainview.cpp \
-    src/tile.cpp
 
-HEADERS  += src/mainwindow.h \
-    src/tvshow.h \
-    src/tvshowdata.h \
-    src/testclass.h\
-    src/mainview.h \
-    src/tile.h
-
-FORMS    += src/mainwindow.ui
+include(qmlapplicationviewer/qmlapplicationviewer.pri)
+qtcAddDeployment()
 
 RESOURCES += \
     res/res.qrc
 
-LIBS += -lssl -lcrypto
+HEADERS += \
+    src/tvshowdata.h \
+    src/tvshow.h \
+    src/testclass.h
+
+OTHER_FILES += \
+    qml/Watchlist/main.qml
