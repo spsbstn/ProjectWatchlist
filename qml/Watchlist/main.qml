@@ -64,8 +64,10 @@ Rectangle {
 
             Image {
                 id:addButton
-                x: 43
-                y: 679
+                anchors.bottom: leftBar.bottom
+                anchors.bottomMargin: 40
+                anchors.left: leftBar.left
+                anchors.leftMargin: 40
                 width: 35
                 height: 35
                 smooth:true
@@ -75,15 +77,9 @@ Rectangle {
 
 
                 MouseArea {
-                    x: 0
-                    y: 0
-                    width: 35
-                    height: 35
 
-                    anchors.bottomMargin: 0
-                    anchors.leftMargin: 0
-                    anchors.topMargin: 0
-                    anchors.rightMargin: 0
+                width: 35
+                height: 35
                 anchors.fill: parent
                 onReleased: NumberAnimation { target: addButtonActive; property: "opacity"; to: 0; duration: 10;  }
                 onPressed:NumberAnimation { target: addButtonActive; property: "opacity"; to: 1; duration: 10;  }
@@ -94,8 +90,10 @@ Rectangle {
 
             Image {
             id:addButtonActive
-            x: 43
-            y: 679
+            anchors.bottom: leftBar.bottom
+            anchors.bottomMargin: 40
+            anchors.left: leftBar.left
+            anchors.leftMargin: 40
             opacity:0
             width:35
             height:35
@@ -166,11 +164,9 @@ Rectangle {
           }
           Rectangle {
               id:addScreenInsert
-              x: 431
-              y: 265
+              anchors.centerIn: addScreenBackground
               width: height*2
               height: parseInt(grid.height / 2)
-              anchors.centerIn: addScreenBackground
               opacity: 0;
               color:'#00aaff'
               anchors.verticalCenterOffset: 7
@@ -178,37 +174,42 @@ Rectangle {
 
 
                   Text {
-                      id: addInfp
-                      x: 37
-                      y: 28
+                      id: addInfo
+                      anchors.left: parent.left
+                      anchors.leftMargin: 20
+                      anchors.top: parent.top
+                      anchors.topMargin: addScreenInsert.width/18
                       color: "#ffffff"
                       text: qsTr("Name der neuen Serie:")
-                      font.pixelSize: 33
+                      font.pixelSize: addScreenInsert.width/18
                       font.bold: false
                       font.family: "Helvetica Neue"
                   }
 
-                  TextInput {
-                      id: nameInput
-                      x: 49
-                      y: 125
-                      width: 402
-                      height: 38
-                      text: qsTr("")
-                      z: 1
-                      font.family: "Helvetica Neue"
-                      font.pixelSize: 30
-                  }
 
                   Rectangle {
                       id: addInputBg
-                      x: 37
-                      y: 120
-                      width: 430
-                      height: 49
+                      anchors.bottom: addScreenInsert.bottom
+                      anchors.bottomMargin: addScreenInsert.height/3
+                      anchors.left: addScreenInsert.left
+                      anchors.leftMargin: (addScreenInsert.width-width)/2
+                      width: addScreenInsert.width-50
+                      height: addScreenInsert.width/14
                       color: "#ffffff"
-                      z: 0
+
+
+
+                  TextInput {
+                      id: nameInput
+                      anchors.left:parent.left+10
+                      anchors.centerIn: parent
+                      width: addInputBg.width-20
+                      height: addInputBg.height-10
+                      text: qsTr("")
+                      font.family: "Helvetica Neue"
+                      font.pixelSize: height-(height/5)
                   }
+}
 
                   }
       }
