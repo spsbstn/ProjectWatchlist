@@ -87,7 +87,7 @@ Rectangle {
                 anchors.fill: parent
                 onReleased: NumberAnimation { target: addButtonActive; property: "opacity"; to: 0; duration: 10;  }
                 onPressed:NumberAnimation { target: addButtonActive; property: "opacity"; to: 1; duration: 10;  }
-                onClicked: console.log("clicked");
+                onClicked: NumberAnimation { target: addScreenBackground; property: "opacity"; to: 0.5; duration: 1000;  }
                 }
 
             }
@@ -153,8 +153,64 @@ Rectangle {
             pageSize: grid.visibleArea.widthRatio
         }
 
-      SplashScreen {
+      Item {
+          id:addScreen
 
+          Rectangle {
+              id:addScreenBackground
+              width: mainWindow.width;
+              height: mainWindow.height;
+              opacity: 0;
+              color:'black'
+              onOpacityChanged: NumberAnimation { target: addScreenInsert; property: "opacity"; to: 1; duration: 1000;}
+          }
+          Rectangle {
+              id:addScreenInsert
+              x: 431
+              y: 265
+              width: height*2
+              height: parseInt(grid.height / 2)
+              anchors.centerIn: addScreenBackground
+              opacity: 0;
+              color:'#00aaff'
+              anchors.verticalCenterOffset: 7
+              anchors.horizontalCenterOffset: 0
+
+
+                  Text {
+                      id: addInfp
+                      x: 37
+                      y: 28
+                      color: "#ffffff"
+                      text: qsTr("Name der neuen Serie:")
+                      font.pixelSize: 33
+                      font.bold: false
+                      font.family: "Helvetica Neue"
+                  }
+
+                  TextInput {
+                      id: nameInput
+                      x: 49
+                      y: 125
+                      width: 402
+                      height: 38
+                      text: qsTr("")
+                      z: 1
+                      font.family: "Helvetica Neue"
+                      font.pixelSize: 30
+                  }
+
+                  Rectangle {
+                      id: addInputBg
+                      x: 37
+                      y: 120
+                      width: 430
+                      height: 49
+                      color: "#ffffff"
+                      z: 0
+                  }
+
+                  }
       }
 
     }

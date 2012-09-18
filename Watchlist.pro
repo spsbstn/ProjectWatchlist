@@ -2,8 +2,7 @@
 folder_01.source = qml/Watchlist
 folder_01.target = qml
 DEPLOYMENTFOLDERS = folder_01
-folder_02.source = res
-DEPLOYMENTFOLDERS = folder_02
+
 
 SOURCES += src/main.cpp \
     src/tvshowdata.cpp \
@@ -23,4 +22,4 @@ HEADERS += \
 
 OTHER_FILES += \
     qml/Watchlist/main.qml \
-    SplashScreen.qml
+    qml/Watchlist/SplashScreen.qml
