@@ -8,7 +8,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     viewer->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer->setMainQmlFile(QLatin1String("qml/Watchlist/main.qml"));
-    viewer->showExpanded();
+    viewer->showMaximized();
 
     return app->exec();
 }
