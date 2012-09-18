@@ -42,7 +42,7 @@ Rectangle {
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
-                text: qsTr("Watchlist")
+                text: qsTr("Watchlist.")
                 font.family: uiFont;
                 font.pointSize: appHeaderFontSize;
                 color: textColor
@@ -63,27 +63,44 @@ Rectangle {
             anchors.topMargin: 0
 
             Image {
+                id:addButton
                 x: 43
-                y: 658
+                y: 679
                 width: 35
                 height: 35
                 smooth:true
 
                 source:"../../res/img/addIcon.png"
 
+
+
                 MouseArea {
                     x: 0
                     y: 0
                     width: 35
                     height: 35
+
                     anchors.bottomMargin: 0
                     anchors.leftMargin: 0
                     anchors.topMargin: 0
                     anchors.rightMargin: 0
                 anchors.fill: parent
+                onReleased: NumberAnimation { target: addButtonActive; property: "opacity"; to: 0; duration: 10;  }
+                onPressed:NumberAnimation { target: addButtonActive; property: "opacity"; to: 1; duration: 10;  }
                 onClicked: console.log("clicked");
                 }
 
+            }
+
+            Image {
+            id:addButtonActive
+            x: 43
+            y: 679
+            opacity:0
+            width:35
+            height:35
+            smooth:true
+            source:"../../res/img/addIcon_Active.png"
             }
         }
 
@@ -135,5 +152,9 @@ Rectangle {
             position: grid.visibleArea.xPosition
             pageSize: grid.visibleArea.widthRatio
         }
+
+      SplashScreen {
+
+      }
 
     }

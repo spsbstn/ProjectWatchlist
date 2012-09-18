@@ -22,4 +22,5 @@ HEADERS += \
     src/testclass.h
 
 OTHER_FILES += \
-    qml/Watchlist/main.qml
+    qml/Watchlist/main.qml \
+    SplashScreen.qml
