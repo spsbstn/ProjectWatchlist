@@ -201,7 +201,8 @@ Rectangle {
 
                   TextInput {
                       id: nameInput
-                      anchors.left:parent.left+10
+                      anchors.left:parent.left
+                      anchors.leftMargin: 10;
                       anchors.centerIn: parent
                       width: addInputBg.width-20
                       height: addInputBg.height-10
