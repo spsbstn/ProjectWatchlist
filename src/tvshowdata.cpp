@@ -7,12 +7,16 @@ TvShowData::TvShowData()
 
 // Tries to find given Show in the vector, and adds it if not found.
 // Returns the Index of the Show if it is already present (useful for later highlighting?)
-int TvShowData::addShow(const TvShow &show)
+int TvShowData::addShow(const QString& name)
 {
-    int index = findShowIndex(show.getTitle());
+    int index = findShowIndex(name);
     // -1 means the Show wasn´t found
     if (index == -1)
-        data.push_back(show);
+    {
+        TvShow* show = new TvShow(name);
+        data.append(show);
+    }
+
     return index;
 }
 
@@ -21,7 +25,7 @@ int TvShowData::findShowIndex(const QString& name)
 {
     for(int i = 0; i < data.size(); i++)
     {
-        if (data.at(i).getTitle() == name)
+        if (((TvShow*)data.at(i))->getTitle() == name)
             return i;
     }
     return -1;
@@ -59,7 +63,7 @@ QString TvShowData::toString()
 
     for (int i = 0; i < data.size(); i++)
     {
-        result.append(data.at(i).toString());
+        result.append(((TvShow *)data.at(i))->toString());
         result.append("\n");
     }
 
@@ -67,47 +71,24 @@ QString TvShowData::toString()
 }
 
 
-// Turn Vector into QList
-QList<QObject *> TvShowData::toQList()
-{
-    QList<QObject *> showlist;
-
-    for(unsigned int i = 0; i < data.size(); i++)
-    {
-        showlist.append(new TvShowObject(data.at(i)));
-    }
-
-    // TODO:
-    // DELETE Elements of List after usage !! Memory Leak!
-    // use: qDeleteAll(list.begin(), list.end();
-    //      list.clear();
-    //
-
-
-    return showlist;
-}
-
-
-// Creates samplevector with 6 shows
+// Creates samplevector with 7 shows
 void TvShowData::sampleVector()
 {
-    TvShow* breakbad = new TvShow("Breaking Bad");
-    TvShow* docwho   = new TvShow("Doctor Who", 3, 4);
-    TvShow* lost     = new TvShow("Lost", 5, 5);
-    TvShow* himym    = new TvShow("HIMYM", 1, 4);
-    TvShow* fotc     = new TvShow("FOTC");
-    TvShow* iasip    = new TvShow("IASIP", 4, 2);
-
-    addShow(*breakbad);
-    addShow(*docwho);
-    addShow(*lost);
-    addShow(*himym);
-    addShow(*fotc);
-    addShow(*iasip);
+    addShow("Breaking Bad");
+    addShow("Doctor Who");
+    addShow("Lost");
+    addShow("HIMYM");
+    addShow("Flight of the Conchords");
+    addShow("IASIP");
+    addShow("Adventure Time");
 }
 
 // Sorts Vector by Genre / Title
 // TODO : Test if it works :D
+
+/*
+    SORTING DOESNT WORK ANYMORE. FIX LATER
+
 void TvShowData::sortByGenre()
 {
     std::sort(data.begin(), data.end(), genreCompare());
@@ -117,3 +98,5 @@ void TvShowData::sortByTitle()
 {
     std::sort(data.begin(), data.end(), titleCompare());
 }
+
+*/

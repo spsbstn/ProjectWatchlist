@@ -5,11 +5,12 @@ using namespace std;
 
 Testclass::Testclass()
 {
+    /*
     TvShow fotc("Flight of the Conchords", 2, 4,"Comedy");
     TvShow breakbad("Breaking Bad", 3, 4, "Drama");
     TvShow docwho ("Doctor Who", 6, 4, "Science Fiction");
     TvShow lost ("Lost", 1, 1, "Mystery");
-    TvShow bla;
+    TvShow bla("");
     TvShow bla2("no name");
 
     TvShowData testcontainer;
@@ -44,5 +45,5 @@ Testclass::Testclass()
     cout << lost.toString().toStdString() << endl;
     bla2.updateLastWatched(3,4);
     cout << bla2.toString().toStdString() << endl;
-
+*/
 }

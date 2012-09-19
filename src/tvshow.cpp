@@ -1,7 +1,7 @@
 #include "TvShow.h"
 
 
-TvShowObject::TvShowObject(QObject *parent) :
+TvShow::TvShow(QObject *parent) :
     QObject(parent)
 {}
 
@@ -28,5 +28,3 @@ QString TvShow::toString()
     return title + " " + QString::number(season) + " " +
             QString::number(episode) + " " + genre;
 }
-
-

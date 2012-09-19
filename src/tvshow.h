@@ -8,7 +8,7 @@
 #define OLD_SEASON -1
 
 
-class TvShow
+class TvShow : public QObject
 {
     Q_OBJECT
 
@@ -43,11 +43,17 @@ public:
     // Return string for printing TvShow to console
     QString toString();
 
+signals:
+    void titleChanged();
+
+
+
 private:
     QString title;
     int     season;
     int     episode;
     QString genre;
+
 };
 
 #endif // TvShow_H
