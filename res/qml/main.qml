@@ -207,7 +207,9 @@ Rectangle {
                       text: qsTr("")
                       font.family: "Helvetica Neue"
                       font.pixelSize: height-(height/5)
+                      validator: RegExpValidator { regExp: /^(?!\s*$).+/ }
                       onAccepted: controller.test();
+                      focus: true
                   }
 }
 
