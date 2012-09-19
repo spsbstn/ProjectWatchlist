@@ -7,7 +7,7 @@ TvShowData::TvShowData()
 
 // Tries to find given Show in the vector, and adds it if not found.
 // Returns the Index of the Show if it is already present (useful for later highlighting?)
-int TvShowData::addShow(TvShow &show)
+int TvShowData::addShow(const TvShow &show)
 {
     int index = findShowIndex(show.getTitle());
     // -1 means the Show wasn´t found
@@ -17,7 +17,7 @@ int TvShowData::addShow(TvShow &show)
 }
 
 
-int TvShowData::findShowIndex(QString name)
+int TvShowData::findShowIndex(const QString& name)
 {
     for(int i = 0; i < data.size(); i++)
     {
@@ -28,16 +28,28 @@ int TvShowData::findShowIndex(QString name)
 }
 
 
-// Removes show from vector
-// Gives back the ShowIndex, in order to check if a show was found and deleted
-int TvShowData::removeShow(TvShow &show)
+int TvShowData::findShowIndex(const TvShow &show)
 {
-    int index = findShowIndex(show.getTitle());
+    return findShowIndex(show.getTitle());
+}
+
+
+
+// Removes show from vector via its name. Returns -1 if show wasn´t found.
+int TvShowData::removeShow(const QString &name)
+{
+    int index = findShowIndex(name);
 
     if (index != -1)
         data.erase(data.begin() + index);
 
     return index;
+}
+
+// Removes show via object
+int TvShowData::removeShow(const TvShow &show)
+{
+    return removeShow(show.getTitle());
 }
 
 
@@ -54,6 +66,29 @@ QString TvShowData::toString()
     return result;
 }
 
+
+// Turn Vector into QList
+QList<TvShowObject *> TvShowData::toQList()
+{
+    QList<TvShowObject *> showlist;
+
+    for(unsigned int i = 0; i < data.size(); i++)
+    {
+        showlist.append(new TvShowObject(data.at(i)));
+    }
+
+    // TODO:
+    // DELETE Elements of List after usage !! Memory Leak!
+    // use: qDeleteAll(list.begin(), list.end();
+    //      list.clear();
+    //
+
+
+    return showlist;
+}
+
+
+// Creates samplevector with 6 shows
 void TvShowData::sampleVector()
 {
     TvShow* breakbad = new TvShow("Breaking Bad");

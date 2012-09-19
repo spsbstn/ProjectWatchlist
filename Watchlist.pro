@@ -2,7 +2,8 @@ SOURCES += src/main.cpp \
     src/tvshowdata.cpp \
     src/tvshow.cpp \
     src/testclass.cpp \
-    src/controller.cpp
+    src/controller.cpp \
+    src/tvshowobject.cpp
 
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
@@ -14,7 +15,8 @@ HEADERS += \
     src/tvshowdata.h \
     src/tvshow.h \
     src/testclass.h \
-    src/controller.h
+    src/controller.h \
+    src/tvshowobject.h
 
 OTHER_FILES += \
     qml/Watchlist/main.qml \

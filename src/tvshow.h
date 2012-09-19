@@ -16,10 +16,10 @@ public:
     void watchedOneEp() { updateLastWatched(this->episode += 1); }
 
     // set all the members individually
-    void setTitle  (QString& name) { title = name; }
-    void setSeason (int seas)     { season = seas; }
-    void setEpisode(int ep)       { episode = ep; }
-    void setGenre  (QString& gen)  { genre = gen; }
+    void setTitle  (const QString& name) { title = name; }
+    void setSeason (int seas)            { season = seas; }
+    void setEpisode(int ep)              { episode = ep; }
+    void setGenre  (const QString& gen)  { genre = gen; }
 
     // getter-functions
     QString getTitle() const { return title; }
