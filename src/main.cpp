@@ -1,14 +1,13 @@
 #include <QtGui/QApplication>
 #include "qmlapplicationviewer.h"
+#include "controller.h"
 
-Q_DECL_EXPORT int main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-    QScopedPointer<QApplication> app(createApplication(argc, argv));
-    QScopedPointer<QmlApplicationViewer> viewer(QmlApplicationViewer::create());
-
-    viewer->setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
-    viewer->setMainQmlFile(QLatin1String("qml/Watchlist/main.qml"));
-    viewer->showMaximized();
-
-    return app->exec();
+    QApplication app(argc, argv);
+    QDeclarativeView view;
+    view.setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    view.setSource(QUrl("qrc:///qml/main.qml"));
+    view.showMaximized();
+    return app.exec();
 }

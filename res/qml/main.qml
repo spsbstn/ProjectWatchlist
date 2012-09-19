@@ -72,9 +72,7 @@ Rectangle {
                 height: 35
                 smooth:true
 
-                source:"../../res/img/addIcon.png"
-
-
+                source:"qrc:../..///img/addIcon.png"
 
                 MouseArea {
 
@@ -98,7 +96,7 @@ Rectangle {
             width:35
             height:35
             smooth:true
-            source:"../../res/img/addIcon_Active.png"
+            source:"qrc:../..///img/addIcon_Active.png"
             }
         }
 

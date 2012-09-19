@@ -1,5 +1,11 @@
 <RCC>
-    <qresource prefix="/textures">
+    <qresource prefix="/">
+        <file>qml/FlipTile.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/Scrollbar.qml</file>
+        <file>img/addIcon_Active.png</file>
+        <file>img/addIcon.png</file>
         <file>img/main_Tex.png</file>
+        <file>img/main_Tex(dark).png</file>
     </qresource>
 </RCC>
