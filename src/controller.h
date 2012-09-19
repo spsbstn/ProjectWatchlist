@@ -1,11 +1,14 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
+#include <QObject>
 
-class controller
+
+class Controller : public QObject
 {
+
 public:
-    controller();
-    void test();
+ explicit Controller(QObject *parent = 0);
+Q_INVOKABLE void test();
 };
 
 #endif // CONTROLLER_H

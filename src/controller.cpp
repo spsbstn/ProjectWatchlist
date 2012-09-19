@@ -1,13 +1,14 @@
 #include "controller.h"
 #include  <QDebug>
-#include <QDeclarativeView>
 
-controller::controller()
+Controller::Controller(QObject *parent) :
+    QObject(parent)
 {
 
 }
-void controller::test(){
+void Controller::test(){
 
     qDebug() << "Hello World";
 
 }
+

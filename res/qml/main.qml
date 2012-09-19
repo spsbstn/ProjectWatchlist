@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 
 Rectangle {
     id: mainWindow
@@ -207,6 +207,7 @@ Rectangle {
                       text: qsTr("")
                       font.family: "Helvetica Neue"
                       font.pixelSize: height-(height/5)
+                      onTextChanged: controller.test();
                   }
 }
 
