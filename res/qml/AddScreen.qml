@@ -1,6 +1,7 @@
 import QtQuick 1.0
 
 Item {
+    id:addScreen
 
     Rectangle {
         id:addBackground
@@ -50,9 +51,18 @@ Item {
                 text: qsTr("")
                 font.pixelSize: height-(height/5)
                 validator: RegExpValidator { regExp: /^(?!\s*$).+/ }
-                onAccepted: controller.test(nameInput.text);
+                onAccepted: controller.test(nameInput.text),addScreen.opacity=0;
                 focus: true
                        }
-                    }
+            }
+            PlusButton {
+                 id:addButton2
+                 anchors.bottom: addScreenTile.bottom
+                 anchors.bottomMargin: 10
+                 anchors.right: addScreenTile.right
+                 anchors.rightMargin: 10
+                 onClicked: controller.test(nameInput.text),addScreen.opacity=0;
+    }
+
                 }
             }
