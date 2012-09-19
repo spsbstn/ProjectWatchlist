@@ -9,7 +9,7 @@ class Controller : public QObject
 
 public:
  explicit Controller(QObject *parent = 0);
-Q_INVOKABLE void test();
+Q_INVOKABLE void test(QString msg);
 };
 
 #endif // CONTROLLER_H

@@ -44,6 +44,7 @@ private:
 
 /*
         DOESNT WORK RIGHT NOW ... maybe just syntax, dont know
+
 class titleCompare
 {
 public:

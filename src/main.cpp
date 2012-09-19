@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
     data.sampleVector();
 
     ctxt->setContextProperty("datalist", QVariant::fromValue(data.getQList()));
-
     // It does =)
     ///////
 

@@ -6,9 +6,9 @@ Controller::Controller(QObject *parent) :
 {
 
 }
-void Controller::test(){
+void Controller::test(QString msg){
 
-    qDebug() << "Hello World";
+    qDebug() << msg << endl;
 
 }
 
