@@ -15,6 +15,8 @@ class TvShowObject : public QObject
     Q_PROPERTY(QString genre READ getGenre WRITE setGenre)
 
 public:
+    TvShowObject(QObject *parent = 0);
+
     // Make a TvShow into a TvShowObject
     TvShowObject(const TvShow& show);
 
@@ -43,7 +45,6 @@ private:
     int     episode;
     QString genre;
 
-    explicit TvShowObject(QObject *parent = 0);
     TvShowObject();
     TvShowObject(const TvShowObject&);
 };

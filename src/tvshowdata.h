@@ -26,7 +26,8 @@ public:
     void sampleVector();
 
     // Turns vector<TvShow> into QList<TvShowObject *> for qml-communication
-    QList<TvShowObject *> toQList();
+    QList<QObject *> toQList();
+
 private:
     std::vector<TvShow> data;
     // returns index of given show, -1 if not present

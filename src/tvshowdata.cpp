@@ -68,9 +68,9 @@ QString TvShowData::toString()
 
 
 // Turn Vector into QList
-QList<TvShowObject *> TvShowData::toQList()
+QList<QObject *> TvShowData::toQList()
 {
-    QList<TvShowObject *> showlist;
+    QList<QObject *> showlist;
 
     for(unsigned int i = 0; i < data.size(); i++)
     {

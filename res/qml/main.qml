@@ -112,7 +112,12 @@ Rectangle {
             cellWidth: parseInt(cellHeight * 1.1)
             clip: false
             focus: true
-            model: appModel //dataSource
+
+            /////
+            //changed to C++ sample vector
+            model: datalist //dataSource
+            /////
+
             delegate: FlipTile{}
 
             //how to display

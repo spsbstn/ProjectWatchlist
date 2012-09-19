@@ -40,7 +40,12 @@ front: Rectangle {
              anchors.rightMargin: tileMargin
 
              color: mainWindow.textColor
-             text: name; //load from data
+
+             ////////
+             // changed to "title" - property of C++ - TvShowObject
+             text: title; //load from data
+             ///////
+
              width: parent.width;
              wrapMode: Text.WordWrap
              font { bold: true; family: mainWindow.uiFont; pointSize: mainWindow.tileHeaderFontSize }
