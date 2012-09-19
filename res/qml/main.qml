@@ -79,8 +79,8 @@ Rectangle {
                 width: 35
                 height: 35
                 anchors.fill: parent
-                onReleased:PropertyChanges { target: addButtonActive; opacity: 0}
-                onPressed: PropertyChanges { target: addButtonActive; opacity: 1}
+                onReleased: NumberAnimation { target: addButtonActive; property: "opacity"; to: 0; duration: 100;  }
+                onPressed: NumberAnimation { target: addButtonActive; property: "opacity"; to: 1; duration: 100;  }
                 onClicked: NumberAnimation { target: addScreenBackground; property: "opacity"; to: 0.5; duration: 1000;  }
                 }
 
