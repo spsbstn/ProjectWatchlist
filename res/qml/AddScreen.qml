@@ -51,18 +51,21 @@ Item {
                 text: qsTr("")
                 font.pixelSize: height-(height/5)
                 validator: RegExpValidator { regExp: /^(?!\s*$).+/ }
-                onAccepted: controller.test(nameInput.text),addScreen.opacity=0;
+                onAccepted: controller.test(nameInput.text,addScreen.opacity=0,nameInput.text="")
                 focus: true
                        }
             }
             PlusButton {
-                 id:addButton2
+                 id:addButton
                  anchors.bottom: addScreenTile.bottom
                  anchors.bottomMargin: 10
                  anchors.right: addScreenTile.right
                  anchors.rightMargin: 10
-                 onClicked: controller.test(nameInput.text),addScreen.opacity=0;
+                 onClicked: if(nameInput.text.match(/^(?!\s*$).+/)){
+                                nameInput.accepted();
+                                nameInput.text=""}
+                 }
     }
 
                 }
-            }
+
