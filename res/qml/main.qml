@@ -79,8 +79,8 @@ Rectangle {
                 width: 35
                 height: 35
                 anchors.fill: parent
-                onReleased: NumberAnimation { target: addButtonActive; property: "opacity"; to: 0; duration: 10;  }
-                onPressed:NumberAnimation { target: addButtonActive; property: "opacity"; to: 1; duration: 10;  }
+                onReleased:PropertyChanges { target: addButtonActive; opacity: 0}
+                onPressed: PropertyChanges { target: addButtonActive; opacity: 1}
                 onClicked: NumberAnimation { target: addScreenBackground; property: "opacity"; to: 0.5; duration: 1000;  }
                 }
 
@@ -207,7 +207,7 @@ Rectangle {
                       text: qsTr("")
                       font.family: "Helvetica Neue"
                       font.pixelSize: height-(height/5)
-                      onTextChanged: controller.test();
+                      onAccepted: controller.test();
                   }
 }
 
