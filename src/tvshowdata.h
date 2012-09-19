@@ -20,6 +20,7 @@ public:
     void sortByGenre();
     void sortByTitle();
     QString toString();
+    void sampleVector();
 
 private:
     std::vector<TvShow> data;

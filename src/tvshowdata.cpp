@@ -54,6 +54,23 @@ QString TvShowData::toString()
     return result;
 }
 
+void TvShowData::sampleVector()
+{
+    TvShow* breakbad = new TvShow("Breaking Bad");
+    TvShow* docwho   = new TvShow("Doctor Who", 3, 4);
+    TvShow* lost     = new TvShow("Lost", 5, 5);
+    TvShow* himym    = new TvShow("HIMYM", 1, 4);
+    TvShow* fotc     = new TvShow("FOTC");
+    TvShow* iasip    = new TvShow("IASIP", 4, 2);
+
+    addShow(*breakbad);
+    addShow(*docwho);
+    addShow(*lost);
+    addShow(*himym);
+    addShow(*fotc);
+    addShow(*iasip);
+}
+
 // Sorts Vector by Genre / Title
 // TODO : Test if it works :D
 void TvShowData::sortByGenre()
