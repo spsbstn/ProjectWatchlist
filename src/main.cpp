@@ -15,8 +15,7 @@ int main(int argc, char *argv[])
 
 
     ////////
-
-    // Testing if handing QList to Listview in qml works
+    // Testing if handing QList to GridView in qml works
     TvShowData data;
     data.sampleVector();
     QList<QObject *> datalist = data.toQList();
