@@ -20,4 +20,6 @@ OTHER_FILES += \
     qml/Watchlist/main.qml \
     res/qml/Scrollbar.qml \
     res/qml/main.qml \
-    res/qml/FlipTile.qml
+    res/qml/FlipTile.qml \
+    res/qml/PlusButton.qml \
+    res/qml/AddScreen.qml

@@ -7,5 +7,7 @@
         <file>img/addIcon.png</file>
         <file>img/main_Tex.png</file>
         <file>img/main_Tex(dark).png</file>
+        <file>qml/PlusButton.qml</file>
+        <file>qml/AddScreen.qml</file>
     </qresource>
 </RCC>

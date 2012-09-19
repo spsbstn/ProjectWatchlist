@@ -1,5 +1,6 @@
 import QtQuick 1.1
 
+
 Rectangle {
     id: mainWindow
     width: 1366
@@ -18,22 +19,8 @@ Rectangle {
     property string uiFont: "Helvetica-Neue"
 
 
-    // data to display
-    ListModel {
-             id: appModel
-             ListElement { name: "Breaking Bad"; episode: "2"; season:"1"}
-             ListElement { name: "IASIP"; episode: "3"; season:"4"}
-             ListElement { name: "HIMYM"; episode: "5"; season:"2"}
-             ListElement { name: "Chuck"; episode: "12"; season:"5"}
-             ListElement { name: "Breaking Bad"; episode: "2"; season:"1"}
-             ListElement { name: "IASIP"; episode: "3"; season:"4"}
-             ListElement { name: "HIMYM"; episode: "5"; season:"2"}
-             ListElement { name: "Chuck"; episode: "12"; season:"5"}
-
-         }
-
-        // Top bar
-        Rectangle {
+//Topbar
+    Rectangle {
             id: topBar
             anchors.left: leftBar.right
             anchors.top: parent.top
@@ -49,7 +36,7 @@ Rectangle {
             }
         }
 
-        // left bar
+//Leftbar
         Rectangle {
             id: leftBar
             x: 0
@@ -61,46 +48,18 @@ Rectangle {
             color: appBackground
             anchors.leftMargin: 0
             anchors.topMargin: 0
+}
+//AddButton
+        PlusButton {
+             id:addButton
+             anchors.bottom: leftBar.bottom
+             anchors.bottomMargin: 40
+             anchors.left: leftBar.left
+             anchors.leftMargin: 40
+             onClicked: NumberAnimation { target:addScreen; property:"opacity"; to:1; duration: 1000;}
+}
 
-            Image {
-                id:addButton
-                anchors.bottom: leftBar.bottom
-                anchors.bottomMargin: 40
-                anchors.left: leftBar.left
-                anchors.leftMargin: 40
-                width: 35
-                height: 35
-                smooth:true
-
-                source:"qrc:../..///img/addIcon.png"
-
-                MouseArea {
-
-                width: 35
-                height: 35
-                anchors.fill: parent
-                onReleased: NumberAnimation { target: addButtonActive; property: "opacity"; to: 0; duration: 100;  }
-                onPressed: NumberAnimation { target: addButtonActive; property: "opacity"; to: 1; duration: 100;  }
-                onClicked: NumberAnimation { target: addScreenBackground; property: "opacity"; to: 0.5; duration: 1000;  }
-                }
-
-            }
-
-            Image {
-            id:addButtonActive
-            anchors.bottom: leftBar.bottom
-            anchors.bottomMargin: 40
-            anchors.left: leftBar.left
-            anchors.leftMargin: 40
-            opacity:0
-            width:35
-            height:35
-            smooth:true
-            source:"qrc:../..///img/addIcon_Active.png"
-            }
-        }
-
-        // Grid view
+//GridView
         GridView {
             id: grid
             anchors.left: leftBar.right
@@ -112,17 +71,9 @@ Rectangle {
             cellWidth: parseInt(cellHeight * 1.1)
             clip: false
             focus: true
-
-            /////
-            //changed to C++ sample vector
             model: datalist //dataSource
-            /////
-
             delegate: FlipTile{}
 
-            //how to display
-
-            // Only show the scrollbars when the view is moving.
             states: State {
                 when: grid.movingHorizontally
                 PropertyChanges { target: horizontalScrollBar; opacity: 1 }
@@ -133,7 +84,7 @@ Rectangle {
             }
         }
 
-        // bottom bar
+//Bottombar
         Rectangle {
             id: bottomBar
             anchors.top: grid.bottom
@@ -143,82 +94,21 @@ Rectangle {
             color: appBackground
         }
 
+//Scrollbar
         Scrollbar {
-            id: horizontalScrollBar
-            width: parent.width; height: 6
-            anchors.bottom: parent.bottom
-            anchors.left: parent.left
-            opacity: 0
-            orientation: Qt.Horizontal
-            position: grid.visibleArea.xPosition
-            pageSize: grid.visibleArea.widthRatio
+           id: horizontalScrollBar
+           width: parent.width; height: 6
+           anchors.bottom: parent.bottom
+           anchors.left: parent.left
+           opacity: 0
+           orientation: Qt.Horizontal
+           position: grid.visibleArea.xPosition
+           pageSize: grid.visibleArea.widthRatio
         }
-
-      Item {
+//AddScreen
+        AddScreen {
           id:addScreen
+          opacity: 0;
+       }
 
-          Rectangle {
-              id:addScreenBackground
-              width: mainWindow.width;
-              height: mainWindow.height;
-              opacity: 0;
-              color:'black'
-              onOpacityChanged: NumberAnimation { target: addScreenInsert; property: "opacity"; to: 1; duration: 1000;}
-          }
-          Rectangle {
-              id:addScreenInsert
-              anchors.centerIn: addScreenBackground
-              width: height*2
-              height: parseInt(grid.height / 2)
-              opacity: 0;
-              color:'#00aaff'
-              anchors.verticalCenterOffset: 7
-              anchors.horizontalCenterOffset: 0
-
-
-                  Text {
-                      id: addInfo
-                      anchors.left: parent.left
-                      anchors.leftMargin: 20
-                      anchors.top: parent.top
-                      anchors.topMargin: addScreenInsert.width/18
-                      color: "#ffffff"
-                      text: qsTr("Name der neuen Serie:")
-                      font.pixelSize: addScreenInsert.width/18
-                      font.bold: false
-                      font.family: "Helvetica Neue"
-                  }
-
-
-                  Rectangle {
-                      id: addInputBg
-                      anchors.bottom: addScreenInsert.bottom
-                      anchors.bottomMargin: addScreenInsert.height/3
-                      anchors.left: addScreenInsert.left
-                      anchors.leftMargin: (addScreenInsert.width-width)/2
-                      width: addScreenInsert.width-50
-                      height: addScreenInsert.width/14
-                      color: "#ffffff"
-
-
-
-                  TextInput {
-                      id: nameInput
-                      anchors.left:parent.left
-                      anchors.leftMargin: 10;
-                      anchors.centerIn: parent
-                      width: addInputBg.width-20
-                      height: addInputBg.height-10
-                      text: qsTr("")
-                      font.family: "Helvetica Neue"
-                      font.pixelSize: height-(height/5)
-                      validator: RegExpValidator { regExp: /^(?!\s*$).+/ }
-                      onAccepted: controller.test(nameInput.text);
-                      focus: true
-                  }
 }
-
-                  }
-      }
-
-    }
