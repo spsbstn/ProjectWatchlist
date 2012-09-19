@@ -5,7 +5,6 @@
 
 #include <vector>
 #include "tvshow.h"
-#include "tvshowobject.h"
 
 class TvShowData
 {
