@@ -9,5 +9,7 @@
         <file>img/main_Tex(dark).png</file>
         <file>qml/PlusButton.qml</file>
         <file>qml/AddScreen.qml</file>
+        <file>img/SplashScreen.png</file>
+        <file>qml/SplashScreen.qml</file>
     </qresource>
 </RCC>

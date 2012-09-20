@@ -18,6 +18,13 @@ Rectangle {
     property string textColor: "white"
     property string uiFont: "Helvetica-Neue"
 
+//Splashscreen
+     SplashScreen{
+            id:splashScreen
+            imageSource: "qrc:///img/SplashScreen.png"
+            anchors.fill: mainWindow
+            z:1
+        }
 
 //Topbar
     Rectangle {

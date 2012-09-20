@@ -22,4 +22,5 @@ OTHER_FILES += \
     res/qml/main.qml \
     res/qml/FlipTile.qml \
     res/qml/PlusButton.qml \
-    res/qml/AddScreen.qml
+    res/qml/AddScreen.qml \
+    res/qml/SplashScreen.qml
