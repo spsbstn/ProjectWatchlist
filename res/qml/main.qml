@@ -57,7 +57,7 @@ Rectangle {
             anchors.topMargin: 0
 }
 //AddButton
-        PlusButton {
+        PlusButtonLight {
              id:addButton
              anchors.bottom: leftBar.bottom
              anchors.bottomMargin: 40

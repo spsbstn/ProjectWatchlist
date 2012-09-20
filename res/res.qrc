@@ -7,9 +7,12 @@
         <file>img/addIcon.png</file>
         <file>img/main_Tex.png</file>
         <file>img/main_Tex(dark).png</file>
-        <file>qml/PlusButton.qml</file>
         <file>qml/AddScreen.qml</file>
         <file>img/SplashScreen.png</file>
         <file>qml/SplashScreen.qml</file>
+        <file>img/addIcon_Active_Dark.png</file>
+        <file>img/addIcon_Dark.png</file>
+        <file>qml/PlusButtonDark.qml</file>
+        <file>qml/PlusButtonLight.qml</file>
     </qresource>
 </RCC>

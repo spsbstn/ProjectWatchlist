@@ -55,7 +55,7 @@ Item {
                 focus: true
                        }
             }
-            PlusButton {
+            PlusButtonDark {
                  id:addButton
                  anchors.bottom: addScreenTile.bottom
                  anchors.bottomMargin: 10

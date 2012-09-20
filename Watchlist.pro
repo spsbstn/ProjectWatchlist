@@ -21,6 +21,7 @@ OTHER_FILES += \
     res/qml/Scrollbar.qml \
     res/qml/main.qml \
     res/qml/FlipTile.qml \
-    res/qml/PlusButton.qml \
     res/qml/AddScreen.qml \
-    res/qml/SplashScreen.qml
+    res/qml/SplashScreen.qml \
+    res/qml/PlusButtonLight.qml \
+    res/qml/PlusButtonDark.qml
