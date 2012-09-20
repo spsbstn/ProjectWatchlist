@@ -6,8 +6,13 @@ Controller::Controller(QObject *parent) :
     data()
 {}
 
-void Controller::test(QString name)
+void Controller::add(QString name)
 {
     data->addShow(name);
 }
 
+void Controller::remove(QString name){
+
+    data->removeShow(name);
+
+}

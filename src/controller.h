@@ -10,8 +10,8 @@ class Controller : public QObject
 
 public:
  explicit Controller(QObject *parent = 0);
-Q_INVOKABLE void test(QString name);
-
+Q_INVOKABLE void add(QString name);
+Q_INVOKABLE void remove(QString name);
     TvShowData* data;
 };
 
