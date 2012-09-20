@@ -2,13 +2,12 @@
 #include  <QDebug>
 
 Controller::Controller(QObject *parent) :
-    QObject(parent)
+    QObject(parent),
+    data()
+{}
+
+void Controller::test(QString name)
 {
-
-}
-void Controller::test(QString msg){
-
-    qDebug() << msg << endl;
-
+    data->addShow(name);
 }
 

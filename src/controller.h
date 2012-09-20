@@ -2,6 +2,7 @@
 #define CONTROLLER_H
 #include <QObject>
 
+#include "tvshowdata.h"
 
 class Controller : public QObject
 {
@@ -9,7 +10,9 @@ class Controller : public QObject
 
 public:
  explicit Controller(QObject *parent = 0);
-Q_INVOKABLE void test(QString msg);
+Q_INVOKABLE void test(QString name);
+
+    TvShowData* data;
 };
 
 #endif // CONTROLLER_H

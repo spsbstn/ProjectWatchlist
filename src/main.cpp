@@ -8,20 +8,23 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     QDeclarativeView view;
+
+    // Set up controller
     Controller c;
     view.setResizeMode(QDeclarativeView::SizeRootObjectToView);
     QDeclarativeContext *ctxt = view.rootContext();
-    ctxt->setContextProperty("controller", &c);
 
-
-    ////////
-    // Testing if handing QList to GridView in qml works
+    // Create Sample vector
     TvShowData shows;
     shows.sampleVector();
 
-    ctxt->setContextProperty("datalist", &shows);
-    // It does =)
-    ///////
+    // hand sample vector to controller
+    c.data = &shows;
+
+    // Set up Datalist and Controller for qml
+    ctxt->setContextProperty("datalist", c.data);
+    ctxt->setContextProperty("controller", &c);
+
 
     view.setSource(QUrl("qrc:///qml/main.qml"));
     view.showMaximized();
