@@ -1,31 +1,48 @@
 #include "tvshowdata.h"
 
-TvShowData::TvShowData()
+
+TvShowData::TvShowData(QObject *parent)
+    : QAbstractListModel(parent)
 {
+    QHash<int, QByteArray> roles;
+    roles[TitleRole]   = "title";
+    roles[SeasonRole]  = "season";
+    roles[EpisodeRole] = "episode";
+    roles[GenreRole]   = "genre";
+    setRoleNames(roles);
 }
 
 
 // Tries to find given Show in the vector, and adds it if not found.
 // Returns the Index of the Show if it is already present (useful for later highlighting?)
-int TvShowData::addShow(const QString& name)
+int TvShowData::addShow(const TvShow& show)
 {
-    int index = findShowIndex(name);
+    int index = findShowIndex(show.getTitle());
     // -1 means the Show wasn´t found
     if (index == -1)
     {
-        TvShow* show = new TvShow(name);
-        data.append(show);
+        beginInsertRows(QModelIndex(), rowCount(), rowCount());
+        shows.append(show);
+        endInsertRows();
     }
 
     return index;
 }
 
 
+// First creates new TvShow out of name, then inserts it
+int TvShowData::addShow(const QString &name)
+{
+    TvShow* insert = new TvShow(name);
+    return addShow(*insert);
+}
+
+
 int TvShowData::findShowIndex(const QString& name)
 {
-    for(int i = 0; i < data.size(); i++)
+    for(int i = 0; i < shows.size(); i++)
     {
-        if (((TvShow*)data.at(i))->getTitle() == name)
+        if (shows.at(i).getTitle() == name)
             return i;
     }
     return -1;
@@ -45,7 +62,7 @@ int TvShowData::removeShow(const QString &name)
     int index = findShowIndex(name);
 
     if (index != -1)
-        data.erase(data.begin() + index);
+        shows.erase(shows.begin() + index);
 
     return index;
 }
@@ -57,13 +74,13 @@ int TvShowData::removeShow(const TvShow &show)
 }
 
 
-QString TvShowData::toString()
+QString TvShowData::toString() const
 {
     QString result("");
 
-    for (int i = 0; i < data.size(); i++)
+    for (int i = 0; i < shows.size(); i++)
     {
-        result.append(((TvShow *)data.at(i))->toString());
+        result.append(shows.at(i).toString());
         result.append("\n");
     }
 
@@ -82,6 +99,38 @@ void TvShowData::sampleVector()
     addShow("IASIP");
     addShow("Adventure Time");
 }
+
+int TvShowData::rowCount(const QModelIndex &parent) const
+{
+    return shows.size();
+}
+
+QVariant TvShowData::data(const QModelIndex &index, int role) const
+{
+    if (index.row() < 0 || index.row() > shows.size())
+        return QVariant();
+
+   const TvShow &show = shows.at(index.row());
+
+   switch (role)
+   {
+   case TitleRole:
+       return show.getTitle();
+
+   case SeasonRole:
+       return show.getSeason();
+
+   case EpisodeRole:
+       return show.getEpisode();
+
+   case GenreRole:
+       return show.getGenre();
+
+   default:
+       return QVariant();
+   }
+}
+
 
 // Sorts Vector by Genre / Title
 // TODO : Test if it works :D

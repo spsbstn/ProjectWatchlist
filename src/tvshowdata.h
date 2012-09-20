@@ -1,20 +1,30 @@
 #ifndef TVSHOWDATA_H
 #define TVSHOWDATA_H
 
-// Stores multible TvShows in a Vector
-
-#include <vector>
 #include <QList>
+#include <QAbstractListModel>
 #include "tvshow.h"
 
 
-class TvShowData
+class TvShowData : public QAbstractListModel
 {
+    Q_OBJECT
+
 public:
-    TvShowData();
+
+    enum TvShowRoles
+    {
+        TitleRole = Qt::UserRole +1,
+        SeasonRole,
+        EpisodeRole,
+        GenreRole
+    };
+
+    TvShowData(QObject* parent = 0);
     // Adds show to the back of the vector, returns ShowIndex
     // (-1 if successfully added)
     // TODO : Inform User if already added
+    int addShow(const TvShow &show);
     int addShow(const QString &name);
     // Overloaded functions: removes show either via the show-object or
     // via its name. The function returns the index, the show was deleted at,
@@ -23,14 +33,15 @@ public:
     int removeShow(const TvShow& show);
     void sortByGenre();
     void sortByTitle();
-    QString toString();
+    QString toString() const;
     void sampleVector();
 
-    // Turns vector<TvShow> into QList<TvShowObject *> for qml-communication
-    QList<QObject *> getQList() { return data; }
+    int rowCount (const QModelIndex &parent = QModelIndex()) const;
+    QVariant data (const QModelIndex &index, int role = Qt::DisplayRole) const;
+
 
 private:
-    QList<QObject *> data;
+    QList<TvShow> shows;
     // returns index of given show, -1 if not present
     int findShowIndex(const QString& name);
     int findShowIndex(const TvShow& show);

@@ -1,11 +1,6 @@
 #include "TvShow.h"
 
 
-TvShow::TvShow(QObject *parent) :
-    QObject(parent)
-{}
-
-
 TvShow::TvShow(const QString &name, int seas, int ep, const QString &gen)
     : title(name), season(seas), episode(ep), genre(gen)
 {}
@@ -23,7 +18,7 @@ void TvShow::watchedOneEp()
 }
 
 
-QString TvShow::toString()
+QString TvShow::toString() const
 {
     return title + " " + QString::number(season) + " " +
             QString::number(episode) + " " + genre;

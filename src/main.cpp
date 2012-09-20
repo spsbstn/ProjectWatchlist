@@ -16,10 +16,10 @@ int main(int argc, char *argv[])
 
     ////////
     // Testing if handing QList to GridView in qml works
-    TvShowData data;
-    data.sampleVector();
+    TvShowData shows;
+    shows.sampleVector();
 
-    ctxt->setContextProperty("datalist", QVariant::fromValue(data.getQList()));
+    ctxt->setContextProperty("datalist", &shows);
     // It does =)
     ///////
 
