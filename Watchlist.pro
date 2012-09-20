@@ -22,4 +22,7 @@ OTHER_FILES += \
     res/qml/AddScreen.qml \
     res/qml/SplashScreen.qml \
     res/qml/PlusButtonLight.qml \
-    res/qml/PlusButtonDark.qml
+    res/qml/PlusButtonDark.qml \
+    res/qml/MinusButtonDark .qml \
+    res/qml/MinusButtonDark .qml \
+    res/qml/MinusButtonDark.qml

@@ -14,5 +14,8 @@
         <file>img/addIcon_Dark.png</file>
         <file>qml/PlusButtonDark.qml</file>
         <file>qml/PlusButtonLight.qml</file>
+        <file>img/removeIcon_Dark_Active.png</file>
+        <file>img/removeIcon_Dark.png</file>
+        <file>qml/MinusButtonDark.qml</file>
     </qresource>
 </RCC>

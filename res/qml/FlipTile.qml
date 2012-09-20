@@ -15,6 +15,8 @@ front: Rectangle {
          color: mainWindow.tileBackground
          smooth:true
 
+
+
       //add Listener
          MouseArea {
              anchors.fill: parent
@@ -50,6 +52,8 @@ front: Rectangle {
              wrapMode: Text.WordWrap
              font { bold: true; family: mainWindow.uiFont; pointSize: mainWindow.tileHeaderFontSize }
          }
+
+
 }
 //back
      back: Rectangle {
@@ -110,7 +114,17 @@ front: Rectangle {
      }
 
      MouseArea {
-         anchors.fill: parent
+         id:switched
+         anchors.fill:parent
          onClicked: flipable.flipped = !flipable.flipped
+
+
+     }
+     MinusButtonDark {
+
+          anchors.bottom: parent.bottom
+          anchors.bottomMargin: 5
+          onClicked: controller.remove(titleText.text);
+
      }
  }
