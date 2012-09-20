@@ -13,7 +13,7 @@ Rectangle {
     property int tileHeaderFontSize: mainWindow.height/50
     property int tileDateFontSize: 12
     property int appHeaderFontSize: 36
-    property string appBackground: "#262626"
+    property string appBackground: "#000000"
     property string tileBackground: "#00aaff"
     property string textColor: "white"
     property string uiFont: "Helvetica-Neue"
@@ -33,14 +33,7 @@ Rectangle {
             anchors.top: parent.top
             height: topBarSize
             color: appBackground
-            Text {
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                text: qsTr("Watchlist.")
-                font.family: uiFont;
-                font.pointSize: appHeaderFontSize;
-                color: textColor
-            }
+
         }
 
 //Leftbar

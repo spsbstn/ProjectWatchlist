@@ -2,6 +2,7 @@ import QtQuick 1.0
 
 Rectangle {
     color:"black"
+    smooth: true
     id: splashScreenContainer
     property alias imageSource: splashImage.source
 
@@ -18,7 +19,7 @@ Rectangle {
         PauseAnimation { duration: 2200 }
         PropertyAnimation {
             target: splashScreenContainer
-            duration: 1000
+            duration: 2000
             properties: "opacity"
             to:0
         }
