@@ -2,6 +2,7 @@ import QtQuick 1.0
 
 Item {
     id:addScreen
+    onOpacityChanged:  nameInput.text=""
 
     Rectangle {
         id:addBackground
@@ -51,7 +52,8 @@ Item {
                 text: qsTr("")
                 font.pixelSize: height-(height/5)
                 validator: RegExpValidator { regExp: /^(?!\s*$).+/ }
-                onAccepted: controller.test(nameInput.text,addScreen.opacity=0,nameInput.text="")
+                onAccepted: controller.test(nameInput.text,addScreen.opacity=0)
+                Keys.onEscapePressed: addScreen.opacity=0;
                 focus: true
                        }
             }
@@ -63,7 +65,7 @@ Item {
                  anchors.rightMargin: 10
                  onClicked: if(nameInput.text.match(/^(?!\s*$).+/)){
                                 nameInput.accepted();
-                                nameInput.text=""}
+                                }
                  }
     }
 
