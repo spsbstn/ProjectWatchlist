@@ -15,4 +15,5 @@ void Controller::remove(QString name){
 
     data->removeShow(name);
 
+
 }

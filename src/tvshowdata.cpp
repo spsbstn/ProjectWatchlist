@@ -62,8 +62,11 @@ int TvShowData::removeShow(const QString &name)
     int index = findShowIndex(name);
 
     if (index != -1)
+    {
+        beginRemoveRows(QModelIndex(), index, index);
         shows.erase(shows.begin() + index);
-
+        endRemoveRows();
+    }
     return index;
 }
 
