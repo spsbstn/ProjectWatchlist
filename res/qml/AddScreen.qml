@@ -1,9 +1,7 @@
 import QtQuick 1.0
 
 Item {
-    id:addScreen
-    onOpacityChanged:  nameInput.text=""
-
+    id:addScreen 
     Rectangle {
         id:addBackground
         opacity: 0.5;
@@ -67,6 +65,11 @@ Item {
                                 nameInput.accepted();
                                 }
                  }
+    }
+    states: State {
+        when: addScreen.opacity==0
+        StateChangeScript { script:nameInput.text="" }
+
     }
 
                 }
