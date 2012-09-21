@@ -37,7 +37,9 @@ front: Rectangle {
          MinusButtonDark {
 
               anchors.bottom: parent.bottom
-              anchors.bottomMargin: 5
+              anchors.left:parent.left
+              anchors.leftMargin: 5
+              smooth:true
               onClicked: controller.remove(titleText.text);
          }
 
