@@ -4,56 +4,44 @@ import QtQuick 1.0
      id: flipable
      width: parseInt(grid.height / 2) - tileMargin
      height: width - tileMargin
+     smooth:true
 
-property bool flipped: false //current state
+property bool flipped: false
 
-//front
 front: Rectangle {
-
          width: parent.width - tileMargin
          height: parent.height - tileMargin
          color: mainWindow.tileBackground
-         smooth:true
 
-
-
-      //add Listener
-         MouseArea {
-             anchors.fill: parent
-             onClicked: {
-                 grid.currentIndex = index
-             }
-         }
-    //maybe needed for later
-         states: [
-             State {
-                 name: "selected"
-                 when: delegate.GridView.isCurrentItem
-             }
-         ]
- //set text
-         Text {
+        Text {
              id: titleText
-             anchors.top: parent.top
-             anchors.topMargin: tileMargin
-             anchors.left: parent.left
-             anchors.leftMargin: tileMargin
-             anchors.right: parent.right
-             anchors.rightMargin: tileMargin
-
+             anchors.centerIn: parent
              color: mainWindow.textColor
-
-             ////////
-             // changed to "title" - property of C++ - TvShowObject
-             text: title; //load from data
-             ///////
-
-             width: parent.width;
+             text: title
+             smooth:false
+             font.family: "Helvetica Neue"
+             font.weight: Font.Light
+             width:parent.width
+             horizontalAlignment: Text.AlignHCenter
              wrapMode: Text.WordWrap
-             font { bold: true; family: mainWindow.uiFont; pointSize: mainWindow.tileHeaderFontSize }
+             font {capitalization: Font.AllUppercase;
+                   pointSize: mainWindow.tileHeaderFontSize}
          }
 
+         MouseArea {
+             anchors.fill:parent
+             onClicked: flipable.flipped = !flipable.flipped
+         }
 
+//#####################InsertCustomButtons#####################//
+         MinusButtonDark {
+
+              anchors.bottom: parent.bottom
+              anchors.bottomMargin: 5
+              onClicked: controller.remove(titleText.text);
+         }
+
+//#############################################################//
 }
 //back
      back: Rectangle {
@@ -61,40 +49,45 @@ front: Rectangle {
          width: parent.width - tileMargin
          height: parent.height - tileMargin
          color: mainWindow.tileBackground
-         smooth:true
 
-         MouseArea {
-             anchors.fill: parent
-             onClicked: {
-                 grid.currentIndex = index
-             }
-         }
+        Text {
 
-         states: [
-             State {
-                 name: "selected"
-                 when: delegate.GridView.isCurrentItem
-             }
-         ]
-
-         Text {
-             id: dateText
-             anchors.left: parent.left
-             anchors.leftMargin: tileMargin
+             id: episodeTxt
              anchors.bottom: parent.bottom
-             anchors.bottomMargin: tileMargin
-             anchors.right: parent.right
-             anchors.rightMargin: tileMargin
-
+             anchors.bottomMargin: tileMargin + (parent.height/2+height+10)
+             horizontalAlignment: Text.AlignHCenter
              color: mainWindow.textColor
-             text: "Folge " + episode + " Staffel " + season
+             font.weight: Font.Light
+             text: "Folge: " + episode
              width: parent.width;
              wrapMode: Text.WordWrap;
-             font { family: mainWindow.uiFont; pointSize: mainWindow.tileDateFontSize }
+             font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
          }
-}
 
-     // rotation
+        Text {
+             id: seasonTxt
+             anchors.bottom: parent.bottom
+             anchors.bottomMargin: tileMargin + (parent.height/2)
+             horizontalAlignment: Text.AlignHCenter
+             color: mainWindow.textColor
+             text: "Staffel: " + season
+             font.weight: Font.Light
+             width: parent.width;
+             wrapMode: Text.WordWrap;
+             font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
+         }
+
+        MouseArea {
+            anchors.fill:parent
+            onClicked: flipable.flipped = !flipable.flipped
+        }
+
+//#####################InsertCustomButtons#####################//
+
+//#############################################################//
+
+     }
+
      transform: Rotation {
          id: rotation
          origin.x: (flipable.width-tileMargin)/2
@@ -113,18 +106,5 @@ front: Rectangle {
          NumberAnimation { target: rotation; property: "angle"; duration: 1000 }
      }
 
-     MouseArea {
-         id:switched
-         anchors.fill:parent
-         onClicked: flipable.flipped = !flipable.flipped
 
-
-     }
-     MinusButtonDark {
-
-          anchors.bottom: parent.bottom
-          anchors.bottomMargin: 5
-          onClicked: controller.remove(titleText.text);
-
-     }
  }
