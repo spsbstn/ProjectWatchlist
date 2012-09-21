@@ -13,7 +13,7 @@ Rectangle {
     property int tileHeaderFontSize: mainWindow.height/30
     property int tileInfoFontSize: 20
     property int appHeaderFontSize: 36
-    property string appBackground: "#000000"
+    property string appBackground: "#484848"
     property string tileBackground: "#00aaff"
     property string textColor: "white"
     property string uiFont: "Helvetica-Neue"
