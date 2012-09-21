@@ -16,7 +16,6 @@ Item {
         height: parseInt(grid.height / 2)
         width: height*2
         opacity: 1;
-        onOpacityChanged: console.log(opacity)
         color:'#00aaff'
 
 
@@ -48,11 +47,11 @@ Item {
                 width: parent.width-20
                 height: parent.height-10
                 text: qsTr("")
+                focus:false
                 font.pixelSize: height-(height/5)
                 validator: RegExpValidator { regExp: /^(?!\s*$).+/ }
                 onAccepted: controller.add(nameInput.text,addScreen.opacity=0)
                 Keys.onEscapePressed: addScreen.opacity=0;
-                focus: true
                        }
             }
             PlusButtonDark {
@@ -66,11 +65,18 @@ Item {
                                 }
                  }
     }
-    states: State {
-        when: addScreen.opacity==0
-        StateChangeScript { script:nameInput.text="" }
+    states: [ State {
+                        when: addScreen.opacity==0
+                        StateChangeScript { script:nameInput.text="" }
+                    },
+              State {
+                        when: addScreen.opacity==1
+                        PropertyChanges { target:nameInput; focus:true; restoreEntryValues: true }
+                    }
+
+             ]
 
     }
 
-                }
+
 
