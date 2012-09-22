@@ -52,11 +52,20 @@ front: Rectangle {
          height: parent.height - tileMargin
          color: mainWindow.tileBackground
 
-        Text {
+         MouseArea {
+             anchors.fill:parent
+             onClicked: flipable.flipped = !flipable.flipped
+         }
+
+        Rectangle {
 
              id: episodeTxt
+             color:'#ffffff'
+             width:parent.width
              anchors.bottom: parent.bottom
-             anchors.bottomMargin: tileMargin + (parent.height/2+height+10)
+             anchors.bottomMargin: tileMargin + (parent.height/2+height+50)
+           Text {
+
              horizontalAlignment: Text.AlignHCenter
              color: mainWindow.textColor
              font.weight: Font.Light
@@ -65,28 +74,50 @@ front: Rectangle {
              wrapMode: Text.WordWrap;
              font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
          }
-
-        Text {
+           RightButton{
+           anchors.right:parent.right
+           anchors.rightMargin: parent.width/6
+           anchors.top:parent.top
+           anchors.topMargin:-7
+           onClicked: console.log("do sth.");}
+           LeftButton {
+           anchors.left:parent.left
+           anchors.leftMargin: parent.width/6
+           anchors.top:parent.top
+           anchors.topMargin:-7
+           onClicked: console.log("do sth.");}
+}
+        Rectangle {
+            width: parent.width;
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: tileMargin + (parent.height/2)
+            Text {
              id: seasonTxt
-             anchors.bottom: parent.bottom
-             anchors.bottomMargin: tileMargin + (parent.height/2)
              horizontalAlignment: Text.AlignHCenter
+             verticalAlignment: Text.AlignVCenter
+             width:parent.width
              color: mainWindow.textColor
              text: "Staffel: " + season
              font.weight: Font.Light
-             width: parent.width;
+
              wrapMode: Text.WordWrap;
              font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
-         }
 
-        MouseArea {
-            anchors.fill:parent
-            onClicked: flipable.flipped = !flipable.flipped
-        }
+             RightButton{
+             anchors.right:parent.right
+             anchors.rightMargin: parent.width/6
+             anchors.top:parent.top
+             anchors.topMargin:-7
+             onClicked: console.log("do sth.");}
+             LeftButton {
+             anchors.left:parent.left
+             anchors.leftMargin: parent.width/6
+             anchors.top:parent.top
+             anchors.topMargin:-7
+             onClicked: console.log("do sth.");}
 
-//#####################InsertCustomButtons#####################//
+         }}
 
-//#############################################################//
 
      }
 

@@ -17,5 +17,11 @@
         <file>img/removeIcon_Dark_Active.png</file>
         <file>img/removeIcon_Dark.png</file>
         <file>qml/MinusButtonDark.qml</file>
+        <file>qml/LeftButton.qml</file>
+        <file>qml/RightButton.qml</file>
+        <file>img/leftButton_Active.png</file>
+        <file>img/leftButton.png</file>
+        <file>img/rightButton_Active.png</file>
+        <file>img/rightButton.png</file>
     </qresource>
 </RCC>

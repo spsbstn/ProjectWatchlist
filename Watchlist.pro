@@ -27,5 +27,7 @@ OTHER_FILES += \
     res/qml/PlusButtonDark.qml \
     res/qml/MinusButtonDark .qml \
     res/qml/MinusButtonDark .qml \
-    res/qml/MinusButtonDark.qml
+    res/qml/MinusButtonDark.qml \
+    res/qml/RightButton.qml \
+    res/qml/LeftButton.qml
  QT           += sql
