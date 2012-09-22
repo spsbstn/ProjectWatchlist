@@ -6,9 +6,9 @@
 
 //init or load database
 Database::Database(QObject *parent) :
-    QObject(parent),
-    data()
+    QObject(parent)
 {
+    data = new TvShowData();
 
   QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
 
@@ -99,7 +99,7 @@ void Database::getData() {
         for( int r=0; qry.next(); r++ ) {
 
             TvShow* tv = new TvShow(qry.value(0).toString(),qry.value(1).toInt(0),qry.value(2).toInt(0),qry.value(3).toString());
-            //save TvShowObejects to data :)
+            data->addShow(*tv);
         }
       }
 }
