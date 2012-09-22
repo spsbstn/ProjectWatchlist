@@ -15,17 +15,12 @@ int main(int argc, char *argv[])
     view.setResizeMode(QDeclarativeView::SizeRootObjectToView);
     QDeclarativeContext *ctxt = view.rootContext();
 
-    // Create Sample vector
-    TvShowData shows;
-    shows.sampleVector();
-
-    //test DB
+    //init DB
     Database db;
-    db.addShow("Breaking Bad");
-    db.getData();
+    db.load();
 
-    // hand sample vector to controller
-    c.data = &shows;
+    // hand database to controller
+    c.data = db.data;
 
     // Set up Datalist and Controller for qml
     ctxt->setContextProperty("datalist", c.data);

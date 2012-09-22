@@ -15,7 +15,7 @@ public:
     void alterSeason(QString name,int season);
     void alterEpisode(QString name,int episode);
     void alterGenre(QString name,QString genre);
-    void getData();
+    void load();
     TvShowData* data;
 };
 

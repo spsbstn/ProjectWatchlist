@@ -1,4 +1,5 @@
 #include "tvshowdata.h"
+#include "database.h"
 
 
 TvShowData::TvShowData(QObject *parent)
@@ -33,6 +34,8 @@ int TvShowData::addShow(const TvShow& show)
 // First creates new TvShow out of name, then inserts it
 int TvShowData::addShow(const QString &name)
 {
+    Database db;
+    db.addShow(name);
     TvShow* insert = new TvShow(name);
     return addShow(*insert);
 }
@@ -59,6 +62,8 @@ int TvShowData::findShowIndex(const TvShow &show)
 // Removes show from vector via its name. Returns -1 if show wasn´t found.
 int TvShowData::removeShow(const QString &name)
 {
+    Database db;
+    db.removeShow(name);
     int index = findShowIndex(name);
 
     if (index != -1)
@@ -73,6 +78,7 @@ int TvShowData::removeShow(const QString &name)
 // Removes show via object
 int TvShowData::removeShow(const TvShow &show)
 {
+
     return removeShow(show.getTitle());
 }
 
@@ -90,18 +96,6 @@ QString TvShowData::toString() const
     return result;
 }
 
-
-// Creates samplevector with 7 shows
-void TvShowData::sampleVector()
-{
-    addShow("Breaking Bad");
-    addShow("Doctor Who");
-    addShow("Lost");
-    addShow("HIMYM");
-    addShow("Flight of the Conchords");
-    addShow("IASIP");
-    addShow("Adventure Time");
-}
 
 int TvShowData::rowCount(const QModelIndex &parent) const
 {

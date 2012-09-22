@@ -87,7 +87,7 @@ void Database::alterGenre(QString name,QString genre){
         qDebug() << "Genre of "+ name + " changed to " + genre;
 }
 
-void Database::getData() {
+void Database::load() {
 
     QSqlQuery qry;
 

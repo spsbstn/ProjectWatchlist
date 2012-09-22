@@ -34,8 +34,6 @@ public:
     void sortByGenre();
     void sortByTitle();
     QString toString() const;
-    void sampleVector();
-
     int rowCount (const QModelIndex &parent = QModelIndex()) const;
     QVariant data (const QModelIndex &index, int role = Qt::DisplayRole) const;
 
