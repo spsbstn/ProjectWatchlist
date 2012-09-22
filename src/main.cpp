@@ -3,6 +3,7 @@
 #include "qmlapplicationviewer.h"
 #include "controller.h"
 #include "tvshowdata.h"
+#include "database.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +18,11 @@ int main(int argc, char *argv[])
     // Create Sample vector
     TvShowData shows;
     shows.sampleVector();
+
+    //test DB
+    Database db;
+    db.addShow("Breaking Bad");
+    db.getData();
 
     // hand sample vector to controller
     c.data = &shows;

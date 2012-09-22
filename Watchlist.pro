@@ -1,7 +1,8 @@
 SOURCES += src/main.cpp \
     src/tvshowdata.cpp \
     src/tvshow.cpp \
-    src/controller.cpp
+    src/controller.cpp \
+    src/database.cpp
 
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
@@ -12,7 +13,8 @@ RESOURCES += \
 HEADERS += \
     src/tvshowdata.h \
     src/tvshow.h \
-    src/controller.h
+    src/controller.h \
+    src/database.h
 
 OTHER_FILES += \
     qml/Watchlist/main.qml \
@@ -26,3 +28,4 @@ OTHER_FILES += \
     res/qml/MinusButtonDark .qml \
     res/qml/MinusButtonDark .qml \
     res/qml/MinusButtonDark.qml
+ QT           += sql
