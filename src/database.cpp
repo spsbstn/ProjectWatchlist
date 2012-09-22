@@ -91,7 +91,7 @@ void Database::load() {
 
     QSqlQuery qry;
 
-    qry.prepare( "SELECT * FROM data" );
+    qry.prepare( "SELECT * FROM data ORDER BY name" );
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
