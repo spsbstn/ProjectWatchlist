@@ -6,9 +6,9 @@
 
 //init or load database
 Database::Database(QObject *parent) :
-    QObject(parent)
+    QObject(parent),
+    data(new TvShowData())
 {
-    data = new TvShowData();
 
   QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
 
@@ -55,26 +55,26 @@ void Database::removeShow(QString name) {
         qDebug() << name + " deleted!";
 }
 
-void Database::alterSeason(QString name,int season){
+void Database::alterSeason(QString name,int delta){
 
     QSqlQuery qry;
 
-    qry.prepare( "UPDATE data SET season="+QString::number(season)+" WHERE name='"+name+"'" );
+    qry.prepare( "UPDATE data SET season=season+"+QString::number(delta)+" WHERE name='"+name+"'" );
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-        qDebug() << "Season of "+ name + " changed to " +QString::number(season);
+        qDebug() << "Season of "+ name + " changed to don´t know hot wo properly get paraneter =).";
 
 }
-void Database::alterEpisode(QString name,int episode){
+void Database::alterEpisode(QString name,int delta){
 
     QSqlQuery qry;
 
-    qry.prepare( "UPDATE data SET episode="+QString::number(episode)+" WHERE name='"+name+"'" );
+    qry.prepare( "UPDATE data SET episode=episode+"+QString::number(delta)+" WHERE name='"+name+"'" );
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-        qDebug() << "Episode of "+ name + " changed to " + QString::number(episode);
+        qDebug() << "Episode of "+ name + " changed to something else =).";
 }
 void Database::alterGenre(QString name,QString genre){
 
@@ -84,7 +84,7 @@ void Database::alterGenre(QString name,QString genre){
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-        qDebug() << "Genre of "+ name + " changed to " + genre;
+        qDebug() << "Genre of "+ name + " changed to something else =) ";
 }
 
 void Database::load() {

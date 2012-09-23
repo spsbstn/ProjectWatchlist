@@ -12,8 +12,8 @@ public:
      explicit Database(QObject *parent = 0);
     void addShow(QString name);
     void removeShow(QString name);
-    void alterSeason(QString name,int season);
-    void alterEpisode(QString name,int episode);
+    void alterSeason(QString name,int delta);
+    void alterEpisode(QString name,int delta);
     void alterGenre(QString name,QString genre);
     void load();
     TvShowData* data;

@@ -1,5 +1,7 @@
 #include "tvshowdata.h"
 #include "database.h"
+#include <QtDebug>
+
 
 
 TvShowData::TvShowData(QObject *parent)
@@ -41,6 +43,7 @@ int TvShowData::addShow(const QString &name)
 }
 
 
+// Finds Shows position in Vector through its name
 int TvShowData::findShowIndex(const QString& name)
 {
     for(int i = 0; i < shows.size(); i++)
@@ -52,6 +55,7 @@ int TvShowData::findShowIndex(const QString& name)
 }
 
 
+// Finds Shows position in QList through whole Show-Object
 int TvShowData::findShowIndex(const TvShow &show)
 {
     return findShowIndex(show.getTitle());
@@ -62,18 +66,19 @@ int TvShowData::findShowIndex(const TvShow &show)
 // Removes show from vector via its name. Returns -1 if show wasn´t found.
 int TvShowData::removeShow(const QString &name)
 {
-    Database db;
-    db.removeShow(name);
     int index = findShowIndex(name);
 
     if (index != -1)
     {
+        Database db;
+        db.removeShow(name);
         beginRemoveRows(QModelIndex(), index, index);
         shows.erase(shows.begin() + index);
         endRemoveRows();
     }
     return index;
 }
+
 
 // Removes show via object
 int TvShowData::removeShow(const TvShow &show)
@@ -83,6 +88,51 @@ int TvShowData::removeShow(const TvShow &show)
 }
 
 
+// Updates Season
+void TvShowData::setSeason(const QString &name, int delta)
+{
+    int index = findShowIndex(name);
+
+    if (index != -1)
+    {
+        // Database-Changes
+        Database db;
+        db.alterSeason(name, delta);
+
+        // Changes in Model
+        shows[index].setSeason(delta);
+
+        // Visualize changes
+        QModelIndex modindex = createIndex(index, 1);
+        emit dataChanged(modindex, modindex);
+
+    }
+}
+
+
+// Updates Episode
+void TvShowData::setEpisode(const QString &name, int delta)
+{
+    int index = findShowIndex(name);
+
+    if (index != -1)
+    {
+        // Database-Changes
+        Database db;
+        db.alterEpisode(name, delta);
+
+        // Changes in Model
+        shows[index].setEpisode(delta);
+
+        // Visualize changes
+        QModelIndex modindex = createIndex(index, 1);
+        emit dataChanged(modindex, modindex);
+
+    }
+}
+
+
+// Returns Debug-String
 QString TvShowData::toString() const
 {
     QString result("");
@@ -97,11 +147,15 @@ QString TvShowData::toString() const
 }
 
 
+// Required by QAbstractListModel - Interface
 int TvShowData::rowCount(const QModelIndex &parent) const
 {
     return shows.size();
 }
 
+
+
+// Required by QAbstractListModel - Interface
 QVariant TvShowData::data(const QModelIndex &index, int role) const
 {
     if (index.row() < 0 || index.row() > shows.size())
@@ -127,22 +181,3 @@ QVariant TvShowData::data(const QModelIndex &index, int role) const
        return QVariant();
    }
 }
-
-
-// Sorts Vector by Genre / Title
-// TODO : Test if it works :D
-
-/*
-    SORTING DOESNT WORK ANYMORE. FIX LATER
-
-void TvShowData::sortByGenre()
-{
-    std::sort(data.begin(), data.end(), genreCompare());
-}
-
-void TvShowData::sortByTitle()
-{
-    std::sort(data.begin(), data.end(), titleCompare());
-}
-
-*/

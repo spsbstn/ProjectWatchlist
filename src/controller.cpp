@@ -3,17 +3,28 @@
 
 Controller::Controller(QObject *parent) :
     QObject(parent),
-    data()
+    data(new TvShowData())
 {}
 
-void Controller::add(QString name)
+void Controller::add(const QString& name)
 {
     data->addShow(name);
 }
 
-void Controller::remove(QString name){
+void Controller::remove(const QString& name){
 
     data->removeShow(name);
-
-
 }
+
+
+// delta is either +1 or -1
+void Controller::setSeason(const QString& name, int delta)
+{
+    data->setSeason(name, delta);
+}
+
+void Controller::setEpisode(const QString &name, int delta)
+{
+    data->setEpisode(name, delta);
+}
+

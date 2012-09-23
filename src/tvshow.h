@@ -13,15 +13,10 @@ public:
     // constructor with default values
     TvShow(const QString& name = "", int seas = 1, int ep = 1,const QString& gen = "");
 
-    // updates season and episode members. If no second argument is passed, season will not be changed
-    void updateLastWatched(int ep, int seas = OLD_SEASON);
-    // only increases episode-member by one
-    void watchedOneEp();
-
     // set all the members individually
     void setTitle  (const QString& name) { title = name; }
-    void setSeason (int seas)            { season = seas; }
-    void setEpisode(int ep)              { episode = ep; }
+    void setSeason (int delta)           { season += delta; }
+    void setEpisode(int delta)           { episode += delta; }
     void setGenre  (const QString& gen)  { genre = gen; }
 
     // getter-functions

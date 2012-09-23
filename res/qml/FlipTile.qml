@@ -75,17 +75,23 @@ front: Rectangle {
              font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
          }
            RightButton{
+           id: episodeIncrease
            anchors.right:parent.right
            anchors.rightMargin: parent.width/6
            anchors.top:parent.top
            anchors.topMargin:-7
-           onClicked: console.log("do sth.");}
+           onClicked: controller.setEpisode(titleText.text, +1);}
            LeftButton {
+           id: episodeDecrease
            anchors.left:parent.left
            anchors.leftMargin: parent.width/6
            anchors.top:parent.top
            anchors.topMargin:-7
-           onClicked: console.log("do sth.");}
+           onClicked: controller.setEpisode(titleText.text, -1);}
+           states: State{
+               PropertyChanges { target: episodeDecrease; opacity: 0 }
+               when: episode === 1
+           }
 }
         Rectangle {
             width: parent.width;
@@ -104,17 +110,23 @@ front: Rectangle {
              font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
 
              RightButton{
+             id: seasonIncrease
              anchors.right:parent.right
              anchors.rightMargin: parent.width/6
              anchors.top:parent.top
              anchors.topMargin:-7
-             onClicked: console.log("do sth.");}
+             onClicked: controller.setSeason(titleText.text, +1);}
              LeftButton {
+             id: seasonDecrease
              anchors.left:parent.left
              anchors.leftMargin: parent.width/6
              anchors.top:parent.top
              anchors.topMargin:-7
-             onClicked: console.log("do sth.");}
+             onClicked: controller.setSeason(titleText.text, -1);}
+             states: State{
+                 PropertyChanges{ target: seasonDecrease; opacity: 0 }
+                 when: season === 1
+             }
 
          }}
 
@@ -130,10 +142,10 @@ front: Rectangle {
      }
 
      states: State {
-         name: "back"
-         PropertyChanges { target: rotation; angle: 180 }
-         when: flipable.flipped
-     }
+             name: "back"
+             PropertyChanges { target: rotation; angle: 180 }
+             when: flipable.flipped
+          }
 
      transitions: Transition {
          NumberAnimation { target: rotation; property: "angle"; duration: 1000 }
