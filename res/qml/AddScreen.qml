@@ -50,7 +50,7 @@ Item {
                 focus:false
                 font.pixelSize: height-(height/5)
                 validator: RegExpValidator { regExp: /^(?!\s*$).+/ }
-                onAccepted: controller.add(nameInput.text,addScreen.opacity=0)
+                onAccepted: controller.add(nameInput.text.toLowerCase(),addScreen.opacity=0)
                 Keys.onEscapePressed: addScreen.opacity=0;
                        }
             }
