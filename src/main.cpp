@@ -4,6 +4,8 @@
 #include "controller.h"
 #include "tvshowdata.h"
 #include "database.h"
+#include <QtDeclarative>
+#include "cursorshapearea.h"
 
 int main(int argc, char *argv[])
 {
@@ -26,7 +28,7 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("datalist", c.data);
     ctxt->setContextProperty("controller", &c);
 
-
+    qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
     view.setSource(QUrl("qrc:///qml/main.qml"));
     view.setMinimumSize(QSize(800,750));
     view.showMaximized();
