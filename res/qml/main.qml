@@ -56,8 +56,8 @@ Rectangle {
              anchors.bottomMargin: 40
              anchors.left: leftBar.left
              anchors.leftMargin: 40
-             onClicked: NumberAnimation { target:addScreen; property:"opacity"; to:1; duration: 1000;}
-}
+             onClicked: NumberAnimation { target:addScreen; property:"opacity"; to:1; duration: 400}
+         }
 
 //GridView
         GridView {
