@@ -18,9 +18,8 @@ front: Rectangle {
              anchors.centerIn: parent
              color: mainWindow.textColor
              text: title
-             smooth:false
              font.family: "Helvetica Neue"
-             font.weight: Font.Light
+             font.weight:Font.Light
              width:parent.width
              horizontalAlignment: Text.AlignHCenter
              wrapMode: Text.WordWrap
@@ -60,33 +59,32 @@ front: Rectangle {
         Rectangle {
 
              id: episodeTxt
-             color:'#ffffff'
              width:parent.width
-             anchors.bottom: parent.bottom
-             anchors.bottomMargin: tileMargin + (parent.height/2+height+50)
-           Text {
+             height:22
+             color:mainWindow.tileBackground
+             anchors.top: parent.top
+             anchors.topMargin: tileMargin+50
 
+           Text {
              horizontalAlignment: Text.AlignHCenter
              color: mainWindow.textColor
              font.weight: Font.Light
              text: "Folge: " + episode
              width: parent.width;
-             wrapMode: Text.WordWrap;
+             //wrapMode: Text.WordWrap;
              font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
          }
            RightButton{
            id: episodeIncrease
            anchors.right:parent.right
            anchors.rightMargin: parent.width/6
-           anchors.top:parent.top
-           anchors.topMargin:-7
+           anchors.verticalCenter: parent.verticalCenter
            onClicked: controller.setEpisode(titleText.text, +1);}
            LeftButton {
            id: episodeDecrease
            anchors.left:parent.left
            anchors.leftMargin: parent.width/6
-           anchors.top:parent.top
-           anchors.topMargin:-7
+           anchors.verticalCenter: parent.verticalCenter
            onClicked: controller.setEpisode(titleText.text, -1);}
            states: State{
                PropertyChanges { target: episodeDecrease; opacity: 0 }
@@ -95,8 +93,10 @@ front: Rectangle {
 }
         Rectangle {
             width: parent.width;
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: tileMargin + (parent.height/2)
+            anchors.top: parent.top
+            anchors.topMargin: tileMargin +100
+            color:mainWindow.tileBackground
+            height:22
             Text {
              id: seasonTxt
              horizontalAlignment: Text.AlignHCenter
@@ -113,15 +113,13 @@ front: Rectangle {
              id: seasonIncrease
              anchors.right:parent.right
              anchors.rightMargin: parent.width/6
-             anchors.top:parent.top
-             anchors.topMargin:-7
+             anchors.verticalCenter: parent.verticalCenter
              onClicked: controller.setSeason(titleText.text, +1);}
              LeftButton {
              id: seasonDecrease
              anchors.left:parent.left
              anchors.leftMargin: parent.width/6
-             anchors.top:parent.top
-             anchors.topMargin:-7
+             anchors.verticalCenter: parent.verticalCenter
              onClicked: controller.setSeason(titleText.text, -1);}
              states: State{
                  PropertyChanges{ target: seasonDecrease; opacity: 0 }
