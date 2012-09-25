@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     QDeclarativeView view;
-    view.setWindowFlags(Qt::FramelessWindowHint);
 
     // Set up controller
     Controller c;
