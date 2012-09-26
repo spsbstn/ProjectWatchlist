@@ -23,5 +23,7 @@
         <file>img/leftButton.png</file>
         <file>img/rightButton_Active.png</file>
         <file>img/rightButton.png</file>
+        <file>qml/CloseScreenButton.qml</file>
+        <file>img/closeScreenButton.png</file>
     </qresource>
 </RCC>

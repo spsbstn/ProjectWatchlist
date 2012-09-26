@@ -33,7 +33,8 @@ OTHER_FILES += \
     res/qml/MinusButtonDark.qml \
     res/qml/RightButton.qml \
     res/qml/LeftButton.qml \
-    icons.rc
+    icons.rc \
+    res/qml/CloseScreenButton.qml
 
 QT           += sql
 

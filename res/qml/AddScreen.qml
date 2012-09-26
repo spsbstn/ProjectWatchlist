@@ -28,6 +28,7 @@ Item {
               text: qsTr("Name der neuen Serie:")
               font.pixelSize: parent.width/18
               font.family: uiFont
+              font.weight: Font.Light
                   }
 
             Rectangle {
@@ -53,7 +54,14 @@ Item {
                 onAccepted: controller.add(nameInput.text.toLowerCase(),addScreen.opacity=0)
                 Keys.onEscapePressed: addScreen.opacity=0;
                        }
+
             }
+            CloseScreenButton {
+            anchors.top:parent.top
+            anchors.topMargin: -15
+            anchors.rightMargin: -17
+            anchors.right:parent.right
+            onClicked: addScreen.opacity=0}
             PlusButtonDark {
                  id:addButton
                  anchors.bottom: addScreenTile.bottom
