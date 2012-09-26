@@ -41,4 +41,4 @@ QT           += sql
 #Mac Icons
 ICON = res/icons/icns/icon.icns
 #Windows Icons
-RC_FILE = res/icons/icons.rc
+RC_FILE = icons.rc
