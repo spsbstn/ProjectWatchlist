@@ -31,5 +31,12 @@ OTHER_FILES += \
     res/qml/MinusButtonDark .qml \
     res/qml/MinusButtonDark.qml \
     res/qml/RightButton.qml \
-    res/qml/LeftButton.qml
- QT           += sql
+    res/qml/LeftButton.qml \
+    icons.rc
+
+QT           += sql
+
+#Mac Icons
+ICON = res/icons/icns/icon.icns
+#Windows Icons
+RC_FILE = res/icons/icons.rc
