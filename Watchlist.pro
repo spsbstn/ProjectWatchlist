@@ -18,6 +18,7 @@ HEADERS += \
     src/database.h \
     src/cursorshapearea.h
 
+
 OTHER_FILES += \
     qml/Watchlist/main.qml \
     res/qml/Scrollbar.qml \

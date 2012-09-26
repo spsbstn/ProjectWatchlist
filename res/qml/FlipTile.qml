@@ -4,7 +4,6 @@ import QtQuick 1.0
      id: flipable
      width: parseInt(grid.height / 2) - tileMargin
      height: width - tileMargin
-     smooth:true
 
 property bool flipped: false
 
@@ -26,6 +25,19 @@ front: Rectangle {
              font {capitalization: Font.AllUppercase;
                    pointSize: mainWindow.tileHeaderFontSize}
          }
+        Text {
+             id: genreText
+             anchors.right: parent.right
+             anchors.rightMargin: 5
+             anchors.bottomMargin: 5
+             anchors.bottom:parent.bottom
+             color: mainWindow.textColor
+             text: genre
+             font.family: "Helvetica Neue"
+             font.weight:Font.Light
+             wrapMode: Text.WordWrap
+             font {pointSize: mainWindow.tileHeaderFontSize-5}
+         }
 
          MouseArea {
              anchors.fill:parent
@@ -38,7 +50,6 @@ front: Rectangle {
               anchors.bottom: parent.bottom
               anchors.left:parent.left
               anchors.leftMargin: 5
-              smooth:true
               onClicked: controller.remove(titleText.text);
          }
 
