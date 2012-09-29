@@ -146,12 +146,12 @@ front: Rectangle {
          origin.x: (flipable.width-tileMargin)/2
          origin.y: flipable.height/2
          axis.x: 0; axis.y: 1; axis.z: 0
-         angle: 0    // the default angle
+         angle: 0.01    // the default angle
      }
 
      states: State {
              name: "back"
-             PropertyChanges { target: rotation; angle: 180 }
+             PropertyChanges { target: rotation; angle: 179.99 }
              when: flipable.flipped
           }
 
