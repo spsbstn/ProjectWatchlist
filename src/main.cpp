@@ -37,6 +37,6 @@ int main(int argc, char *argv[])
     QObject::connect((QObject*)view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
     view.setSource(QUrl("qrc:///qml/main.qml"));
     view.setMinimumSize(QSize(800,750));
-    view.show();
+    view.showMaximized();
     return app.exec();
 }
