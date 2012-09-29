@@ -92,6 +92,13 @@ Rectangle {
             width: parent.width - leftBar.width
             height: barSize
             color: appBackground
+
+         ShutdownButton {
+         anchors.bottom: parent.bottom
+         anchors.bottomMargin: width/2
+         anchors.right:parent.right
+         anchors.rightMargin: width/2
+         onReleased: Qt.quit()}
         }
 
 //Scrollbar

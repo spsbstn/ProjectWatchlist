@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("controller", &c);
 
     qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
+    QObject::connect((QObject*)view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
     view.setSource(QUrl("qrc:///qml/main.qml"));
     view.setMinimumSize(QSize(800,750));
     view.show();
