@@ -5,7 +5,7 @@ MainView::MainView()
 {
 }
 
-void MainView::mousePressEvent(QMouseEvent *event)
+void MainView::mouseDoubleClickEvent(QMouseEvent *event)
 {
     if ((event->button() == Qt::LeftButton) && validCursorPos(event)) {
         offset = event->globalPos() - frameGeometry().topLeft();

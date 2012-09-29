@@ -12,7 +12,7 @@ public:
     MainView();
     QSizeGrip grip;
 
-    void mousePressEvent(QMouseEvent *event);
+    void mouseDoubleClickEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
 
 private:
