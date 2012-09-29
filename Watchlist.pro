@@ -3,7 +3,8 @@ SOURCES += src/main.cpp \
     src/tvshow.cpp \
     src/controller.cpp \
     src/database.cpp \
-    src/cursorshapearea.cpp
+    src/cursorshapearea.cpp \
+    src/mainview.cpp
 
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
@@ -16,7 +17,8 @@ HEADERS += \
     src/tvshow.h \
     src/controller.h \
     src/database.h \
-    src/cursorshapearea.h
+    src/cursorshapearea.h \
+    src/mainview.h
 
 
 OTHER_FILES += \

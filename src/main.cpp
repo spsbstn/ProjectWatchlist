@@ -7,10 +7,15 @@
 #include <QtDeclarative>
 #include "cursorshapearea.h"
 
+
+#include "mainview.h"
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    QDeclarativeView view;
+    MainView view;
+
+    view.setWindowFlags(Qt::FramelessWindowHint);
 
     // Set up controller
     Controller c;
@@ -31,6 +36,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
     view.setSource(QUrl("qrc:///qml/main.qml"));
     view.setMinimumSize(QSize(800,750));
-    view.showMaximized();
+    view.show();
     return app.exec();
 }
