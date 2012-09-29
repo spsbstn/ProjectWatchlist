@@ -77,24 +77,24 @@ front: Rectangle {
              anchors.topMargin: tileMargin+50
 
            Text {
-             horizontalAlignment: Text.AlignHCenter
+             id:text1
+             anchors.centerIn: parent
              color: mainWindow.textColor
              font.weight: Font.Light
              text: "Folge: " + episode
-             width: parent.width;
-             //wrapMode: Text.WordWrap;
+             wrapMode: Text.WordWrap;
              font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
          }
            RightButton{
            id: episodeIncrease
            anchors.right:parent.right
-           anchors.rightMargin: parent.width/6
+           anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2-width
            anchors.verticalCenter: parent.verticalCenter
            onClicked: controller.setEpisode(titleText.text, +1);}
            LeftButton {
            id: episodeDecrease
            anchors.left:parent.left
-           anchors.leftMargin: parent.width/6
+           anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2-width
            anchors.verticalCenter: parent.verticalCenter
            onClicked: controller.setEpisode(titleText.text, -1);}
            states: State{
@@ -103,33 +103,32 @@ front: Rectangle {
            }
 }
         Rectangle {
+            id: seasonTxt
             width: parent.width;
             anchors.top: parent.top
             anchors.topMargin: tileMargin +100
             color:mainWindow.tileBackground
             height:22
             Text {
-             id: seasonTxt
-             horizontalAlignment: Text.AlignHCenter
-             verticalAlignment: Text.AlignVCenter
-             width:parent.width
+             id:text2
+             anchors.centerIn: parent
              color: mainWindow.textColor
              text: "Staffel: " + season
              font.weight: Font.Light
 
              wrapMode: Text.WordWrap;
              font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
-
+}
              RightButton{
              id: seasonIncrease
              anchors.right:parent.right
-             anchors.rightMargin: parent.width/6
+             anchors.rightMargin: (seasonTxt.width-text2.width-(2*width))/2-width
              anchors.verticalCenter: parent.verticalCenter
              onClicked: controller.setSeason(titleText.text, +1);}
              LeftButton {
              id: seasonDecrease
              anchors.left:parent.left
-             anchors.leftMargin: parent.width/6
+             anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2-width
              anchors.verticalCenter: parent.verticalCenter
              onClicked: controller.setSeason(titleText.text, -1);}
              states: State{
@@ -137,7 +136,7 @@ front: Rectangle {
                  when: season === 1
              }
 
-         }}
+         }
 
 
      }
