@@ -8,43 +8,48 @@ import QtQuick 1.0
 property bool flipped: false
 
 front: Rectangle {
+
          width: parent.width - tileMargin
          height: parent.height - tileMargin
          color: mainWindow.tileBackground
 
+                 Text {
+
+                    id: seasonName
+                    anchors.centerIn: parent
+                    color: mainWindow.textColor
+                    text: title
+                    font.family: "Helvetica Neue"
+                    font.weight:Font.Light
+                    width:parent.width
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.WordWrap
+                    font {
+                        capitalization: Font.AllUppercase;
+                        pointSize: mainWindow.tileHeaderFontSize
+                        }
+             }
+
         Text {
-             id: titleText
-             anchors.centerIn: parent
-             color: mainWindow.textColor
-             text: title
-             font.family: "Helvetica Neue"
-             font.weight:Font.Light
-             width:parent.width
-             horizontalAlignment: Text.AlignHCenter
-             wrapMode: Text.WordWrap
-             font {capitalization: Font.AllUppercase;
-                   pointSize: mainWindow.tileHeaderFontSize}
-         }
-        Text {
-             id: genreText
+
+             id: genreName
              anchors.right: parent.right
              anchors.rightMargin: 5
-             anchors.bottomMargin: 5
              anchors.bottom:parent.bottom
+             anchors.bottomMargin: 5
              color: mainWindow.textColor
              text: genre
              font.family: "Helvetica Neue"
              font.weight:Font.Light
              wrapMode: Text.WordWrap
              font {pointSize: mainWindow.tileHeaderFontSize-5}
-         }
+            }
 
          MouseArea {
              anchors.fill:parent
              onClicked: flipable.flipped = !flipable.flipped
          }
 
-//#####################InsertCustomButtons#####################//
          MinusButtonDark {
 
               anchors.bottom: parent.bottom
@@ -53,8 +58,8 @@ front: Rectangle {
               onClicked: controller.remove(titleText.text);
          }
 
-//#############################################################//
 }
+
 //back
      back: Rectangle {
 
@@ -62,10 +67,11 @@ front: Rectangle {
          height: parent.height - tileMargin
          color: mainWindow.tileBackground
 
-         MouseArea {
-             anchors.fill:parent
-             onClicked: flipable.flipped = !flipable.flipped
-         }
+            MouseArea {
+
+                anchors.fill:parent
+                onClicked: flipable.flipped = !flipable.flipped
+                     }
 
         Rectangle {
 
@@ -77,6 +83,7 @@ front: Rectangle {
              anchors.topMargin: tileMargin+50
 
            Text {
+
              id:text1
              anchors.centerIn: parent
              color: mainWindow.textColor
@@ -86,22 +93,31 @@ front: Rectangle {
              font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
          }
            RightButton{
-           id: episodeIncrease
-           anchors.right:parent.right
-           anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2-width
-           anchors.verticalCenter: parent.verticalCenter
-           onClicked: controller.setEpisode(titleText.text, +1);}
+
+                    id: episodeIncrease
+                    anchors.right:parent.right
+                    anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2-width
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: controller.setEpisode(seasonName.text, +1);
+           }
+
            LeftButton {
-           id: episodeDecrease
-           anchors.left:parent.left
-           anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2-width
-           anchors.verticalCenter: parent.verticalCenter
-           onClicked: controller.setEpisode(titleText.text, -1);}
+
+                    id: episodeDecrease
+                    anchors.left:parent.left
+                    anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2-width
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: controller.setEpisode(seasonName.text, -1);
+           }
+
            states: State{
+
                PropertyChanges { target: episodeDecrease; opacity: 0 }
                when: episode === 1
+
            }
 }
+
         Rectangle {
             id: seasonTxt
             width: parent.width;
@@ -109,39 +125,45 @@ front: Rectangle {
             anchors.topMargin: tileMargin +100
             color:mainWindow.tileBackground
             height:22
-            Text {
-             id:text2
-             anchors.centerIn: parent
-             color: mainWindow.textColor
-             text: "Staffel: " + season
-             font.weight: Font.Light
 
-             wrapMode: Text.WordWrap;
-             font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
+            Text {
+
+                   id:text2
+                   anchors.centerIn: parent
+                   color: mainWindow.textColor
+                   text: "Staffel: " + season
+                   font.weight: Font.Light
+                   wrapMode: Text.WordWrap;
+                   font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
 }
              RightButton{
-             id: seasonIncrease
-             anchors.right:parent.right
-             anchors.rightMargin: (seasonTxt.width-text2.width-(2*width))/2-width
-             anchors.verticalCenter: parent.verticalCenter
-             onClicked: controller.setSeason(titleText.text, +1);}
+
+                   id: seasonIncrease
+                   anchors.right:parent.right
+                   anchors.rightMargin: (seasonTxt.width-text2.width-(2*width))/2-width
+                   anchors.verticalCenter: parent.verticalCenter
+                   onClicked: controller.setSeason(seasonName.text, +1);
+             }
+
              LeftButton {
-             id: seasonDecrease
-             anchors.left:parent.left
-             anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2-width
-             anchors.verticalCenter: parent.verticalCenter
-             onClicked: controller.setSeason(titleText.text, -1);}
+
+                    id: seasonDecrease
+                    anchors.left:parent.left
+                    anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2-width
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: controller.setSeason(seasonName.text, -1);
+             }
+
              states: State{
+
                  PropertyChanges{ target: seasonDecrease; opacity: 0 }
                  when: season === 1
              }
-
          }
-
-
      }
 
      transform: Rotation {
+
          id: rotation
          origin.x: (flipable.width-tileMargin)/2
          origin.y: flipable.height/2
@@ -150,6 +172,7 @@ front: Rectangle {
      }
 
      states: State {
+
              name: "back"
              PropertyChanges { target: rotation; angle: 179.99 }
              when: flipable.flipped
@@ -158,6 +181,4 @@ front: Rectangle {
      transitions: Transition {
          NumberAnimation { target: rotation; property: "angle"; duration: 1000 }
      }
-
-
  }
