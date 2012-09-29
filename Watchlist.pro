@@ -4,7 +4,8 @@ SOURCES += src/main.cpp \
     src/controller.cpp \
     src/database.cpp \
     src/cursorshapearea.cpp \
-    src/mainview.cpp
+    src/mainview.cpp \
+    src/NcFramelessHelper.cpp
 
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
@@ -18,7 +19,8 @@ HEADERS += \
     src/controller.h \
     src/database.h \
     src/cursorshapearea.h \
-    src/mainview.h
+    src/mainview.h \
+    src/NcFramelessHelper.h
 
 
 OTHER_FILES += \
@@ -40,6 +42,7 @@ OTHER_FILES += \
     res/qml/ShutdownButton.qml
 
 QT           += sql
+QT += declarative
 
 #Mac Icons
 ICON = res/icons/icns/icon.icns

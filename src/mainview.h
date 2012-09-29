@@ -4,6 +4,7 @@
 #include <QDeclarativeView>
 #include <QSizeGrip>
 #include <QMouseEvent>
+#include "NcFramelessHelper.h"
 
 
 class MainView : public QDeclarativeView
@@ -11,13 +12,7 @@ class MainView : public QDeclarativeView
 public:
     MainView();
     QSizeGrip grip;
-
-    void mouseDoubleClickEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-
-private:
-    QPoint offset;
-    bool validCursorPos(QMouseEvent *event);
+    NcFramelessHelper* frameHelper;
 };
 
 #endif // MAINVIEW_H
