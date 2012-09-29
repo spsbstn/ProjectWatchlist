@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 SOURCES += src/main.cpp \
     src/tvshowdata.cpp \
     src/tvshow.cpp \
     src/controller.cpp \
     src/database.cpp \
     src/cursorshapearea.cpp \
-    src/mainview.cpp
+    src/mainview.cpp \
     src/NcFramelessHelper.cpp
 
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -20,7 +19,7 @@ HEADERS += \
     src/controller.h \
     src/database.h \
     src/cursorshapearea.h \
-    src/mainview.h
+    src/mainview.h \
     src/NcFramelessHelper.h
 
 
@@ -41,12 +40,13 @@ OTHER_FILES += \
     icons.rc \
     res/qml/CloseScreenButton.qml \
     res/qml/ShutdownButton.qml \
+    res/js/Global.js \
     res/qml/RemoveScreen.qml \
     res/qml/ConfirmButton.qml \
-    res/qml/AbortButton.qml \
-    res/js/Global.js
+    res/qml/AbortButton.qml
 
 QT           += sql
+QT += declarative
 
 #Mac Icons
 ICON = res/icons/icns/icon.icns
