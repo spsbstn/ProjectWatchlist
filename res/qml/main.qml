@@ -93,11 +93,12 @@ Rectangle {
             height: barSize
             color: appBackground
 
+//ShutdownButton
          ShutdownButton {
          anchors.bottom: parent.bottom
-         anchors.bottomMargin: width/2
+         anchors.bottomMargin: 40
          anchors.right:parent.right
-         anchors.rightMargin: width/2
+         anchors.rightMargin: 40
          onReleased: Qt.quit()}
         }
 
