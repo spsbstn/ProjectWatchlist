@@ -17,6 +17,7 @@ public:
 
 private:
     QPoint offset;
+    bool validCursorPos(QMouseEvent *event);
 };
 
 #endif // MAINVIEW_H
