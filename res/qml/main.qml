@@ -100,8 +100,18 @@ Rectangle {
          anchors.right:parent.right
          anchors.rightMargin: 40
          onReleased: Qt.quit()}
-        }
 
+        //RemoveScreen
+                 RemoveScreen {
+                 id:removeScreen
+                 opacity: 0;
+                 height:parent.height
+                 color:mainWindow.appBackground
+                 anchors.left:parent.left
+                 anchors.leftMargin:(parent.width-leftBar.width*2)/2
+                       }
+
+}
 //Scrollbar
         Scrollbar {
            id: horizontalScrollBar
@@ -118,5 +128,6 @@ Rectangle {
           id:addScreen
           opacity: 0;
        }
+
 
 }

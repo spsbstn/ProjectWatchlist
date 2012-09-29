@@ -1,4 +1,5 @@
 import QtQuick 1.0
+import "..///js/Global.js" as GlobalJS
 
  Flipable {
      id: flipable
@@ -15,7 +16,7 @@ front: Rectangle {
 
                  Text {
 
-                    id: seasonName
+                    id: seriesName
                     anchors.centerIn: parent
                     color: mainWindow.textColor
                     text: title
@@ -55,7 +56,9 @@ front: Rectangle {
               anchors.bottom: parent.bottom
               anchors.left:parent.left
               anchors.leftMargin: 5
-              onClicked: controller.remove(titleText.text);
+              onPressed: GlobalJS.activeSeries = seriesName.text;
+              onReleased: NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400}
+
          }
 
 }
@@ -98,7 +101,7 @@ front: Rectangle {
                     anchors.right:parent.right
                     anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2-width
                     anchors.verticalCenter: parent.verticalCenter
-                    onClicked: controller.setEpisode(seasonName.text, +1);
+                    onClicked: controller.setEpisode(seriesName.text, +1);
            }
 
            LeftButton {
@@ -107,7 +110,7 @@ front: Rectangle {
                     anchors.left:parent.left
                     anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2-width
                     anchors.verticalCenter: parent.verticalCenter
-                    onClicked: controller.setEpisode(seasonName.text, -1);
+                    onClicked: controller.setEpisode(seriesName.text, -1);
            }
 
            states: State{
@@ -142,7 +145,7 @@ front: Rectangle {
                    anchors.right:parent.right
                    anchors.rightMargin: (seasonTxt.width-text2.width-(2*width))/2-width
                    anchors.verticalCenter: parent.verticalCenter
-                   onClicked: controller.setSeason(seasonName.text, +1);
+                   onClicked: controller.setSeason(seriesName.text, +1);
              }
 
              LeftButton {
@@ -151,7 +154,7 @@ front: Rectangle {
                     anchors.left:parent.left
                     anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2-width
                     anchors.verticalCenter: parent.verticalCenter
-                    onClicked: controller.setSeason(seasonName.text, -1);
+                    onClicked: controller.setSeason(seriesName.text, -1);
              }
 
              states: State{
