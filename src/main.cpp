@@ -13,14 +13,16 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    MainView view;
+    MainView* view = new MainView;
 
-    view.setWindowFlags(Qt::FramelessWindowHint);
+    QMainWindow window;
+
+    window.setCentralWidget(view);
 
     // Set up controller
     Controller c;
-    view.setResizeMode(QDeclarativeView::SizeRootObjectToView);
-    QDeclarativeContext *ctxt = view.rootContext();
+    view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    QDeclarativeContext *ctxt = view->rootContext();
 
     //init DB
     Database db;
@@ -32,11 +34,21 @@ int main(int argc, char *argv[])
     // Set up Datalist and Controller for qml
     ctxt->setContextProperty("datalist", c.data);
     ctxt->setContextProperty("controller", &c);
+    ctxt->setContextProperty("mainwindow", &window);
 
     qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
-    QObject::connect((QObject*)view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
-    view.setSource(QUrl("qrc:///qml/main.qml"));
-    view.setMinimumSize(QSize(800,750));
-    view.showMaximized();
+    QObject::connect((QObject*)view->engine(), SIGNAL(quit()), &app, SLOT(quit()));
+    view->setMinimumSize(QSize(800,750));
+
+
+    view->setSource(QUrl("qrc:///qml/main.qml"));
+
+
+    window.setStyleSheet("background:transparent;");
+    window.setAttribute(Qt::WA_TranslucentBackground);
+    window.setWindowFlags(Qt::FramelessWindowHint);
+    window.showMaximized();
+
+
     return app.exec();
 }

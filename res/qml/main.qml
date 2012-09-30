@@ -18,6 +18,21 @@ Rectangle {
     property string textColor: "white"
     property string uiFont: "Helvetica-Neue"
 
+
+// DragArea
+    MouseArea {
+        id: dragArea
+        property variant clickPos: "1,1"
+        anchors.fill: mainWindow
+        onPressed: clickPos = Qt.point(mouse.x, mouse.y)
+        onPositionChanged: {
+            var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+            mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x,
+                              mainwindow.pos.y+delta.y)
+                        }
+
+          }
+
 //Splashscreen
      SplashScreen{
             id:splashScreen
