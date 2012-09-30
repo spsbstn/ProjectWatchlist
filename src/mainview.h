@@ -5,14 +5,20 @@
 #include <QSizeGrip>
 #include <QMouseEvent>
 #include "NcFramelessHelper.h"
+#include <QVBoxLayout>
 
 
 class MainView : public QDeclarativeView
 {
 public:
     MainView();
-    QSizeGrip* grip;
-  //  QSizeGrip* grip2;
+    QSizeGrip* grip1;
+    QSizeGrip* grip2;
+    QSizeGrip* grip3;
+    QSizeGrip* grip4;
+    QBoxLayout* mainLayout;
+    QVBoxLayout* vLayout1;
+    QVBoxLayout* vLayout2;
 };
 
 #endif // MAINVIEW_H

@@ -33,6 +33,7 @@ Rectangle {
 
           }
 
+
 //Splashscreen
      SplashScreen{
             id:splashScreen
