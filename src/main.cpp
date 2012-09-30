@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
     QObject::connect((QObject*)view->engine(), SIGNAL(quit()), &app, SLOT(quit()));
-    view->setMinimumSize(QSize(500,500));
+    view->setMinimumSize(QSize(800,750));
 
 
     view->setSource(QUrl("qrc:///qml/main.qml"));
