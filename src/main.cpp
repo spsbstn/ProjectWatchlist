@@ -49,6 +49,5 @@ int main(int argc, char *argv[])
     window.setWindowFlags(Qt::FramelessWindowHint);
     window.showMaximized();
 
-
     return app.exec();
 }

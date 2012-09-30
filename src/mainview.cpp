@@ -1,13 +1,9 @@
 #include "mainview.h"
 #include "NcFramelessHelper.h"
+#include <QVBoxLayout>
 
 MainView::MainView()
-   // : grip(new QSizeGrip(this)),
-    //  frameHelper(new NcFramelessHelper)
+    : grip(new QSizeGrip(this))
+    //  grip2(new QSizeGrip(this))
 {
-    /*
-    frameHelper->activateOn(this);
-    frameHelper->setWidgetMovable(true);
-    frameHelper->setWidgetResizable(true);
-*/
 }

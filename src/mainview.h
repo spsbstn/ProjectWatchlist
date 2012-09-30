@@ -11,8 +11,8 @@ class MainView : public QDeclarativeView
 {
 public:
     MainView();
-    //QSizeGrip grip;
-    //NcFramelessHelper* frameHelper;
+    QSizeGrip* grip;
+  //  QSizeGrip* grip2;
 };
 
 #endif // MAINVIEW_H
