@@ -1,5 +1,4 @@
 #include "mainview.h"
-#include "NcFramelessHelper.h"
 #include <QBoxLayout>
 
 MainView::MainView()

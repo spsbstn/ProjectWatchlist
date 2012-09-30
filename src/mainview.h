@@ -4,7 +4,6 @@
 #include <QDeclarativeView>
 #include <QSizeGrip>
 #include <QMouseEvent>
-#include "NcFramelessHelper.h"
 #include <QVBoxLayout>
 
 
