@@ -113,12 +113,17 @@ front: Rectangle {
                     onClicked: controller.setEpisode(seriesName.text, -1);
            }
 
-           states: State{
-
+           states: [
+               State{
                PropertyChanges { target: episodeDecrease; opacity: 0 }
                when: episode === 1
+                },
 
-           }
+               State{
+               PropertyChanges { target: episodeIncrease; opacity: 0 }
+               when: episode === 99
+               }
+        ]
 }
 
         Rectangle {
@@ -157,11 +162,17 @@ front: Rectangle {
                     onClicked: controller.setSeason(seriesName.text, -1);
              }
 
-             states: State{
-
+             states: [
+                 State{
                  PropertyChanges{ target: seasonDecrease; opacity: 0 }
                  when: season === 1
-             }
+                },
+
+                 State{
+                 PropertyChanges{ target: seasonIncrease; opacity: 0 }
+                 when: season === 99
+                 }
+             ]
          }
      }
 
