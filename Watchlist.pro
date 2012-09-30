@@ -4,8 +4,7 @@ SOURCES += src/main.cpp \
     src/controller.cpp \
     src/database.cpp \
     src/cursorshapearea.cpp \
-    src/mainview.cpp \
-    src/NcFramelessHelper.cpp
+    src/mainview.cpp
 
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
@@ -19,8 +18,7 @@ HEADERS += \
     src/controller.h \
     src/database.h \
     src/cursorshapearea.h \
-    src/mainview.h \
-    src/NcFramelessHelper.h
+    src/mainview.h
 
 
 OTHER_FILES += \
