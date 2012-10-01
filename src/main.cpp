@@ -21,14 +21,15 @@ int main(int argc, char *argv[])
 
     QWidget* widgi = new QWidget;
     QVBoxLayout* box = new QVBoxLayout;
+    widgi->setStyleSheet("background:'#484848'");
 
-
+    QMainWindow window;
 
 
     NcFramelessHelper helper;
 
     helper.activateOn(widgi);
-    helper.setWidgetMovable(true);
+    helper.setWidgetMovable(false);
     helper.setWidgetResizable(true);
 
     box->addWidget(view);
@@ -52,7 +53,7 @@ int main(int argc, char *argv[])
     // Set up Datalist and Controller for qml
     ctxt->setContextProperty("datalist", c.data);
     ctxt->setContextProperty("controller", &c);
-    ctxt->setContextProperty("mainwindow", &window);
+    ctxt->setContextProperty("mainwindow", widgi);
 
     qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
     QObject::connect((QObject*)view->engine(), SIGNAL(quit()), &app, SLOT(quit()));

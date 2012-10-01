@@ -23,8 +23,17 @@ Rectangle {
 
 // DragArea
 
-
-
+    MouseArea {
+        id: dragArea
+        property variant clickPos: "1,1"
+        anchors.fill: parent
+        onPressed: clickPos = Qt.point(mouse.x, mouse.y)
+        onPositionChanged: {
+            var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
+            mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x,
+                              mainwindow.pos.y+delta.y)
+                        }
+}
 //Splashscreen
      SplashScreen{
             id:splashScreen
@@ -59,48 +68,6 @@ Rectangle {
             anchors.topMargin: 0
 }
 
-//dragBar
-        Rectangle {
-                id: dragBar
-                anchors.top: parent.top
-                anchors.left:parent.left
-                height: 25
-                width:parent.width
-                color: tileBackground
-
-                       Text {
-                            anchors.centerIn: parent
-                            color: mainWindow.textColor
-                            text: "Watchlist v.0.9"
-                            font.family: "Helvetica Neue"
-                            font.weight:Font.Light
-                            width:parent.width
-                            horizontalAlignment: Text.AlignHCenter
-                            wrapMode: Text.WordWrap
-                   font {
-                       capitalization: Font.AllUppercase;
-                       pointSize: 12
-                       }
-                }
-                MouseArea {
-                    id: dragArea
-                    property variant clickPos: "1,1"
-                    anchors.fill: parent
-                    onPressed: clickPos = Qt.point(mouse.x, mouse.y)
-                    onPositionChanged: {
-                        var delta = Qt.point(mouse.x-clickPos.x, mouse.y-clickPos.y)
-                        mainwindow.pos = Qt.point(mainwindow.pos.x+delta.x,
-                                          mainwindow.pos.y+delta.y)
-                                    }
-                    CursorShapeArea {
-                        anchors.fill: parent
-                        cursorShape: Qt.CrossCursor
-                      }
-
-                      }
-
-
-    }
 //AddButton
         PlusButtonLight {
              id:addButton
