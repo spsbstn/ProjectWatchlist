@@ -18,12 +18,12 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     MainView* view = new MainView;
 
-    QMainWindow window;
 
     QWidget* widgi = new QWidget;
     QVBoxLayout* box = new QVBoxLayout;
 
-    box->setMargin(1);
+
+
 
     NcFramelessHelper helper;
 
@@ -31,11 +31,11 @@ int main(int argc, char *argv[])
     helper.setWidgetMovable(true);
     helper.setWidgetResizable(true);
 
-    box->addWidget(&window);
+    box->addWidget(view);
     widgi->setLayout(box);
+
     widgi->setWindowFlags(Qt::FramelessWindowHint);
 
-    window.setCentralWidget(view);
 
     // Set up controller
     Controller c;
@@ -56,15 +56,15 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
     QObject::connect((QObject*)view->engine(), SIGNAL(quit()), &app, SLOT(quit()));
-    view->setMinimumSize(QSize(500,500));
+    view->setMinimumSize(QSize(1000,730));
 
 
     view->setSource(QUrl("qrc:///qml/main.qml"));
 
 
     // window.setStyleSheet("background:transparent;");
-    window.setAttribute(Qt::WA_TranslucentBackground);
-    window.setWindowFlags(Qt::FramelessWindowHint);
+    // window.setAttribute(Qt::WA_TranslucentBackground);
+    // window.setWindowFlags(Qt::FramelessWindowHint);
     widgi->show();
 
     return app.exec();
