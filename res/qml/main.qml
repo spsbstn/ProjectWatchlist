@@ -8,7 +8,7 @@ Rectangle {
     height: 768
     color: appBackground
 
-    property int topBarSize: 70
+    property int topBarSize: 50
     property int barSize: 120
     property int tileMargin: 6
     property int tileHeaderFontSize: mainWindow.height/30
@@ -101,14 +101,6 @@ Rectangle {
             width: parent.width - leftBar.width
             height: barSize
             color: appBackground
-
-//ShutdownButton
-         ShutdownButton {
-         anchors.bottom: parent.bottom
-         anchors.bottomMargin: 40
-         anchors.right:parent.right
-         anchors.rightMargin: 40
-         onReleased: Qt.quit()}
 
         //RemoveScreen
                  RemoveScreen {
