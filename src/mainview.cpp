@@ -1,22 +1,48 @@
 #include "mainview.h"
-#include <QBoxLayout>
+
+#include <QVBoxLayout>
+#include <QDeclarativeContext>
+#include <QtDeclarative>
+#include "cursorshapearea.h"
+#include "NcFramelessHelper.h"
+#include "controller.h"
+#include "database.h"
 
 MainView::MainView()
-    : grip1(new QSizeGrip(this)),
-      grip2(new QSizeGrip(this)),
-      grip3(new QSizeGrip(this)),
-      grip4(new QSizeGrip(this)),
-      mainLayout(new QBoxLayout(QBoxLayout::LeftToRight)),
-      vLayout1(new QVBoxLayout()),
-      vLayout2(new QVBoxLayout())
+    : framelessHelper(new NcFramelessHelper(this)),
+      qmlView(new QDeclarativeView),
+      layout(new QVBoxLayout),
+      controller(new Controller),
+      db(new Database)
 {
-    // Puts the QSizeGrips in proper position
-    vLayout1->addWidget(grip1, 0, Qt::AlignTop | Qt::AlignLeft);
-    vLayout1->addWidget(grip4, 0, Qt::AlignBottom | Qt::AlignLeft);
-    vLayout2->addWidget(grip2, 0, Qt::AlignTop | Qt::AlignRight);
-    vLayout2->addWidget(grip3, 0, Qt::AlignBottom | Qt::AlignRight);
+//  Load Database and hand it to Controller
+    db->load();
+    controller->data = db->data;
 
-    mainLayout->addLayout(vLayout1);
-    mainLayout->addLayout(vLayout2);
-    setLayout(mainLayout);
+//  Setting up Declarative View
+    // Resize Mode
+    qmlView->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+
+    // C++ - QML Connection
+    QDeclarativeContext *ctxt = qmlView->rootContext();
+    ctxt->setContextProperty("datalist", controller->data);
+    ctxt->setContextProperty("controller", controller);
+    ctxt->setContextProperty("mainwindow", this);
+    qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
+
+    // Set main qml-file
+    qmlView->setSource(QUrl("qrc:///qml/main.qml"));
+
+    // Minimum Size
+    qmlView->setMinimumSize(QSize(1000,730));
+
+
+//  Set Layout
+    layout->addWidget(qmlView);
+    setLayout(layout);
+
+//  Activate framelessHelper
+    framelessHelper->activateOn(this);
+    framelessHelper->setWidgetMovable(false);
+    framelessHelper->setWidgetResizable(true);
 }
