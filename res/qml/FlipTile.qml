@@ -3,7 +3,7 @@ import "..///js/Global.js" as GlobalJS
 
  Flipable {
      id: flipable
-     width: parseInt(grid.height / 2) - tileMargin
+     width: parseInt(grid.height / 3) - tileMargin
      height: width - tileMargin
 
 property bool flipped: false

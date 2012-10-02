@@ -76,7 +76,7 @@ Rectangle {
             flow: GridView.TopToBottom
             width: parent.width - leftBar.width
             height: parent.height - topBar.height - bottomBar.height
-            cellHeight: parseInt(grid.height / 2)
+            cellHeight: parseInt(grid.height / 3)
             cellWidth: parseInt(cellHeight * 1.1)
             clip: false
             focus: true
@@ -99,7 +99,7 @@ Rectangle {
             anchors.top: grid.bottom
             anchors.left: leftBar.right
             width: parent.width - leftBar.width
-            height: barSize
+            height: barSize/2
             color: appBackground
 
         //RemoveScreen
