@@ -4,6 +4,7 @@ Item {
     Rectangle{
 
         id:topControles
+        color:mainWindow.appBackground
         height: parent.height
         width:(parent.width*0.8)-versionInfo.width
         anchors.left: versionInfo.right
@@ -24,6 +25,7 @@ Item {
     Rectangle{
 
         id:versionInfo
+        color:mainWindow.appBackground
         height:parent.height
         width:160
 
@@ -31,7 +33,7 @@ Item {
 
                 anchors.centerIn: parent
                 text:"Watchlist alpha"
-                color:"#dddddd"
+                color:"#aaaaaa"
                 font.pixelSize: 16
                 font.family: "Helvetica-Neue"
                 font.weight: Font.Light
@@ -46,7 +48,7 @@ Item {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 15
         height:1
-        color:'#dddddd'
+        color:'#CCCCCC'
         width:parent.width*0.8
     }
 }
