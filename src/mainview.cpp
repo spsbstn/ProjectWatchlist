@@ -40,6 +40,7 @@ MainView::MainView()
 //  Set Layout
     layout->addWidget(qmlView);
     setLayout(layout);
+    this->setStyleSheet("background:'#ffffff'");
 
 //  Activate framelessHelper
     framelessHelper->activateOn(this);
