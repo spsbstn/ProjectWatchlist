@@ -8,10 +8,11 @@ Item {
     Rectangle {
         id:addScreenTile
         anchors.centerIn: addScreen
-        height: parseInt(grid.height / 2)
+        height: parseInt(grid.height / 3)
         width: height*2
         opacity: 1;
         color:'#00aaff'
+
 
 
             Text {
@@ -24,6 +25,10 @@ Item {
               font.pixelSize: parent.width/18
               font.family: uiFont
               font.weight: Font.Light
+              transform: Rotation {origin.x: (width)/2
+              origin.y: height/2
+              axis.x: 0; axis.y: 1; axis.z: 0
+              angle: 0.01 }
                   }
 
             Rectangle {

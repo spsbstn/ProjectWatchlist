@@ -11,8 +11,8 @@ Rectangle {
     property int topBarSize: 50
     property int barSize: 120
     property int tileMargin: 6
-    property int tileHeaderFontSize: mainWindow.height/30
-    property int tileInfoFontSize: 20
+    property int tileHeaderFontSize: mainWindow.height/40
+    property int tileInfoFontSize: 16
     property int appHeaderFontSize: 36
     property string appBackground: "#EEEEEE"
     property string tileBackground: "#CCCCCC"
@@ -62,9 +62,9 @@ Rectangle {
         PlusButtonLight {
              id:addButton
              anchors.bottom: leftBar.bottom
-             anchors.bottomMargin: 40
+             anchors.bottomMargin: 20
              anchors.left: leftBar.left
-             anchors.leftMargin: 40
+             anchors.leftMargin: 20
              onClicked: NumberAnimation { target:addScreen; property:"opacity"; to:1; duration: 400}
          }
 

@@ -51,16 +51,6 @@ front: Rectangle {
              onClicked: flipable.flipped = !flipable.flipped
          }
 
-         MinusButtonDark {
-
-              anchors.bottom: parent.bottom
-              anchors.left:parent.left
-              anchors.leftMargin: 5
-              onPressed: GlobalJS.activeSeries = seriesName.text;
-              onReleased: NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400}
-
-         }
-
 }
 
 //back
@@ -99,8 +89,8 @@ front: Rectangle {
 
                     id: episodeIncrease
                     anchors.right:parent.right
-                    anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2-width
-                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2
+                    anchors.top:parent.top
                     onClicked: controller.setEpisode(seriesName.text, +1);
            }
 
@@ -108,8 +98,8 @@ front: Rectangle {
 
                     id: episodeDecrease
                     anchors.left:parent.left
-                    anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2-width
-                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2+(width/4)
+                    anchors.top:parent.top
                     onClicked: controller.setEpisode(seriesName.text, -1);
            }
 
@@ -148,8 +138,8 @@ front: Rectangle {
 
                    id: seasonIncrease
                    anchors.right:parent.right
-                   anchors.rightMargin: (seasonTxt.width-text2.width-(2*width))/2-width
-                   anchors.verticalCenter: parent.verticalCenter
+                   anchors.rightMargin: (seasonTxt.width-text2.width-(2*width))/2
+                   anchors.top:parent.top
                    onClicked: controller.setSeason(seriesName.text, +1);
              }
 
@@ -157,8 +147,8 @@ front: Rectangle {
 
                     id: seasonDecrease
                     anchors.left:parent.left
-                    anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2-width
-                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2+(width/4)
+                    anchors.top:parent.top
                     onClicked: controller.setSeason(seriesName.text, -1);
              }
 
@@ -174,6 +164,17 @@ front: Rectangle {
                  }
              ]
          }
+        MinusButtonDark {
+
+             anchors.top: parent.top
+             anchors.right:parent.right
+             anchors.topMargin: 10
+             anchors.rightMargin: 8
+             onPressed: GlobalJS.activeSeries = seriesName.text;
+             onReleased: NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400}
+
+        }
+
      }
 
      transform: Rotation {

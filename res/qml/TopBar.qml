@@ -33,10 +33,16 @@ Item {
 
                 anchors.centerIn: parent
                 text:"Watchlist alpha"
-                color:"#aaaaaa"
+                color:"#00aaff"
                 font.pixelSize: 16
+                font.capitalization:Font.AllLowercase;
                 font.family: "Helvetica-Neue"
                 font.weight: Font.Light
+                transform: Rotation {origin.x: (width)/2
+                origin.y: height/2
+                axis.x: 0; axis.y: 1; axis.z: 0
+                angle: 0.01 }
+
             }
     }
 
