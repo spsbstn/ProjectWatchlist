@@ -43,7 +43,8 @@ OTHER_FILES += \
     res/js/Global.js \
     res/qml/RemoveScreen.qml \
     res/qml/ConfirmButton.qml \
-    res/qml/AbortButton.qml
+    res/qml/AbortButton.qml \
+    res/qml/TopBar.qml
 
 QT           += sql
 QT += declarative

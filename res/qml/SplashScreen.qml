@@ -5,6 +5,7 @@ Rectangle {
     smooth: true
     id: splashScreenContainer
     property alias imageSource: splashImage.source
+    opacity: 1;
 
     signal splashScreenCompleted()
     Image {

@@ -2,24 +2,11 @@ import QtQuick 1.0
 
 Item {
     id:addScreen
-        property int offset:10
+        property int offset:5
         anchors.fill:parent
-    Rectangle {
-        id:addBackground
-        opacity: 0.2;
-        width: addScreenTile.width
-        height: addScreenTile.height
-        anchors.top:addScreenTile.top
-        anchors.topMargin: offset
-        anchors.left:addScreenTile.left
-        anchors.leftMargin: offset
-        color:'black'
-               }
 
     Rectangle {
         id:addScreenTile
-        border.color: "black"
-        border.width: 5
         anchors.centerIn: addScreen
         height: parseInt(grid.height / 2)
         width: height*2

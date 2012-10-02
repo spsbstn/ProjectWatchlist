@@ -1,5 +1,4 @@
 import QtQuick 1.1
-import Cursors 1.0
 
 
 
@@ -9,15 +8,15 @@ Rectangle {
     height: 768
     color: appBackground
 
-    property int topBarSize: 144
+    property int topBarSize: 70
     property int barSize: 120
     property int tileMargin: 6
     property int tileHeaderFontSize: mainWindow.height/30
     property int tileInfoFontSize: 20
     property int appHeaderFontSize: 36
-    property string appBackground: "#484848"
-    property string tileBackground: "#00aaff"
-    property string textColor: "white"
+    property string appBackground: "#Ffffff"
+    property string tileBackground: "#dddddd"
+    property string textColor: "#484848"
     property string uiFont: "Helvetica-Neue"
 
 
@@ -34,23 +33,14 @@ Rectangle {
                               mainwindow.pos.y+delta.y)
                         }
 }
-//Splashscreen
-     SplashScreen{
-            id:splashScreen
-            imageSource: "qrc:///img/SplashScreen.png"
-            anchors.fill: mainWindow
-            z:1
-        }
 
 //Topbar
-    Rectangle {
+    TopBar {
             id: topBar
             anchors.left: leftBar.right
             anchors.top: parent.top
             height: topBarSize
             width: parent.width
-            color: appBackground
-
 
         }
 

@@ -36,5 +36,6 @@
         <file>img/confirm_Active.png</file>
         <file>img/confirm.png</file>
         <file>js/Global.js</file>
+        <file>qml/TopBar.qml</file>
     </qresource>
 </RCC>
