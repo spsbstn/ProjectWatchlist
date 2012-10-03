@@ -18,7 +18,7 @@ Item {
               anchors.top: parent.top
               anchors.topMargin: parent.width/18
               color: "#ffffff"
-              text: qsTr(" + Neue Serie")
+              text: qsTr(" + New Series")
               font.pixelSize: parent.width/18
               font.family: uiFont
               font.weight: Font.Light

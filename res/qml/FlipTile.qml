@@ -81,7 +81,7 @@ front: Rectangle {
              anchors.centerIn: parent
              color: mainWindow.textColor
              font.weight: Font.Light
-             text: "Folge: " + episode
+             text: "Episode: " + episode
              wrapMode: Text.WordWrap;
              font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
          }
@@ -129,7 +129,7 @@ front: Rectangle {
                    id:text2
                    anchors.centerIn: parent
                    color: mainWindow.textColor
-                   text: "Staffel: " + season
+                   text: "Season: " + season
                    font.weight: Font.Light
                    wrapMode: Text.WordWrap;
                    font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }

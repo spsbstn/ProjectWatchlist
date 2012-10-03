@@ -10,21 +10,23 @@ Item {
     Rectangle {
         id: toolTipRectangle
 
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.bottom
+        anchors.left:parent.left
+        anchors.leftMargin:20
+        anchors.top: parent.top
+        anchors.topMargin: -40
         width: toolTipText.width + 4
         height: toolTipText.height + 4
-        z: 200
+        z: 800
 
         opacity: toolTip != "" && showToolTip ? 1 : 0
 
-        color: "#ffffaa"
-        border.color: "#0a0a0a"
+        color: "#00aaff"
+        border.color: "white"
 
         Text {
             id: toolTipText
             text: toolTip
-            color: "black"
+            color: "white"
             anchors.centerIn: parent
         }
 

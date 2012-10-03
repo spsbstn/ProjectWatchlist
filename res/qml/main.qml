@@ -64,19 +64,7 @@ Rectangle {
 }
 
 //AddButton
-        PlusButtonLight {
-             id:addButton
-             anchors.bottom: leftBar.bottom
-             anchors.bottomMargin: 20
-             anchors.left: leftBar.left
-             anchors.leftMargin: 20
-             onClicked: showAddScreen.start()
 
-             ToolTip {
-                 toolTip: "Click or press Ctrl+T \n to add Show"
-             }
-
-         }
 
 //GridView
         GridView {
@@ -147,6 +135,26 @@ MouseArea {
           z:0
        }
 
+        PlusButtonLight {
 
+
+             id:addButton
+             anchors.bottom: leftBar.bottom
+             anchors.bottomMargin: 20
+             anchors.left: leftBar.left
+             anchors.leftMargin: 20
+
+
+             ToolTip {
+                 toolTip: "Click or press Ctrl+T \n to add Show"
+             }
+
+             MouseArea {
+             anchors.fill:parent
+             onClicked: showAddScreen.start()
+             }
+
+
+         }
 
 }
