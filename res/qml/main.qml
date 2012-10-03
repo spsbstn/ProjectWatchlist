@@ -93,6 +93,12 @@ Rectangle {
             }
         }
 
+MouseArea {
+      id:clickProtection
+      anchors.fill:mainWindow
+      enabled:false
+               }
+
 //Bottombar
         Rectangle {
             id: bottomBar
@@ -124,11 +130,14 @@ Rectangle {
            position: grid.visibleArea.xPosition
            pageSize: grid.visibleArea.widthRatio
         }
+
 //AddScreen
         AddScreen {
           id:addScreen
           opacity: 0;
+          z:0
        }
+
 
 
 }

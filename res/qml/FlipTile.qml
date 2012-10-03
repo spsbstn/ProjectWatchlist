@@ -170,8 +170,10 @@ front: Rectangle {
              anchors.right:parent.right
              anchors.topMargin: 10
              anchors.rightMargin: 8
-             onPressed: GlobalJS.activeSeries = seriesName.text;
-             onReleased: NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400}
+             onPressed: {GlobalJS.activeSeries = seriesName.text;
+                         clickProtection.enabled=true;}
+             onReleased:NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400}
+
 
         }
 

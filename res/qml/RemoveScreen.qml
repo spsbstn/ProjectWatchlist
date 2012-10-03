@@ -10,14 +10,17 @@ AbortButton {
     anchors.right:parent.right
     anchors.bottom:parent.bottom
     anchors.bottomMargin:20
-    onReleased: removeScreen.opacity=0
+    onReleased: {removeScreen.opacity=0
+        clickProtection.enabled="false"}
+
              }
 ConfirmButton {
     anchors.left:parent.left
     anchors.bottom:parent.bottom
     anchors.bottomMargin:20
     onPressed:controller.remove(GlobalJS.activeSeries)
-    onReleased: removeScreen.opacity=0
+    onReleased: {removeScreen.opacity=0
+                 clickProtection.enabled="false"}
 
 }
 }
