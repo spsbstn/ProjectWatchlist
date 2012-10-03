@@ -98,7 +98,7 @@ front: Rectangle {
 
                     id: episodeDecrease
                     anchors.left:parent.left
-                    anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2+(width/4)
+                    anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2
                     anchors.top:parent.top
                     onClicked: controller.setEpisode(seriesName.text, -1);
            }
@@ -147,7 +147,7 @@ front: Rectangle {
 
                     id: seasonDecrease
                     anchors.left:parent.left
-                    anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2+(width/4)
+                    anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2
                     anchors.top:parent.top
                     onClicked: controller.setSeason(seriesName.text, -1);
              }
