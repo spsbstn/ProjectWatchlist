@@ -12,16 +12,13 @@ Item {
         width: height*2
         opacity: 1;
         color:'#00aaff'
-
-
-
             Text {
               anchors.left: parent.left
               anchors.leftMargin: 20
               anchors.top: parent.top
               anchors.topMargin: parent.width/18
               color: "#ffffff"
-              text: qsTr("Name der neuen Serie:")
+              text: qsTr(" + Neue Serie")
               font.pixelSize: parent.width/18
               font.family: uiFont
               font.weight: Font.Light
@@ -33,7 +30,7 @@ Item {
 
             Rectangle {
                  anchors.bottom: parent.bottom
-                 anchors.bottomMargin: parent.height/3
+                 anchors.bottomMargin: parent.height/2
                  anchors.left: parent.left
                  anchors.leftMargin: (parent.width-width)/2
                  width: parent.width-50
@@ -47,27 +44,80 @@ Item {
                 anchors.centerIn: parent
                 width: parent.width-20
                 height: parent.height-10
-                text: qsTr("")
+                focus:false
+                onActiveFocusChanged:
+                    if (activeFocus == true) {
+                      selectAll();
+                    }
+                text: qsTr("Name")
+                font.pixelSize: height-(height/5)
+                validator: RegExpValidator { regExp: /^(?!\s*$).+/ }
+                onAccepted: controller.add(nameInput.text.toLowerCase(),addScreen.opacity=0)
+                Keys.onEscapePressed: addScreen.opacity=0;
+                Keys.onTabPressed: {if(text==""){text="Name"};
+                                    focus=false;
+                                    genreInput.focus=true;}
+                MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                nameInput.focus=true;
+                                genreInput.focus=false;
+                            }
+                       }
+                       }
+
+            }
+            Rectangle {
+                 anchors.bottom: parent.bottom
+                 anchors.bottomMargin: parent.height/4
+                 anchors.left: parent.left
+                 anchors.leftMargin: (parent.width-width)/2
+                 width: parent.width-50
+                 height: parent.width/14
+                 color: "#ffffff"
+
+            TextInput {
+                id: genreInput
+                anchors.left:parent.left
+                anchors.leftMargin: 10;
+                anchors.centerIn: parent
+                width: parent.width-20
+                height: parent.height-10
+
+                onActiveFocusChanged:
+                    if (activeFocus == true) {
+                      selectAll();
+                    }
+                text: qsTr("Genre")
                 focus:false
                 font.pixelSize: height-(height/5)
                 validator: RegExpValidator { regExp: /^(?!\s*$).+/ }
                 onAccepted: controller.add(nameInput.text.toLowerCase(),addScreen.opacity=0)
                 Keys.onEscapePressed: addScreen.opacity=0;
-                       }
+                Keys.onTabPressed: { if(text==""){text="Genre"};
+                                    focus=false;
+                                    nameInput.focus=true;}
+                MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                nameInput.focus=false;
+                                genreInput.focus=true;
+                            }
+                   }    }
 
             }
             CloseScreenButton {
             anchors.top:parent.top
-            anchors.topMargin: -15
-            anchors.rightMargin: -17
+            anchors.topMargin: -11
+            anchors.rightMargin: -11
             anchors.right:parent.right
             onClicked: addScreen.opacity=0}
             PlusButtonDark {
                  id:addButton
                  anchors.bottom: addScreenTile.bottom
-                 anchors.bottomMargin: 10
+                 anchors.bottomMargin: 15
                  anchors.right: addScreenTile.right
-                 anchors.rightMargin: 10
+                 anchors.rightMargin: 15
                  onClicked: if(nameInput.text.match(/^(?!\s*$).+/)){
                                 nameInput.accepted();
                                 }
@@ -75,7 +125,7 @@ Item {
     }
     states: [ State {
                         when: addScreen.opacity==0
-                        StateChangeScript { script:nameInput.text="" }
+                        StateChangeScript { script:nameInput.text="Name" }
                     },
               State {
                         when: addScreen.opacity==1
