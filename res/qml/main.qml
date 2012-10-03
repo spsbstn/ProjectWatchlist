@@ -109,7 +109,7 @@ MouseArea {
             color: appBackground
 
         //RemoveScreen
-                 RemoveScreen {
+                 RemovePanel {
                  id:removeScreen
                  opacity: 0;
                  height:parent.height

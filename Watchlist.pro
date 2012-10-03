@@ -44,7 +44,8 @@ OTHER_FILES += \
     res/qml/RemoveScreen.qml \
     res/qml/ConfirmButton.qml \
     res/qml/AbortButton.qml \
-    res/qml/TopBar.qml
+    res/qml/TopBar.qml \
+    res/qml/RemovePanel.qml
 
 QT           += sql
 QT += declarative

@@ -28,7 +28,6 @@
         <file>img/shutdown_Active.png</file>
         <file>img/shutdown.png</file>
         <file>qml/ShutdownButton.qml</file>
-        <file>qml/RemoveScreen.qml</file>
         <file>qml/AbortButton.qml</file>
         <file>qml/ConfirmButton.qml</file>
         <file>img/abort_Active.png</file>
@@ -37,5 +36,6 @@
         <file>img/confirm.png</file>
         <file>js/Global.js</file>
         <file>qml/TopBar.qml</file>
+        <file>qml/RemovePanel.qml</file>
     </qresource>
 </RCC>
