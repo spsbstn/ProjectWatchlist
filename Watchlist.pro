@@ -10,6 +10,7 @@ SOURCES += src/main.cpp \
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
 
+
 RESOURCES += \
     res/res.qrc
 
