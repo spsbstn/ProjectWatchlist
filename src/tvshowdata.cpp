@@ -34,11 +34,11 @@ int TvShowData::addShow(const TvShow& show)
 
 
 // First creates new TvShow out of name, then inserts it
-int TvShowData::addShow(const QString &name)
+int TvShowData::addShow(const QString &name, const QString& genre)
 {
     Database db;
-    db.addShow(name);
-    TvShow* insert = new TvShow(name);
+    db.addShow(name,genre);
+    TvShow* insert = new TvShow(name, 1, 1,genre);
     return addShow(*insert);
 }
 

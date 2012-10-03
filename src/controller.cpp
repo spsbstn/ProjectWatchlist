@@ -6,9 +6,9 @@ Controller::Controller(QObject *parent) :
     data(new TvShowData())
 {}
 
-void Controller::add(const QString& name)
+void Controller::add(const QString& name, const QString& genre)
 {
-    data->addShow(name);
+    data->addShow(name, genre);
 }
 
 void Controller::remove(const QString& name){

@@ -32,15 +32,15 @@ Database::Database(QObject *parent) :
 
 }
 
-void Database::addShow(QString name) {
+void Database::addShow(QString name, QString genre) {
 
     QSqlQuery qry;
 
-    qry.prepare( "INSERT INTO data (name, season, episode, genre) VALUES ('"+name+"', 1, 1,'No Genre')" );
+    qry.prepare( "INSERT INTO data (name, season, episode, genre) VALUES ('"+name+"', 1, 1,'"+genre+"')" );
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-        qDebug() << name + " inserted!";
+          qDebug() << name + " with genre " + genre + " inserted!";
             closeDatabase();
 
 }

@@ -26,7 +26,7 @@ public:
     // (-1 if successfully added)
     // TODO : Inform User if already added
     int addShow(const TvShow &show);
-    int addShow(const QString &name);
+    int addShow(const QString &name, const QString &genre);
 
     // Overloaded functions: removes show either via the show-object or
     // via its name. The function returns the index, the show was deleted at,

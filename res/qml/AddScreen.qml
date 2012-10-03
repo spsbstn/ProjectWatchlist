@@ -51,8 +51,10 @@ Item {
                     }
                 text: qsTr("Name")
                 font.pixelSize: height-(height/5)
-                validator: RegExpValidator { regExp: /^(?!\s*$).+/ }
-                onAccepted: controller.add(nameInput.text.toLowerCase(),addScreen.opacity=0)
+                onAccepted: if(nameInput.text != "Name" && nameInput.text != "" &&
+                                    genreInput.text != "Genre" && genreInput.text != ""){
+                                controller.add(nameInput.text.toLowerCase(),genreInput.text.toLocaleLowerCase(),addScreen.opacity=0)
+                            }
                 Keys.onEscapePressed: addScreen.opacity=0;
                 Keys.onTabPressed: {if(text==""){text="Name"};
                                     focus=false;
@@ -91,8 +93,10 @@ Item {
                 text: qsTr("Genre")
                 focus:false
                 font.pixelSize: height-(height/5)
-                validator: RegExpValidator { regExp: /^(?!\s*$).+/ }
-                onAccepted: controller.add(nameInput.text.toLowerCase(),addScreen.opacity=0)
+                onAccepted: if(nameInput.text != "Name" && nameInput.text != "" &&
+                                    genreInput.text != "Genre" && genreInput.text != ""){
+                                controller.add(nameInput.text.toLowerCase(),genreInput.text.toLocaleLowerCase(),addScreen.opacity=0)
+                            }
                 Keys.onEscapePressed: addScreen.opacity=0;
                 Keys.onTabPressed: { if(text==""){text="Genre"};
                                     focus=false;
@@ -118,14 +122,17 @@ Item {
                  anchors.bottomMargin: 15
                  anchors.right: addScreenTile.right
                  anchors.rightMargin: 15
-                 onClicked: if(nameInput.text.match(/^(?!\s*$).+/)){
-                                nameInput.accepted();
+                 onClicked: if(nameInput.text != "Name" && nameInput.text != "" &&
+                                    genreInput.text != "Genre" && genreInput.text != ""){
+                                  nameInput.accepted();
                                 }
                  }
     }
     states: [ State {
                         when: addScreen.opacity==0
                         StateChangeScript { script:nameInput.text="Name" }
+                        StateChangeScript { script:genreInput.text="Genre" }
+
                     },
               State {
                         when: addScreen.opacity==1
