@@ -32,7 +32,7 @@ Item {
             Text {
 
                 anchors.centerIn: parent
-                text:"Watchlist alpha"
+                text:"Watchlist v1.0"
                 color:"#00aaff"
                 font.pixelSize: 16
                 font.capitalization:Font.AllLowercase;
