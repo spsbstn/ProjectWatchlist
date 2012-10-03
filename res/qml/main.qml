@@ -88,13 +88,15 @@ Rectangle {
             transitions: Transition {
                 NumberAnimation { properties: "opacity"; duration: 400 }
             }
+
+            MouseArea {
+                  id:clickProtection
+                  anchors.fill:parent
+                  enabled:false
+                           }
         }
 
-MouseArea {
-      id:clickProtection
-      anchors.fill:mainWindow
-      enabled:false
-               }
+
 
 //Bottombar
         Rectangle {
@@ -151,7 +153,8 @@ MouseArea {
 
              MouseArea {
              anchors.fill:parent
-             onClicked: showAddScreen.start()
+             onClicked: {showAddScreen.start();
+                         clickProtection.enabled=true;}
              }
 
 

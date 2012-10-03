@@ -55,7 +55,8 @@ Item {
                                     genreInput.text != "Genre" && genreInput.text != ""){
                                 controller.add(nameInput.text.toLowerCase(),genreInput.text.toLocaleLowerCase(),addScreen.opacity=0)
                             }
-                Keys.onEscapePressed: addScreen.opacity=0;
+                Keys.onEscapePressed: {addScreen.opacity=0;
+                    clickProtection.enabled=false;}
                 Keys.onTabPressed: {if(text==""){text="Name"};
                                     focus=false;
                                     genreInput.focus=true;}
@@ -95,9 +96,11 @@ Item {
                 font.pixelSize: height-(height/5)
                 onAccepted: if(nameInput.text != "Name" && nameInput.text != "" &&
                                     genreInput.text != "Genre" && genreInput.text != ""){
+                                clickProtection.enabled=false;
                                 controller.add(nameInput.text.toLowerCase(),genreInput.text.toLocaleLowerCase(),addScreen.opacity=0)
                             }
-                Keys.onEscapePressed: addScreen.opacity=0;
+                Keys.onEscapePressed: {addScreen.opacity=0;
+                                       clickProtection.enabled=false;}
                 Keys.onTabPressed: { if(text==""){text="Genre"};
                                     focus=false;
                                     nameInput.focus=true;}
@@ -115,7 +118,8 @@ Item {
             anchors.topMargin: -11
             anchors.rightMargin: -11
             anchors.right:parent.right
-            onClicked: addScreen.opacity=0}
+            onClicked: {addScreen.opacity=0
+                        clickProtection.enabled=false;}}
             PlusButtonDark {
                  id:addButton
                  anchors.bottom: addScreenTile.bottom
@@ -125,6 +129,7 @@ Item {
                  onClicked: if(nameInput.text != "Name" && nameInput.text != "" &&
                                     genreInput.text != "Genre" && genreInput.text != ""){
                                   nameInput.accepted();
+                                clickProtection.enabled=false;
                                 }
                  }
     }
