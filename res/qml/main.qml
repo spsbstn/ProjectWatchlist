@@ -71,6 +71,11 @@ Rectangle {
              anchors.left: leftBar.left
              anchors.leftMargin: 20
              onClicked: showAddScreen.start()
+
+             ToolTip {
+                 toolTip: "Click or press Ctrl+T \n to add Show"
+             }
+
          }
 
 //GridView

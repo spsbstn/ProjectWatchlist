@@ -37,5 +37,6 @@
         <file>js/Global.js</file>
         <file>qml/TopBar.qml</file>
         <file>qml/RemovePanel.qml</file>
+        <file>qml/ToolTip.qml</file>
     </qresource>
 </RCC>
