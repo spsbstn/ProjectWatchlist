@@ -4,7 +4,7 @@
 #include <QDeclarativeContext>
 #include <QtDeclarative>
 #include "cursorshapearea.h"
-#include "NcFramelessHelper.h"
+#include "libs/NcFramelessHelper.h"
 #include "controller.h"
 #include "database.h"
 
