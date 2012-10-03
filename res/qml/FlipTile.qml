@@ -78,7 +78,8 @@ front: Rectangle {
            Text {
 
              id:text1
-             anchors.centerIn: parent
+             anchors.horizontalCenter: parent.horizontalCenter
+             anchors.top:parent.top
              color: mainWindow.textColor
              font.weight: Font.Light
              text: "Episode: " + episode
@@ -90,7 +91,7 @@ front: Rectangle {
                     id: episodeIncrease
                     anchors.right:parent.right
                     anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2
-                    anchors.top:parent.top
+                    anchors.verticalCenter: parent.verticalCenter
                     onClicked: controller.setEpisode(seriesName.text, +1);
            }
 
@@ -99,7 +100,7 @@ front: Rectangle {
                     id: episodeDecrease
                     anchors.left:parent.left
                     anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2+(width/4)
-                    anchors.top:parent.top
+                    anchors.verticalCenter: parent.verticalCenter
                     onClicked: controller.setEpisode(seriesName.text, -1);
            }
 
@@ -127,7 +128,8 @@ front: Rectangle {
             Text {
 
                    id:text2
-                   anchors.centerIn: parent
+                   anchors.horizontalCenter: parent.horizontalCenter
+                   anchors.top:parent.top
                    color: mainWindow.textColor
                    text: "Season: " + season
                    font.weight: Font.Light
@@ -139,7 +141,7 @@ front: Rectangle {
                    id: seasonIncrease
                    anchors.right:parent.right
                    anchors.rightMargin: (seasonTxt.width-text2.width-(2*width))/2
-                   anchors.top:parent.top
+                   anchors.verticalCenter: parent.verticalCenter
                    onClicked: controller.setSeason(seriesName.text, +1);
              }
 
@@ -148,7 +150,7 @@ front: Rectangle {
                     id: seasonDecrease
                     anchors.left:parent.left
                     anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2+(width/4)
-                    anchors.top:parent.top
+                    anchors.verticalCenter: parent.verticalCenter
                     onClicked: controller.setSeason(seriesName.text, -1);
              }
 
