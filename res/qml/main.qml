@@ -4,6 +4,7 @@ import QtQuick 1.1
 
 Rectangle {
     id: mainWindow
+    focus:true
     width: 1366
     height: 768
     color: appBackground
@@ -19,9 +20,13 @@ Rectangle {
     property string textColor: "#484848"
     property string uiFont: "Helvetica-Neue"
 
+    NumberAnimation {id: showAddScreen; target:addScreen; property:"opacity"; to:1; duration: 400}
+    Keys.onPressed: { if ( (event.key === Qt.Key_T) && event.modifiers === Qt.ControlModifier)
+                         showAddScreen.start();
+              }
+
 
 // DragArea
-
     MouseArea {
         id: dragArea
         property variant clickPos: "1,1"
@@ -65,7 +70,7 @@ Rectangle {
              anchors.bottomMargin: 20
              anchors.left: leftBar.left
              anchors.leftMargin: 20
-             onClicked: NumberAnimation { target:addScreen; property:"opacity"; to:1; duration: 400}
+             onClicked: showAddScreen.start()
          }
 
 //GridView
@@ -79,7 +84,6 @@ Rectangle {
             cellHeight: parseInt(grid.height / 3)
             cellWidth: parseInt(cellHeight * 1.1)
             clip: false
-            focus: true
             model: datalist //dataSource
             delegate: FlipTile{}
 

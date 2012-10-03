@@ -132,6 +132,7 @@ Item {
                         when: addScreen.opacity==0
                         StateChangeScript { script:nameInput.text="Name" }
                         StateChangeScript { script:genreInput.text="Genre" }
+                        PropertyChanges   { target:mainWindow; focus:true; }
 
                     },
               State {
