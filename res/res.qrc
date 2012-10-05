@@ -38,5 +38,6 @@
         <file>qml/TopBar.qml</file>
         <file>qml/RemovePanel.qml</file>
         <file>qml/ToolTip.qml</file>
+        <file>js/imdb.js</file>
     </qresource>
 </RCC>

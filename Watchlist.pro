@@ -47,7 +47,9 @@ OTHER_FILES += \
     res/qml/AbortButton.qml \
     res/qml/TopBar.qml \
     res/qml/RemovePanel.qml \
-    res/qml/ToolTip.qml
+    res/qml/ToolTip.qml \
+    imdb.js \
+    res/js/imdb.js
 
 QT           += sql
 QT += declarative

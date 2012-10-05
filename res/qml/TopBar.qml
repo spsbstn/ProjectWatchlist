@@ -1,4 +1,5 @@
 import QtQuick 1.1
+import "..///js/imdb.js" as Imdb
 
 Item {
     Rectangle{
@@ -43,6 +44,9 @@ Item {
                 axis.x: 0; axis.y: 1; axis.z: 0
                 angle: 0.01 }
 
+            }
+            PlusButtonDark {
+                onReleased: Imdb.getShow("Breaking+Bad")
             }
     }
 
