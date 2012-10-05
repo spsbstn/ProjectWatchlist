@@ -1,6 +1,6 @@
 function getShow(name) {
 // todo parse name to fit URL
-request("http://www.omdbapi.com/?i=&t=House", function (o) {
+request("http://www.omdbapi.com/?i=&t=Breaking+Bad", function (o) {
 
                     // translate response into object
                        var d = eval('new Object(' + o.responseText + ')');
