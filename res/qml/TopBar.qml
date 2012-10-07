@@ -35,8 +35,13 @@ Item {
                anchors.bottomMargin:5
                anchors.rightMargin: 10
                anchors.right:shutdownButton.left
+<<<<<<< HEAD
                onClicked:mainWindow.colorScheme="dark"
             }
+=======
+               onClicked:mainWindow.colorScheme="darkGreen"
+}
+>>>>>>> changed scheme-names
             Button {
                 id: lightColorButton
                 buttonHeight:12
@@ -46,6 +51,7 @@ Item {
                 anchors.bottomMargin:5
                 anchors.rightMargin: 10
                 anchors.right:darkColorButton.left
+<<<<<<< HEAD
                 onClicked:mainWindow.colorScheme="light"
             }
             Button {
@@ -59,6 +65,11 @@ Item {
                 anchors.right:lightColorButton.left
                 onClicked:mainWindow.colorScheme="red"
             }
+=======
+                onClicked:mainWindow.colorScheme="grey"
+
+    }
+>>>>>>> changed scheme-names
     }
 
     Rectangle{
