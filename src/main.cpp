@@ -7,6 +7,7 @@
 
 int main(int argc, char *argv[])
 {
+    QApplication::setApplicationName("Watchlist");
     QApplication::setGraphicsSystem(QLatin1String("raster"));
     QApplication app(argc, argv);
     Controller* ctrl = new Controller;
