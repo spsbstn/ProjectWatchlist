@@ -20,7 +20,7 @@ Rectangle {
     property string tileBackground: "#CCCCCC"
     property string textColor: "#484848"
     property string uiFont: "Helvetica-Neue"
-    property string colorScheme: "light"
+    property string colorSheme: "light"
 
     NumberAnimation {id: showAddScreen; target:addScreen; property:"opacity"; to:1; duration: 400}
     Keys.onPressed: { if ( (event.key === Qt.Key_T) && event.modifiers === Qt.ControlModifier)
@@ -165,7 +165,7 @@ Rectangle {
          }
 
         states: [ State {
-                when: colorScheme=="light"
+                when: colorSheme=="light"
                 changes: [PropertyChanges {target:mainWindow;appBackground:"#EEEEEE"},
                 PropertyChanges {target:mainWindow;tileBackground:"#CCCCCC"},
                 PropertyChanges {target:mainWindow;textColor:"#484848"},
@@ -173,12 +173,19 @@ Rectangle {
 
                         },
                   State {
-                when: colorScheme=="dark"
+                when: colorSheme=="dark"
                 changes: [PropertyChanges{target:mainWindow;appBackground:"#333333"},
                 PropertyChanges {target:mainWindow;tileBackground:"#30bf6e"},
                 PropertyChanges{target:mainWindow;textColor:"#ffffff"},
-                StateChangeScript { script:controller.changeColorScheme("#333333")}]
-                        }
+                StateChangeScript { script:controller.changeColorSheme("#333333")}]
+                        },
+                   State {
+                 when: colorSheme=="red"
+                 changes: [PropertyChanges{target:mainWindow;appBackground:"#000000"},
+                 PropertyChanges {target:mainWindow;tileBackground:"#5A050D"},
+                 PropertyChanges{target:mainWindow;textColor:"#ffffff"},
+                 StateChangeScript { script:controller.changeColorSheme("#000000")}]
+                         }
 
                  ]
 

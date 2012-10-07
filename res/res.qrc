@@ -33,5 +33,6 @@
         <file>img/darkGreenSheme.png</file>
         <file>img/lightGreySheme.png</file>
         <file>qml/Button.qml</file>
+        <file>img/darkRedSheme.png</file>
     </qresource>
 </RCC>

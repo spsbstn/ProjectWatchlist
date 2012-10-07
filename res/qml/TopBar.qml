@@ -36,8 +36,9 @@ Item {
                anchors.rightMargin: 10
                anchors.right:shutdownButton.left
                onClicked:mainWindow.colorScheme="dark"
-}
+            }
             Button {
+                id: lightColorButton
                 buttonHeight:12
                 buttonWidth: 12
                 buttonNormal: "qrc:../..///img/lightGreySheme.png"
@@ -46,8 +47,18 @@ Item {
                 anchors.rightMargin: 10
                 anchors.right:darkColorButton.left
                 onClicked:mainWindow.colorScheme="light"
-
-    }
+            }
+            Button {
+                id: redColorButton
+                buttonHeight:12
+                buttonWidth: 12
+                buttonNormal: "qrc:../..///img/darkRedSheme.png"
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin:5
+                anchors.rightMargin: 10
+                anchors.right:lightColorButton.left
+                onClicked:mainWindow.colorScheme="red"
+            }
     }
 
     Rectangle{
