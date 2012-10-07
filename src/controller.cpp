@@ -73,6 +73,6 @@ void Controller::setEpisode(const QString &name, int delta)
 void Controller::changeColorSheme(const QString &color){
 
 
-    qDebug() << "changeWindow color to  " + color;
+     mainWidget->setStyleSheet("background:'"+color+"'");
 
 }
