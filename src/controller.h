@@ -1,6 +1,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 #include <QObject>
+#include <QSettings>
 
 class MainView;
 class Database;
@@ -19,13 +20,15 @@ public:
     Q_INVOKABLE void remove(const QString& name);
     Q_INVOKABLE void setSeason(const QString& name, int delta);
     Q_INVOKABLE void setEpisode(const QString& name, int delta);
-    Q_INVOKABLE void changeColorScheme(const QString& color);
+    Q_INVOKABLE void changeColorScheme(const QString& color,const QString &schemeName);
+    Q_INVOKABLE QString loadColorScheme();
 
     QWidget  *mainWidget;
     QDeclarativeView  *qmlView;
     NcFramelessHelper *framelessHelper;
     QVBoxLayout *layout;
     Database    *db;
+    QSettings* settings;
 
 };
 

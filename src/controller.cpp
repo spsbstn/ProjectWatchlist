@@ -18,6 +18,9 @@ Controller::Controller(QObject *parent) :
 {
     //  Load Database
     db->load();
+    settings = new QSettings("Watchlist");
+
+
 
     //  Setting up Declarative View
         // Resize Mode
@@ -40,7 +43,6 @@ Controller::Controller(QObject *parent) :
     //  Set Layout
         layout->addWidget(qmlView);
         mainWidget->setLayout(layout);
-        mainWidget->setStyleSheet("background:'#eeeeee'");
 
     //  Activate framelessHelper
         framelessHelper->activateOn(mainWidget);
@@ -70,10 +72,21 @@ void Controller::setEpisode(const QString &name, int delta)
     db->data->setEpisode(name, delta);
 }
 
-void Controller::changeColorScheme(const QString &color){
+void Controller::changeColorScheme(const QString &color,const QString &schemeName){
 
 
      mainWidget->setStyleSheet("background:'"+color+"'");
+     settings->setValue("colorScheme", schemeName);
+     settings->setValue("color",color);
+
+}
+
+QString Controller::loadColorScheme(){
+
+    QString schemeName = settings->value("colorScheme").toString();
+    QString color = settings->value("color").toString();
+    mainWidget->setStyleSheet("background:'"+color+"'");
+    return schemeName;
 
 }
 
