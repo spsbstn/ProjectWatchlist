@@ -3,6 +3,7 @@
 #include <QtSql>
 #include <QtDebug>
 #include <QErrorMessage>
+#include <QDesktopServices>
 
 #include "tvshow.h"
 
@@ -21,6 +22,7 @@ Database::Database(QObject *parent) :
   db.setDatabaseName( "./data.db" );
 
 #else // OS is not Windows
+  QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
   if (!QFile::exists(path)) {
           QDir dir;
           dir.mkpath(path);
