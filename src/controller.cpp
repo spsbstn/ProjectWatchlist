@@ -70,9 +70,10 @@ void Controller::setEpisode(const QString &name, int delta)
     db->data->setEpisode(name, delta);
 }
 
-void Controller::changeColorSheme(const QString &color){
+void Controller::changeColorScheme(const QString &color){
 
 
      mainWidget->setStyleSheet("background:'"+color+"'");
 
 }
+

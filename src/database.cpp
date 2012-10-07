@@ -28,7 +28,8 @@ Database::Database(QObject *parent) :
         if( !qry.exec() )
           qDebug() << qry.lastError();
         else
-          qDebug() << "Main-Table created!";
+          qDebug() << "datatable created!";
+
 
 }
 

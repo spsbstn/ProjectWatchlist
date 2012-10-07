@@ -19,7 +19,7 @@ public:
     Q_INVOKABLE void remove(const QString& name);
     Q_INVOKABLE void setSeason(const QString& name, int delta);
     Q_INVOKABLE void setEpisode(const QString& name, int delta);
-    Q_INVOKABLE void changeColorSheme(const QString& color);
+    Q_INVOKABLE void changeColorScheme(const QString& color);
 
     QWidget  *mainWidget;
     QDeclarativeView  *qmlView;

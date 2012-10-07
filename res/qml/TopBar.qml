@@ -35,7 +35,7 @@ Item {
                anchors.bottomMargin:5
                anchors.rightMargin: 10
                anchors.right:shutdownButton.left
-               onClicked:mainWindow.colorSheme="dark"
+               onClicked:mainWindow.colorScheme="dark"
 }
             Button {
                 buttonHeight:12
@@ -45,7 +45,7 @@ Item {
                 anchors.bottomMargin:5
                 anchors.rightMargin: 10
                 anchors.right:darkColorButton.left
-                onClicked:mainWindow.colorSheme="light"
+                onClicked:mainWindow.colorScheme="light"
 
     }
     }
