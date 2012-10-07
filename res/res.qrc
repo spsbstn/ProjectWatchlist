@@ -29,7 +29,6 @@
         <file>qml/TopBar.qml</file>
         <file>qml/RemovePanel.qml</file>
         <file>qml/ToolTip.qml</file>
-        <file>js/imdb.js</file>
         <file>img/darkGreenSheme.png</file>
         <file>img/lightGreySheme.png</file>
         <file>qml/Button.qml</file>

@@ -1,5 +1,4 @@
 import QtQuick 1.1
-import "..///js/imdb.js" as Imdb
 
 Item {
     Rectangle{
