@@ -3,6 +3,7 @@ import QtQuick 1.1
 Rectangle {
 
     property double mainOpacity:0
+    property int showID;
 
     id:mainInfoWindow
     width: mainWindow.width-100
@@ -26,7 +27,7 @@ Rectangle {
 
     XmlListModel {
         id: xmlModel
-        source: "http://services.tvrage.com/feeds/full_search.php?show=Breaking+Bad"
+        source: "http://services.tvrage.com/feeds/full_search.php?show=Supernatural"
         query: "/Results/show[1]"
 
         XmlRole { name: "name"; query: "name/string()" }
@@ -42,6 +43,7 @@ Rectangle {
         XmlRole { name: "network"; query: "network/string()" }
         XmlRole { name: "airtime"; query: "airtime/string()" }
         XmlRole { name: "airday"; query: "airday/string()" }
+
 
 
     }
@@ -83,12 +85,31 @@ Rectangle {
             anchors.top:genresInfo.bottom
             text:"Every " + airday +" " + airtime + " on " +network}
 
+
+
+
+        XmlListModel {
+            id: imageModel
+            source: ("http://services.tvrage.com/feeds/full_show_info.php?sid="+showid)
+            query: "/Show"
+
+            XmlRole { name:"hans"; query: "image/string()" }
+
+        }
+
+        ListView {
+            width: 200; height: 200
+            model: imageModel
+            delegate:
+
         Image {
             id:image
-            anchors.top:timeInfo.bottom
-            source: "http://images.tvrage.com/shows/19/18164.jpg"
+            source:hans
             width: 300
             height: 300}
+        }
     }
     }
-}
+    }
+
+

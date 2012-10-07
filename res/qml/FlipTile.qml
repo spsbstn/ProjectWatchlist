@@ -12,7 +12,10 @@ front: Rectangle {
 
          width: parent.width - tileMargin
          height: parent.height - tileMargin
-         color: mainWindow.tileBackground
+        Image {
+        anchors.fill:parent
+        source:"http://images.tvrage.com/shows/4/3332.jpg"
+        }
 
                  Text {
 
