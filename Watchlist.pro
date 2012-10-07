@@ -29,27 +29,17 @@ OTHER_FILES += \
     res/qml/FlipTile.qml \
     res/qml/AddScreen.qml \
     res/qml/SplashScreen.qml \
-    res/qml/PlusButtonLight.qml \
-    res/qml/PlusButtonDark.qml \
     res/qml/MinusButtonDark .qml \
     res/qml/MinusButtonDark .qml \
-    res/qml/MinusButtonDark.qml \
-    res/qml/RightButton.qml \
-    res/qml/LeftButton.qml \
     icons.rc \
-    res/qml/CloseScreenButton.qml \
-    res/qml/ShutdownButton.qml \
     res/js/Global.js \
     res/qml/RemoveScreen.qml \
-    res/qml/ConfirmButton.qml \
-    res/qml/AbortButton.qml \
     res/qml/TopBar.qml \
     res/qml/RemovePanel.qml \
     res/qml/ToolTip.qml \
     imdb.js \
     res/js/imdb.js \
-    res/qml/LighGreyShemeButton.qml \
-    res/qml/DarkGreenShemeButton.qml
+    res/qml/Button.qml
 
 QT           += sql
 QT += declarative

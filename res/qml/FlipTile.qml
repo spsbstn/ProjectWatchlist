@@ -85,18 +85,26 @@ front: Rectangle {
              wrapMode: Text.WordWrap;
              font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
          }
-           RightButton{
+           Button{
 
                     id: episodeIncrease
+                    buttonHeight: 18
+                    buttonWidth: 18
+                    buttonNormal: "qrc:../..///img/rightButton.png"
+                    buttonActive: "qrc:../..///img/rightButton_Active.png"
                     anchors.right:parent.right
                     anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2
                     anchors.verticalCenter: parent.verticalCenter
                     onClicked: controller.setEpisode(seriesName.text, +1);
            }
 
-           LeftButton {
+           Button {
 
                     id: episodeDecrease
+                    buttonHeight: 18
+                    buttonWidth: 18
+                    buttonNormal: "qrc:../..///img/leftButton.png"
+                    buttonActive: "qrc:../..///img/leftButton_Active.png"
                     anchors.left:parent.left
                     anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2
                     anchors.verticalCenter: parent.verticalCenter
@@ -134,18 +142,26 @@ front: Rectangle {
                    wrapMode: Text.WordWrap;
                    font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
 }
-             RightButton{
+             Button{
 
                    id: seasonIncrease
+                   buttonHeight: 18
+                   buttonWidth: 18
+                   buttonNormal: "qrc:../..///img/rightButton.png"
+                   buttonActive: "qrc:../..///img/rightButton_Active.png"
                    anchors.right:parent.right
                    anchors.rightMargin: (seasonTxt.width-text2.width-(2*width))/2
                    anchors.verticalCenter: parent.verticalCenter
                    onClicked: controller.setSeason(seriesName.text, +1);
              }
 
-             LeftButton {
+             Button {
 
                     id: seasonDecrease
+                    buttonHeight: 18
+                    buttonWidth: 18
+                    buttonNormal: "qrc:../..///img/leftButton.png"
+                    buttonActive: "qrc:../..///img/leftButton_Active.png"
                     anchors.left:parent.left
                     anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2
                     anchors.verticalCenter: parent.verticalCenter
@@ -164,8 +180,12 @@ front: Rectangle {
                  }
              ]
          }
-        MinusButtonDark {
-
+        Button {
+             id:removeButton
+             buttonHeight:15
+             buttonWidth:15
+             buttonNormal: "qrc:../..///img/removeIcon_Dark.png"
+             buttonActive:"qrc:../..///img/removeIcon_Dark_Active.png"
              anchors.top: parent.top
              anchors.right:parent.right
              anchors.topMargin: 10
@@ -173,7 +193,6 @@ front: Rectangle {
              onPressed: {GlobalJS.activeSeries = seriesName.text;
                          clickProtection.enabled=true;}
              onReleased:NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400}
-
 
         }
 

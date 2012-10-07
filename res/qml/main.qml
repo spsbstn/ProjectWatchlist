@@ -138,15 +138,17 @@ Rectangle {
           z:0
        }
 
-        PlusButtonLight {
-
+    Button {
 
              id:addButton
              anchors.bottom: leftBar.bottom
              anchors.bottomMargin: 20
              anchors.left: leftBar.left
              anchors.leftMargin: 20
-
+             buttonNormal:"qrc:../..///img/addIcon.png"
+             buttonActive:"qrc:../..///img/addIcon_Active.png"
+             buttonHeight: 35
+             buttonWidth: 35
 
              ToolTip {
                  toolTip: "Click or press Ctrl+T \n to add Show"
@@ -174,7 +176,7 @@ Rectangle {
                 changes: [PropertyChanges{target:mainWindow;appBackground:"#333333"},
                 PropertyChanges {target:mainWindow;tileBackground:"#30bf6e"},
                 PropertyChanges{target:mainWindow;textColor:"#ffffff"},
-                    StateChangeScript { script:controller.changeColorSheme("#333333")}]
+                StateChangeScript { script:controller.changeColorSheme("#333333")}]
                         }
 
                  ]

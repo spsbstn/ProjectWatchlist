@@ -13,8 +13,12 @@ Item {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 15
 
-            ShutdownButton {
-                id:shutdown
+            Button {
+                id:shutdownButton
+                buttonHeight:12
+                buttonWidth: 12
+                buttonNormal: "qrc:../..///img/shutdown.png"
+                buttonActive: "qrc:../..///img/shutdown_Active.png"
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: 5
                 anchors.rightMargin: 10
@@ -22,19 +26,25 @@ Item {
                 onReleased: Qt.quit()
             }
 
-            DarkGreenShemeButton {
-               id:darkColor
+            Button {
+               id:darkColorButton
+               buttonHeight:12
+               buttonWidth: 12
+               buttonNormal: "qrc:../..///img/darkGreenSheme.png"
                anchors.bottom: parent.bottom
                anchors.bottomMargin:5
                anchors.rightMargin: 10
-               anchors.right:shutdown.left
+               anchors.right:shutdownButton.left
                onClicked:mainWindow.colorSheme="dark"
 }
-            LighGreyShemeButton {
+            Button {
+                buttonHeight:12
+                buttonWidth: 12
+                buttonNormal: "qrc:../..///img/lightGreySheme.png"
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin:5
                 anchors.rightMargin: 10
-                anchors.right:darkColor.left
+                anchors.right:darkColorButton.left
                 onClicked:mainWindow.colorSheme="light"
 
     }
@@ -61,9 +71,6 @@ Item {
                 axis.x: 0; axis.y: 1; axis.z: 0
                 angle: 0.01 }
 
-            }
-            PlusButtonDark {
-                onReleased: Imdb.getShow("Breaking+Bad")
             }
     }
 

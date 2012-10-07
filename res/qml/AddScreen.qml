@@ -113,15 +113,23 @@ Item {
                    }    }
 
             }
-            CloseScreenButton {
+            Button {
+            id:closeScreen
             anchors.top:parent.top
             anchors.topMargin: -11
             anchors.rightMargin: -11
             anchors.right:parent.right
+            buttonHeight:22
+            buttonWidth: 22
+            buttonNormal: "qrc:../..///img/closeScreenButton.png"
             onClicked: {addScreen.opacity=0
                         clickProtection.enabled=false;}}
-            PlusButtonDark {
+            Button {
                  id:addButton
+                 buttonHeight:16
+                 buttonWidth:16
+                 buttonNormal: "qrc:../..///img/addIcon_Dark.png"
+                 buttonActive: "qrc:../..///img/addIcon_Active_Dark.png"
                  anchors.bottom: addScreenTile.bottom
                  anchors.bottomMargin: 15
                  anchors.right: addScreenTile.right

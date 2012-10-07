@@ -12,24 +12,15 @@
         <file>qml/SplashScreen.qml</file>
         <file>img/addIcon_Active_Dark.png</file>
         <file>img/addIcon_Dark.png</file>
-        <file>qml/PlusButtonDark.qml</file>
-        <file>qml/PlusButtonLight.qml</file>
         <file>img/removeIcon_Dark_Active.png</file>
         <file>img/removeIcon_Dark.png</file>
-        <file>qml/MinusButtonDark.qml</file>
-        <file>qml/LeftButton.qml</file>
-        <file>qml/RightButton.qml</file>
         <file>img/leftButton_Active.png</file>
         <file>img/leftButton.png</file>
         <file>img/rightButton_Active.png</file>
         <file>img/rightButton.png</file>
-        <file>qml/CloseScreenButton.qml</file>
         <file>img/closeScreenButton.png</file>
         <file>img/shutdown_Active.png</file>
         <file>img/shutdown.png</file>
-        <file>qml/ShutdownButton.qml</file>
-        <file>qml/AbortButton.qml</file>
-        <file>qml/ConfirmButton.qml</file>
         <file>img/abort_Active.png</file>
         <file>img/abort.png</file>
         <file>img/confirm_Active.png</file>
@@ -39,9 +30,8 @@
         <file>qml/RemovePanel.qml</file>
         <file>qml/ToolTip.qml</file>
         <file>js/imdb.js</file>
-        <file>qml/DarkGreenShemeButton.qml</file>
-        <file>qml/LighGreyShemeButton.qml</file>
         <file>img/darkGreenSheme.png</file>
         <file>img/lightGreySheme.png</file>
+        <file>qml/Button.qml</file>
     </qresource>
 </RCC>
