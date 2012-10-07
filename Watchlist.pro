@@ -49,7 +49,9 @@ OTHER_FILES += \
     res/qml/RemovePanel.qml \
     res/qml/ToolTip.qml \
     imdb.js \
-    res/js/imdb.js
+    res/js/imdb.js \
+    res/qml/LighGreyShemeButton.qml \
+    res/qml/DarkGreenShemeButton.qml
 
 QT           += sql
 QT += declarative

@@ -39,5 +39,9 @@
         <file>qml/RemovePanel.qml</file>
         <file>qml/ToolTip.qml</file>
         <file>js/imdb.js</file>
+        <file>qml/DarkGreenShemeButton.qml</file>
+        <file>qml/LighGreyShemeButton.qml</file>
+        <file>img/darkGreenSheme.png</file>
+        <file>img/lightGreySheme.png</file>
     </qresource>
 </RCC>

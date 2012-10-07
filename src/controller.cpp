@@ -28,3 +28,9 @@ void Controller::setEpisode(const QString &name, int delta)
     data->setEpisode(name, delta);
 }
 
+void Controller::changeColorSheme(const QString &color){
+
+
+    qDebug() << "changeWindow color to  " + color;
+
+}

@@ -14,13 +14,30 @@ Item {
         anchors.bottomMargin: 15
 
             ShutdownButton {
-
+                id:shutdown
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: 5
                 anchors.rightMargin: 10
                 anchors.right:parent.right
                 onReleased: Qt.quit()
             }
+
+            DarkGreenShemeButton {
+               id:darkColor
+               anchors.bottom: parent.bottom
+               anchors.bottomMargin:5
+               anchors.rightMargin: 10
+               anchors.right:shutdown.left
+               onClicked:mainWindow.colorSheme="dark"
+}
+            LighGreyShemeButton {
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin:5
+                anchors.rightMargin: 10
+                anchors.right:darkColor.left
+                onClicked:mainWindow.colorSheme="light"
+
+    }
     }
 
     Rectangle{
