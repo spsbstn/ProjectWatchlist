@@ -15,7 +15,23 @@ Database::Database(QObject *parent) :
 
   QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
 
-      db.setDatabaseName( "./data.db" );
+// Set Database Location depending on Operating System
+#ifdef Q_OS_WIN32
+
+  db.setDatabaseName( "./data.db" );
+
+#else // OS is not Windows
+  if (!QFile::exists(path)) {
+          QDir dir;
+          dir.mkpath(path);
+      }
+      path.append(QDir::separator()).append("data.db");
+      path = QDir::toNativeSeparators(path);
+
+      qDebug() << path;
+
+      db.setDatabaseName(path);
+#endif
 
       if( !db.open() )
       {
