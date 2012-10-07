@@ -18,7 +18,9 @@ Controller::Controller(QObject *parent) :
 {
     //  Load Database
     db->load();
-    settings = new QSettings("Watchlist");
+
+    settings = new QSettings("Watchlist");   
+    //check for colorscheme-settings
     checkForFirstInit();
 
 
@@ -96,9 +98,10 @@ void Controller::checkForFirstInit(){
     if(settings->contains("colorScheme")){
 
         return;
+
     }
 
-    else {
+    else { //create default values
 
         settings->setValue("colorScheme", "grey");
         settings->setValue("color","#EEEEEE");
