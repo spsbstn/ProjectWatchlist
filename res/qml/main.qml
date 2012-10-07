@@ -169,8 +169,7 @@ Rectangle {
                 changes: [PropertyChanges {target:mainWindow;appBackground:"#EEEEEE"},
                 PropertyChanges {target:mainWindow;tileBackground:"#CCCCCC"},
                 PropertyChanges {target:mainWindow;textColor:"#484848"},
-                StateChangeScript { script:controller.changeColorScheme("#EEEEEE")},
-                StateChangeScript { script:GlobalJS.activeColorScheme="light"}]
+                StateChangeScript { script:controller.changeColorScheme("#EEEEEE")}]
 
                         },
                   State {
@@ -178,8 +177,7 @@ Rectangle {
                 changes: [PropertyChanges{target:mainWindow;appBackground:"#333333"},
                 PropertyChanges {target:mainWindow;tileBackground:"#30bf6e"},
                 PropertyChanges{target:mainWindow;textColor:"#ffffff"},
-                StateChangeScript { script:controller.changeColorScheme("#333333")},
-                StateChangeScript { script:GlobalJS.activeColorScheme="dark"}]
+                StateChangeScript { script:controller.changeColorScheme("#333333")}]
                         }
 
                  ]
