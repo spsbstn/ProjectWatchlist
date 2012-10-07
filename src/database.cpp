@@ -2,7 +2,10 @@
 
 #include <QtSql>
 #include <QtDebug>
+#include <QErrorMessage>
+
 #include "tvshow.h"
+
 
 //init or load database
 Database::Database(QObject *parent) :
@@ -17,7 +20,7 @@ Database::Database(QObject *parent) :
       if( !db.open() )
       {
         qDebug() << db.lastError();
-        qFatal( "Failed to connect." );
+
       }
 
       qDebug( "Connected!" );
@@ -26,7 +29,13 @@ Database::Database(QObject *parent) :
 
       qry.prepare( "CREATE TABLE IF NOT EXISTS data (name VARCHAR(30) UNIQUE PRIMARY KEY, season INTEGER, episode INTEGER, genre VARCHAR(30))" );
         if( !qry.exec() )
-          qDebug() << qry.lastError();
+          {
+                qDebug() << qry.lastError();
+
+                QErrorMessage errorMessage;
+                errorMessage.showMessage("Unable to load database. Please delete data.db manually.");
+                errorMessage.exec();
+        }
         else
           qDebug() << "datatable created!";
 
