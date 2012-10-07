@@ -72,7 +72,7 @@ Item {
             Text {
 
                 anchors.centerIn: parent
-                text:"Watchlist v1.0"
+                text:"Watchlist v1.1 beta"
                 color:"#00aaff"
                 font.pixelSize: 16
                 font.capitalization:Font.AllLowercase;
@@ -85,7 +85,6 @@ Item {
 
             }
     }
-
 
 
     Rectangle {
