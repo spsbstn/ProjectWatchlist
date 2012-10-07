@@ -23,6 +23,8 @@ public:
     Q_INVOKABLE void changeColorScheme(const QString& color,const QString &schemeName);
     Q_INVOKABLE QString loadColorScheme();
 
+    void checkForFirstInit();
+
     QWidget  *mainWidget;
     QDeclarativeView  *qmlView;
     NcFramelessHelper *framelessHelper;

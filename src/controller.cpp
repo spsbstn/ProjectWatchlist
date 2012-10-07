@@ -19,6 +19,7 @@ Controller::Controller(QObject *parent) :
     //  Load Database
     db->load();
     settings = new QSettings("Watchlist");
+    checkForFirstInit();
 
 
 
@@ -87,6 +88,21 @@ QString Controller::loadColorScheme(){
     QString color = settings->value("color").toString();
     mainWidget->setStyleSheet("background:'"+color+"'");
     return schemeName;
+
+}
+
+void Controller::checkForFirstInit(){
+
+    if(settings->contains("colorScheme")){
+
+        return;
+    }
+
+    else {
+
+        settings->setValue("colorScheme", "grey");
+        settings->setValue("color","#EEEEEE");
+    }
 
 }
 
