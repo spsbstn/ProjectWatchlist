@@ -34,5 +34,6 @@
         <file>img/lightGreySheme.png</file>
         <file>qml/Button.qml</file>
         <file>img/darkRedSheme.png</file>
+        <file>qml/InfoScreen.qml</file>
     </qresource>
 </RCC>

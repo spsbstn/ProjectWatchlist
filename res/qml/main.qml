@@ -164,6 +164,10 @@ Rectangle {
 
          }
 
+    InfoScreen{
+    mainOpacity: 1
+    }
+
         states: [ State {
                 when: colorScheme=="grey"
                 changes: [PropertyChanges {target:mainWindow;appBackground:"#EEEEEE"},

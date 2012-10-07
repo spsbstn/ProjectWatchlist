@@ -38,10 +38,10 @@ OTHER_FILES += \
     res/qml/RemovePanel.qml \
     res/qml/ToolTip.qml \
     imdb.js \
-    res/js/imdb.js \
-    res/qml/Button.qml
+    res/qml/Button.qml \
+    res/qml/InfoScreen.qml
 
-QT           += sql
+QT += sql
 QT += declarative
 
 #Mac Icons
