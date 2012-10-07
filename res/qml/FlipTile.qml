@@ -24,7 +24,7 @@ front: Rectangle {
                     font.weight:Font.Light
                     width:parent.width
                     horizontalAlignment: Text.AlignHCenter
-                    wrapMode: Text.WordWrap
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font {
                         capitalization: Font.AllUppercase;
                         pointSize: mainWindow.tileHeaderFontSize
