@@ -3,17 +3,17 @@
 #include <QStyle>
 #include <QDesktopWidget>
 
-#include "mainview.h"
+#include "controller.h"
 
 int main(int argc, char *argv[])
 {
     QApplication::setGraphicsSystem(QLatin1String("raster"));
     QApplication app(argc, argv);
-    MainView* view = new MainView;
-    QObject::connect((QObject*)view->qmlView->engine(), SIGNAL(quit()), &app, SLOT(quit()));
+    Controller* ctrl = new Controller;
+    QObject::connect((QObject*)ctrl->qmlView->engine(), SIGNAL(quit()), &app, SLOT(quit()));
 
-    view->show();
-    view->setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
-                          view->size(), app.desktop()->availableGeometry()) );
+    ctrl->mainWidget->show();
+    ctrl->mainWidget->setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
+                          ctrl->mainWidget->size(), app.desktop()->availableGeometry()) );
     return app.exec();
 }

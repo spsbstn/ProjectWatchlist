@@ -2,7 +2,12 @@
 #define CONTROLLER_H
 #include <QObject>
 
-#include "tvshowdata.h"
+class MainView;
+class Database;
+class QDeclarativeView;
+class QVBoxLayout;
+class NcFramelessHelper;
+
 
 class Controller : public QObject
 {
@@ -16,7 +21,12 @@ public:
     Q_INVOKABLE void setEpisode(const QString& name, int delta);
     Q_INVOKABLE void changeColorSheme(const QString& color);
 
-    TvShowData* data;
+    QWidget  *mainWidget;
+    QDeclarativeView  *qmlView;
+    NcFramelessHelper *framelessHelper;
+    QVBoxLayout *layout;
+    Database    *db;
+
 };
 
 #endif // CONTROLLER_H

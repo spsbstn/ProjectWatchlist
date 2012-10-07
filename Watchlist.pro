@@ -4,7 +4,6 @@ SOURCES += src/main.cpp \
     src/controller.cpp \
     src/database.cpp \
     src/cursorshapearea.cpp \
-    src/mainview.cpp \
     libs/NcFramelessHelper.cpp
 
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -20,7 +19,6 @@ HEADERS += \
     src/controller.h \
     src/database.h \
     src/cursorshapearea.h \
-    src/mainview.h \
     libs/NcFramelessHelper.h
 
 
