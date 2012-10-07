@@ -177,24 +177,15 @@ Rectangle {
                 changes: [PropertyChanges{target:mainWindow;appBackground:"#333333"},
                 PropertyChanges {target:mainWindow;tileBackground:"#30bf6e"},
                 PropertyChanges{target:mainWindow;textColor:"#ffffff"},
-<<<<<<< HEAD
-<<<<<<< HEAD
-                StateChangeScript { script:controller.changeColorSheme("#333333")}]
+                    StateChangeScript { script:controller.changeColorScheme("#333333","darkGreen")}]
                         },
                    State {
-                 when: colorScheme=="red"
+                 when: colorScheme=="darkRed"
                  changes: [PropertyChanges{target:mainWindow;appBackground:"#000000"},
                  PropertyChanges {target:mainWindow;tileBackground:"#5A050D"},
                  PropertyChanges{target:mainWindow;textColor:"#ffffff"},
-                 StateChangeScript { script:controller.changeColorSheme("#000000")}]
-                         }
-=======
-                    StateChangeScript { script:controller.changeColorScheme("#333333","dark")}]
-=======
-                    StateChangeScript { script:controller.changeColorScheme("#333333","darkGreen")}]
->>>>>>> changed scheme-names
+                 StateChangeScript { script:controller.changeColorScheme("#000000","darkRed")}]
                         }
->>>>>>> save colorscheme
 
                  ]
 
