@@ -56,11 +56,13 @@ Controller::Controller(QObject *parent) :
 void Controller::add(const QString& name, const QString& genre)
 {
     db->data->addShow(name, genre);
+    db->addShow(name,genre);
 }
 
 void Controller::remove(const QString& name){
 
     db->data->removeShow(name);
+    db->removeShow(name);
 }
 
 
@@ -68,11 +70,13 @@ void Controller::remove(const QString& name){
 void Controller::setSeason(const QString& name, int delta)
 {
     db->data->setSeason(name, delta);
+    db->alterSeason(name,delta);
 }
 
 void Controller::setEpisode(const QString &name, int delta)
 {
     db->data->setEpisode(name, delta);
+    db->alterEpisode(name,delta);
 }
 
 void Controller::changeColorScheme(const QString &color,const QString &schemeName){

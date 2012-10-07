@@ -36,8 +36,6 @@ int TvShowData::addShow(const TvShow& show)
 // First creates new TvShow out of name, then inserts it
 int TvShowData::addShow(const QString &name, const QString& genre)
 {
-    Database db;
-    db.addShow(name,genre);
     TvShow* insert = new TvShow(name, 1, 1,genre);
     return addShow(*insert);
 }
@@ -70,8 +68,7 @@ int TvShowData::removeShow(const QString &name)
 
     if (index != -1)
     {
-        Database db;
-        db.removeShow(name);
+
         beginRemoveRows(QModelIndex(), index, index);
         shows.erase(shows.begin() + index);
         endRemoveRows();
@@ -95,9 +92,6 @@ void TvShowData::setSeason(const QString &name, int delta)
 
     if (index != -1)
     {
-        // Database-Changes
-        Database db;
-        db.alterSeason(name, delta);
 
         // Changes in Model
         shows[index].setSeason(delta);
@@ -117,9 +111,6 @@ void TvShowData::setEpisode(const QString &name, int delta)
 
     if (index != -1)
     {
-        // Database-Changes
-        Database db;
-        db.alterEpisode(name, delta);
 
         // Changes in Model
         shows[index].setEpisode(delta);

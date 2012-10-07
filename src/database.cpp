@@ -42,7 +42,6 @@ void Database::addShow(QString name, QString genre) {
         qDebug() << qry.lastError();
       else
           qDebug() << name + " with genre " + genre + " inserted!";
-            closeDatabase();
 
 }
 
@@ -55,7 +54,6 @@ void Database::removeShow(QString name) {
         qDebug() << qry.lastError();
       else
         qDebug() << name + " deleted!";
-            closeDatabase();
 }
 
 void Database::alterSeason(QString name,int delta){
@@ -66,8 +64,7 @@ void Database::alterSeason(QString name,int delta){
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-        qDebug() << "Season of "+ name + " changed to don´t know hot wo properly get paraneter =).";
-            closeDatabase();
+        qDebug() << "Season of "+ name + " changed";
 
 }
 void Database::alterEpisode(QString name,int delta){
@@ -78,8 +75,7 @@ void Database::alterEpisode(QString name,int delta){
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-        qDebug() << "Episode of "+ name + " changed to something else =).";
-            closeDatabase();
+        qDebug() << "Episode of "+ name + " changed";
 }
 void Database::alterGenre(QString name,QString genre){
 
@@ -89,8 +85,7 @@ void Database::alterGenre(QString name,QString genre){
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-        qDebug() << "Genre of "+ name + " changed to something else =) ";
-        closeDatabase();
+        qDebug() << "Genre of "+ name + " changed";
 }
 
 void Database::load() {
@@ -108,18 +103,6 @@ void Database::load() {
             data->addShow(*tv);
         }
       }
-      closeDatabase();
 }
 
-void Database::closeDatabase() {
-
-    QString connName;
-    {
-      QSqlDatabase db = QSqlDatabase::database();
-      connName = db.connectionName();
-    }
-
-    QSqlDatabase::removeDatabase(connName);
-
-}
 
