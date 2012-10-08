@@ -12,6 +12,7 @@ front: Rectangle {
 
          width: parent.width - tileMargin
          height: parent.height - tileMargin
+         color:mainWindow.tileBackground
 
                  Text {
 
@@ -207,8 +208,7 @@ front: Rectangle {
              anchors.bottomMargin: 10
              anchors.rightMargin: 8
              hoverEnabled: true
-             onPressed: {GlobalJS.activeSeries = seriesName.text;
-                         infoScreen.reloadModel();}
+             onPressed: GlobalJS.activeSeries = seriesName.text;
              onReleased:NumberAnimation { target:infoScreen; property:"opacity"; to:1; duration: 400}
 
      }

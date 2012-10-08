@@ -165,7 +165,7 @@ Rectangle {
          }
 
     InfoScreen{
-        id:infoScreen
+    id:infoScreen
     mainOpacity: 0
     }
 
