@@ -39,7 +39,8 @@ OTHER_FILES += \
     res/qml/ToolTip.qml \
     imdb.js \
     res/qml/Button.qml \
-    res/qml/InfoScreen.qml
+    res/qml/InfoScreen.qml \
+    res/qml/TextDelegate.qml
 
 QT += sql
 QT += declarative

@@ -1,9 +1,17 @@
 import QtQuick 1.1
+import "..///js/Global.js" as GlobalJS
 
 Rectangle {
 
     property double mainOpacity:0
-    property int showID;
+
+    function reloadModel() {
+
+        xmlModel.source=("http://services.tvrage.com/feeds/full_search.php?show="+GlobalJS.activeSeries)
+        xmlModel.reload();
+
+    }
+
 
     id:mainInfoWindow
     width: mainWindow.width-100
@@ -12,22 +20,8 @@ Rectangle {
     color:"#00aaff"
     opacity:mainOpacity
 
-    Button {
-
-        id:closeScreen
-        anchors.top:parent.top
-        anchors.topMargin: -11
-        anchors.rightMargin: -11
-        anchors.right:parent.right
-        buttonHeight:22
-        buttonWidth: 22
-        buttonNormal: "qrc:../..///img/closeScreenButton.png"
-        onClicked: mainOpacity=0
-    }
-
     XmlListModel {
         id: xmlModel
-        source: "http://services.tvrage.com/feeds/full_search.php?show=Supernatural"
         query: "/Results/show[1]"
 
         XmlRole { name: "name"; query: "name/string()" }
@@ -39,77 +33,78 @@ Rectangle {
         XmlRole { name: "seasons"; query: "seasons/string()" }
         XmlRole { name: "status"; query: "status/string()" }
         XmlRole { name: "runtime"; query: "runtime/string()" }
-        XmlRole { name: "genres"; query: "genres/genre/string()"}
+        XmlRole { name: "genres"; query: "genres/genre[1]/string()"}
         XmlRole { name: "network"; query: "network/string()" }
         XmlRole { name: "airtime"; query: "airtime/string()" }
-        XmlRole { name: "airday"; query: "airday/string()" }
-
-
+        XmlRole { name: "airday"; query: "airday/string()";}
+        onStatusChanged: {
+                if (status == XmlListModel.Ready)
+                    imageModel.parsedId = get(0).showid;
+                    imageModel.reload();}
 
     }
 
+   Item{
+
+       id:leftSide
+       width:(mainInfoWindow.width/3)*2
+       height:mainInfoWindow.height
+       anchors.left:parent.left
+       anchors.top:parent.top
+
     ListView {
-        width: 200; height: 200
-        model: xmlModel
-        delegate: Rectangle{
-            color:"#00aaff"
-            anchors.fill:parent
-        Text {id:nameInfo
-            text:name}
-        Text {id:linkInfo
-            anchors.top:nameInfo.bottom
-            text:link}
-        Text {id:countryInfo
-            anchors.top:linkInfo.bottom
-            text:country}
-        Text {
-            id:startedInfo
-            anchors.top:countryInfo.bottom
-            text:"Started: "+ started}
-        Text {id:seasonsInfo
-            anchors.top:startedInfo.bottom
-            text:"Total Seasons: "+seasons}
-        Text {
-            id:statusInfo
-            anchors.top:seasonsInfo.bottom
-            text:"Status: "+ status}
-        Text {
-            id:runtimeInfo
-            anchors.top:statusInfo.bottom
-            text:"Runtime: "+ runtime +" min"}
-        Text {
-            id:genresInfo
-            anchors.top:runtimeInfo.bottom
-            text:"Genre: " + genres}
-        Text {id:timeInfo
-            anchors.top:genresInfo.bottom
-            text:"Every " + airday +" " + airtime + " on " +network}
+       id:infoText
+       height:parent.height
+       width:parent.width
+       model: xmlModel
+       delegate:TextDelegate{}
+
+          }
+   }
+
+   XmlListModel {
+
+       property string parsedId:"";
+
+       id: imageModel
+       source: ("http://services.tvrage.com/feeds/full_show_info.php?sid="+parsedId)
+       query: "/Show"
+
+       XmlRole { name:"hans"; query: "image/string()" }
+   }
 
 
 
 
-        XmlListModel {
-            id: imageModel
-            source: ("http://services.tvrage.com/feeds/full_show_info.php?sid="+showid)
-            query: "/Show"
 
-            XmlRole { name:"hans"; query: "image/string()" }
+  Item {
+            id:rightSide
+            width:parent.width-leftSide.width
+            height:parent.height
+            anchors.top:parent.top
+            anchors.left:leftSide.right
 
-        }
-
-        ListView {
-            width: 200; height: 200
+  ListView {
+            height:400
+            width:parent.width
+            anchors.top:parent.top
+            anchors.topMargin: (parent.height-height)/2
             model: imageModel
             delegate:
 
         Image {
             id:image
+            anchors.centerIn: parent
+
             source:hans
-            width: 300
-            height: 300}
+            width: rightSide.width-20
+            height: sourceSize.height*(width/sourceSize.width)
+            }
         }
-    }
-    }
+        }
+
+
+
     }
 
 

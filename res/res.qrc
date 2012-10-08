@@ -34,5 +34,7 @@
         <file>qml/Button.qml</file>
         <file>img/darkRedSheme.png</file>
         <file>qml/InfoScreen.qml</file>
+        <file>qml/TextDelegate.qml</file>
+        <file>img/info.png</file>
     </qresource>
 </RCC>

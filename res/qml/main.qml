@@ -165,7 +165,8 @@ Rectangle {
          }
 
     InfoScreen{
-    mainOpacity: 1
+        id:infoScreen
+    mainOpacity: 0
     }
 
         states: [ State {

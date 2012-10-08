@@ -12,10 +12,6 @@ front: Rectangle {
 
          width: parent.width - tileMargin
          height: parent.height - tileMargin
-        Image {
-        anchors.fill:parent
-        source:"http://images.tvrage.com/shows/4/3332.jpg"
-        }
 
                  Text {
 
@@ -30,8 +26,9 @@ front: Rectangle {
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font {
                         capitalization: Font.AllUppercase;
-                        pointSize: mainWindow.tileHeaderFontSize
+                        pointSize: 30
                         }
+
              }
 
         Text {
@@ -197,10 +194,25 @@ front: Rectangle {
                          clickProtection.enabled=true;}
              onReleased:NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400}
 
+
         }
 
-     }
+        Button {
+             id:infoButton
+             buttonHeight:35
+             buttonWidth:35
+             buttonNormal: "qrc:../..///img/info.png"
+             anchors.bottom: parent.bottom
+             anchors.right:parent.right
+             anchors.bottomMargin: 10
+             anchors.rightMargin: 8
+             hoverEnabled: true
+             onPressed: {GlobalJS.activeSeries = seriesName.text;
+                         infoScreen.reloadModel();}
+             onReleased:NumberAnimation { target:infoScreen; property:"opacity"; to:1; duration: 400}
 
+     }
+}
      transform: Rotation {
 
          id: rotation
