@@ -30,8 +30,6 @@ Database::Database(QObject *parent) :
       path.append(QDir::separator()).append("data.db");
       path = QDir::toNativeSeparators(path);
 
-      qDebug() << path;
-
       db.setDatabaseName(path);
 #endif
 
