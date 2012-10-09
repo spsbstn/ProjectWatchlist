@@ -40,7 +40,8 @@ OTHER_FILES += \
     imdb.js \
     res/qml/Button.qml \
     res/qml/InfoScreen.qml \
-    res/qml/TextDelegate.qml
+    res/qml/TextDelegate.qml \
+    res/fonts/Helvetica Neue UltraLight.ttf
 
 QT += sql
 QT += declarative

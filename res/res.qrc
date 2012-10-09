@@ -36,5 +36,6 @@
         <file>qml/InfoScreen.qml</file>
         <file>qml/TextDelegate.qml</file>
         <file>img/info.png</file>
+        <file>fonts/Helvetica Neue UltraLight.ttf</file>
     </qresource>
 </RCC>
