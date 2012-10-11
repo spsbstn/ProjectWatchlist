@@ -37,5 +37,7 @@
         <file>qml/TextDelegate.qml</file>
         <file>img/info.png</file>
         <file>fonts/Helvetica Neue UltraLight.ttf</file>
+        <file>img/watchnow_Active.png</file>
+        <file>img/watchnow.png</file>
     </qresource>
 </RCC>

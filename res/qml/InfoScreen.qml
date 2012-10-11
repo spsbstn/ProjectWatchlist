@@ -79,6 +79,188 @@ Rectangle {
             width:parent.width/2;
             height:parent.height*(4/5)*(2/3)
 
+            Item {
+
+                id:row1
+                height:45
+                width:parent.width
+                anchors.top:parent.top
+
+                Text {
+
+                    id:totalSeasonsLabel
+                    text:"Total Seasons."
+                    horizontalAlignment: Text.AlignRight
+                    font.family: helveticaNeueUltraLight.name
+                    font.pointSize: 30
+                    font.capitalization: Font.AllLowercase
+                    color: 'black'
+                    height:45
+                    width:parent.width/2
+
+                     }
+                Text {
+
+                    id:totalSeasons
+                    text:"5"
+                    horizontalAlignment: Text.AlignLeft
+                    font.family: helveticaNeueUltraLight.name
+                    font.pointSize: 30
+                    color: 'white'
+                    height:45
+                    width:parent.width/2
+                    anchors.right:parent.right
+
+                     }
+                }
+
+            Item {
+
+                id:row2
+                height:45
+                width:parent.width
+                anchors.top:row1.bottom
+
+                Text {
+
+                    id:startedLabel
+                    text:"Started."
+                    horizontalAlignment: Text.AlignRight
+                    font.family: helveticaNeueUltraLight.name
+                    font.pointSize: 30
+                    font.capitalization: Font.AllLowercase
+                    color: 'black'
+                    height:45
+                    width:parent.width/2
+
+                     }
+                Text {
+
+                    id:started
+                    text:"Jan/20/2008"
+                    horizontalAlignment: Text.AlignLeft
+                    font.family: helveticaNeueUltraLight.name
+                    font.pointSize: 30
+                    color: 'white'
+                    height:45
+                    width:parent.width/2
+                    anchors.right:parent.right
+
+                     }
+                   }
+            Item {
+
+                id:row3
+                height:45
+                width:parent.width
+                anchors.top:row2.bottom
+
+                Text {
+
+                    id:statusLabel
+                    text:"Status."
+                    horizontalAlignment: Text.AlignRight
+                    font.family: helveticaNeueUltraLight.name
+                    font.pointSize: 30
+                    font.capitalization: Font.AllLowercase
+                    color: 'black'
+                    height:45
+                    width:parent.width/2
+
+                     }
+                Text {
+
+                    id:status
+                    text:"Final Season"
+                    horizontalAlignment: Text.AlignLeft
+                    font.family: helveticaNeueUltraLight.name
+                    font.pointSize: 30
+                    color: 'white'
+                    height:45
+                    width:parent.width/2
+                    anchors.right:parent.right
+
+                     }
+                   }
+
+            Item {
+
+                id:row4
+                height:45
+                width:parent.width
+                anchors.top:row3.bottom
+
+                Text {
+
+                    id:genreLabel
+                    text:"Genre."
+                    horizontalAlignment: Text.AlignRight
+                    font.family: helveticaNeueUltraLight.name
+                    font.pointSize: 30
+                    font.capitalization: Font.AllLowercase
+                    color: 'black'
+                    height:45
+                    width:parent.width/2
+
+                       }
+                Text {
+
+                    id:genre
+                    text:"Drama"
+                    horizontalAlignment: Text.AlignLeft
+                    font.family: helveticaNeueUltraLight.name
+                    font.pointSize: 30
+                    color: 'white'
+                    height:45
+                    width:parent.width/2
+                    anchors.right:parent.right
+
+                     }
+                   }
+
+            Item {
+
+                id:watchNow
+                width:parent.width
+                height:80
+                anchors.bottom: parent.bottom
+
+                Item{
+
+                    anchors.centerIn:parent
+                    width:watchNowLabel.width+95
+                    height:75
+
+                    Text {
+
+                        id:watchNowLabel
+                        text:"watch now."
+                        horizontalAlignment: Text.AlignCenter
+                        font.family: helveticaNeueUltraLight.name
+                        font.pointSize: 30
+                        font.capitalization: Font.AllLowercase
+                        color: 'black'
+                        height:45
+
+                         }
+
+                    Button{
+
+                        id: watchNowButton
+                        buttonHeight: 75
+                        buttonWidth: 75
+                        anchors.left:watchNowLabel.right
+                        anchors.bottom: watchNowLabel.bottom
+                        anchors.leftMargin: 20
+                        buttonNormal: "qrc:../..///img/watchnow.png"
+                        buttonActive: "qrc:../..///img/watchnow_Active.png"
+                        onClicked: Qt.openUrlExternally('http://kinox.to/Stream/Breaking_Bad-1.html')
+
+                           }
+
+                       }
+                 }
+
             }
 
         Item {
@@ -89,9 +271,54 @@ Rectangle {
             width:parent.width/2;
             height:parent.height*(4/5)*(1/3)
 
+            Text {
+
+                id:airDay
+                text:"Every Sunday"
+                font.family: helveticaNeueUltraLight.name
+                font.pointSize: 30
+                color: 'white'
+                anchors.bottom:timeAndNetwork.top
+                anchors.left:timeAndNetwork.left
+                anchors.leftMargin: -40
+                z:3
+
+                Rectangle {
+
+                    color:"#828282"
+                    z: -1
+                    smooth:true
+                    anchors.centerIn: parent
+                    height:parent.height-5
+                    width:parent.width+10
+
+
+                }
             }
 
+            Text {
 
+                id:timeAndNetwork
+                text:"22:00 on AMC"
+                font.family: helveticaNeueUltraLight.name
+                font.pointSize: 30
+                color: 'white'
+                anchors.centerIn: parent
+                z:4
+
+                Rectangle {
+
+                    color:"#828282"
+                    z: -1
+                    smooth:true
+                    anchors.centerIn: parent
+                    height:parent.height-5
+                    width:parent.width+10
+
+                }
+
+            }
+}
         Button {
 
             id:closeScreenButton
