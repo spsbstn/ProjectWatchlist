@@ -21,7 +21,6 @@ front: Rectangle {
                     color: mainWindow.textColor
                     text: title
                     font.family: "Helvetica Neue"
-                    font.weight:Font.Light
                     width:parent.width
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -42,7 +41,6 @@ front: Rectangle {
              color: mainWindow.textColor
              text: genre
              font.family: "Helvetica Neue"
-             font.weight:Font.Light
              wrapMode: Text.WordWrap
              font {pointSize: mainWindow.tileHeaderFontSize-5}
             }
