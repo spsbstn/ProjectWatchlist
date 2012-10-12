@@ -4,6 +4,7 @@
 #include <QUrl>
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
+#include <QtXml/QDomDocument>
 
 
 class xmlHelper: public QObject

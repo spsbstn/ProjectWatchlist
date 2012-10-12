@@ -45,6 +45,7 @@ OTHER_FILES += \
     res/fonts/Helvetica Neue UltraLight.ttf
 
 QT += sql
+QT += xml
 QT += declarative
 
 #Mac Icons

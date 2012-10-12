@@ -1,6 +1,7 @@
 #include "xmlhelper.h"
 #include <QtDebug>
 
+
 xmlHelper::xmlHelper(QObject *parent) : QObject(parent)
 {
     nam = new QNetworkAccessManager(this);
@@ -20,8 +21,12 @@ void xmlHelper::finishedSlot(QNetworkReply* reply)
     {
 
         QByteArray bytes = reply->readAll();
-        QString string = QString::fromUtf8(bytes);
-        qDebug() << "String" + string;
+        QString string = QString::fromUtf8(bytes);;
+        QDomDocument doc;
+        doc.setContent(string);
+        QDomNodeList list=doc.elementsByTagName("name");
+        QString name=list.at(0).toElement().text();
+        qDebug() << name;
     }
 
     else
