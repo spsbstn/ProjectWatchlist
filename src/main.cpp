@@ -16,5 +16,6 @@ int main(int argc, char *argv[])
     ctrl->mainWidget->show();
     ctrl->mainWidget->setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
                           ctrl->mainWidget->size(), app.desktop()->availableGeometry()) );
+
     return app.exec();
 }

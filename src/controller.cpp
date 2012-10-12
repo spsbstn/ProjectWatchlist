@@ -7,6 +7,7 @@
 #include "cursorshapearea.h"
 #include "libs/NcFramelessHelper.h"
 #include "database.h"
+#include "xmlhelper.h"
 
 Controller::Controller(QObject *parent) :
     QObject(parent),
@@ -51,6 +52,11 @@ Controller::Controller(QObject *parent) :
         framelessHelper->activateOn(mainWidget);
         framelessHelper->setWidgetMovable(false);
         framelessHelper->setWidgetResizable(true);
+
+        // testing xmlHelper
+        xmlHelper *xml_ = new xmlHelper(this);
+        xml_->createConnection("http://services.tvrage.com/feeds/search.php?show=buffy");
+
 }
 
 void Controller::add(const QString& name, const QString& genre)

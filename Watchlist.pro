@@ -4,7 +4,8 @@ SOURCES += src/main.cpp \
     src/controller.cpp \
     src/database.cpp \
     src/cursorshapearea.cpp \
-    libs/NcFramelessHelper.cpp
+    libs/NcFramelessHelper.cpp \
+    src/xmlhelper.cpp
 
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
@@ -19,7 +20,8 @@ HEADERS += \
     src/controller.h \
     src/database.h \
     src/cursorshapearea.h \
-    libs/NcFramelessHelper.h
+    libs/NcFramelessHelper.h \
+    src/xmlhelper.h
 
 
 OTHER_FILES += \
@@ -40,7 +42,6 @@ OTHER_FILES += \
     imdb.js \
     res/qml/Button.qml \
     res/qml/InfoScreen.qml \
-    res/qml/TextDelegate.qml \
     res/fonts/Helvetica Neue UltraLight.ttf
 
 QT += sql
