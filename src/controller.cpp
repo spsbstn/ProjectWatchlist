@@ -55,7 +55,7 @@ Controller::Controller(QObject *parent) :
 
         // testing xmlHelper
         xmlHelper *xml_ = new xmlHelper(this);
-        xml_->createConnection("http://services.tvrage.com/feeds/search.php?show=buffy");
+        xml_->createConnection("Breaking Bad");
 
 }
 

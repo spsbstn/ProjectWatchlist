@@ -17,6 +17,21 @@ public:
     void createConnection(QString uri);
 public slots:
     void finishedSlot(QNetworkReply*);
+
+private:
+    QString name;
+    QString started;
+    QString totalSeasons;
+    QString showid;
+    QString status;
+    QString airday;
+    QString airtime;
+    QString network;
+    QString genre;
+    QString link;
+    QString imageUrl;
+
+    QDomNodeList list;
 };
 
 #endif // XMLHELPER_H
