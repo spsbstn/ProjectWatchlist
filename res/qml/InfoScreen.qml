@@ -3,7 +3,17 @@ import "..///js/Global.js" as GlobalJS
 
 Rectangle {
 
+    //tvShow properties
     property double mainOpacity:0
+    property string imageSource;
+    property string showName;
+    property string totalSeasons;
+    property string started;
+    property string status;
+    property string genre;
+    property string airDay;
+    property string airTime;
+    property string network;
 
     FontLoader {
              id: helveticaNeueUltraLight
@@ -27,7 +37,7 @@ Rectangle {
             height:parent.height*0.2
 
             Text {
-                text:"Breaking Bad."
+                text:showName
                 font.family: helveticaNeueUltraLight.name
                 font.pointSize: 60
                 font.capitalization: Font.AllLowercase
@@ -52,7 +62,7 @@ Rectangle {
                     id:image
                     smooth:true
                     anchors.centerIn: parent
-                    source:"http://blogs.amctv.com/breaking-bad/TWD-S5-Key-Art-796.jpg"
+                    source:imageSource
                     height:imageArea.height*0.8
                     width:sourceSize.width/(sourceSize.height/height)
                     transform: Rotation { origin.x: height/2; origin.y: width/2; angle: 5}
@@ -101,8 +111,8 @@ Rectangle {
                      }
                 Text {
 
-                    id:totalSeasons
-                    text:"5"
+                    id:totalSeasonsText
+                    text:totalSeasons
                     horizontalAlignment: Text.AlignLeft
                     font.family: helveticaNeueUltraLight.name
                     font.pointSize: 30
@@ -136,8 +146,8 @@ Rectangle {
                      }
                 Text {
 
-                    id:started
-                    text:"Jan/20/2008"
+                    id:startedText
+                    text:started
                     horizontalAlignment: Text.AlignLeft
                     font.family: helveticaNeueUltraLight.name
                     font.pointSize: 30
@@ -170,8 +180,8 @@ Rectangle {
                      }
                 Text {
 
-                    id:status
-                    text:"Final Season"
+                    id:statusText
+                    text:status
                     horizontalAlignment: Text.AlignLeft
                     font.family: helveticaNeueUltraLight.name
                     font.pointSize: 30
@@ -205,8 +215,8 @@ Rectangle {
                        }
                 Text {
 
-                    id:genre
-                    text:"Drama"
+                    id:genreText
+                    text:genre
                     horizontalAlignment: Text.AlignLeft
                     font.family: helveticaNeueUltraLight.name
                     font.pointSize: 30
@@ -273,8 +283,8 @@ Rectangle {
 
             Text {
 
-                id:airDay
-                text:"Every Sunday"
+                id:airDayText
+                text:"Every " + airDay
                 font.family: helveticaNeueUltraLight.name
                 font.pointSize: 30
                 color: 'white'
@@ -299,7 +309,7 @@ Rectangle {
             Text {
 
                 id:timeAndNetwork
-                text:"22:00 on AMC"
+                text:airTime+" on "+network
                 font.family: helveticaNeueUltraLight.name
                 font.pointSize: 30
                 color: 'white'

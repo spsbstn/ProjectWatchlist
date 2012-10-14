@@ -167,6 +167,14 @@ Rectangle {
     InfoScreen{
     id:infoScreen
     mainOpacity: 0
+    showName:"Breaking Bad"
+    totalSeasons: "5"
+    status: "Final Seasons"
+    airDay: "Sunday"
+    airTime: "22:00"
+    network: "AMC"
+    genre: "drama"
+    started:"22/Jan/2008"
     }
 
         states: [ State {
