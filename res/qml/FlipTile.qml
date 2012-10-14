@@ -198,8 +198,8 @@ front: Rectangle {
 
         Button {
              id:infoButton
-             buttonHeight:35
-             buttonWidth:35
+             buttonHeight:16
+             buttonWidth:16
              buttonNormal: "qrc:../..///img/info.png"
              anchors.bottom: parent.bottom
              anchors.right:parent.right
