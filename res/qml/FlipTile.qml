@@ -206,7 +206,7 @@ front: Rectangle {
              anchors.bottomMargin: 10
              anchors.rightMargin: 8
              hoverEnabled: true
-             onPressed: GlobalJS.activeSeries = seriesName.text;
+             onPressed: xmlDataRequired("hallo")
              onReleased:NumberAnimation { target:infoScreen; property:"opacity"; to:1; duration: 400}
 
      }

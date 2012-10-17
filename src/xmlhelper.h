@@ -14,9 +14,9 @@ class xmlHelper: public QObject
 public:
      explicit xmlHelper(QObject *parent = 0);
     QNetworkAccessManager* nam;
-    void createConnection(QString uri);
 public slots:
     void finishedSlot(QNetworkReply*);
+    void createConnection(QString showName);
 
 private:
     QString name;
@@ -32,6 +32,8 @@ private:
     QString imageUrl;
 
     QDomNodeList list;
+
+
 };
 
 #endif // XMLHELPER_H

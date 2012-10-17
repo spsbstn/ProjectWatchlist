@@ -2,6 +2,8 @@
 #define CONTROLLER_H
 #include <QObject>
 #include <QSettings>
+#include "xmlhelper.h"
+
 
 class MainView;
 class Database;
@@ -25,11 +27,14 @@ public:
 
     void checkForFirstInit();
 
+
+
     QWidget  *mainWidget;
     QDeclarativeView  *qmlView;
     NcFramelessHelper *framelessHelper;
     QVBoxLayout *layout;
     Database    *db;
+    xmlHelper *xml_;
     QSettings* settings;
 
 };

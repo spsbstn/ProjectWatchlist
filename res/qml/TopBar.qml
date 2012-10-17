@@ -95,7 +95,6 @@ Item {
                 font.pixelSize: 16
                 font.capitalization:Font.AllLowercase;
                 font.family: helveticaNeueUltraLight.name}
-
     }
 
 

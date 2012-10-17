@@ -7,7 +7,6 @@
 #include "cursorshapearea.h"
 #include "libs/NcFramelessHelper.h"
 #include "database.h"
-#include "xmlhelper.h"
 
 Controller::Controller(QObject *parent) :
     QObject(parent),
@@ -54,8 +53,13 @@ Controller::Controller(QObject *parent) :
         framelessHelper->setWidgetResizable(true);
 
         // testing xmlHelper
-        xmlHelper *xml_ = new xmlHelper(this);
-        xml_->createConnection("Breaking Bad");
+        xml_ = new xmlHelper(this);
+        xml_->createConnection("house");
+
+        QObject *rootObject = dynamic_cast<QObject*>(qmlView->rootObject());
+
+        QObject::connect(rootObject, SIGNAL(xmlDataRequired()), xml_, SLOT(createConnection(QString showName)));
+        //QObject::connect(xml_, SIGNAL(data(QVariant)), qmlView, SLOT(updateData(QVariant)));
 
 }
 

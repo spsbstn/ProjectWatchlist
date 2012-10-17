@@ -9,6 +9,8 @@ Rectangle {
     width: 1366
     height: 768
     color: appBackground
+    signal xmlDataRequired()
+
 
     property int topBarSize: 50
     property int barSize: 120
@@ -97,8 +99,6 @@ Rectangle {
                   enabled:false
                            }
         }
-
-
 
 //Bottombar
         Rectangle {
