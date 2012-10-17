@@ -3,6 +3,11 @@ import QtQuick 1.1
 Item {
     Rectangle{
 
+        FontLoader {
+                 id: helveticaNeueUltraLight
+                 source: "qrc:../..///fonts/Helvetica Neue UltraLight.ttf"
+        }
+
         id:topControles
         color:mainWindow.appBackground
         height: parent.height
@@ -59,6 +64,20 @@ Item {
                 onClicked:mainWindow.colorScheme="darkRed"
 
     }
+            Text {
+
+
+                text:"total shows: "+grid.count + " "
+                color:"#00aaff"
+                font.pixelSize: 16
+                font.capitalization:Font.AllLowercase;
+                font.family: helveticaNeueUltraLight.name
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin:2
+                anchors.rightMargin: 10
+                anchors.right:redColorButton.left }
+
+
     }
 
     Rectangle{
@@ -75,14 +94,8 @@ Item {
                 color:"#00aaff"
                 font.pixelSize: 16
                 font.capitalization:Font.AllLowercase;
-                font.family: "Helvetica-Neue"
-                font.weight: Font.Light
-                transform: Rotation {origin.x: (width)/2
-                origin.y: height/2
-                axis.x: 0; axis.y: 1; axis.z: 0
-                angle: 0.01 }
+                font.family: helveticaNeueUltraLight.name}
 
-            }
     }
 
 
