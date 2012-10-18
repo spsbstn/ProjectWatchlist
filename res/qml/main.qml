@@ -13,7 +13,9 @@ Rectangle {
 
     function updateInfo() {
 
-        console.log("loading finished");
+
+        infoScreen.showName=controller.getName();
+        infoScreen.mainOpacity=1;
     }
 
 

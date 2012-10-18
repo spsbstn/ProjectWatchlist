@@ -14,6 +14,7 @@ class xmlHelper: public QObject
 public:
      explicit xmlHelper(QObject *parent = 0);
     QNetworkAccessManager* nam;
+    QString getName() {return name;}
 public slots:
     void finishedSlot(QNetworkReply*);
     void createConnection(QString showName);

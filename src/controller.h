@@ -24,6 +24,7 @@ public:
     Q_INVOKABLE void setEpisode(const QString& name, int delta);
     Q_INVOKABLE void changeColorScheme(const QString& color,const QString &schemeName);
     Q_INVOKABLE QString loadColorScheme();
+    Q_INVOKABLE QString getName() {return xml_->getName();}
 
     void checkForFirstInit();
 

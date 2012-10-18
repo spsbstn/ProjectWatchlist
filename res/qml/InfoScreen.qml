@@ -339,7 +339,7 @@ Rectangle {
             buttonHeight: 22
             buttonWidth: 22
             buttonNormal: "qrc:../..///img/closeScreenButton.png"
-            onClicked: mainInfoWindow.opacity=0
+            onClicked:  mainOpacity=0
 
                 }
 }
