@@ -9,7 +9,7 @@ Rectangle {
     width: 1366
     height: 768
     color: appBackground
-    signal xmlDataRequired()
+    signal xmlDataRequired(string showName)
 
 
     property int topBarSize: 50
