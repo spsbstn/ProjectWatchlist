@@ -15,6 +15,14 @@ Rectangle {
 
 
         infoScreen.showName=controller.getName();
+        infoScreen.totalSeasons=controller.getTotalSeasons();
+        infoScreen.status=controller.getStatus();
+        infoScreen.airDay= controller.getAirday();
+        infoScreen.airTime = controller.getAirtime;
+        infoScreen.network = controller.getNetwork();
+        infoScreen.genre = controller.getGenre();
+        infoScreen.started = controller.getStarted();
+        infoScreen.imageSource=controller.getImageUrl();
         infoScreen.mainOpacity=1;
     }
 
@@ -174,14 +182,6 @@ Rectangle {
     InfoScreen{
     id:infoScreen
     mainOpacity: 0
-    showName:"Breaking Bad"
-    totalSeasons: "5"
-    status: "Final Seasons"
-    airDay: "Sunday"
-    airTime: "22:00"
-    network: "AMC"
-    genre: "drama"
-    started:"22/Jan/2008"
     }
 
         states: [ State {

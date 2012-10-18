@@ -1,4 +1,4 @@
-#include "xmlHelper.h"
+#include "xmlhelper.h"
 #include <QtDebug>
 #define URL_BASE "http://services.tvrage.com/feeds/full_search.php?show="
 
@@ -7,6 +7,8 @@ xmlHelper::xmlHelper(QObject *parent) : QObject(parent)
 {
     nam = new QNetworkAccessManager(this);
     QObject::connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
+    xmlPicture_ = new XmlPictureLoader(this);
+
 }
 
 void xmlHelper::createConnection(QString showName)
@@ -45,7 +47,7 @@ void xmlHelper::finishedSlot(QNetworkReply* reply)
         list=doc.elementsByTagName("genre");
         genre=list.at(0).toElement().text();
 
-        emit updateFinished();
+        xmlPicture_->createConnection(showid);
     }
 
     else

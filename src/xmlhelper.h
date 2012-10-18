@@ -5,6 +5,8 @@
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
 #include <QtXml/QDomDocument>
+#include "xmlpictureloader.h"
+
 
 
 class xmlHelper: public QObject
@@ -14,12 +16,8 @@ class xmlHelper: public QObject
 public:
      explicit xmlHelper(QObject *parent = 0);
     QNetworkAccessManager* nam;
-    QString getName() {return name;}
-public slots:
-    void finishedSlot(QNetworkReply*);
-    void createConnection(QString showName);
-
-private:
+    QString getImageUrl() {return xmlPicture_->imageUrl;}
+    XmlPictureLoader *xmlPicture_;
     QString name;
     QString started;
     QString totalSeasons;
@@ -31,12 +29,13 @@ private:
     QString genre;
     QString link;
     QString imageUrl;
+public slots:
+    void finishedSlot(QNetworkReply*);
+    void createConnection(QString showName);
+
+private:
 
     QDomNodeList list;
-
-signals:
-
-    void updateFinished();
 
 };
 

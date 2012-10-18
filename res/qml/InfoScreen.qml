@@ -63,8 +63,8 @@ Rectangle {
                     smooth:true
                     anchors.centerIn: parent
                     source:imageSource
-                    height:imageArea.height*0.8
-                    width:sourceSize.width/(sourceSize.height/height)
+                    width:imageArea.width*0.9
+                    height:sourceSize.height/(sourceSize.width/width)
                     transform: Rotation { origin.x: height/2; origin.y: width/2; angle: 5}
                     z:1
                 }
