@@ -47,6 +47,7 @@ OTHER_FILES += \
 QT += sql
 QT += xml
 QT += declarative
+QT += network
 
 #Mac Icons
 ICON = res/icons/icns/icon.icns
