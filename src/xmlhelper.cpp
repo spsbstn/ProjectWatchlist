@@ -11,7 +11,6 @@ xmlHelper::xmlHelper(QObject *parent) : QObject(parent)
 
 void xmlHelper::createConnection(QString showName)
 {
-    qDebug() << showName;
     QUrl url(URL_BASE+ showName);
     QNetworkReply* reply = nam->get(QNetworkRequest(url));
 }
