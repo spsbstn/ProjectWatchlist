@@ -9,7 +9,12 @@ Rectangle {
     width: 1366
     height: 768
     color: appBackground
-    signal xmlDataRequired(string showName)
+    signal xmlDataRequired(string showName);
+
+    function updateInfo() {
+
+        console.log("loading finished");
+    }
 
 
     property int topBarSize: 50

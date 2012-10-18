@@ -206,7 +206,7 @@ front: Rectangle {
              anchors.bottomMargin: 10
              anchors.rightMargin: 8
              hoverEnabled: true
-             onPressed: xmlDataRequired("hallo")
+             onPressed: xmlDataRequired(title)
              onReleased:NumberAnimation { target:infoScreen; property:"opacity"; to:1; duration: 400}
 
      }

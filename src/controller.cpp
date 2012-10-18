@@ -54,12 +54,10 @@ Controller::Controller(QObject *parent) :
 
         // testing xmlHelper
         xml_ = new xmlHelper(this);
-        xml_->createConnection("house");
-
         QObject *rootObject = dynamic_cast<QObject*>(qmlView->rootObject());
 
         QObject::connect(rootObject, SIGNAL(xmlDataRequired(QString)), xml_, SLOT(createConnection(QString)));
-        //QObject::connect(xml_, SIGNAL(data(QVariant)), qmlView, SLOT(updateData(QVariant)));
+        QObject::connect(xml_, SIGNAL(updateFinished()), qmlView, SLOT(updateInfo()));
 
 }
 

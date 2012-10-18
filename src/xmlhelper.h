@@ -33,6 +33,9 @@ private:
 
     QDomNodeList list;
 
+signals:
+
+    void updateFinished();
 
 };
 

@@ -11,6 +11,7 @@ xmlHelper::xmlHelper(QObject *parent) : QObject(parent)
 
 void xmlHelper::createConnection(QString showName)
 {
+    qDebug() << showName;
     QUrl url(URL_BASE+ showName);
     QNetworkReply* reply = nam->get(QNetworkRequest(url));
 }
@@ -44,6 +45,8 @@ void xmlHelper::finishedSlot(QNetworkReply* reply)
         network=list.at(0).toElement().text();
         list=doc.elementsByTagName("genre");
         genre=list.at(0).toElement().text();
+
+        emit updateFinished();
     }
 
     else
