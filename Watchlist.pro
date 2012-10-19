@@ -44,7 +44,8 @@ OTHER_FILES += \
     imdb.js \
     res/qml/Button.qml \
     res/qml/InfoScreen.qml \
-    res/fonts/Helvetica Neue UltraLight.ttf
+    res/fonts/Helvetica Neue UltraLight.ttf \
+    res/qml/LoadingCircle.qml
 
 QT += sql
 QT += xml

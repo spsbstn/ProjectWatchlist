@@ -11,6 +11,7 @@ Rectangle {
     color: appBackground
     signal xmlDataRequired(string showName);
 
+
     function updateInfo() {
 
 
@@ -24,8 +25,10 @@ Rectangle {
         infoScreen.started = controller.getStarted();
         infoScreen.imageSource=controller.getImageUrl();
         infoScreen.mainOpacity=1;
-    }
+        grid.currentItem.loadingCircleVisible=false;
 
+
+    }
 
     property int topBarSize: 50
     property int barSize: 120

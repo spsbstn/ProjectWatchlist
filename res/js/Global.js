@@ -1,3 +1,3 @@
 .pragma library
 var activeSeries = null;
-var parsedShowID = null;
+var loading = 'false';

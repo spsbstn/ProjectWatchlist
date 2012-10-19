@@ -70,6 +70,7 @@ Rectangle {
                 }
 
                 Rectangle {
+                    id:imageFrame
                     color:"white"
                     smooth:true
                     anchors.centerIn: image
@@ -342,6 +343,8 @@ Rectangle {
             onClicked:  mainOpacity=0
 
                 }
+
+
 }
 
 

@@ -80,6 +80,7 @@ Item {
 
     }
 
+
     Rectangle{
 
         id:versionInfo

@@ -7,6 +7,7 @@ import "..///js/Global.js" as GlobalJS
      height: width - tileMargin
 
 property bool flipped: false
+     property bool loadingCircleVisible: false
 
 front: Rectangle {
 
@@ -206,10 +207,18 @@ front: Rectangle {
              anchors.bottomMargin: 10
              anchors.rightMargin: 8
              hoverEnabled: true
-             onPressed: xmlDataRequired(title)
-             //onReleased:NumberAnimation { target:infoScreen; property:"opacity"; to:1; duration: 400}
+             onPressed: {loadingCircleVisible=true;
+                         grid.currentIndex = index;   }
+             onReleased:xmlDataRequired(title)
 
      }
+    LoadingCircle{
+                  id:loadingCircel
+                  visible: loadingCircleVisible;
+                  anchors.left:parent.left
+                  anchors.leftMargin: 10
+                  anchors.bottom:parent.bottom
+                  anchors.bottomMargin: 10}
 }
      transform: Rotation {
 
@@ -220,13 +229,15 @@ front: Rectangle {
          angle: 0.01    // the default angle
      }
 
-     states: State {
+     states: [ State {
 
              name: "back"
              PropertyChanges { target: rotation; angle: 179.99 }
              when: flipable.flipped
           }
 
+
+]
      transitions: Transition {
          NumberAnimation { target: rotation; property: "angle"; duration: 1000 }
      }

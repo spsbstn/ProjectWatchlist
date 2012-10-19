@@ -38,5 +38,6 @@
         <file>fonts/Helvetica Neue UltraLight.ttf</file>
         <file>img/watchnow_Active.png</file>
         <file>img/watchnow.png</file>
+        <file>qml/LoadingCircle.qml</file>
     </qresource>
 </RCC>
