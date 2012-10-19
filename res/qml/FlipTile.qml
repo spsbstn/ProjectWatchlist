@@ -26,6 +26,7 @@ front: Rectangle {
                     anchors.centerIn: parent
                     color: mainWindow.textColor
                     text: title
+                    smooth:true
                     font.family: helveticaNeueUltraLight.name
                     width:parent.width
                     horizontalAlignment: Text.AlignHCenter
@@ -87,7 +88,7 @@ front: Rectangle {
              color: mainWindow.textColor
              text: "Episode: " + episode
              wrapMode: Text.WordWrap;
-             font { family: helveticaNeueUltraLight.name; pointSize: mainWindow.tileInfoFontSize }
+             font { family: helveticaNeueUltraLight.name; pointSize: 25 }
          }
            Button{
 
@@ -143,7 +144,7 @@ front: Rectangle {
                    color: mainWindow.textColor
                    text: "Season: " + season
                    wrapMode: Text.WordWrap;
-                   font { family: helveticaNeueUltraLight.name; pointSize: mainWindow.tileInfoFontSize }
+                   font { family: helveticaNeueUltraLight.name; pointSize: 25 }
 }
              Button{
 

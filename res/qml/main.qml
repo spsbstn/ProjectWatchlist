@@ -33,7 +33,7 @@ Rectangle {
     property int topBarSize: 50
     property int barSize: 120
     property int tileMargin: 6
-    property int tileHeaderFontSize: mainWindow.height/40
+    property int tileHeaderFontSize: mainWindow.height/30
     property int tileInfoFontSize: 16
     property int appHeaderFontSize: 36
     property string appBackground: "#EEEEEE"
