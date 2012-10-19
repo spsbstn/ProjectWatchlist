@@ -21,11 +21,13 @@ Rectangle {
     }
 
     id:mainInfoWindow
-    anchors.centerIn: parent;
+    anchors.top:parent.top
+    anchors.topMargin: mainWindow.topBarSize
+    anchors.horizontalCenter: parent.horizontalCenter
     opacity: mainOpacity
     color:"#00aaff"
-    width:parent.width-100
-    height:parent.height-100
+    width:parent.width -90
+    height:parent.height -100
 
 
 
