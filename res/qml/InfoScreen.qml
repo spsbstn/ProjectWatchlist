@@ -56,7 +56,7 @@ Rectangle {
             anchors.top: topBar.bottom
             anchors.left:parent.left
             width:parent.width/2;
-            height:parent.height*0.8
+            height:parent.height*0.7
 
             LoadingCircle{
             id:imageLoadingCircle
@@ -70,7 +70,7 @@ Rectangle {
                     anchors.centerIn: parent
                     source:imageSource
                     cache: false
-                    width:imageArea.width*0.9
+                    width:imageArea.width*0.8
                     height:sourceSize.height/(sourceSize.width/width)
                     transform: Rotation { origin.x: height/2; origin.y: width/2; angle: 5}
                     onStatusChanged: if (image.status == Image.Ready)
