@@ -56,21 +56,32 @@ Rectangle {
             anchors.top: topBar.bottom
             anchors.left:parent.left
             width:parent.width/2;
-            height:parent.height*0.8
+            height:mainInfoWindow.height*0.7
 
-                Image {
+            LoadingCircle{
+            id:imageLoadingCircle
+            anchors.centerIn: parent
+            visible:true;}
+
+               Image {
                     id:image
                     smooth:true
+                    visible: false;
                     anchors.centerIn: parent
                     source:imageSource
                     width:imageArea.width*0.9
                     height:sourceSize.height/(sourceSize.width/width)
                     transform: Rotation { origin.x: height/2; origin.y: width/2; angle: 5}
+                    onStatusChanged: if (image.status == Image.Ready)
+                     {image.visible=true;
+                      imageFrame.visible=true;
+                      imageLoadingCircle.visible=false;}
                     z:1
                 }
 
                 Rectangle {
                     id:imageFrame
+                    visible:false
                     color:"white"
                     smooth:true
                     anchors.centerIn: image
@@ -340,7 +351,10 @@ Rectangle {
             buttonHeight: 22
             buttonWidth: 22
             buttonNormal: "qrc:../..///img/closeScreenButton.png"
-            onClicked:  mainOpacity=0
+            onClicked:  {mainOpacity=0;
+                image.visible=false;
+                imageFrame.visible=false;
+                imageLoadingCircle.visible=true;}
 
                 }
 
