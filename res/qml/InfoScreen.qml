@@ -64,14 +64,16 @@ Rectangle {
             visible:true;}
 
                Image {
+                    property double imageRatio: sourceSize.width/sourceSize.height
+                    property double frameRatio: imageArea.width/imageArea.height
                     id:image
                     smooth:true
                     visible: false;
                     anchors.centerIn: parent
                     source:imageSource
                     cache: false
-                    width:imageArea.width*0.8
-                    height:sourceSize.height/(sourceSize.width/width)
+                    width: imageRatio > frameRatio ? imageArea.width*0.8 : sourceSize.width/(sourceSize.height/height)
+                    height:imageRatio > frameRatio ? sourceSize.height/(sourceSize.width/width) : imageArea.height*0.8
                     transform: Rotation { origin.x: height/2; origin.y: width/2; angle: 5}
                     onStatusChanged: if (image.status == Image.Ready)
                      {image.visible=true;
