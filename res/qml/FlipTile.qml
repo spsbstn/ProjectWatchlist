@@ -7,7 +7,12 @@ import "..///js/Global.js" as GlobalJS
      height: width - tileMargin
 
 property bool flipped: false
-     property bool loadingCircleVisible: false
+property bool loadingCircleVisible: false
+
+     FontLoader {
+         id: helveticaNeueUltraLight
+         source: "qrc:../..///fonts/Helvetica Neue UltraLight.ttf"
+}
 
 front: Rectangle {
 
@@ -21,7 +26,7 @@ front: Rectangle {
                     anchors.centerIn: parent
                     color: mainWindow.textColor
                     text: title
-                    font.family: "Helvetica Neue"
+                    font.family: helveticaNeueUltraLight.name
                     width:parent.width
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -41,7 +46,7 @@ front: Rectangle {
              anchors.bottomMargin: 5
              color: mainWindow.textColor
              text: genre
-             font.family: "Helvetica Neue"
+             font.family: helveticaNeueUltraLight.name
              wrapMode: Text.WordWrap
              font {pointSize: mainWindow.tileHeaderFontSize-5}
             }
@@ -80,10 +85,9 @@ front: Rectangle {
              id:text1
              anchors.centerIn: parent
              color: mainWindow.textColor
-             font.weight: Font.Light
              text: "Episode: " + episode
              wrapMode: Text.WordWrap;
-             font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
+             font { family: helveticaNeueUltraLight.name; pointSize: mainWindow.tileInfoFontSize }
          }
            Button{
 
@@ -138,9 +142,8 @@ front: Rectangle {
                    anchors.centerIn: parent
                    color: mainWindow.textColor
                    text: "Season: " + season
-                   font.weight: Font.Light
                    wrapMode: Text.WordWrap;
-                   font { family: mainWindow.uiFont; pointSize: mainWindow.tileInfoFontSize }
+                   font { family: helveticaNeueUltraLight.name; pointSize: mainWindow.tileInfoFontSize }
 }
              Button{
 
