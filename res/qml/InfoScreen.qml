@@ -69,9 +69,9 @@ Rectangle {
                     visible: false;
                     anchors.centerIn: parent
                     source:imageSource
-                    cache: false
                     width:imageArea.width*0.8
-                    height:sourceSize.height/(sourceSize.width/width)
+                    height:imageArea.width*0.9
+                    fillMode: Image.PreserveAspectFit
                     transform: Rotation { origin.x: height/2; origin.y: width/2; angle: 5}
                     onStatusChanged: if (image.status == Image.Ready)
                      {image.visible=true;
@@ -85,9 +85,9 @@ Rectangle {
                     visible:false
                     color:"white"
                     smooth:true
-                    anchors.centerIn: image
-                    height:image.height+10
-                    width:image.width+10
+                    anchors.centerIn: imageArea
+                    height:image.paintedHeight+10
+                    width:image.paintedWidth+10
                     transform: Rotation { origin.x: height/2; origin.y: width/2; angle: 5}
 
                 }
