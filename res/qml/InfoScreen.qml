@@ -56,7 +56,7 @@ Rectangle {
             anchors.top: topBar.bottom
             anchors.left:parent.left
             width:parent.width/2;
-            height:mainInfoWindow.height*0.7
+            height:parent.height*0.8
 
             LoadingCircle{
             id:imageLoadingCircle
@@ -69,6 +69,7 @@ Rectangle {
                     visible: false;
                     anchors.centerIn: parent
                     source:imageSource
+                    cache: false
                     width:imageArea.width*0.9
                     height:sourceSize.height/(sourceSize.width/width)
                     transform: Rotation { origin.x: height/2; origin.y: width/2; angle: 5}
@@ -352,6 +353,7 @@ Rectangle {
             buttonWidth: 22
             buttonNormal: "qrc:../..///img/closeScreenButton.png"
             onClicked:  {mainOpacity=0;
+                imageSource="";
                 image.visible=false;
                 imageFrame.visible=false;
                 imageLoadingCircle.visible=true;}
