@@ -23,7 +23,7 @@ Rectangle {
     id:mainInfoWindow
     anchors.centerIn: parent;
     opacity: mainOpacity
-    color:mainWindow.tileBackground
+    color:"#00aaff"
     width:parent.width-100
     height:parent.height-100
 

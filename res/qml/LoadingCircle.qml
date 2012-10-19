@@ -5,7 +5,7 @@ Item
 
     property int radiusPoints: 4
     property int circleDiameter:50
-    property string colorPoints: "#00aaff"
+    property string colorPoints: 'white'
     property int spinningDuration:3000;
 
     width: circleDiameter
