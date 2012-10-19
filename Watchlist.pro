@@ -45,7 +45,8 @@ OTHER_FILES += \
     res/qml/Button.qml \
     res/qml/InfoScreen.qml \
     res/fonts/Helvetica Neue UltraLight.ttf \
-    res/qml/LoadingCircle.qml
+    res/qml/LoadingCircle.qml \
+    res/js/WatchNow.js
 
 QT += sql
 QT += xml

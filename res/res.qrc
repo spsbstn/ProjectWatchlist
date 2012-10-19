@@ -39,5 +39,6 @@
         <file>img/watchnow_Active.png</file>
         <file>img/watchnow.png</file>
         <file>qml/LoadingCircle.qml</file>
+        <file>js/WatchNow.js</file>
     </qresource>
 </RCC>

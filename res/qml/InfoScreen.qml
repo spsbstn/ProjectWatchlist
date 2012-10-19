@@ -1,5 +1,5 @@
 import QtQuick 1.1
-import "..///js/Global.js" as GlobalJS
+import "..///js/WatchNow.js" as WatchNowLink
 
 Rectangle {
 
@@ -276,7 +276,7 @@ Rectangle {
                         anchors.leftMargin: 20
                         buttonNormal: "qrc:../..///img/watchnow.png"
                         buttonActive: "qrc:../..///img/watchnow_Active.png"
-                        onClicked: Qt.openUrlExternally('http://kinox.to/Stream/Breaking_Bad-1.html')
+                        onClicked:Qt.openUrlExternally(WatchNowLink.getLink(showName));
 
                            }
 
