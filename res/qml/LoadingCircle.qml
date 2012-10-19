@@ -2,12 +2,15 @@ import QtQuick 1.1
 
 Item
 {
-    width: 40
-    height: 40
-    smooth: true
+
     property int radiusPoints: 4
+    property int circleDiameter:50
     property string colorPoints: "#00aaff"
     property int spinningDuration:3000;
+
+    width: circleDiameter
+    height: circleDiameter
+    smooth: true
 
     Rectangle {
         width: radiusPoints

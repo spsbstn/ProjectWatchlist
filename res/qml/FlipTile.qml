@@ -214,11 +214,13 @@ front: Rectangle {
      }
     LoadingCircle{
                   id:loadingCircel
+                  circleDiameter:20
+                  radiusPoints: 2
                   visible: loadingCircleVisible;
                   anchors.left:parent.left
                   anchors.leftMargin: 10
                   anchors.bottom:parent.bottom
-                  anchors.bottomMargin: 10}
+                  anchors.bottomMargin: 8}
 }
      transform: Rotation {
 
