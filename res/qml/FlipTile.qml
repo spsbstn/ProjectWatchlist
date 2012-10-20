@@ -30,7 +30,7 @@ front: Rectangle {
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font {
                         capitalization: Font.AllUppercase;
-                        pointSize: 30
+                        pointSize: mainWindow.tileHeaderFontSize
                         }
 
              }

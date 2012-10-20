@@ -39,7 +39,7 @@ Rectangle {
     property int topBarSize: 50
     property int barSize: 120
     property int tileMargin: 6
-    property int tileHeaderFontSize: (parseInt(grid.height / 3) - tileMargin)/5
+    property int tileHeaderFontSize: (parseInt(grid.height / 3) - tileMargin)/7
     property int tileInfoFontSize: 16
     property int appHeaderFontSize: 36
     property string appBackground: "#EEEEEE"
