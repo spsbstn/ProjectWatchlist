@@ -59,6 +59,8 @@ Rectangle {
             anchors.left:parent.left
             width:parent.width/2;
             height:parent.height*0.7
+            transform: Rotation { origin.x: image.paintedHeight/2; origin.y: image.paintedWidth/2; angle: 5}
+
 
             LoadingCircle{
             id:imageLoadingCircle
@@ -66,17 +68,15 @@ Rectangle {
             visible:true;}
 
                Image {
-                    property double imageRatio: sourceSize.width/sourceSize.height
-                    property double frameRatio: imageArea.width/imageArea.height
                     id:image
                     smooth:true
                     visible: false;
+                    fillMode: Image.PreserveAspectFit
                     anchors.centerIn: parent
+                    anchors.fill: parent
+                    anchors.margins: 30
                     source:imageSource
                     cache: false
-                    width: imageRatio > frameRatio ? imageArea.width*0.8 : sourceSize.width/(sourceSize.height/height)
-                    height:imageRatio > frameRatio ? sourceSize.height/(sourceSize.width/width) : imageArea.height*0.8
-                    transform: Rotation { origin.x: height/2; origin.y: width/2; angle: 5}
                     onStatusChanged: if (image.status == Image.Ready)
                      {image.visible=true;
                       imageFrame.visible=true;
@@ -89,11 +89,9 @@ Rectangle {
                     visible:false
                     color:"white"
                     smooth:true
+                    height:image.paintedHeight+10
+                    width:image.paintedWidth+10
                     anchors.centerIn: image
-                    height:image.height+10
-                    width:image.width+10
-                    transform: Rotation { origin.x: height/2; origin.y: width/2; angle: 5}
-
                 }
 
             }
