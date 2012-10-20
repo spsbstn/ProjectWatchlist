@@ -11,6 +11,12 @@ Rectangle {
     color: appBackground
     signal xmlDataRequired(string showName);
 
+    FontLoader {
+
+        id: helveticaNeueUltraLight
+        source: "qrc:../..///fonts/Helvetica Neue UltraLight.ttf"
+                }
+
 
     function updateInfo() {
 
@@ -39,7 +45,7 @@ Rectangle {
     property string appBackground: "#EEEEEE"
     property string tileBackground: "#CCCCCC"
     property string textColor: "#484848"
-    property string uiFont: "Helvetica-Neue"
+    property string uiFont: helveticaNeueUltraLight.name
     property string colorScheme: controller.loadColorScheme()
 
     NumberAnimation {id: showAddScreen; target:addScreen; property:"opacity"; to:1; duration: 400}
@@ -199,15 +205,15 @@ Rectangle {
                 when: colorScheme=="darkGreen"
                 changes: [PropertyChanges{target:mainWindow;appBackground:"#333333"},
                 PropertyChanges {target:mainWindow;tileBackground:"#30bf6e"},
-                PropertyChanges{target:mainWindow;textColor:"#ffffff"},
+                PropertyChanges{target:mainWindow;textColor:"#000000"},
                     StateChangeScript { script:controller.changeColorScheme("#333333","darkGreen")}]
                         },
                    State {
                  when: colorScheme=="darkRed"
-                 changes: [PropertyChanges{target:mainWindow;appBackground:"#000000"},
+                 changes: [PropertyChanges{target:mainWindow;appBackground:"#222222"},
                  PropertyChanges {target:mainWindow;tileBackground:"#5A050D"},
                  PropertyChanges{target:mainWindow;textColor:"#ffffff"},
-                 StateChangeScript { script:controller.changeColorScheme("#000000","darkRed")}]
+                 StateChangeScript { script:controller.changeColorScheme("#222222","darkRed")}]
                         }
 
                  ]

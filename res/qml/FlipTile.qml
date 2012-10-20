@@ -9,10 +9,7 @@ import "..///js/Global.js" as GlobalJS
 property bool flipped: false
 property bool loadingCircleVisible: false
 
-     FontLoader {
-         id: helveticaNeueUltraLight
-         source: "qrc:../..///fonts/Helvetica Neue UltraLight.ttf"
-}
+
 
 front: Rectangle {
 
@@ -27,7 +24,7 @@ front: Rectangle {
                     color: mainWindow.textColor
                     text: title
                     smooth:true
-                    font.family: helveticaNeueUltraLight.name
+                    font.family: mainWindow.uiFont
                     width:parent.width
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -47,7 +44,7 @@ front: Rectangle {
              anchors.bottomMargin: 5
              color: mainWindow.textColor
              text: genre
-             font.family: helveticaNeueUltraLight.name
+             font.family: mainWindow.uiFont
              wrapMode: Text.WordWrap
              font {pointSize: mainWindow.tileHeaderFontSize-5}
             }
@@ -88,15 +85,15 @@ front: Rectangle {
              color: mainWindow.textColor
              text: "Episode: " + episode
              wrapMode: Text.WordWrap;
-             font { family: helveticaNeueUltraLight.name; pointSize: 25 }
+             font { family: mainWindow.uiFont; pointSize: 25 }
          }
            Button{
 
                     id: episodeIncrease
                     buttonHeight: 18
                     buttonWidth: 18
-                    buttonNormal: "qrc:../..///img/rightButton.png"
-                    buttonActive: "qrc:../..///img/rightButton_Active.png"
+                    buttonNormal: "../..///img/"+mainWindow.colorScheme+"/rightButton.png"
+                    buttonActive: "../..///img/"+mainWindow.colorScheme+"/rightButton_Active.png"
                     anchors.right:parent.right
                     anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2
                     anchors.verticalCenter: parent.verticalCenter
@@ -108,8 +105,8 @@ front: Rectangle {
                     id: episodeDecrease
                     buttonHeight: 18
                     buttonWidth: 18
-                    buttonNormal: "qrc:../..///img/leftButton.png"
-                    buttonActive: "qrc:../..///img/leftButton_Active.png"
+                    buttonNormal: "../..///img/"+mainWindow.colorScheme+"/leftButton.png"
+                    buttonActive: "../..///img/"+mainWindow.colorScheme+"/leftButton_Active.png"
                     anchors.left:parent.left
                     anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2
                     anchors.verticalCenter: parent.verticalCenter
@@ -144,15 +141,15 @@ front: Rectangle {
                    color: mainWindow.textColor
                    text: "Season: " + season
                    wrapMode: Text.WordWrap;
-                   font { family: helveticaNeueUltraLight.name; pointSize: 25 }
+                   font { family: mainWindow.uiFont; pointSize: 25 }
 }
              Button{
 
                    id: seasonIncrease
                    buttonHeight: 18
                    buttonWidth: 18
-                   buttonNormal: "qrc:../..///img/rightButton.png"
-                   buttonActive: "qrc:../..///img/rightButton_Active.png"
+                   buttonNormal: "../..///img/"+mainWindow.colorScheme+"/rightButton.png"
+                   buttonActive: "../..///img/"+mainWindow.colorScheme+"/rightButton_Active.png"
                    anchors.right:parent.right
                    anchors.rightMargin: (seasonTxt.width-text2.width-(2*width))/2
                    anchors.verticalCenter: parent.verticalCenter
@@ -164,8 +161,8 @@ front: Rectangle {
                     id: seasonDecrease
                     buttonHeight: 18
                     buttonWidth: 18
-                    buttonNormal: "qrc:../..///img/leftButton.png"
-                    buttonActive: "qrc:../..///img/leftButton_Active.png"
+                    buttonNormal: "../..///img/"+mainWindow.colorScheme+"/leftButton.png"
+                    buttonActive: "../..///img/"+mainWindow.colorScheme+"/leftButton_Active.png"
                     anchors.left:parent.left
                     anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2
                     anchors.verticalCenter: parent.verticalCenter
@@ -188,8 +185,8 @@ front: Rectangle {
              id:removeButton
              buttonHeight:15
              buttonWidth:15
-             buttonNormal: "qrc:../..///img/removeIcon_Dark.png"
-             buttonActive:"qrc:../..///img/removeIcon_Dark_Active.png"
+             buttonNormal: "../..///img/"+mainWindow.colorScheme+"/removeIcon.png"
+             buttonActive:"../..///img/"+mainWindow.colorScheme+"/removeIcon_Active.png"
              anchors.top: parent.top
              anchors.right:parent.right
              anchors.topMargin: 10
@@ -205,7 +202,7 @@ front: Rectangle {
              id:infoButton
              buttonHeight:16
              buttonWidth:16
-             buttonNormal: "qrc:../..///img/info.png"
+             buttonNormal: "../..///img/"+mainWindow.colorScheme+"/info.png"
              anchors.bottom: parent.bottom
              anchors.right:parent.right
              anchors.bottomMargin: 10
@@ -213,7 +210,7 @@ front: Rectangle {
              hoverEnabled: true
              onPressed: {loadingCircleVisible=true;
                          grid.currentIndex = index;   }
-             onReleased:xmlDataRequired(title)
+             onReleased:xmlDataRequired(title);
 
      }
     LoadingCircle{

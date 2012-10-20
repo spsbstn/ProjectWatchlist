@@ -5,19 +5,11 @@
         <file>qml/Scrollbar.qml</file>
         <file>img/addIcon_Active.png</file>
         <file>img/addIcon.png</file>
-        <file>img/main_Tex.png</file>
-        <file>img/main_Tex(dark).png</file>
         <file>qml/AddScreen.qml</file>
         <file>img/SplashScreen.png</file>
         <file>qml/SplashScreen.qml</file>
         <file>img/addIcon_Active_Dark.png</file>
         <file>img/addIcon_Dark.png</file>
-        <file>img/removeIcon_Dark_Active.png</file>
-        <file>img/removeIcon_Dark.png</file>
-        <file>img/leftButton_Active.png</file>
-        <file>img/leftButton.png</file>
-        <file>img/rightButton_Active.png</file>
-        <file>img/rightButton.png</file>
         <file>img/closeScreenButton.png</file>
         <file>img/shutdown_Active.png</file>
         <file>img/shutdown.png</file>
@@ -34,11 +26,31 @@
         <file>qml/Button.qml</file>
         <file>img/darkRedSheme.png</file>
         <file>qml/InfoScreen.qml</file>
-        <file>img/info.png</file>
         <file>fonts/Helvetica Neue UltraLight.ttf</file>
         <file>img/watchnow_Active.png</file>
         <file>img/watchnow.png</file>
         <file>qml/LoadingCircle.qml</file>
         <file>js/WatchNow.js</file>
+        <file>img/grey/leftButton_Active.png</file>
+        <file>img/grey/info.png</file>
+        <file>img/grey/leftButton.png</file>
+        <file>img/grey/rightButton_Active.png</file>
+        <file>img/grey/rightButton.png</file>
+        <file>img/darkGreen/info.png</file>
+        <file>img/darkGreen/leftButton_Active.png</file>
+        <file>img/darkGreen/leftButton.png</file>
+        <file>img/darkGreen/rightButton_Active.png</file>
+        <file>img/darkGreen/rightButton.png</file>
+        <file>img/darkRed/info.png</file>
+        <file>img/darkRed/leftButton_Active.png</file>
+        <file>img/darkRed/leftButton.png</file>
+        <file>img/darkRed/rightButton_Active.png</file>
+        <file>img/darkRed/rightButton.png</file>
+        <file>img/darkRed/removeIcon_Active.png</file>
+        <file>img/darkRed/removeIcon.png</file>
+        <file>img/grey/removeIcon_Active.png</file>
+        <file>img/grey/removeIcon.png</file>
+        <file>img/darkGreen/removeIcon_Active.png</file>
+        <file>img/darkGreen/removeIcon.png</file>
     </qresource>
 </RCC>
