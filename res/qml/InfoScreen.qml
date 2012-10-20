@@ -56,8 +56,8 @@ Rectangle {
 
             id:imageArea
             anchors.top: topBar.bottom
-            anchors.left:parent.left
-            width:parent.width/2;
+            anchors.right:infoArea.left
+            width:parent.width/2.2;
             height:parent.height*0.7
             transform: Rotation { origin.x: image.paintedHeight/2; origin.y: image.paintedWidth/2; angle: 5}
 
@@ -74,7 +74,7 @@ Rectangle {
                     fillMode: Image.PreserveAspectFit
                     anchors.centerIn: parent
                     anchors.fill: parent
-                    anchors.margins: 30
+                    anchors.margins: 20
                     source:imageSource
                     cache: false
                     onStatusChanged: if (image.status == Image.Ready)
@@ -100,7 +100,7 @@ Rectangle {
 
             id:infoArea
             anchors.top: topBar.bottom
-            anchors.left:imageArea.right
+            anchors.right:parent.right
             width:parent.width/2;
             height:parent.height*(4/5)*(2/3)
 
