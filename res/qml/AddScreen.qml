@@ -11,17 +11,16 @@ Item {
         height: parseInt(grid.height / 3)
         width: height*2
         opacity: 1;
-        color:'#00aaff'
+        color:"#00aaff"
             Text {
               anchors.left: parent.left
               anchors.leftMargin: 20
               anchors.top: parent.top
-              anchors.topMargin: parent.width/18
+              anchors.topMargin: parent.width/30
               color: "#ffffff"
-              text: qsTr(" + New Series")
-              font.pixelSize: parent.width/18
+              text: qsTr(" + New TvShow")
+              font.pixelSize: parent.width/10
               font.family: uiFont
-              font.weight: Font.Light
               transform: Rotation {origin.x: (width)/2
               origin.y: height/2
               axis.x: 0; axis.y: 1; axis.z: 0

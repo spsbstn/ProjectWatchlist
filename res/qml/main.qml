@@ -45,6 +45,7 @@ Rectangle {
     property string appBackground: "#EEEEEE"
     property string tileBackground: "#CCCCCC"
     property string textColor: "#484848"
+    property string textColor2: "#00aaff"
     property string uiFont: helveticaNeueUltraLight.name
     property string colorScheme: controller.loadColorScheme()
 
@@ -195,25 +196,34 @@ Rectangle {
 
         states: [ State {
                 when: colorScheme=="grey"
-                changes: [PropertyChanges {target:mainWindow;appBackground:"#EEEEEE"},
-                PropertyChanges {target:mainWindow;tileBackground:"#CCCCCC"},
-                PropertyChanges {target:mainWindow;textColor:"#484848"},
+                changes:
+
+                    [PropertyChanges {target:mainWindow;appBackground:"#EEEEEE"},
+                    PropertyChanges {target:mainWindow;tileBackground:"#CCCCCC"},
+                    PropertyChanges {target:mainWindow;textColor:"#484848"},
+                    PropertyChanges{target:mainWindow;textColor2:"#00aaff"},
                     StateChangeScript { script:controller.changeColorScheme("#EEEEEE","grey")}]
 
                         },
                   State {
                 when: colorScheme=="darkGreen"
-                changes: [PropertyChanges{target:mainWindow;appBackground:"#333333"},
-                PropertyChanges {target:mainWindow;tileBackground:"#30bf6e"},
-                PropertyChanges{target:mainWindow;textColor:"#000000"},
+                changes:
+
+                    [PropertyChanges{target:mainWindow;appBackground:"#333333"},
+                    PropertyChanges {target:mainWindow;tileBackground:"#30bf6e"},
+                    PropertyChanges{target:mainWindow;textColor:"#000000"},
+                    PropertyChanges{target:mainWindow;textColor2:"#00aaff"},
                     StateChangeScript { script:controller.changeColorScheme("#333333","darkGreen")}]
                         },
                    State {
                  when: colorScheme=="darkRed"
-                 changes: [PropertyChanges{target:mainWindow;appBackground:"#222222"},
-                 PropertyChanges {target:mainWindow;tileBackground:"#5A050D"},
-                 PropertyChanges{target:mainWindow;textColor:"#ffffff"},
-                 StateChangeScript { script:controller.changeColorScheme("#222222","darkRed")}]
+                 changes:
+
+                    [PropertyChanges{target:mainWindow;appBackground:"#222222"},
+                    PropertyChanges {target:mainWindow;tileBackground:"#5A050D"},
+                    PropertyChanges{target:mainWindow;textColor:"#ffffff"},
+                    PropertyChanges{target:mainWindow;textColor2:"#00aaff"},
+                    StateChangeScript { script:controller.changeColorScheme("#222222","darkRed")}]
                         }
 
                  ]
