@@ -98,6 +98,7 @@ Rectangle {
 //GridView
         GridView {
             id: grid
+            opacity:0
             anchors.left: leftBar.right
             anchors.top: topBar.bottom
             flow: GridView.TopToBottom
@@ -192,6 +193,14 @@ Rectangle {
     InfoScreen{
     id:infoScreen
     mainOpacity: 0
+    }
+
+
+    SplashScreen{
+    id:splashScreen
+    imageSource: "qrc:///img/SplashScreen.png"
+    anchors.fill: mainWindow
+    z:1
     }
 
         states: [ State {

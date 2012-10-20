@@ -1,7 +1,7 @@
 import QtQuick 1.0
 
 Rectangle {
-    color:"black"
+    color:mainWindow.appBackground
     smooth: true
     id: splashScreenContainer
     property alias imageSource: splashImage.source
@@ -11,6 +11,9 @@ Rectangle {
     Image {
         id: splashImage
         source: imageSource
+        width:mainWindow.width*0.8
+        fillMode: Image.PreserveAspectFit
+        smooth:true;
         anchors.centerIn: splashScreenContainer
     }
 
@@ -18,11 +21,19 @@ Rectangle {
     SequentialAnimation {
         id:splashanimation
         PauseAnimation { duration: 2200 }
+        SequentialAnimation{
         PropertyAnimation {
             target: splashScreenContainer
-            duration: 2000
+            duration: 200
             properties: "opacity"
             to:0
+        }
+        PropertyAnimation {
+            target: grid
+            duration: 2000
+            properties: "opacity"
+            to:1
+        }
         }
         onCompleted: {
             splashScreenContainer.splashScreenCompleted()
