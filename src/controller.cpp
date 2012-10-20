@@ -105,6 +105,7 @@ QString Controller::loadColorScheme(){
 
 }
 
+
 void Controller::checkForFirstInit(){
 
     if(settings->contains("colorScheme")){
@@ -119,5 +120,22 @@ void Controller::checkForFirstInit(){
         settings->setValue("color","#EEEEEE");
     }
 
+}
+
+void Controller::windowMaximize()
+{
+    mainWidget->setGeometry(QApplication::desktop()->availableGeometry());
+}
+
+
+void Controller::windowMinimize()
+{
+    mainWidget->setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
+                                                mainWidget->size(), QApplication::desktop()->availableGeometry()));
+}
+
+void Controller::windowHide()
+{
+    mainWidget->showMinimized();
 }
 
