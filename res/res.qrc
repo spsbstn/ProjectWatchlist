@@ -11,8 +11,6 @@
         <file>img/addIcon_Active_Dark.png</file>
         <file>img/addIcon_Dark.png</file>
         <file>img/closeScreenButton.png</file>
-        <file>img/shutdown_Active.png</file>
-        <file>img/shutdown.png</file>
         <file>img/abort_Active.png</file>
         <file>img/abort.png</file>
         <file>img/confirm_Active.png</file>
@@ -52,5 +50,13 @@
         <file>img/grey/removeIcon.png</file>
         <file>img/darkGreen/removeIcon_Active.png</file>
         <file>img/darkGreen/removeIcon.png</file>
+        <file>img/maximize.png</file>
+        <file>img/maximize_Active.png</file>
+        <file>img/restore_Active.png</file>
+        <file>img/restore.png</file>
+        <file>img/hide_Active.png</file>
+        <file>img/hide.png</file>
+        <file>img/shutdown_Active.png</file>
+        <file>img/shutdown.png</file>
     </qresource>
 </RCC>

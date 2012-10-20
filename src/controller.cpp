@@ -131,7 +131,7 @@ void Controller::windowMaximize()
 void Controller::windowMinimize()
 {
     mainWidget->setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
-                                                mainWidget->size(), QApplication::desktop()->availableGeometry()));
+                                                mainWidget->minimumSize(), QApplication::desktop()->availableGeometry()));
 }
 
 void Controller::windowHide()

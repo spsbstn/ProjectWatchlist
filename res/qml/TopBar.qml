@@ -1,6 +1,7 @@
 import QtQuick 1.1
 
 Item {
+            property bool isMaximized: false;
     Rectangle{
 
         id:topControles
@@ -26,6 +27,37 @@ Item {
             }
 
             Button {
+                id:sizeToggleButton
+                buttonHeight:12
+                buttonWidth: 12
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 5
+                anchors.rightMargin: 10
+                anchors.right:shutdownButton.left
+                onClicked: {
+                    if(isMaximized){
+                        controller.windowMinimize();
+                    }
+                    else {
+                        controller.windowMaximize();
+                    }
+                isMaximized=!isMaximized;}
+            }
+
+            Button {
+                id:hideButton
+                buttonHeight:12
+                buttonWidth: 12
+                buttonNormal: "qrc:../..///img/hide.png"
+                buttonActive: "qrc:../..///img/hide_Active.png"
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 5
+                anchors.rightMargin: 10
+                anchors.right:sizeToggleButton.left
+                onClicked: controller.windowHide();
+            }
+
+            Button {
                id:darkColorButton
                buttonHeight:12
                buttonWidth: 12
@@ -33,7 +65,7 @@ Item {
                anchors.bottom: parent.bottom
                anchors.bottomMargin:5
                anchors.rightMargin: 10
-               anchors.right:shutdownButton.left
+               anchors.right:hideButton.left
                onClicked:mainWindow.colorScheme="darkGreen"
             }
             Button {
@@ -105,4 +137,21 @@ Item {
         color:'#CCCCCC'
         width:parent.width*0.8
     }
+    states: [ State {
+
+            name: "maximized"
+            PropertyChanges { target: sizeToggleButton; buttonNormal:"./..///img/restore.png"  }
+            PropertyChanges { target: sizeToggleButton; buttonActive:"./..///img/restore_Active.png"}
+            when: isMaximized==true
+         },
+        State {
+             name: "normalSize"
+             PropertyChanges { target: sizeToggleButton; buttonNormal:"./..///img/maximize.png" }
+             PropertyChanges { target: sizeToggleButton; buttonActive:"./..///img/maximize_Active.png" }
+             when: isMaximized==false
+                 }
+
+
+]
+
 }
