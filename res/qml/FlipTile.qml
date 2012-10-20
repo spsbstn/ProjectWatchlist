@@ -46,7 +46,7 @@ front: Rectangle {
              text: genre
              font.family: mainWindow.uiFont
              wrapMode: Text.WordWrap
-             font {pointSize: mainWindow.tileHeaderFontSize*0.4}
+             font {pointSize: mainWindow.tileHeaderFontSize*0.6}
             }
 
          MouseArea {
