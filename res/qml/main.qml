@@ -13,8 +13,8 @@ Rectangle {
 
     FontLoader {
 
-        id: helveticaNeueUltraLight
-        source: "qrc:../..///fonts/Helvetica Neue UltraLight.ttf"
+        id: frutigerLight
+        source: "qrc:../..///fonts/Frutiger Light.ttf"
                 }
 
 
@@ -46,7 +46,7 @@ Rectangle {
     property string tileBackground: "#CCCCCC"
     property string textColor: "#484848"
     property string textColor2: "#00aaff"
-    property string uiFont: helveticaNeueUltraLight.name
+    property string uiFont: frutigerLight.name
     property string colorScheme: controller.loadColorScheme()
 
     NumberAnimation {id: showAddScreen; target:addScreen; property:"opacity"; to:1; duration: 400}

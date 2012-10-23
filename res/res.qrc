@@ -24,7 +24,6 @@
         <file>qml/Button.qml</file>
         <file>img/darkRedSheme.png</file>
         <file>qml/InfoScreen.qml</file>
-        <file>fonts/Helvetica Neue UltraLight.ttf</file>
         <file>img/watchnow_Active.png</file>
         <file>img/watchnow.png</file>
         <file>qml/LoadingCircle.qml</file>
@@ -58,5 +57,6 @@
         <file>img/hide.png</file>
         <file>img/shutdown_Active.png</file>
         <file>img/shutdown.png</file>
+        <file>fonts/Frutiger Light.ttf</file>
     </qresource>
 </RCC>

@@ -15,11 +15,6 @@ Rectangle {
     property string airTime;
     property string network;
 
-    FontLoader {
-             id: helveticaNeueUltraLight
-             source: "qrc:../..///fonts/Helvetica Neue UltraLight.ttf"
-    }
-
     id:mainInfoWindow
     anchors.top:parent.top
     anchors.topMargin: mainWindow.topBarSize
@@ -40,7 +35,7 @@ Rectangle {
 
             Text {
                 text:showName
-                font.family: helveticaNeueUltraLight.name
+                font.family: mainWindow.uiFont
                 font.pointSize: 60
                 font.capitalization: Font.AllLowercase
                 color: 'black'
@@ -116,7 +111,7 @@ Rectangle {
                     id:totalSeasonsLabel
                     text:"Total Seasons."
                     horizontalAlignment: Text.AlignRight
-                    font.family: helveticaNeueUltraLight.name
+                    font.family: mainWindow.uiFont
                     font.pointSize: 30
                     font.capitalization: Font.AllLowercase
                     color: 'black'
@@ -129,7 +124,7 @@ Rectangle {
                     id:totalSeasonsText
                     text:totalSeasons
                     horizontalAlignment: Text.AlignLeft
-                    font.family: helveticaNeueUltraLight.name
+                    font.family: mainWindow.uiFont
                     font.pointSize: 30
                     color: 'white'
                     height:45
@@ -151,7 +146,7 @@ Rectangle {
                     id:startedLabel
                     text:"Started."
                     horizontalAlignment: Text.AlignRight
-                    font.family: helveticaNeueUltraLight.name
+                    font.family: mainWindow.uiFont
                     font.pointSize: 30
                     font.capitalization: Font.AllLowercase
                     color: 'black'
@@ -164,7 +159,7 @@ Rectangle {
                     id:startedText
                     text:started
                     horizontalAlignment: Text.AlignLeft
-                    font.family: helveticaNeueUltraLight.name
+                    font.family: mainWindow.uiFont
                     font.pointSize: 30
                     color: 'white'
                     height:45
@@ -185,7 +180,7 @@ Rectangle {
                     id:statusLabel
                     text:"Status."
                     horizontalAlignment: Text.AlignRight
-                    font.family: helveticaNeueUltraLight.name
+                    font.family: mainWindow.uiFont
                     font.pointSize: 30
                     font.capitalization: Font.AllLowercase
                     color: 'black'
@@ -198,7 +193,7 @@ Rectangle {
                     id:statusText
                     text:status
                     horizontalAlignment: Text.AlignLeft
-                    font.family: helveticaNeueUltraLight.name
+                    font.family: mainWindow.uiFont
                     font.pointSize: 30
                     color: 'white'
                     height:45
@@ -220,7 +215,7 @@ Rectangle {
                     id:genreLabel
                     text:"Genre."
                     horizontalAlignment: Text.AlignRight
-                    font.family: helveticaNeueUltraLight.name
+                    font.family: mainWindow.uiFont
                     font.pointSize: 30
                     font.capitalization: Font.AllLowercase
                     color: 'black'
@@ -233,7 +228,7 @@ Rectangle {
                     id:genreText
                     text:genre
                     horizontalAlignment: Text.AlignLeft
-                    font.family: helveticaNeueUltraLight.name
+                    font.family: mainWindow.uiFont
                     font.pointSize: 30
                     color: 'white'
                     height:45
@@ -261,7 +256,7 @@ Rectangle {
                         id:watchNowLabel
                         text:"watch now."
                         horizontalAlignment: Text.AlignCenter
-                        font.family: helveticaNeueUltraLight.name
+                        font.family: mainWindow.uiFont
                         font.pointSize: 30
                         font.capitalization: Font.AllLowercase
                         color: 'black'
@@ -300,7 +295,7 @@ Rectangle {
 
                 id:airDayText
                 text:"Every " + airDay
-                font.family: helveticaNeueUltraLight.name
+                font.family: mainWindow.uiFont
                 font.pointSize: 30
                 color: 'white'
                 anchors.bottom:timeAndNetwork.top
@@ -325,7 +320,7 @@ Rectangle {
 
                 id:timeAndNetwork
                 text:airTime+" on "+network
-                font.family: helveticaNeueUltraLight.name
+                font.family: mainWindow.uiFont
                 font.pointSize: 30
                 color: 'white'
                 anchors.centerIn: parent
