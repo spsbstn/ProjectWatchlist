@@ -59,6 +59,7 @@ Controller::Controller(QObject *parent) :
         QObject::connect(rootObject, SIGNAL(xmlDataRequired(QString)), xml_, SLOT(createConnection(QString)));
         QObject::connect(xml_->xmlPicture_, SIGNAL(updateFinished()), rootObject, SLOT(updateInfo()));
 
+
 }
 
 void Controller::add(const QString& name, const QString& genre)

@@ -17,6 +17,8 @@ public:
      explicit xmlHelper(QObject *parent = 0);
     QNetworkAccessManager* nam;
     QString getImageUrl() {return xmlPicture_->imageUrl;}
+    QString getLatestEpisode() {return xmlPicture_->latestEpisode;}
+    QString getAirdateLatestEpisode() {return xmlPicture_->airdateLatestEpisode;}
     XmlPictureLoader *xmlPicture_;
     QString name;
     QString started;

@@ -33,6 +33,8 @@ public:
     Q_INVOKABLE QString getNetwork() {return xml_->network;}
     Q_INVOKABLE QString getGenre() {return xml_->genre;}
     Q_INVOKABLE QString getImageUrl() {return xml_->getImageUrl();}
+    Q_INVOKABLE QString getLatestEpisode() {return xml_->getLatestEpisode();}
+    Q_INVOKABLE QString getAirdateLatestEpisode() {return xml_->getAirdateLatestEpisode();}
     Q_INVOKABLE void windowMaximize();
     Q_INVOKABLE void windowMinimize();
     Q_INVOKABLE void windowHide();

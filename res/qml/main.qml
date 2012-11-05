@@ -30,6 +30,7 @@ Rectangle {
         infoScreen.genre = controller.getGenre();
         infoScreen.started = controller.getStarted();
         infoScreen.imageSource=controller.getImageUrl();
+        infoScreen.latestEpisode = controller.getLatestEpisode();
         infoScreen.mainOpacity=1;
         grid.currentItem.loadingCircleVisible=false;
 

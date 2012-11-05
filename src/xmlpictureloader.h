@@ -16,6 +16,8 @@ public:
     QNetworkAccessManager* nam;
     void createConnection(QString showId);
     QString imageUrl;
+    QString latestEpisode;
+    QString airdateLatestEpisode;
     QDomNodeList list;
 
     
