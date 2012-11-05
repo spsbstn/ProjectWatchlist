@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import "..///js/WatchNow.js" as WatchNowLink
+import Cursors 1.0
 
 Rectangle {
 
@@ -14,6 +15,7 @@ Rectangle {
     property string airDay;
     property string airTime;
     property string network;
+    property string latestEpisode;
 
     id:mainInfoWindow
     anchors.top:parent.top
@@ -97,7 +99,7 @@ Rectangle {
             anchors.top: topBar.bottom
             anchors.right:parent.right
             width:parent.width/2;
-            height:parent.height*(4/5)*(2/3)
+            height:parent.height*(4/5)*(5/6)
 
             Item {
 
@@ -237,6 +239,42 @@ Rectangle {
 
                      }
                    }
+            Item {
+
+                id:row5
+                height:45
+                width:parent.width
+                anchors.top:row4.bottom
+
+                Text {
+
+                    id:latestEpisodeText
+                    text:"Latest Episode."
+                    horizontalAlignment: Text.AlignRight
+                    font.family: mainWindow.uiFont
+                    font.pointSize: 30
+                    font.capitalization: Font.AllLowercase
+                    color: 'black'
+                    height:45
+                    width:parent.width/2
+
+                       }
+                Text {
+
+                    id:latestEpisodeLabel
+                    text:latestEpisode
+                    horizontalAlignment: Text.AlignLeft
+                    font.family: mainWindow.uiFont
+                    font.pointSize: 30
+                    color: 'white'
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    height:45
+                    width:parent.width/2
+
+                    anchors.right:parent.right
+
+                     }
+                   }
 
             Item {
 
@@ -289,7 +327,7 @@ Rectangle {
             anchors.top: infoArea.bottom
             anchors.left:imageArea.right
             width:parent.width/2;
-            height:parent.height*(4/5)*(1/3)
+            height:parent.height*(4/5)*(1/6)
 
             Text {
 
@@ -357,6 +395,34 @@ Rectangle {
 
                 }
 
+
+        Text {
+
+            id:wrongShow
+            text:"Wrong show?"
+            horizontalAlignment: Text.AlignLeft
+            font.family: mainWindow.uiFont
+            font.pointSize: 20
+            color: 'white'
+            height:45
+            anchors.left:parent.left
+            anchors.leftMargin: 20
+            anchors.bottom: parent.bottom
+
+            CursorShapeArea {
+                anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
+              }
+            MouseArea {
+
+            anchors.fill: parent
+            hoverEnabled:true
+            onExited:  wrongShow.color="white"
+            onEntered: wrongShow.color="#eeeeee"
+            onClicked:console.log("wrongShow")
+
+             }
+}
 
 }
 
