@@ -1,6 +1,6 @@
 #include "xmlpictureloader.h"
 #include <QtDebug>
- #include <QDate>
+#include <QDate>
 #define URL_BASE "http://services.tvrage.com/feeds/full_show_info.php?sid="
 
 XmlPictureLoader::XmlPictureLoader(QObject *parent) :
@@ -34,6 +34,7 @@ void XmlPictureLoader::finishedSlot(QNetworkReply* reply)
         QDate now = QDate::currentDate();
         QDate airDate;
         QDomNodeList namelist=doc.elementsByTagName("title");
+       QDomNodeList episodeNumberlist=doc.elementsByTagName("seasonnum");
 
         for (int i = 0;list.length();i++){
 
@@ -41,12 +42,10 @@ void XmlPictureLoader::finishedSlot(QNetworkReply* reply)
 
             if(airDate.operator > (now) || i==list.length()){
 
-                latestEpisode = namelist.at(i-1).toElement().text();
-                airdateLatestEpisode = list.at(i-1).toElement().text();
+                latestEpisode = namelist.at(i-2).toElement().text()+" ("+episodeNumberlist.at(i-2).toElement().text()+")";
+                airdateLatestEpisode = list.at(i-2).toElement().text();
                 break;
             }
-
-
 
 
         }
