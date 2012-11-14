@@ -4,7 +4,6 @@
 #include <QtDebug>
 #include <QErrorMessage>
 #include <QDesktopServices>
-
 #include "tvshow.h"
 
 
@@ -54,15 +53,15 @@ Database::Database(QObject *parent) :
         }
         else
           qDebug() << "datatable created!";
-
-
 }
 
 void Database::addShow(QString name, QString genre) {
 
     QSqlQuery qry;
 
-    qry.prepare( "INSERT INTO data (name, season, episode, genre) VALUES ('"+name+"', 1, 1,'"+genre+"')" );
+    qry.prepare( "INSERT INTO data (name, season, episode, genre) VALUES (:name, 1, 1,:genre)");
+    qry.bindValue(":name",name);
+    qry.bindValue(":genre",genre);
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
@@ -74,7 +73,8 @@ void Database::removeShow(QString name) {
 
     QSqlQuery qry;
 
-    qry.prepare( "DELETE FROM data WHERE name='"+name+"'" );
+    qry.prepare( "DELETE FROM data WHERE name=:name");
+    qry.bindValue(":name",name);
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
@@ -85,7 +85,9 @@ void Database::alterSeason(QString name,int delta){
 
     QSqlQuery qry;
 
-    qry.prepare( "UPDATE data SET season=season+"+QString::number(delta)+" WHERE name='"+name+"'" );
+    qry.prepare( "UPDATE data SET season=season+:delta WHERE name=:number" );
+    qry.bindValue(":delta",QString::number(delta));
+    qry.bindValue(":name",name);
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
@@ -96,7 +98,9 @@ void Database::alterEpisode(QString name,int delta){
 
     QSqlQuery qry;
 
-    qry.prepare( "UPDATE data SET episode=episode+"+QString::number(delta)+" WHERE name='"+name+"'" );
+    qry.prepare( "UPDATE data SET episode=episode+:delta WHERE name=:name");
+    qry.bindValue(":delta", QString::number(delta));
+    qry.bindValue(":name", name);
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
@@ -106,7 +110,9 @@ void Database::alterGenre(QString name,QString genre){
 
     QSqlQuery qry;
 
-    qry.prepare( "UPDATE data SET genre='"+genre+"' WHERE name='"+name+"'" );
+    qry.prepare( "UPDATE data SET genre=:genre WHERE name=:name");
+    qry.bindValue(":name",name);
+    qry.bindValue(":genre",genre);
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
