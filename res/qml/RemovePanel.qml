@@ -10,8 +10,8 @@ Button {
     id:abortButton
     buttonHeight:35
     buttonWidth:35
-    buttonNormal: "qrc:../..///img/abort.png"
-    buttonActive: "qrc:../..///img/abort_Active.png"
+    buttonNormal: "../..///img/"+mainWindow.colorScheme+"/abort.png"
+    buttonActive: "../..///img/"+mainWindow.colorScheme+"/abort_Active.png"
     anchors.right:parent.right
     anchors.bottom:parent.bottom
     anchors.bottomMargin:20
@@ -23,8 +23,8 @@ Button {
     id:confirmButton
     buttonHeight:35
     buttonWidth:35
-    buttonNormal: "qrc:../..///img/confirm.png"
-    buttonActive: "qrc:../..///img/confirm_Active.png"
+    buttonNormal: "../..///img/"+mainWindow.colorScheme+"/confirm.png"
+    buttonActive: "../..///img/"+mainWindow.colorScheme+"/confirm_Active.png"
     anchors.left:parent.left
     anchors.bottom:parent.bottom
     anchors.bottomMargin:20

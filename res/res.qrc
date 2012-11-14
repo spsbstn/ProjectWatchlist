@@ -11,10 +11,6 @@
         <file>img/addIcon_Active_Dark.png</file>
         <file>img/addIcon_Dark.png</file>
         <file>img/closeScreenButton.png</file>
-        <file>img/abort_Active.png</file>
-        <file>img/abort.png</file>
-        <file>img/confirm_Active.png</file>
-        <file>img/confirm.png</file>
         <file>js/Global.js</file>
         <file>qml/TopBar.qml</file>
         <file>qml/RemovePanel.qml</file>
@@ -22,7 +18,6 @@
         <file>img/darkGreenSheme.png</file>
         <file>img/lightGreySheme.png</file>
         <file>qml/Button.qml</file>
-        <file>img/darkRedSheme.png</file>
         <file>qml/InfoScreen.qml</file>
         <file>img/watchnow_Active.png</file>
         <file>img/watchnow.png</file>
@@ -38,13 +33,6 @@
         <file>img/darkGreen/leftButton.png</file>
         <file>img/darkGreen/rightButton_Active.png</file>
         <file>img/darkGreen/rightButton.png</file>
-        <file>img/darkRed/info.png</file>
-        <file>img/darkRed/leftButton_Active.png</file>
-        <file>img/darkRed/leftButton.png</file>
-        <file>img/darkRed/rightButton_Active.png</file>
-        <file>img/darkRed/rightButton.png</file>
-        <file>img/darkRed/removeIcon_Active.png</file>
-        <file>img/darkRed/removeIcon.png</file>
         <file>img/grey/removeIcon_Active.png</file>
         <file>img/grey/removeIcon.png</file>
         <file>img/darkGreen/removeIcon_Active.png</file>
@@ -58,5 +46,25 @@
         <file>img/shutdown_Active.png</file>
         <file>img/shutdown.png</file>
         <file>fonts/Frutiger Light.ttf</file>
+        <file>img/darkOrange/info.png</file>
+        <file>img/darkOrange/leftButton_Active.png</file>
+        <file>img/darkOrange/leftButton.png</file>
+        <file>img/darkOrange/removeIcon_Active.png</file>
+        <file>img/darkOrange/removeIcon.png</file>
+        <file>img/darkOrange/rightButton_Active.png</file>
+        <file>img/darkOrange/rightButton.png</file>
+        <file>img/darkOrangeSheme.png</file>
+        <file>img/grey/abort_Active.png</file>
+        <file>img/grey/abort.png</file>
+        <file>img/grey/confirm_Active.png</file>
+        <file>img/grey/confirm.png</file>
+        <file>img/darkOrange/abort_Active.png</file>
+        <file>img/darkOrange/abort.png</file>
+        <file>img/darkOrange/confirm_Active.png</file>
+        <file>img/darkOrange/confirm.png</file>
+        <file>img/darkGreen/abort_Active.png</file>
+        <file>img/darkGreen/abort.png</file>
+        <file>img/darkGreen/confirm_Active.png</file>
+        <file>img/darkGreen/confirm.png</file>
     </qresource>
 </RCC>

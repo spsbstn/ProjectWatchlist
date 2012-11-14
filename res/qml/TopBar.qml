@@ -83,12 +83,12 @@ Item {
                 id: redColorButton
                 buttonHeight:12
                 buttonWidth: 12
-                buttonNormal: "qrc:../..///img/darkRedSheme.png"
+                buttonNormal: "qrc:../..///img/darkOrangeSheme.png"
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin:5
                 anchors.rightMargin: 10
                 anchors.right:lightColorButton.left
-                onClicked:mainWindow.colorScheme="darkRed"
+                onClicked:mainWindow.colorScheme="darkOrange"
 
     }
             Text {
