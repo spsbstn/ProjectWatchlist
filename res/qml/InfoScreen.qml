@@ -8,14 +8,13 @@ Rectangle {
     property double mainOpacity:0
     property string imageSource;
     property string showName;
-    property string totalSeasons;
     property string started;
     property string status;
     property string genre;
-    property string airDay;
     property string airTime;
     property string network;
     property string latestEpisode;
+    property string nextEpisode;
 
     id:mainInfoWindow
     anchors.top:parent.top
@@ -25,6 +24,7 @@ Rectangle {
     color:"#00aaff"
     width:parent.width -90
     height:parent.height -100
+    onOpacityChanged:if(nextEpisode==""){nextEpisodeText.text=""} else {nextEpisodeText.text="next Episode."}
 
 
 
@@ -54,7 +54,7 @@ Rectangle {
             id:imageArea
             anchors.top: topBar.bottom
             anchors.right:infoArea.left
-            width:parent.width/2.2;
+            width:parent.width/3;
             height:parent.height*0.7
             transform: Rotation { origin.x: image.paintedHeight/2; origin.y: image.paintedWidth/2; angle: 5}
 
@@ -98,50 +98,16 @@ Rectangle {
             id:infoArea
             anchors.top: topBar.bottom
             anchors.right:parent.right
-            width:parent.width/2;
+            width:parent.width/1.5;
             height:parent.height*(4/5)*(5/6)
 
-            Item {
-
-                id:row1
-                height:45
-                width:parent.width
-                anchors.top:parent.top
-
-                Text {
-
-                    id:totalSeasonsLabel
-                    text:"Total Seasons."
-                    horizontalAlignment: Text.AlignRight
-                    font.family: mainWindow.uiFont
-                    font.pointSize: 30
-                    font.capitalization: Font.AllLowercase
-                    color: 'black'
-                    height:45
-                    width:parent.width/2
-
-                     }
-                Text {
-
-                    id:totalSeasonsText
-                    text:totalSeasons
-                    horizontalAlignment: Text.AlignLeft
-                    font.family: mainWindow.uiFont
-                    font.pointSize: 30
-                    color: 'white'
-                    height:45
-                    width:parent.width/2
-                    anchors.right:parent.right
-
-                     }
-                }
 
             Item {
 
                 id:row2
                 height:45
                 width:parent.width
-                anchors.top:row1.bottom
+                anchors.top:parent.top
 
                 Text {
 
@@ -275,6 +241,41 @@ Rectangle {
 
                      }
                    }
+            Item {
+
+                id:row6
+                height:45
+                width:parent.width
+                anchors.top:row5.bottom
+                anchors.topMargin: row5.height
+
+                Text {
+                    id:nextEpisodeText
+                    horizontalAlignment: Text.AlignRight
+                    font.family: mainWindow.uiFont
+                    font.pointSize: 30
+                    font.capitalization: Font.AllLowercase
+                    color: 'black'
+                    height:45
+                    width:parent.width/2
+
+                       }
+                Text {
+
+                    id:nextEpisodeLabel
+                    text:nextEpisode
+                    horizontalAlignment: Text.AlignLeft
+                    font.family: mainWindow.uiFont
+                    font.pointSize: 30
+                    color: 'white'
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    height:45
+                    width:parent.width/2
+
+                    anchors.right:parent.right
+
+                     }
+                   }
 
             Item {
 
@@ -326,19 +327,19 @@ Rectangle {
             id:airTimeArea
             anchors.top: infoArea.bottom
             anchors.left:imageArea.right
-            width:parent.width/2;
+            width:parent.width/3;
             height:parent.height*(4/5)*(1/6)
 
             Text {
 
                 id:airDayText
-                text:"Every " + airDay
+                text:"Every " + airTime
                 font.family: mainWindow.uiFont
                 font.pointSize: 30
                 color: 'white'
                 anchors.bottom:timeAndNetwork.top
                 anchors.left:timeAndNetwork.left
-                anchors.leftMargin: -40
+                anchors.leftMargin: -20
                 z:3
 
                 Rectangle {
@@ -357,7 +358,7 @@ Rectangle {
             Text {
 
                 id:timeAndNetwork
-                text:airTime+" on "+network
+                text:"on "+network
                 font.family: mainWindow.uiFont
                 font.pointSize: 30
                 color: 'white'

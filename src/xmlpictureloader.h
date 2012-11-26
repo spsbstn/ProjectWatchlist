@@ -11,22 +11,21 @@
 class XmlPictureLoader : public QObject
 {
     Q_OBJECT
+
 public:
+
     explicit XmlPictureLoader(QObject *parent = 0);
     QNetworkAccessManager* nam;
     void createConnection(QString showId);
     QString imageUrl;
-    QString latestEpisode;
-    QString airdateLatestEpisode;
     QDomNodeList list;
-
-    
 
 signals:
 
     void updateFinished();
     
 public slots:
+
     void finishedSlot(QNetworkReply*);
     
 };

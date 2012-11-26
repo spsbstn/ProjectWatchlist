@@ -52,12 +52,11 @@ Controller::Controller(QObject *parent) :
         framelessHelper->setWidgetMovable(false);
         framelessHelper->setWidgetResizable(true);
 
-        // testing xmlHelper
-        xml_ = new xmlHelper(this);
-        QObject *rootObject = dynamic_cast<QObject*>(qmlView->rootObject());
 
-        QObject::connect(rootObject, SIGNAL(xmlDataRequired(QString)), xml_, SLOT(createConnection(QString)));
-        QObject::connect(xml_->xmlPicture_, SIGNAL(updateFinished()), rootObject, SLOT(updateInfo()));
+        qi = new QuickInfo(this);
+        QObject *rootObject = dynamic_cast<QObject*>(qmlView->rootObject());
+        QObject::connect(rootObject, SIGNAL(xmlDataRequired(QString)), qi, SLOT(createConnection(QString)));
+        QObject::connect(qi->xmlPicture_, SIGNAL(updateFinished()), rootObject, SLOT(updateInfo()));
 
 
 }

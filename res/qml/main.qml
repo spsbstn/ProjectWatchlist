@@ -22,18 +22,16 @@ Rectangle {
 
 
         infoScreen.showName=controller.getName();
-        infoScreen.totalSeasons=controller.getTotalSeasons();
         infoScreen.status=controller.getStatus();
-        infoScreen.airDay= controller.getAirday();
         infoScreen.airTime = controller.getAirtime;
         infoScreen.network = controller.getNetwork();
         infoScreen.genre = controller.getGenre();
         infoScreen.started = controller.getStarted();
         infoScreen.imageSource=controller.getImageUrl();
         infoScreen.latestEpisode = controller.getLatestEpisode();
+        infoScreen.nextEpisode = controller.getNextEpisode();
         infoScreen.mainOpacity=1;
-        grid.currentItem.loadingCircleVisible=false;
-
+        grid.currentItem.loadingCircleVisible=false
 
     }
 

@@ -2,8 +2,7 @@
 #define CONTROLLER_H
 #include <QObject>
 #include <QSettings>
-#include "xmlhelper.h"
-
+#include "quickinfo.h"
 
 class MainView;
 class Database;
@@ -24,17 +23,15 @@ public:
     Q_INVOKABLE void setEpisode(const QString& name, int delta);
     Q_INVOKABLE void changeColorScheme(const QString& color,const QString &schemeName);
     Q_INVOKABLE QString loadColorScheme();
-    Q_INVOKABLE QString getName() {return xml_->name;}
-    Q_INVOKABLE QString getStarted() {return xml_->started;}
-    Q_INVOKABLE QString getTotalSeasons() {return xml_->totalSeasons;}
-    Q_INVOKABLE QString getStatus() {return xml_->status;}
-    Q_INVOKABLE QString getAirday() {return xml_->airday;}
-    Q_INVOKABLE QString getAirtime() {return xml_->airtime;}
-    Q_INVOKABLE QString getNetwork() {return xml_->network;}
-    Q_INVOKABLE QString getGenre() {return xml_->genre;}
-    Q_INVOKABLE QString getImageUrl() {return xml_->getImageUrl();}
-    Q_INVOKABLE QString getLatestEpisode() {return xml_->getLatestEpisode();}
-    Q_INVOKABLE QString getAirdateLatestEpisode() {return xml_->getAirdateLatestEpisode();}
+    Q_INVOKABLE QString getName() {return qi->showInfo->value("Show Name");}
+    Q_INVOKABLE QString getStarted() {return qi->showInfo->value("Started");}
+    Q_INVOKABLE QString getStatus() {return qi->showInfo->value("Status");}
+    Q_INVOKABLE QString getAirtime() {return qi->showInfo->value("Airtime");}
+    Q_INVOKABLE QString getNetwork() {return qi->showInfo->value("Network");}
+    Q_INVOKABLE QString getGenre() {return  qi->showInfo->value("Genres");}
+    Q_INVOKABLE QString getLatestEpisode() {return qi->showInfo->value("Latest Episode");}
+    Q_INVOKABLE QString getNextEpisode() {return qi->showInfo->value("Next Episode");}
+    Q_INVOKABLE QString getImageUrl() {return qi->getImageUrl();}
     Q_INVOKABLE void windowMaximize();
     Q_INVOKABLE void windowMinimize();
     Q_INVOKABLE void windowHide();
@@ -49,7 +46,7 @@ public:
     NcFramelessHelper *framelessHelper;
     QVBoxLayout *layout;
     Database    *db;
-    xmlHelper *xml_;
+    QuickInfo *qi;
     QSettings* settings;
 
 };
