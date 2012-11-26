@@ -119,7 +119,7 @@ Item {
             Text {
 
                 anchors.centerIn: parent
-                text:"Watchlist v1.5 beta"
+                text:"Watchlist 2.0 beta"
                 color:mainWindow.textColor2
                 font.pixelSize: 16
                 font.capitalization:Font.AllLowercase;

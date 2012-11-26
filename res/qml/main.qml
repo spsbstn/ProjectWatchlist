@@ -202,6 +202,48 @@ Rectangle {
     z:1
     }
 
+    //wrong show?
+    Rectangle {
+        id:wrongShowInfo
+        anchors.centerIn: mainWindow
+        height: parseInt(grid.height / 2)
+        width: height*2
+        opacity: 0
+        color:tileBackground
+        border.width: 5
+        border.color: "black"
+
+        Text {
+          anchors.centerIn: parent
+          horizontalAlignment: Text.AlignJustify
+          color: textColor
+          width:parent.width-60
+          text: qsTr("If the wrong showdata is displayed, you propably didn't enter the exact showname. Go to www.tvrage.com and look for the exact name. \nEt voilà, it will work like a charm ;)")
+          font.pixelSize: parent.width/20
+          wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+          font.family: uiFont
+          transform: Rotation {origin.x: (width)/2
+          origin.y: height/2
+          axis.x: 0; axis.y: 1; axis.z: 0
+          angle: 0.01 }
+              }
+
+        Button {
+
+            id:closeScreenButton
+            anchors.top:parent.top
+            anchors.topMargin: -11
+            anchors.rightMargin: -11
+            anchors.right:parent.right
+            buttonHeight: 22
+            buttonWidth: 22
+            buttonNormal: "qrc:../..///img/closeScreenButton.png"
+            onClicked: parent.opacity=0
+
+                }
+
+    }
+
         states: [ State {
                 when: colorScheme=="grey"
                 changes:

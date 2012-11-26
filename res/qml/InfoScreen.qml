@@ -24,9 +24,9 @@ Rectangle {
     color:"#00aaff"
     width:parent.width -90
     height:parent.height -100
+
+    //check if there is a next Episode
     onOpacityChanged:if(nextEpisode==""){nextEpisodeText.text=""} else {nextEpisodeText.text="next Episode."}
-
-
 
         Item {
 
@@ -36,7 +36,7 @@ Rectangle {
             height:parent.height*0.2
 
             Text {
-                text:showName
+                text:showName+"."
                 font.family: mainWindow.uiFont
                 font.pointSize: 60
                 font.capitalization: Font.AllLowercase
@@ -53,10 +53,9 @@ Rectangle {
 
             id:imageArea
             anchors.top: topBar.bottom
-            anchors.right:infoArea.left
-            width:parent.width/3;
+            anchors.left:mainInfoWindow.left
+            width:parent.width-infoArea.width-40
             height:parent.height*0.7
-            transform: Rotation { origin.x: image.paintedHeight/2; origin.y: image.paintedWidth/2; angle: 5}
 
 
             LoadingCircle{
@@ -69,7 +68,7 @@ Rectangle {
                     smooth:true
                     visible: false;
                     fillMode: Image.PreserveAspectFit
-                    anchors.centerIn: parent
+                    anchors.centerIn: imageArea
                     anchors.fill: parent
                     anchors.margins: 20
                     source:imageSource
@@ -98,7 +97,7 @@ Rectangle {
             id:infoArea
             anchors.top: topBar.bottom
             anchors.right:parent.right
-            width:parent.width/1.5;
+            width:parent.width/2;
             height:parent.height*(4/5)*(5/6)
 
 
@@ -106,7 +105,7 @@ Rectangle {
 
                 id:row2
                 height:45
-                width:parent.width
+                width:parent.width/2
                 anchors.top:parent.top
 
                 Text {
@@ -140,7 +139,7 @@ Rectangle {
 
                 id:row3
                 height:45
-                width:parent.width
+                width:parent.width/2
                 anchors.top:row2.bottom
 
                 Text {
@@ -175,7 +174,7 @@ Rectangle {
 
                 id:row4
                 height:45
-                width:parent.width
+                width:parent.width/2
                 anchors.top:row3.bottom
 
                 Text {
@@ -199,9 +198,10 @@ Rectangle {
                     font.family: mainWindow.uiFont
                     font.pointSize: 30
                     color: 'white'
-                    height:45
-                    width:parent.width/2
-                    anchors.right:parent.right
+                    height:paintedHeight
+                    elide:Text.ElideRight
+                    width:infoArea.width-genreLabel.width
+                    anchors.left:genreLabel.right
 
                      }
                    }
@@ -209,7 +209,7 @@ Rectangle {
 
                 id:row5
                 height:45
-                width:parent.width
+                width:parent.width/2
                 anchors.top:row4.bottom
 
                 Text {
@@ -235,9 +235,8 @@ Rectangle {
                     color: 'white'
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     height:45
-                    width:parent.width/2
-
-                    anchors.right:parent.right
+                    width:infoArea.width-latestEpisodeText.width-10
+                    anchors.left:latestEpisodeText.right
 
                      }
                    }
@@ -245,7 +244,7 @@ Rectangle {
 
                 id:row6
                 height:45
-                width:parent.width
+                width:parent.width/2
                 anchors.top:row5.bottom
                 anchors.topMargin: row5.height
 
@@ -270,9 +269,8 @@ Rectangle {
                     color: 'white'
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     height:45
-                    width:parent.width/2
-
-                    anchors.right:parent.right
+                    width:infoArea.width-nextEpisodeText.width-10
+                    anchors.left:nextEpisodeText.right
 
                      }
                    }
@@ -420,7 +418,7 @@ Rectangle {
             hoverEnabled:true
             onExited:  wrongShow.color="white"
             onEntered: wrongShow.color="#eeeeee"
-            onClicked:console.log("wrongShow")
+            onClicked:wrongShowInfo.opacity=1;
 
              }
 }
