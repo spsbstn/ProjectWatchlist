@@ -120,7 +120,9 @@ Rectangle {
 
             MouseArea {
                   id:clickProtection
-                  anchors.fill:parent
+                  anchors.centerIn: grid
+                  height: grid.height;
+                  width:mainWindow.width+200
                   enabled:false
                            }
         }

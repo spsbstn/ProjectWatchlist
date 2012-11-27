@@ -209,7 +209,8 @@ front: Rectangle {
              anchors.rightMargin: 8
              hoverEnabled: true
              onPressed: {loadingCircleVisible=true;
-                         grid.currentIndex = index;   }
+                         grid.currentIndex = index;
+                         clickProtection.enabled=true;}
              onReleased:xmlDataRequired(title);
 
      }
