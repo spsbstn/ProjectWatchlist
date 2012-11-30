@@ -23,7 +23,8 @@ HEADERS += \
     src/cursorshapearea.h \
     libs/NcFramelessHelper.h \
     src/xmlpictureloader.h \
-    src/quickinfo.h
+    src/quickinfo.h \
+    src/wheelarea.h
 
 
 OTHER_FILES += \

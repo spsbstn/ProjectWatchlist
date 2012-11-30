@@ -1,7 +1,7 @@
 import QtQuick 1.1
 import "..///js/Global.js" as GlobalJS
 import Cursors 1.0
-
+import WheelArea 1.0
 
 
 Rectangle {
@@ -192,7 +192,12 @@ Rectangle {
         anchors.fill:parent
         cursorShape: Qt.ArrowCursor
 
-        }}
+        }
+        WheelArea {
+            anchors.fill: parent
+            onVerticalWheel: {}
+            onHorizontalWheel: {}
+          }}
 
         //RemoveScreen
                  RemovePanel {

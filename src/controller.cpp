@@ -7,6 +7,7 @@
 #include "cursorshapearea.h"
 #include "libs/NcFramelessHelper.h"
 #include "database.h"
+#include "wheelarea.h"
 
 Controller::Controller(QObject *parent) :
     QObject(parent),
@@ -35,6 +36,7 @@ Controller::Controller(QObject *parent) :
         ctxt->setContextProperty("controller", this);
         ctxt->setContextProperty("mainwindow", mainWidget);
         qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
+        qmlRegisterType<WheelArea>("WheelArea", 1, 0, "WheelArea");
 
         // Set main qml-file
         qmlView->setSource(QUrl("qrc:///qml/main.qml"));
