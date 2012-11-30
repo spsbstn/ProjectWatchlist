@@ -53,9 +53,9 @@ Rectangle {
     NumberAnimation {id: showClickProtection; target:clickProtection; property: "opacity"; to:0.5; duration: 800}
     NumberAnimation {id: removeClickProtection; target:clickProtection; property: "opacity"; to:0; duration: 800}
     NumberAnimation {id: showAddScreen; target:addScreen;       property: "opacity"; to:1;   duration: 400}
-    Keys.onPressed: { if ( (event.key === Qt.Key_T) && event.modifiers === Qt.ControlModifier)
+    Keys.onPressed: { if ( (event.key === Qt.Key_T) && event.modifiers === Qt.ControlModifier) {
                          showAddScreen.start();
-                         showClickProtection.start();
+                         showClickProtection.start();}
               }
 
 
@@ -136,6 +136,7 @@ Rectangle {
            orientation: Qt.Horizontal
            position: grid.visibleArea.xPosition
            pageSize: grid.visibleArea.widthRatio
+           z:1
         }
 
         //Bottombar
