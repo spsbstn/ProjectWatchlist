@@ -55,7 +55,7 @@ Rectangle {
     NumberAnimation {id: showAddScreen; target:addScreen;       property: "opacity"; to:1;   duration: 400}
     Keys.onPressed: { if ( (event.key === Qt.Key_T) && event.modifiers === Qt.ControlModifier)
                          showAddScreen.start();
-        showClickProtection.start();
+                         showClickProtection.start();
               }
 
 

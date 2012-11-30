@@ -1,7 +1,7 @@
 import QtQuick 1.1
 
 Item {
-            property bool isMaximized: false;
+            property bool isMaximized: true;
     Rectangle{
 
         id:topControles

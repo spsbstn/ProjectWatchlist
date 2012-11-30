@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
     Controller* ctrl = new Controller;
     QObject::connect((QObject*)ctrl->qmlView->engine(), SIGNAL(quit()), &app, SLOT(quit()));
 
+    ctrl->windowMaximize();
     ctrl->mainWidget->show();
     ctrl->mainWidget->setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
                           ctrl->mainWidget->size(), app.desktop()->availableGeometry()) );

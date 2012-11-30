@@ -144,9 +144,6 @@ void Controller::windowHide()
 void Controller::alphaBlendFrame(QString color, double alpha)
 {
 
-   /* QString str = "FF";
-     bool ok;
-     int hex = str.toInt(&ok, 16);  */
 
     QString hexRed=color.mid(1,2);
     QString hexGreen=color.mid(3,2);
