@@ -16,7 +16,7 @@ Button {
     anchors.bottom:parent.bottom
     anchors.bottomMargin:20
     onReleased: {removeScreen.opacity=0
-        clickProtection.enabled="false"}
+        removeClickProtection.start();}
 
              }
 Button {
@@ -30,7 +30,7 @@ Button {
     anchors.bottomMargin:20
     onPressed:controller.remove(GlobalJS.activeSeries)
     onReleased: {removeScreen.opacity=0
-                 clickProtection.enabled="false"}
+        removeClickProtection.start();}
 
 }
 }

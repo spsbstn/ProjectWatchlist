@@ -391,7 +391,7 @@ Rectangle {
                 image.visible=false;
                 imageFrame.visible=false;
                 imageLoadingCircle.visible=true;
-                clickProtection.enabled=false;}
+                removeClickProtection.start();}
 
                 }
 

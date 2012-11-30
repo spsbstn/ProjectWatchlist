@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import "..///js/Global.js" as GlobalJS
+import Cursors 1.0
 
 
 
@@ -32,6 +33,7 @@ Rectangle {
         infoScreen.nextEpisode = controller.getNextEpisode();
         infoScreen.mainOpacity=1;
         grid.currentItem.loadingCircleVisible=false
+        showClickProtection.start();
 
     }
 
@@ -48,7 +50,9 @@ Rectangle {
     property string uiFont: frutigerLight.name
     property string colorScheme: controller.loadColorScheme()
 
-    NumberAnimation {id: showAddScreen; target:addScreen; property:"opacity"; to:1; duration: 400}
+    NumberAnimation {id: showClickProtection; target:clickProtection; property: "opacity"; to:0.5; duration: 800}
+    NumberAnimation {id: removeClickProtection; target:clickProtection; property: "opacity"; to:0; duration: 800}
+    NumberAnimation {id: showAddScreen; target:addScreen;       property: "opacity"; to:1;   duration: 400}
     Keys.onPressed: { if ( (event.key === Qt.Key_T) && event.modifiers === Qt.ControlModifier)
                          showAddScreen.start();
               }
@@ -118,35 +122,9 @@ Rectangle {
                 NumberAnimation { properties: "opacity"; duration: 400 }
             }
 
-            MouseArea {
-                  id:clickProtection
-                  anchors.centerIn: grid
-                  height: grid.height;
-                  width:mainWindow.width+200
-                  enabled:false
-                           }
         }
 
-//Bottombar
-        Rectangle {
-            id: bottomBar
-            anchors.top: grid.bottom
-            anchors.left: leftBar.right
-            width: parent.width - leftBar.width
-            height: barSize/2
-            color: appBackground
 
-        //RemoveScreen
-                 RemovePanel {
-                 id:removeScreen
-                 opacity: 0;
-                 height:parent.height
-                 color:mainWindow.appBackground
-                 anchors.left:parent.left
-                 anchors.leftMargin:(parent.width-leftBar.width*2)/2
-                       }
-
-}
 //Scrollbar
         Scrollbar {
            id: horizontalScrollBar
@@ -159,6 +137,73 @@ Rectangle {
            pageSize: grid.visibleArea.widthRatio
         }
 
+        //Bottombar
+           Rectangle {
+                            id: bottomBar
+                            anchors.top: grid.bottom
+                            anchors.left: leftBar.right
+                            width: parent.width - leftBar.width
+                            height: barSize/2
+                            color: appBackground
+
+                }
+
+        Button {
+
+                 id:addButton
+                 anchors.bottom: leftBar.bottom
+                 anchors.bottomMargin: 20
+                 anchors.left: leftBar.left
+                 anchors.leftMargin: 20
+                 buttonNormal:"qrc:../..///img/addIcon.png"
+                 buttonActive:"qrc:../..///img/addIcon_Active.png"
+                 buttonHeight: 35
+                 buttonWidth: 35
+
+                 ToolTip {
+                     toolTip: "Click or press Ctrl+T \n to add Show"
+                 }
+
+                 MouseArea {
+                 anchors.fill:parent
+                 onClicked:
+                            {showAddScreen.start()
+                     showClickProtection.start();}
+
+             }
+    }
+
+        Rectangle{
+
+              id:clickProtection
+              color:"#000000"
+              opacity: 0;
+              anchors.fill:mainWindow
+              onOpacityChanged: controller.alphaBlendFrame(appBackground,clickProtection.opacity)
+
+        MouseArea {
+            anchors.fill:parent;
+            hoverEnabled:true;
+            onEntered: {}
+            onExited: {}
+
+        }
+        CursorShapeArea{
+        anchors.fill:parent
+        cursorShape: Qt.ArrowCursor
+
+        }}
+
+        //RemoveScreen
+                 RemovePanel {
+                 id:removeScreen
+                 opacity: 0;
+                 height:bottomBar.height
+                 color:"transparent"
+                 anchors.left:bottomBar.left
+                 anchors.bottom: bottomBar.bottom
+                 anchors.leftMargin:(bottomBar.width-leftBar.width*2)/2
+                       }
 //AddScreen
         AddScreen {
           id:addScreen
@@ -166,30 +211,6 @@ Rectangle {
           z:0
        }
 
-    Button {
-
-             id:addButton
-             anchors.bottom: leftBar.bottom
-             anchors.bottomMargin: 20
-             anchors.left: leftBar.left
-             anchors.leftMargin: 20
-             buttonNormal:"qrc:../..///img/addIcon.png"
-             buttonActive:"qrc:../..///img/addIcon_Active.png"
-             buttonHeight: 35
-             buttonWidth: 35
-
-             ToolTip {
-                 toolTip: "Click or press Ctrl+T \n to add Show"
-             }
-
-             MouseArea {
-             anchors.fill:parent
-             onClicked: {showAddScreen.start();
-                         clickProtection.enabled=true;}
-             }
-
-
-         }
 
     InfoScreen{
     id:infoScreen

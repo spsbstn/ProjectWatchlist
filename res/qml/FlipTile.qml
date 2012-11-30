@@ -192,7 +192,7 @@ front: Rectangle {
              anchors.topMargin: 10
              anchors.rightMargin: 8
              onPressed: {GlobalJS.activeSeries = seriesName.text;
-                         clickProtection.enabled=true;}
+                 showClickProtection.start();}
              onReleased:NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400}
 
 
@@ -209,8 +209,7 @@ front: Rectangle {
              anchors.rightMargin: 8
              hoverEnabled: true
              onPressed: {loadingCircleVisible=true;
-                         grid.currentIndex = index;
-                         clickProtection.enabled=true;}
+                         grid.currentIndex = index;}
              onReleased:xmlDataRequired(title);
 
      }

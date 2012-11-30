@@ -35,6 +35,7 @@ public:
     Q_INVOKABLE void windowMaximize();
     Q_INVOKABLE void windowMinimize();
     Q_INVOKABLE void windowHide();
+    Q_INVOKABLE void alphaBlendFrame(QString color, double alpha);
 
 
     void checkForFirstInit();

@@ -139,3 +139,38 @@ void Controller::windowHide()
     mainWidget->showMinimized();
 }
 
+void Controller::alphaBlendFrame(QString color, double alpha)
+{
+
+   /* QString str = "FF";
+     bool ok;
+     int hex = str.toInt(&ok, 16);  */
+
+    QString hexRed=color.mid(1,2);
+    QString hexGreen=color.mid(3,2);
+    QString hexBlue=color.mid(5,2);
+
+    //qDebug() << hexRed << hexGreen << hexBlue;
+
+    bool ok;
+
+    int red=hexRed.toInt(&ok, 16);
+    int green=hexGreen.toInt(&ok, 16);
+    int blue=hexBlue.toInt(&ok, 16);
+
+    //qDebug() << red << green << blue;
+
+    //blend black (0,0,0) over color
+
+    red = (1-alpha)*red+1;
+    green = (1-alpha)*green+1;
+    blue = (1-alpha)*blue+1;
+
+    QString blendedColor = QColor(red,green,blue,1 ).name();
+
+    //qDebug() << blendedColor;
+
+    mainWidget->setStyleSheet("background:'"+blendedColor+"'");
+
+}
+

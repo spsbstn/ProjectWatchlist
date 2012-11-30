@@ -55,7 +55,7 @@ Item {
                                 controller.add(nameInput.text.toLowerCase(),genreInput.text.toLocaleLowerCase(),addScreen.opacity=0)
                             }
                 Keys.onEscapePressed: {addScreen.opacity=0;
-                    clickProtection.enabled=false;}
+                    removeClickProtection.start();}
                 Keys.onTabPressed: {if(text==""){text="Name"};
                                     focus=false;
                                     genreInput.focus=true;}
@@ -95,11 +95,11 @@ Item {
                 font.pixelSize: height-(height/5)
                 onAccepted: if(nameInput.text != "Name" && nameInput.text != "" &&
                                     genreInput.text != "Genre" && genreInput.text != ""){
-                                clickProtection.enabled=false;
+                                removeClickProtection.start();
                                 controller.add(nameInput.text.toLowerCase(),genreInput.text.toLocaleLowerCase(),addScreen.opacity=0)
                             }
                 Keys.onEscapePressed: {addScreen.opacity=0;
-                                       clickProtection.enabled=false;}
+                    removeClickProtection.start();}
                 Keys.onTabPressed: { if(text==""){text="Genre"};
                                     focus=false;
                                     nameInput.focus=true;}
@@ -122,7 +122,7 @@ Item {
             buttonWidth: 22
             buttonNormal: "qrc:../..///img/closeScreenButton.png"
             onClicked: {addScreen.opacity=0
-                        clickProtection.enabled=false;}}
+                removeClickProtection.start();}}
             Button {
                  id:addButton
                  buttonHeight:16
@@ -136,7 +136,7 @@ Item {
                  onClicked: if(nameInput.text != "Name" && nameInput.text != "" &&
                                     genreInput.text != "Genre" && genreInput.text != ""){
                                   nameInput.accepted();
-                                clickProtection.enabled=false;
+                                removeClickProtection.start();
                                 }
                  }
     }
