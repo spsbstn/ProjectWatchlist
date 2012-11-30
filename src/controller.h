@@ -17,12 +17,19 @@ class Controller : public QObject
 
 public:
     explicit Controller(QObject *parent = 0);
+
+    //database functions
     Q_INVOKABLE void add(const QString& name, const QString &genre);
     Q_INVOKABLE void remove(const QString& name);
     Q_INVOKABLE void setSeason(const QString& name, int delta);
     Q_INVOKABLE void setEpisode(const QString& name, int delta);
+
+    //colorScheme functions
     Q_INVOKABLE void changeColorScheme(const QString& color,const QString &schemeName);
     Q_INVOKABLE QString loadColorScheme();
+    Q_INVOKABLE void alphaBlendFrame(QString color, double alpha);
+
+    //quickInfo functions
     Q_INVOKABLE QString getName() {return qi->showInfo->value("Show Name");}
     Q_INVOKABLE QString getStarted() {return qi->showInfo->value("Started");}
     Q_INVOKABLE QString getStatus() {return qi->showInfo->value("Status");}
@@ -32,15 +39,14 @@ public:
     Q_INVOKABLE QString getLatestEpisode() {return qi->showInfo->value("Latest Episode");}
     Q_INVOKABLE QString getNextEpisode() {return qi->showInfo->value("Next Episode");}
     Q_INVOKABLE QString getImageUrl() {return qi->getImageUrl();}
+
+    //window functions
     Q_INVOKABLE void windowMaximize();
     Q_INVOKABLE void windowMinimize();
     Q_INVOKABLE void windowHide();
-    Q_INVOKABLE void alphaBlendFrame(QString color, double alpha);
 
-
+    // --> controller.cpp
     void checkForFirstInit();
-
-
 
     QWidget  *mainWidget;
     QDeclarativeView  *qmlView;
