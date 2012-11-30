@@ -52,7 +52,7 @@ Item {
                 font.pixelSize: height-(height/5)
                 onAccepted: if(nameInput.text != "Name" && nameInput.text != "" &&
                                     genreInput.text != "Genre" && genreInput.text != ""){
-                                controller.add(nameInput.text.toLowerCase(),genreInput.text.toLocaleLowerCase(),addScreen.opacity=0)
+                                    controller.add(nameInput.text.toLowerCase(),genreInput.text.toLocaleLowerCase(),addScreen.opacity=0,removeClickProtection.start())
                             }
                 Keys.onEscapePressed: {addScreen.opacity=0;
                     removeClickProtection.start();}
@@ -94,9 +94,9 @@ Item {
                 focus:false
                 font.pixelSize: height-(height/5)
                 onAccepted: if(nameInput.text != "Name" && nameInput.text != "" &&
-                                    genreInput.text != "Genre" && genreInput.text != ""){
+                                 genreInput.text != "Genre" && genreInput.text != ""){
                                 removeClickProtection.start();
-                                controller.add(nameInput.text.toLowerCase(),genreInput.text.toLocaleLowerCase(),addScreen.opacity=0)
+                                controller.add(nameInput.text.toLowerCase(),genreInput.text.toLocaleLowerCase(),addScreen.opacity=0,removeClickProtection.start())
                             }
                 Keys.onEscapePressed: {addScreen.opacity=0;
                     removeClickProtection.start();}
