@@ -42,7 +42,7 @@ Controller::Controller(QObject *parent) :
         qmlView->setSource(QUrl("qrc:///qml/main.qml"));
 
         // Minimum Size
-        qmlView->setMinimumSize(QSize(1000,730));
+        qmlView->setMinimumSize(QSize(1100,700));
 
 
     //  Set Layout
