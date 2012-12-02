@@ -25,6 +25,17 @@ Rectangle {
     width:parent.width -90
     height:parent.height -100
 
+    focus:true
+    Keys.onEscapePressed: {mainOpacity=0;
+                              imageSource="";
+                              image.visible=false;
+                              imageFrame.visible=false;
+                              imageLoadingCircle.visible=true;
+                              removeClickProtection.start();
+                              }
+
+
+
     //check if there is a next Episode
     onOpacityChanged:if(nextEpisode==""){nextEpisodeText.text=""} else {nextEpisodeText.text="next Ep."}
 
