@@ -26,7 +26,7 @@ Rectangle {
     height:parent.height -100
 
     //check if there is a next Episode
-    onOpacityChanged:if(nextEpisode==""){nextEpisodeText.text=""} else {nextEpisodeText.text="next Episode."}
+    onOpacityChanged:if(nextEpisode==""){nextEpisodeText.text=""} else {nextEpisodeText.text="next Ep."}
 
         Item {
             id:topBar
@@ -217,7 +217,7 @@ Rectangle {
                 Text {
 
                     id:latestEpisodeText
-                    text:"Latest Episode."
+                    text:"Latest Ep."
                     horizontalAlignment: Text.AlignRight
                     font.family: mainWindow.uiFont
                     font.pointSize: 30
