@@ -248,7 +248,7 @@ Rectangle {
           horizontalAlignment: Text.AlignJustify
           color: textColor
           width:parent.width-60
-          text: qsTr("If the wrong showdata is displayed, you propably didn't enter the exact showname. Go to www.tvrage.com and look for the exact name. \nEt voilà, it will work like a charm ;)")
+          text: qsTr("If the wrong showdata is displayed, you propably didn't enter the exact showname. Go to www.tvrage.com and look for the exact name.\nEt voilà, it will work like a charm ;)")
           font.pixelSize: parent.width/20
           wrapMode: Text.WrapAtWordBoundaryOrAnywhere
           font.family: uiFont
