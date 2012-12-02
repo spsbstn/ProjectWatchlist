@@ -29,7 +29,6 @@ Rectangle {
     onOpacityChanged:if(nextEpisode==""){nextEpisodeText.text=""} else {nextEpisodeText.text="next Episode."}
 
         Item {
-
             id:topBar
             anchors.top: parent.top
             width:parent.width;
@@ -38,13 +37,16 @@ Rectangle {
             Text {
                 text:showName+"."
                 font.family: mainWindow.uiFont
-                font.pointSize: 60
+                font.pointSize: width*0.06
                 font.capitalization: Font.AllLowercase
                 color: 'black'
                 anchors.left:parent.left
                 anchors.leftMargin: 60
                 anchors.verticalCenter: parent.verticalCenter
+                width: parent.width - 60
 
+                //cuts off text if it´s too big
+                elide: Text.ElideRight
             }
 
             }
