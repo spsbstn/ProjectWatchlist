@@ -37,6 +37,7 @@ Rectangle {
             Text {
                 text:showName+"."
                 font.family: mainWindow.uiFont
+                // no special reason for 0.06 other than it fits. also height*x would make more sense:
                 font.pointSize: width*0.06
                 font.capitalization: Font.AllLowercase
                 color: 'black'
@@ -51,8 +52,8 @@ Rectangle {
 
             }
 
-        Item {
-
+        Rectangle {
+            color:"yellow"
             id:imageArea
             anchors.top: topBar.bottom
             anchors.left:mainInfoWindow.left
@@ -94,19 +95,25 @@ Rectangle {
 
             }
 
-        Item {
+        Item  {
 
+            //color: "green"
             id:infoArea
             anchors.top: topBar.bottom
             anchors.right:parent.right
-            width:parent.width/2;
-            height:parent.height*(4/5)*(5/6)
+            width: parent.width/2;
+            height: parent.height*(4/5)*(5/6)
+
+            // Just played around and found those numbers fitting:
+            property int rowHeight: infoArea.height/9
+            property int infoFontSize: rowHeight*0.6
 
 
-            Item {
+            Rectangle {
 
+                color: "orange"
                 id:row2
-                height:45
+                height: infoArea.rowHeight
                 width:parent.width/2
                 anchors.top:parent.top
 
@@ -116,10 +123,10 @@ Rectangle {
                     text:"Started."
                     horizontalAlignment: Text.AlignRight
                     font.family: mainWindow.uiFont
-                    font.pointSize: 30
+                    font.pointSize: infoArea.infoFontSize
                     font.capitalization: Font.AllLowercase
                     color: 'black'
-                    height:45
+                    height: parent.height
                     width:parent.width/2
 
                      }
@@ -129,18 +136,18 @@ Rectangle {
                     text:started
                     horizontalAlignment: Text.AlignLeft
                     font.family: mainWindow.uiFont
-                    font.pointSize: 30
+                    font.pointSize: infoArea.infoFontSize
                     color: 'white'
-                    height:45
+                    height: parent.height
                     width:parent.width/2
                     anchors.right:parent.right
 
                      }
                    }
-            Item {
-
+            Rectangle {
+                color: "green"
                 id:row3
-                height:45
+                height: infoArea.rowHeight
                 width:parent.width/2
                 anchors.top:row2.bottom
 
@@ -150,10 +157,10 @@ Rectangle {
                     text:"Status."
                     horizontalAlignment: Text.AlignRight
                     font.family: mainWindow.uiFont
-                    font.pointSize: 30
+                    font.pointSize: infoArea.infoFontSize
                     font.capitalization: Font.AllLowercase
                     color: 'black'
-                    height:45
+                    height: parent.height
                     width:parent.width/2
 
                      }
@@ -163,9 +170,9 @@ Rectangle {
                     text:status
                     horizontalAlignment: Text.AlignLeft
                     font.family: mainWindow.uiFont
-                    font.pointSize: 30
+                    font.pointSize: infoArea.infoFontSize
                     color: 'white'
-                    height:45
+                    height: parent.height
                     width:parent.width/2
                     anchors.right:parent.right
 
@@ -175,7 +182,7 @@ Rectangle {
             Item {
 
                 id:row4
-                height:45
+                height: infoArea.rowHeight
                 width:parent.width/2
                 anchors.top:row3.bottom
 
@@ -185,10 +192,10 @@ Rectangle {
                     text:"Genre."
                     horizontalAlignment: Text.AlignRight
                     font.family: mainWindow.uiFont
-                    font.pointSize: 30
+                    font.pointSize: infoArea.infoFontSize
                     font.capitalization: Font.AllLowercase
                     color: 'black'
-                    height:45
+                    height: parent.height
                     width:parent.width/2
 
                        }
@@ -198,7 +205,7 @@ Rectangle {
                     text:genre
                     horizontalAlignment: Text.AlignLeft
                     font.family: mainWindow.uiFont
-                    font.pointSize: 30
+                    font.pointSize: infoArea.infoFontSize
                     color: 'white'
                     height:paintedHeight
                     elide:Text.ElideRight
@@ -210,7 +217,7 @@ Rectangle {
             Item {
 
                 id:row5
-                height:45
+                height: infoArea.rowHeight
                 width:parent.width/2
                 anchors.top:row4.bottom
 
@@ -220,10 +227,10 @@ Rectangle {
                     text:"Latest Ep."
                     horizontalAlignment: Text.AlignRight
                     font.family: mainWindow.uiFont
-                    font.pointSize: 30
+                    font.pointSize: infoArea.infoFontSize
                     font.capitalization: Font.AllLowercase
                     color: 'black'
-                    height:45
+                    height:parent.height
                     width:parent.width/2
 
                        }
@@ -233,19 +240,19 @@ Rectangle {
                     text:latestEpisode
                     horizontalAlignment: Text.AlignLeft
                     font.family: mainWindow.uiFont
-                    font.pointSize: 30
+                    font.pointSize: infoArea.infoFontSize
                     color: 'white'
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    height:45
+                    height:parent.height
                     width:infoArea.width-latestEpisodeText.width-10
                     anchors.left:latestEpisodeText.right
 
                      }
                    }
-            Item {
-
+            Rectangle {
+                color: "yellow"
                 id:row6
-                height:45
+                height: infoArea.rowHeight
                 width:parent.width/2
                 anchors.top:row5.bottom
                 anchors.topMargin: row5.height
@@ -254,10 +261,10 @@ Rectangle {
                     id:nextEpisodeText
                     horizontalAlignment: Text.AlignRight
                     font.family: mainWindow.uiFont
-                    font.pointSize: 30
+                    font.pointSize: infoArea.infoFontSize
                     font.capitalization: Font.AllLowercase
                     color: 'black'
-                    height:45
+                    height: parent.height
                     width:parent.width/2
 
                        }
@@ -267,15 +274,17 @@ Rectangle {
                     text:nextEpisode
                     horizontalAlignment: Text.AlignLeft
                     font.family: mainWindow.uiFont
-                    font.pointSize: 30
+                    font.pointSize: infoArea.infoFontSize
                     color: 'white'
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    height:45
+                    height:parent.height
                     width:infoArea.width-nextEpisodeText.width-10
                     anchors.left:nextEpisodeText.right
 
                      }
                    }
+
+
 
             Item {
 
