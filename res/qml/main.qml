@@ -184,7 +184,9 @@ Rectangle {
               onOpacityChanged: controller.alphaBlendFrame(appBackground,clickProtection.opacity)
 
         MouseArea {
-            anchors.fill:parent;
+            height:parent.height-40;
+            width:grid.width;
+            anchors.centerIn: parent
             hoverEnabled:true;
             onEntered: {}
             onExited: {}
