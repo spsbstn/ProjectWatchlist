@@ -52,8 +52,7 @@ Rectangle {
 
             }
 
-        Rectangle {
-            color:"yellow"
+        Item {
             id:imageArea
             anchors.top: topBar.bottom
             anchors.left:mainInfoWindow.left
@@ -109,9 +108,8 @@ Rectangle {
             property int infoFontSize: rowHeight*0.6
 
 
-            Rectangle {
+            Item {
 
-                color: "orange"
                 id:row2
                 height: infoArea.rowHeight
                 width:parent.width/2
@@ -144,8 +142,8 @@ Rectangle {
 
                      }
                    }
-            Rectangle {
-                color: "green"
+
+            Item {
                 id:row3
                 height: infoArea.rowHeight
                 width:parent.width/2
@@ -249,8 +247,7 @@ Rectangle {
 
                      }
                    }
-            Rectangle {
-                color: "yellow"
+            Item {
                 id:row6
                 height: infoArea.rowHeight
                 width:parent.width/2
