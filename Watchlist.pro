@@ -49,10 +49,21 @@ OTHER_FILES += \
     res/qml/LoadingCircle.qml \
     res/js/WatchNow.js
 
+TARGET = Watchlist
+VERSION = 2.0
+TEMPLATE = app
+
+DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+
 QT += sql
 QT += xml
 QT += declarative
 QT += network
+
+# Fervor autoupdater
+!include("fervor/Fervor.pri") {
+    error("Unable to include Fervor autoupdater.")
+}
 
 #Mac Icons
 ICON = res/icons/icns/icon.icns
