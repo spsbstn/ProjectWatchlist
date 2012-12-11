@@ -93,11 +93,18 @@ Rectangle {
                            enabled: false;
                            onAccepted: {
                                controller.alterShowName(showName,nameInput.text);
+                               showNameLabel.text=nameInput.text+".";
                                nameInputBG.opacity=0;
-                               nameInput.enabled=false;
                                nameInput.focus=false;
-                               showNameLabel.color="black"
-                               closeScreenButton.onClicked();}
+                               showNameLabel.text=nameInput.text+".";
+                               showNameLabel.color="black";
+                               xmlDataRequired(nameInput.text);
+                               nameInput.enabled=false;
+                               image.visible=false;
+                               imageFrame.visible=false;
+                               imageLoadingCircle.visible=true;
+
+                           }
                        }
 }
                                     }

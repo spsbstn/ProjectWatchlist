@@ -91,7 +91,7 @@ void Database::alterShowName(QString oldName,QString newName){
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-        qDebug() << "Season of "+ oldName + " changed to " + newName;
+        qDebug() << "Name of "+ oldName + " changed to " + newName;
 
 }
 
