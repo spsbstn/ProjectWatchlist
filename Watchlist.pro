@@ -61,7 +61,7 @@ QT += declarative
 QT += network
 
 # Fervor autoupdater
-!include("fervor/Fervor.pri") {
+!include("libs/fervor/Fervor.pri") {
     error("Unable to include Fervor autoupdater.")
 }
 
