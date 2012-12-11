@@ -46,6 +46,7 @@ Rectangle {
             height:parent.height*0.2
 
             Text {
+                id:showNameLabel
                 text:showName+"."
                 font.family: mainWindow.uiFont
                 // no special reason for 0.06 other than it fits. also height*x would make more sense:
@@ -59,9 +60,52 @@ Rectangle {
 
                 //cuts off text if it´s too big
                 elide: Text.ElideRight
+
+                       MouseArea {
+                       anchors.left:parent.left
+                       anchors.bottom: parent.bottom
+                       height:parent.paintedHeight
+                       width:parent.paintedWidth
+                       onDoubleClicked: {
+
+                       nameInputBG.opacity=0.5;
+                       nameInput.enabled=true;
+                       nameInput.focus=true;
+                       showNameLabel.color=mainWindow.textColor2}
+
+
+                       Rectangle {
+                       id:nameInputBG
+                       color:"black"
+                       opacity: 0
+                       anchors.left:parent.left
+                       anchors.bottom:parent.bottom
+                       width:infoScreen.width/2
+                       height:parent.height*0.8
+                       TextInput {
+
+                           id:nameInput
+                           font.pointSize: showNameLabel.font.pointSize*0.8
+                           font.family: mainWindow.uiFont
+                           anchors.fill:parent
+                           anchors.margins: 5;
+                           color:"white";
+                           enabled: false;
+                           onAccepted: {
+                               controller.alterShowName(showName,nameInput.text);
+                               nameInputBG.opacity=0;
+                               nameInput.enabled=false;
+                               nameInput.focus=false;
+                               showNameLabel.color="black"
+                               closeScreenButton.onClicked();}
+                       }
+}
+                                    }
             }
 
-            }
+                                    }
+
+
 
         Item {
             id:imageArea

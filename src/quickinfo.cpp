@@ -25,6 +25,13 @@ void QuickInfo::createConnection(QString showName)
     //open url (base + showName)
     QUrl url(URL_BASE + showName);
 
+    //clear hashmap
+    showInfo->clear();
+
+    //add showname to hasmap
+
+    showInfo->insert("Show Name",showName);
+
     // serverReply
     QNetworkReply* reply = nam->get(QNetworkRequest(url));
 }
@@ -35,8 +42,6 @@ void QuickInfo::finishedSlot(QNetworkReply* reply)
 
     if (reply->error() == QNetworkReply::NoError)
     {
-        //clear hashmap
-        showInfo->clear();
 
         //convert reply to string
         QByteArray bytes = reply->readAll();
@@ -68,13 +73,21 @@ void QuickInfo::finishedSlot(QNetworkReply* reply)
                 //replace ^ in Next and Latest Episode
                 value.replace("^"," ");
 
-                // add to Hashmap
-                showInfo->insert(key,value);
+                // if  key != Show Name
+
+                if(key!="Show Name") {
+
+                    // add to Hashmap
+                    showInfo->insert(key,value);
+                }
+
+
 
         }
 
         //load picture (showId of hashmap)
         xmlPicture_->createConnection(showInfo->value("Show ID"));
+
 }
 
     else
