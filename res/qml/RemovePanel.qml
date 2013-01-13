@@ -19,6 +19,7 @@ Button {
     anchors.bottom:parent.bottom
     anchors.bottomMargin:20
     onReleased: {removeScreen.opacity=0
+        mainWindow.focus=true;
         removeClickProtection.start();}
 
              }
