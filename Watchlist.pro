@@ -47,10 +47,11 @@ OTHER_FILES += \
     res/qml/InfoScreen.qml \
     res/fonts/Helvetica Neue UltraLight.ttf \
     res/qml/LoadingCircle.qml \
-    res/js/WatchNow.js
+    res/js/WatchNow.js \
+    res/js/CheckForNewEpisodes.js
 
 TARGET = Watchlist
-VERSION = 2.0
+VERSION = 2.1
 TEMPLATE = app
 
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"

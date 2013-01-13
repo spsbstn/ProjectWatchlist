@@ -9,6 +9,7 @@ Rectangle {
 
     signal splashScreenCompleted()
     Image {
+
         id: splashImage
         source: imageSource
         width:mainWindow.width*0.8
@@ -20,7 +21,7 @@ Rectangle {
 
     SequentialAnimation {
         id:splashanimation
-        PauseAnimation { duration: 2200 }
+        PauseAnimation { duration: 300 }
         SequentialAnimation{
         PropertyAnimation {
             target: splashScreenContainer
@@ -36,6 +37,7 @@ Rectangle {
         }
         }
         onCompleted: {
+
             splashScreenContainer.splashScreenCompleted()
         }
     }
