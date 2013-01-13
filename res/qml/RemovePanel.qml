@@ -5,7 +5,10 @@ import "..///js/Global.js" as GlobalJS
 Rectangle{
 
     width:120
-
+    onOpacityChanged: focus=true;
+    Keys.onEscapePressed: {removeScreen.opacity=0;
+           mainWindow.focus=true;
+           removeClickProtection.start();}
 Button {
     id:abortButton
     buttonHeight:35
@@ -30,6 +33,7 @@ Button {
     anchors.bottomMargin:20
     onPressed:controller.remove(GlobalJS.activeSeries)
     onReleased: {removeScreen.opacity=0
+        mainWindow.focus=true;
         removeClickProtection.start();}
 
 }

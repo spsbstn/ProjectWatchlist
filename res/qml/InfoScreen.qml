@@ -36,7 +36,7 @@ Rectangle {
 
 
 
-    //check if there is a next Episode
+    //check if there is a next Episode and change focus
     onOpacityChanged: { if(nextEpisode==""){nextEpisodeText.text=""} else {nextEpisodeText.text="next Ep."};
                         focus=true;
     }
