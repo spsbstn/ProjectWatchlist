@@ -20,7 +20,7 @@ Rectangle {
 
     SequentialAnimation {
         id:splashanimation
-        PauseAnimation { duration: 2200 }
+        PauseAnimation { duration: 300 }
         SequentialAnimation{
         PropertyAnimation {
             target: splashScreenContainer
