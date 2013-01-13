@@ -9,6 +9,7 @@ Rectangle {
 
     signal splashScreenCompleted()
     Image {
+
         id: splashImage
         source: imageSource
         width:mainWindow.width*0.8
@@ -36,6 +37,7 @@ Rectangle {
         }
         }
         onCompleted: {
+
             splashScreenContainer.splashScreenCompleted()
         }
     }

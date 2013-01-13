@@ -47,12 +47,24 @@ OTHER_FILES += \
     res/qml/InfoScreen.qml \
     res/fonts/Helvetica Neue UltraLight.ttf \
     res/qml/LoadingCircle.qml \
-    res/js/WatchNow.js
+    res/js/WatchNow.js \
+    res/js/CheckForNewEpisodes.js
+
+TARGET = Watchlist
+VERSION = 2.1
+TEMPLATE = app
+
+DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 QT += sql
 QT += xml
 QT += declarative
 QT += network
+
+# Fervor autoupdater
+!include("libs/fervor/Fervor.pri") {
+    error("Unable to include Fervor autoupdater.")
+}
 
 #Mac Icons
 ICON = res/icons/icns/icon.icns
