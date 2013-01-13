@@ -25,19 +25,22 @@ Rectangle {
     width:parent.width -90
     height:parent.height -100
 
-    focus:true
     Keys.onEscapePressed: {mainOpacity=0;
                               imageSource="";
                               image.visible=false;
                               imageFrame.visible=false;
                               imageLoadingCircle.visible=true;
+                              mainWindow.focus=true;
                               removeClickProtection.start();
                               }
 
 
 
     //check if there is a next Episode
-    onOpacityChanged:if(nextEpisode==""){nextEpisodeText.text=""} else {nextEpisodeText.text="next Ep."}
+    onOpacityChanged: { if(nextEpisode==""){nextEpisodeText.text=""} else {nextEpisodeText.text="next Ep."};
+                        focus=true;
+    }
+
 
         Item {
             id:topBar
@@ -410,6 +413,7 @@ Rectangle {
                 image.visible=false;
                 imageFrame.visible=false;
                 imageLoadingCircle.visible=true;
+                mainWindow.focus=true;
                 removeClickProtection.start();}
 
                 }
