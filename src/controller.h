@@ -19,7 +19,7 @@ public:
     explicit Controller(QObject *parent = 0);
 
     //database functions
-    Q_INVOKABLE void add(const QString& name, const QString &genre);
+    Q_INVOKABLE void add(const QString& name);
     Q_INVOKABLE void remove(const QString& name);
     Q_INVOKABLE void setSeason(const QString& name, int delta);
     Q_INVOKABLE void setEpisode(const QString& name, int delta);

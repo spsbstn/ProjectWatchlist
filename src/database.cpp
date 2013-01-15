@@ -55,17 +55,17 @@ Database::Database(QObject *parent) :
           qDebug() << "datatable created!";
 }
 
-void Database::addShow(QString name, QString genre) {
+void Database::addShow(QString name) {
 
     QSqlQuery qry;
 
     qry.prepare( "INSERT INTO data (name, season, episode, genre) VALUES (:name, 1, 1,:genre)");
     qry.bindValue(":name",name);
-    qry.bindValue(":genre",genre);
+    qry.bindValue(":genre","");
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-          qDebug() << name + " with genre " + genre + " inserted!";
+          qDebug() << name + "inserted!";
 
 }
 
