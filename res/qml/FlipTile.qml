@@ -69,68 +69,12 @@ front: Rectangle {
                 onClicked: flipable.flipped = !flipable.flipped
                      }
 
-        Rectangle {
-
-             id: episodeTxt
-             width:parent.width
-             height:22
-             color:mainWindow.tileBackground
-             anchors.top: parent.top
-             anchors.topMargin: tileMargin+50
-
-           Text {
-
-             id:text1
-             anchors.centerIn: parent
-             color: mainWindow.textColor
-             text: "Episode: " + episode
-             wrapMode: Text.WordWrap;
-             font { family: mainWindow.uiFont; pointSize: 25 }
-         }
-           Button{
-
-                    id: episodeIncrease
-                    buttonHeight: 18
-                    buttonWidth: 18
-                    buttonNormal: "../..///img/"+mainWindow.colorScheme+"/rightButton.png"
-                    buttonActive: "../..///img/"+mainWindow.colorScheme+"/rightButton_Active.png"
-                    anchors.right:parent.right
-                    anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2
-                    anchors.verticalCenter: parent.verticalCenter
-                    onClicked: controller.setEpisode(seriesName.text, +1);
-           }
-
-           Button {
-
-                    id: episodeDecrease
-                    buttonHeight: 18
-                    buttonWidth: 18
-                    buttonNormal: "../..///img/"+mainWindow.colorScheme+"/leftButton.png"
-                    buttonActive: "../..///img/"+mainWindow.colorScheme+"/leftButton_Active.png"
-                    anchors.left:parent.left
-                    anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2
-                    anchors.verticalCenter: parent.verticalCenter
-                    onClicked: controller.setEpisode(seriesName.text, -1);
-           }
-
-           states: [
-               State{
-               PropertyChanges { target: episodeDecrease; opacity: 0 }
-               when: episode === 1
-                },
-
-               State{
-               PropertyChanges { target: episodeIncrease; opacity: 0 }
-               when: episode === 99
-               }
-        ]
-}
 
         Rectangle {
             id: seasonTxt
             width: parent.width;
             anchors.top: parent.top
-            anchors.topMargin: tileMargin +100
+            anchors.topMargin: tileMargin +50
             color:mainWindow.tileBackground
             height:22
 
@@ -181,6 +125,63 @@ front: Rectangle {
                  }
              ]
          }
+        Rectangle {
+
+             id: episodeTxt
+             width:parent.width
+             height:22
+             color:mainWindow.tileBackground
+             anchors.top: parent.top
+             anchors.topMargin: tileMargin+100
+
+           Text {
+
+             id:text1
+             anchors.centerIn: parent
+             color: mainWindow.textColor
+             text: "Episode: " + episode
+             wrapMode: Text.WordWrap;
+             font { family: mainWindow.uiFont; pointSize: 25 }
+         }
+           Button{
+
+                    id: episodeIncrease
+                    buttonHeight: 18
+                    buttonWidth: 18
+                    buttonNormal: "../..///img/"+mainWindow.colorScheme+"/rightButton.png"
+                    buttonActive: "../..///img/"+mainWindow.colorScheme+"/rightButton_Active.png"
+                    anchors.right:parent.right
+                    anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: controller.setEpisode(seriesName.text, +1);
+           }
+
+           Button {
+
+                    id: episodeDecrease
+                    buttonHeight: 18
+                    buttonWidth: 18
+                    buttonNormal: "../..///img/"+mainWindow.colorScheme+"/leftButton.png"
+                    buttonActive: "../..///img/"+mainWindow.colorScheme+"/leftButton_Active.png"
+                    anchors.left:parent.left
+                    anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: controller.setEpisode(seriesName.text, -1);
+           }
+
+           states: [
+               State{
+               PropertyChanges { target: episodeDecrease; opacity: 0 }
+               when: episode === 1
+                },
+
+               State{
+               PropertyChanges { target: episodeIncrease; opacity: 0 }
+               when: episode === 99
+               }
+        ]
+}
+
         Button {
              id:removeButton
              buttonHeight:15
