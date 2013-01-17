@@ -66,10 +66,10 @@ Controller::Controller(QObject *parent) :
 }
 
 // add new show
-void Controller::add(const QString& name)
+void Controller::add(const QString& name, const QString& genre)
 {
-    db->data->addShow(name, "");
-    db->addShow(name);
+    db->data->addShow(name, genre);
+    db->addShow(name,genre);
 }
 
 // remove show
