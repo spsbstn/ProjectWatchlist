@@ -68,7 +68,7 @@ Controller::Controller(QObject *parent) :
 // add new show
 void Controller::add(const QString& name)
 {
-    db->data->addShow(name, "");
+    db->data->addShow(name);
     db->addShow(name);
 }
 

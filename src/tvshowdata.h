@@ -17,7 +17,6 @@ public:
         TitleRole = Qt::UserRole +1,
         SeasonRole,
         EpisodeRole,
-        GenreRole
     };
 
     TvShowData(QObject* parent = 0);
@@ -26,7 +25,7 @@ public:
     // (-1 if successfully added)
     // TODO : Inform User if already added
     int addShow(const TvShow &show);
-    int addShow(const QString &name, const QString &genre);
+    int addShow(const QString &name);
 
     // Overloaded functions: removes show either via the show-object or
     // via its name. The function returns the index, the show was deleted at,
