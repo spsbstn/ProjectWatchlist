@@ -1,7 +1,9 @@
 import QtQuick 1.1
 
 Item {
-            property bool isMaximized: true;
+
+    property bool isMaximized: true;
+    property bool htmlErrorIsVisible: false;
     Rectangle{
 
         id:topControles
@@ -93,7 +95,7 @@ Item {
     }
             Text {
 
-
+                id:totalShows
                 text:"total shows: "+grid.count + " "
                 color:mainWindow.textColor2
                 font.pixelSize: 16
@@ -104,6 +106,21 @@ Item {
                 anchors.rightMargin: 10
                 anchors.right:redColorButton.left
             }
+
+            Text {
+
+                visible:htmlErrorIsVisible
+                text:"Connection Error: Please try again."
+                color:"red"
+                font.pixelSize: 16
+                font.family: mainWindow.uiFont
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin:2
+                anchors.rightMargin: (border.width - width)/2
+                anchors.right:parent.right
+
+            }
+
 
 
     }

@@ -2,7 +2,6 @@
 #include <QtDebug>
 #define URL_BASE "http://services.tvrage.com/tools/quickinfo.php?show="
 
-
 QuickInfo::QuickInfo(QObject *parent) : QObject(parent)
 {
     // create networkAccessManager
@@ -78,8 +77,10 @@ void QuickInfo::finishedSlot(QNetworkReply* reply)
 }
 
     else
+
     {
         qDebug() << "ERROR: Http-Error occurred";
+        emit htmlErrorOccured();
     }
 
     //delete reply

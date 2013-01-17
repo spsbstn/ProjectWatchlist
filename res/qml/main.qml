@@ -32,8 +32,15 @@ Rectangle {
         infoScreen.latestEpisode = controller.getLatestEpisode();
         infoScreen.nextEpisode = controller.getNextEpisode();
         infoScreen.mainOpacity=1;
-        grid.currentItem.loadingCircleVisible=false
+        grid.currentItem.loadingCircleVisible=false;
         showClickProtection.start();
+
+    }
+
+    function htmlError() {
+
+        topBar.htmlErrorIsVisible=true;
+        grid.currentItem.loadingCircleVisible=false;
 
     }
 

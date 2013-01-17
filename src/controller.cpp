@@ -61,6 +61,7 @@ Controller::Controller(QObject *parent) :
         QObject *rootObject = dynamic_cast<QObject*>(qmlView->rootObject());
         QObject::connect(rootObject, SIGNAL(xmlDataRequired(QString)), qi, SLOT(createConnection(QString)));
         QObject::connect(qi->xmlPicture_, SIGNAL(updateFinished()), rootObject, SLOT(updateInfo()));
+        QObject::connect(qi, SIGNAL(htmlErrorOccured()), rootObject, SLOT(htmlError()));
 
 
 }

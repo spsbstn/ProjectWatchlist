@@ -22,6 +22,10 @@ public:
 public slots:
     void finishedSlot(QNetworkReply*);
     void createConnection(QString showName);
+
+signals:
+
+    void htmlErrorOccured();
 };
 
 

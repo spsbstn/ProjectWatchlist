@@ -210,6 +210,7 @@ front: Rectangle {
              anchors.rightMargin: 8
              hoverEnabled: true
              onPressed: {loadingCircleVisible=true;
+                         topBar.htmlErrorIsVisible=false;
                          grid.currentIndex = index;}
              onReleased:xmlDataRequired(title);
 
