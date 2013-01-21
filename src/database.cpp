@@ -132,6 +132,7 @@ void Database::load() {
 
             TvShow* tv = new TvShow(qry.value(0).toString(),qry.value(1).toInt(0),qry.value(2).toInt(0),qry.value(3).toString());
             data->addShow(*tv);
+            delete tv;
         }
       }
 }
