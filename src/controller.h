@@ -9,6 +9,7 @@ class Database;
 class QDeclarativeView;
 class QVBoxLayout;
 class NcFramelessHelper;
+class QApplication;
 
 
 class Controller : public QObject
@@ -47,6 +48,9 @@ public:
 
     // --> controller.cpp
     void checkForFirstInit();
+
+    //
+    void checkForSeasonIcons(QApplication *app);
 
     QWidget  *mainWidget;
     QDeclarativeView  *qmlView;

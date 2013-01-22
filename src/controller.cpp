@@ -8,6 +8,7 @@
 #include "libs/NcFramelessHelper.h"
 #include "database.h"
 #include "wheelarea.h"
+#include <QApplication>
 
 Controller::Controller(QObject *parent) :
     QObject(parent),
@@ -189,5 +190,22 @@ void Controller::alphaBlendFrame(QString color, double alpha)
     //change frame color
     mainWidget->setStyleSheet("background:'"+blendedColor+"'");
 
+}
+
+void Controller::checkForSeasonIcons(QApplication *app)
+
+{
+    QDateTime now = QDateTime::currentDateTime();
+
+    //check if today is newYear (bad solution)
+    if(now.daysTo(QDateTime(QDate(now.date().year(),01,01)))==0)
+
+    {
+
+    app->setWindowIcon(QIcon(":/icons/seasons/newYear.png"));
+
+    }
+
+    delete now;
 }
 

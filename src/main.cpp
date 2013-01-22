@@ -40,5 +40,10 @@ int main(int argc, char *argv[])
     ctrl->mainWidget->setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter,
                           ctrl->mainWidget->size(), app.desktop()->availableGeometry()) );
 
+
+    ctrl->checkForSeasonIcons(&app);
+
+
+
     return app.exec();
 }
