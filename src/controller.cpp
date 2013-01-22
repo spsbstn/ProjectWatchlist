@@ -206,6 +206,15 @@ void Controller::checkForSeasonIcons(QApplication *app)
 
     }
 
-    delete now;
+    //check if today is christmas (bad solution)
+    if(now.daysTo(QDateTime(QDate(now.date().year(),12,24)))==0)
+
+    {
+
+    app->setWindowIcon(QIcon(":/icons/seasons/christmas.png"));
+
+    }
+
+
 }
 

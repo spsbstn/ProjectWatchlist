@@ -67,5 +67,6 @@
         <file>img/darkGreen/confirm_Active.png</file>
         <file>img/darkGreen/confirm.png</file>
         <file>icons/seasons/newYear.png</file>
+        <file>icons/seasons/christmas.png</file>
     </qresource>
 </RCC>
