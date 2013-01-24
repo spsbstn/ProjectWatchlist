@@ -122,7 +122,7 @@ Rectangle {
                            TextInput {
 
                                 id:nameInput
-                                font.pointSize: showNameLabel.font.pointSize*0.8
+                                font.pointSize: showNameLabel.font.pointSize*0.6
                                 font.family: mainWindow.uiFont
                                 anchors.fill:parent
                                 anchors.margins: 5;
