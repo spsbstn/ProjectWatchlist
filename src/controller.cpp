@@ -95,10 +95,19 @@ void Controller::setEpisode(const QString &name, int delta)
 }
 
 // alter showName
-void Controller::alterShowName(const QString& oldName,const QString& newName)
+bool Controller::alterShowName(const QString& oldName,const QString& newName)
 {
+    if(db->alterShowName(oldName,newName)){
+
     db->data->alterShowName(oldName,newName);
-    db->alterShowName(oldName,newName);
+    return true;
+    }
+
+    else {
+
+    return false;
+
+    }
 }
 
 //change colorscheme

@@ -81,18 +81,22 @@ void Database::removeShow(QString name) {
         qDebug() << name + " deleted!";
 }
 
-void Database::alterShowName(QString oldName,QString newName){
+bool Database::alterShowName(QString oldName,QString newName){
 
     QSqlQuery qry;
 
     qry.prepare( "UPDATE data SET name=:newName WHERE name=:oldName" );
     qry.bindValue(":oldName",oldName);
     qry.bindValue(":newName",newName);
-      if( !qry.exec() )
+      if( !qry.exec() ) {
         qDebug() << qry.lastError();
+        return false;
+      }
       else
+      {
         qDebug() << "Name of "+ oldName + " changed to " + newName;
-
+        return true;
+    }
 }
 
 void Database::alterSeason(QString name,int delta){
