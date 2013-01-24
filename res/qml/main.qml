@@ -289,8 +289,8 @@ Rectangle {
                 when: colorScheme=="darkGreen"
                 changes:
                     [PropertyChanges{target:mainWindow;appBackground:"#333333"},
-                    PropertyChanges {target:mainWindow;tileBackground:"#019875"},
-                    PropertyChanges{target:mainWindow;textColor:"#fff"},
+                    PropertyChanges {target:mainWindow;tileBackground:"#30bf6e"},
+                    PropertyChanges{target:mainWindow;textColor:"#000000"},
                     PropertyChanges{target:mainWindow;textColor2:"#00aaff"},
                     StateChangeScript { script:controller.changeColorScheme("#333333","darkGreen")}]
                         },
@@ -298,8 +298,8 @@ Rectangle {
                  when: colorScheme=="darkOrange"
                  changes:
                     [PropertyChanges{target:mainWindow;appBackground:"#333333"},
-                    PropertyChanges {target:mainWindow;tileBackground:"#EE4D35"},
-                    PropertyChanges{target:mainWindow;textColor:"#FDFFFE"},
+                    PropertyChanges {target:mainWindow;tileBackground:"#ee771c"},
+                    PropertyChanges{target:mainWindow;textColor:"#000000"},
                     PropertyChanges{target:mainWindow;textColor2:"#00aaff"},
                     StateChangeScript { script:controller.changeColorScheme("#333333","darkOrange")}]
                         }
