@@ -53,10 +53,10 @@ public:
     void checkForSeasonIcons(QApplication *app);
 
     QWidget  *mainWidget;
+    Database    *db;
     QDeclarativeView  *qmlView;
     NcFramelessHelper *framelessHelper;
     QVBoxLayout *layout;
-    Database    *db;
     QuickInfo *qi;
     QSettings* settings;
 
