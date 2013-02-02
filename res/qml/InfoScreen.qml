@@ -47,12 +47,15 @@ Rectangle {
             deactivateNameInput();
         }
         else {
-						  imageSource="";
-						  image.visible=false;
-						  imageFrame.visible=false;
-						  imageLoadingCircle.visible=true;
-						  mainWindow.focus=true;
-						  removeClickProtection.start();
+            mainOpacity=0;
+            imageSource="";
+            image.visible=false;
+            imageFrame.visible=false;
+            imageLoadingCircle.visible=true;
+            mainWindow.focus=true;
+            removeClickProtection.start();
+            deactivateNameInput();
+
         }
     }
 
