@@ -136,6 +136,18 @@ Rectangle {
                                 enabled: false;
                                 onAccepted: {
 
+                                    // check if new name equals old name
+                                    if(showName.toLowerCase().localeCompare(nameInput.text.toLowerCase())==0)
+
+                                    {
+
+                                        deactivateNameInput();
+
+                                    }
+
+                                    else {
+
+                                    //check if nameChange was successfull
                                     if(controller.alterShowName(showName.toLowerCase(),nameInput.text.toLowerCase()))
                                     {
 
@@ -146,8 +158,11 @@ Rectangle {
                                     imageFrame.visible=false;
                                     imageLoadingCircle.visible=true;
                                     }
+
+                                    // else show error
                                     else {inputError.opacity=1;}
                                     }
+                                }
                            }
                            Text{
                                id:inputError
