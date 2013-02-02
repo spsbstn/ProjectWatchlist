@@ -15,26 +15,17 @@
         <file>qml/TopBar.qml</file>
         <file>qml/RemovePanel.qml</file>
         <file>qml/ToolTip.qml</file>
-        <file>img/darkGreenSheme.png</file>
-        <file>img/lightGreySheme.png</file>
         <file>qml/Button.qml</file>
         <file>qml/InfoScreen.qml</file>
         <file>img/watchnow_Active.png</file>
         <file>img/watchnow.png</file>
         <file>qml/LoadingCircle.qml</file>
         <file>js/WatchNow.js</file>
-        <file>img/grey/leftButton_Active.png</file>
-        <file>img/grey/info.png</file>
-        <file>img/grey/leftButton.png</file>
-        <file>img/grey/rightButton_Active.png</file>
-        <file>img/grey/rightButton.png</file>
         <file>img/darkGreen/info.png</file>
         <file>img/darkGreen/leftButton_Active.png</file>
         <file>img/darkGreen/leftButton.png</file>
         <file>img/darkGreen/rightButton_Active.png</file>
         <file>img/darkGreen/rightButton.png</file>
-        <file>img/grey/removeIcon_Active.png</file>
-        <file>img/grey/removeIcon.png</file>
         <file>img/darkGreen/removeIcon_Active.png</file>
         <file>img/darkGreen/removeIcon.png</file>
         <file>img/maximize.png</file>
@@ -53,11 +44,6 @@
         <file>img/darkOrange/removeIcon.png</file>
         <file>img/darkOrange/rightButton_Active.png</file>
         <file>img/darkOrange/rightButton.png</file>
-        <file>img/darkOrangeSheme.png</file>
-        <file>img/grey/abort_Active.png</file>
-        <file>img/grey/abort.png</file>
-        <file>img/grey/confirm_Active.png</file>
-        <file>img/grey/confirm.png</file>
         <file>img/darkOrange/abort_Active.png</file>
         <file>img/darkOrange/abort.png</file>
         <file>img/darkOrange/confirm_Active.png</file>
@@ -68,5 +54,19 @@
         <file>img/darkGreen/confirm.png</file>
         <file>icons/seasons/newYear.png</file>
         <file>icons/seasons/christmas.png</file>
+        <file>img/blackCyan/abort_Active.png</file>
+        <file>img/blackCyan/abort.png</file>
+        <file>img/blackCyan/confirm_Active.png</file>
+        <file>img/blackCyan/confirm.png</file>
+        <file>img/blackCyan/info.png</file>
+        <file>img/blackCyan/leftButton_Active.png</file>
+        <file>img/blackCyan/leftButton.png</file>
+        <file>img/blackCyan/removeIcon_Active.png</file>
+        <file>img/blackCyan/removeIcon.png</file>
+        <file>img/blackCyan/rightButton_Active.png</file>
+        <file>img/blackCyan/rightButton.png</file>
+        <file>img/blackCyanScheme.png</file>
+        <file>img/darkGreenScheme.png</file>
+        <file>img/darkOrangeScheme.png</file>
     </qresource>
 </RCC>

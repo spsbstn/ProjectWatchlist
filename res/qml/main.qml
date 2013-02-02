@@ -282,14 +282,14 @@ Rectangle {
     }
 
         states: [ State {
-                when: colorScheme=="grey"
+                when: colorScheme=="blackCyan"
                 changes:
 
-                    [PropertyChanges {target:mainWindow;appBackground:"#EEEEEE"},
-                    PropertyChanges {target:mainWindow;tileBackground:"#CCCCCC"},
-                    PropertyChanges {target:mainWindow;textColor:"#484848"},
+                    [PropertyChanges {target:mainWindow;appBackground:"#111111"},
+                    PropertyChanges {target:mainWindow;tileBackground:"#00AAFF"},
+                    PropertyChanges {target:mainWindow;textColor:"#000000"},
                     PropertyChanges{target:mainWindow;textColor2:"#00aaff"},
-                    StateChangeScript { script:controller.changeColorScheme("#EEEEEE","grey")}]
+                    StateChangeScript { script:controller.changeColorScheme("#111111","blackCyan")}]
 
                         },
                   State {

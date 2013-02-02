@@ -156,8 +156,8 @@ void Controller::checkForFirstInit(){
 
     else { //create default values
 
-        settings->setValue("colorScheme", "grey");
-        settings->setValue("color","#EEEEEE");
+        settings->setValue("colorScheme", "blackCyan");
+        settings->setValue("color","#111111");
     }
 
 }

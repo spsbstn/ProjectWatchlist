@@ -63,7 +63,7 @@ Item {
                id:darkColorButton
                buttonHeight:12
                buttonWidth: 12
-               buttonNormal: "qrc:../..///img/darkGreenSheme.png"
+               buttonNormal: "qrc:../..///img/darkGreenScheme.png"
                anchors.bottom: parent.bottom
                anchors.bottomMargin:5
                anchors.rightMargin: 10
@@ -74,18 +74,18 @@ Item {
                 id: lightColorButton
                 buttonHeight:12
                 buttonWidth: 12
-                buttonNormal: "qrc:../..///img/lightGreySheme.png"
+                buttonNormal: "qrc:../..///img/blackCyanScheme.png"
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin:5
                 anchors.rightMargin: 10
                 anchors.right:darkColorButton.left
-                onClicked:mainWindow.colorScheme="grey"
+                onClicked:mainWindow.colorScheme="blackCyan"
             }
             Button {
                 id: redColorButton
                 buttonHeight:12
                 buttonWidth: 12
-                buttonNormal: "qrc:../..///img/darkOrangeSheme.png"
+                buttonNormal: "qrc:../..///img/darkOrangeScheme.png"
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin:5
                 anchors.rightMargin: 10
