@@ -73,8 +73,9 @@ Controller::Controller(QObject *parent) :
 // add new show
 void Controller::add(const QString& name, const QString& genre)
 {
-    db->data->addShow(name, genre);
-    db->addShow(name,genre);
+    db->data->addShow(name);
+    db->addShow(name);
+
 }
 
 // remove show

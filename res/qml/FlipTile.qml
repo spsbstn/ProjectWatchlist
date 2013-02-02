@@ -35,20 +35,6 @@ front: Rectangle {
 
              }
 
-        Text {
-
-             id: genreName
-             anchors.right: parent.right
-             anchors.rightMargin: 5
-             anchors.bottom:parent.bottom
-             anchors.bottomMargin: 5
-             color: mainWindow.textColor
-             text: genre
-             font.family: mainWindow.uiFont
-             wrapMode: Text.WordWrap
-             font {pointSize: mainWindow.tileHeaderFontSize*0.6}
-            }
-
          MouseArea {
              anchors.fill:parent
              onClicked: flipable.flipped = !flipable.flipped

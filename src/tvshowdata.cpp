@@ -11,7 +11,6 @@ TvShowData::TvShowData(QObject *parent)
     roles[TitleRole]   = "title";
     roles[SeasonRole]  = "season";
     roles[EpisodeRole] = "episode";
-    roles[GenreRole]   = "genre";
     setRoleNames(roles);
 }
 
@@ -34,9 +33,9 @@ int TvShowData::addShow(const TvShow& show)
 
 
 // First creates new TvShow out of name, then inserts it
-int TvShowData::addShow(const QString &name, const QString& genre)
+int TvShowData::addShow(const QString &name)
 {
-    TvShow* insert = new TvShow(name, 1, 1,genre);
+    TvShow* insert = new TvShow(name, 1, 1);
     return addShow(*insert);
 }
 
@@ -181,9 +180,6 @@ QVariant TvShowData::data(const QModelIndex &index, int role) const
 
    case EpisodeRole:
        return show.getEpisode();
-
-   case GenreRole:
-       return show.getGenre();
 
    default:
        return QVariant();

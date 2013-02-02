@@ -42,7 +42,7 @@ Database::Database(QObject *parent) :
 
       QSqlQuery qry;
 
-      qry.prepare( "CREATE TABLE IF NOT EXISTS data (name VARCHAR(30) UNIQUE PRIMARY KEY, season INTEGER, episode INTEGER, genre VARCHAR(30))" );
+      qry.prepare( "CREATE TABLE IF NOT EXISTS data (name VARCHAR(30) UNIQUE PRIMARY KEY, season INTEGER, episode INTEGER)" );
         if( !qry.exec() )
           {
                 qDebug() << qry.lastError();
@@ -52,20 +52,20 @@ Database::Database(QObject *parent) :
                 errorMessage.exec();
         }
         else
-          qDebug() << "datatable created!";
+          qDebug() << "datatable created/loaded!";
 }
 
 void Database::addShow(QString name, QString genre) {
 
     QSqlQuery qry;
 
-    qry.prepare( "INSERT INTO data (name, season, episode, genre) VALUES (:name, 1, 1,:genre)");
+    qry.prepare( "INSERT INTO data (name, season, episode) VALUES (:name, 1, 1)");
     qry.bindValue(":name",name);
-    qry.bindValue(":genre",genre);
+	
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-          qDebug() << name + " with genre " + genre + " inserted!";
+          qDebug() << name + " inserted!";
 
 }
 
@@ -123,18 +123,6 @@ void Database::alterEpisode(QString name,int delta){
         qDebug() << qry.lastError();
       else
         qDebug() << "Episode of "+ name + " changed";
-}
-void Database::alterGenre(QString name,QString genre){
-
-    QSqlQuery qry;
-
-    qry.prepare( "UPDATE data SET genre=:genre WHERE name=:name");
-    qry.bindValue(":name",name);
-    qry.bindValue(":genre",genre);
-      if( !qry.exec() )
-        qDebug() << qry.lastError();
-      else
-        qDebug() << "Genre of "+ name + " changed";
 }
 
 void Database::load() {
