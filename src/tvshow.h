@@ -11,7 +11,7 @@ class TvShow
 {
 public:
     // constructor with default values
-    TvShow(const QString& name = "", int seas = 1, int ep = 1,const QString& gen = "");
+    TvShow(const QString& name = "", int seas = 1, int ep = 1);
 
     // set all the members individually
     void setTitle  (const QString& name) { title = name; }

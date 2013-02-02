@@ -2,7 +2,7 @@
 
 
 // Constructor
-TvShow::TvShow(const QString &name, int seas, int ep, const QString &gen)
+TvShow::TvShow(const QString &name, int seas, int ep)
     : title(name), season(seas), episode(ep)
 {}
 
