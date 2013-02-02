@@ -136,7 +136,7 @@ Rectangle {
                                 enabled: false;
                                 onAccepted: {
 
-                                    if(controller.alterShowName(showName,nameInput.text.toLowerCase()))
+                                    if(controller.alterShowName(showName.toLowerCase(),nameInput.text.toLowerCase()))
                                     {
 
                                     showName=nameInput.text;
