@@ -122,6 +122,23 @@ void TvShowData::setEpisode(const QString &name, int delta)
     }
 }
 
+// Updates showName
+void TvShowData::alterShowName(const QString &oldName, const QString &newName)
+{
+    int index = findShowIndex(oldName);
+
+    if (index != -1)
+    {
+
+        // Changes in Model
+        shows[index].setTitle(newName);
+
+        // Visualize changes
+        QModelIndex modindex = createIndex(index, 1);
+        emit dataChanged(modindex, modindex);
+
+    }
+}
 
 // Returns Debug-String
 QString TvShowData::toString() const

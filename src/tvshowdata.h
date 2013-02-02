@@ -38,11 +38,12 @@ public:
     void setSeason(const QString& name, int delta);
     void setEpisode(const QString& name, int delta);
 
+    // change name of given show to a new name
+    void alterShowName(const QString& oldName, const QString& newName);
 
     QString toString() const;
     int rowCount (const QModelIndex &parent = QModelIndex()) const;
     QVariant data (const QModelIndex &index, int role = Qt::DisplayRole) const;
-
 
 private:
     QList<TvShow> shows;

@@ -16,6 +16,19 @@ Rectangle {
     property string latestEpisode;
     property string nextEpisode;
 
+
+    // remove nameInputField and change Focus
+    function deactivateNameInput() {
+
+        nameInput.enabled=false;
+        nameInputBG.opacity=0;
+        nameInput.focus=false;
+        showNameLabel.color="black"
+        infoScreen.focus=true;
+        nameInput.text=""
+
+    }
+
     id:mainInfoWindow
     anchors.top:parent.top
     anchors.topMargin: mainWindow.topBarSize
@@ -24,23 +37,36 @@ Rectangle {
     color:"#00aaff"
     width:parent.width -90
     height:parent.height -100
+    focus:true
+	
+    Keys.onEscapePressed: {
+	
+        //if NameInput is active remove it, else close InfoScreen
+        if(nameInput.enabled==true) {
 
-    Keys.onEscapePressed: {mainOpacity=0;
-                              imageSource="";
-                              image.visible=false;
-                              imageFrame.visible=false;
-                              imageLoadingCircle.visible=true;
-                              mainWindow.focus=true;
-                              removeClickProtection.start();
-                              }
-
-
+            deactivateNameInput();
+        }
+        else {
+						  imageSource="";
+						  image.visible=false;
+						  imageFrame.visible=false;
+						  imageLoadingCircle.visible=true;
+						  mainWindow.focus=true;
+						  removeClickProtection.start();
+        }
+    }
 
     //check if there is a next Episode and change focus
     onOpacityChanged: { if(nextEpisode==""){nextEpisodeText.text=""} else {nextEpisodeText.text="next Ep."};
                         focus=true;
     }
 
+
+    //MouseArea tp regain focus
+    MouseArea {
+    anchors.fill: parent
+    onClicked: infoScreen.focus=true;
+    }
 
         Item {
             id:topBar
@@ -49,6 +75,7 @@ Rectangle {
             height:parent.height*0.2
 
             Text {
+                id:showNameLabel
                 text:showName+"."
                 font.family: mainWindow.uiFont
                 // no special reason for 0.06 other than it fits. also height*x would make more sense:
@@ -62,9 +89,84 @@ Rectangle {
 
                 //cuts off text if it´s too big
                 elide: Text.ElideRight
+
+                //MouseArea to detect doubleClick on Name
+                MouseArea {
+
+                        anchors.left:parent.left
+                        anchors.bottom: parent.bottom
+                        height:parent.paintedHeight
+                        width:parent.paintedWidth
+
+                        // Display InputField
+                        onDoubleClicked: {
+
+                            nameInputBG.opacity=1;
+                            nameInput.enabled=true;
+                            nameInput.focus=true;
+                            showNameLabel.color=mainWindow.textColor2}
+
+                        //dark Background
+                            Rectangle {
+
+                                id:nameInputBG
+                                color:"#005580"
+                                opacity: 0
+                                anchors.left:parent.left
+                                anchors.bottom:parent.bottom
+                                width:infoScreen.width/2
+                                height:parent.height*0.8
+
+                           //Text Input
+                           TextInput {
+
+                                id:nameInput
+                                font.pointSize: showNameLabel.font.pointSize*0.6
+                                font.family: mainWindow.uiFont
+                                anchors.fill:parent
+                                anchors.margins: 5;
+                                onTextChanged: inputError.opacity=0;
+                                //if focus is lost deactivate Input
+                                onFocusChanged: if(!focus){
+                                               deactivateNameInput();}
+                                color:"white";
+                                enabled: false;
+                                onAccepted: {
+
+                                    if(controller.alterShowName(showName,nameInput.text.toLowerCase()))
+                                    {
+
+                                    showName=nameInput.text;
+                                    xmlDataRequired(nameInput.text);
+                                    deactivateNameInput();
+                                    image.visible=false;
+                                    imageFrame.visible=false;
+                                    imageLoadingCircle.visible=true;
+                                    }
+                                    else {inputError.opacity=1;}
+                                    }
+                           }
+                           Text{
+                               id:inputError
+                           anchors.left: nameInputBG.right
+                           anchors.bottom: nameInputBG.bottom
+                           color:"red"
+                           opacity: 0;
+                           text:" Show already in database"
+                           font.pointSize: nameInput.font.pointSize/2
+
+
+                           }
+
+                            }
+
+
+                }
             }
 
-            }
+        }
+
+
 
         Item {
             id:imageArea
@@ -414,7 +516,9 @@ Rectangle {
                 imageFrame.visible=false;
                 imageLoadingCircle.visible=true;
                 mainWindow.focus=true;
-                removeClickProtection.start();}
+                removeClickProtection.start();
+                deactivateNameInput();
+                }
 
                 }
 
