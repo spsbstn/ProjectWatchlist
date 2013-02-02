@@ -11,7 +11,7 @@ class Database : public QObject
 
 public:
     explicit Database(QObject *parent = 0);
-    void addShow(QString name, QString genre);
+    void addShow(QString name);
     void removeShow(QString name);
     void alterSeason(QString name,int delta);
     bool alterShowName(QString oldName,QString newName);

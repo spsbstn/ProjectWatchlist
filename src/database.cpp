@@ -55,7 +55,7 @@ Database::Database(QObject *parent) :
           qDebug() << "datatable created/loaded!";
 }
 
-void Database::addShow(QString name, QString genre) {
+void Database::addShow(QString name) {
 
     QSqlQuery qry;
 
