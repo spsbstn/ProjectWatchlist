@@ -8,15 +8,12 @@ Item {
 
     function submit() {
 
-            if(nameInput.text != "Name" && nameInput.text != "" &&
-               genreInput.text != "Genre" && genreInput.text != ""){
+            if(nameInput.text != "Name" && nameInput.text != "") {
 
                     controller.add(nameInput.text.toLowerCase(),
-                    genreInput.text.toLocaleLowerCase(),
                     addScreen.opacity=0,
                     removeClickProtection.start());
                     grid.positionViewAtEnd();
-
            }
         }
 
@@ -24,8 +21,8 @@ Item {
 
         id:addScreenTile
         anchors.centerIn: addScreen
-        height: parseInt(grid.height / 3)
-        width: height*2
+        height: parseInt(grid.height / 5)
+        width: height*3
         opacity: 1;
         color:"#00aaff"
 
@@ -37,7 +34,7 @@ Item {
               anchors.topMargin: parent.width/30
               color: "#ffffff"
               text: qsTr(" + New TvShow")
-              font.pixelSize: parent.width/10
+              font.pixelSize: parent.width/12
               font.family: uiFont
 
                   }
@@ -45,7 +42,7 @@ Item {
             Rectangle {
 
                  anchors.bottom: parent.bottom
-                 anchors.bottomMargin: parent.height/2
+                 anchors.bottomMargin: parent.height/3
                  anchors.left: parent.left
                  anchors.leftMargin: (parent.width-width)/2
                  width: parent.width-50
@@ -66,57 +63,16 @@ Item {
                 font.pixelSize: height-(height/5)
                 onAccepted: submit();
                 Keys.onEscapePressed: {addScreen.opacity=0;removeClickProtection.start();}
-                Keys.onTabPressed: {if(text==""){text="Name"};
-                                    focus=false;
-                                    genreInput.focus=true;}
 
                 MouseArea {
 
                     anchors.fill: parent
                     onClicked: {nameInput.focus=true;
-                                genreInput.focus=false;
                             }
                         }
                    }
               }
 
-            Rectangle {
-
-                 anchors.bottom: parent.bottom
-                 anchors.bottomMargin: parent.height/4
-                 anchors.left: parent.left
-                 anchors.leftMargin: (parent.width-width)/2
-                 width: parent.width-50
-                 height: parent.width/14
-                 color: "#ffffff"
-
-            TextInput {
-
-                id: genreInput
-                anchors.left:parent.left
-                anchors.leftMargin: 10;
-                anchors.centerIn: parent
-                width: parent.width-20
-                height: parent.height-10
-                onActiveFocusChanged:if (activeFocus == true) selectAll();
-                text: qsTr("Genre")
-                focus:false
-                font.pixelSize: height-(height/5)
-                onAccepted: submit();
-                Keys.onEscapePressed: {addScreen.opacity=0;removeClickProtection.start();}
-                Keys.onTabPressed: { if(text==""){text="Genre"};
-                                    focus=false;
-                                    nameInput.focus=true;}
-
-                MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                nameInput.focus=false;
-                                genreInput.focus=true;
-                            }
-                      }
-                 }
-            }
 
             Button {
 
@@ -150,8 +106,7 @@ Item {
 
                         when: addScreen.opacity==0
                         StateChangeScript { script:nameInput.text="Name" }
-                        StateChangeScript { script:genreInput.text="Genre" }
-                        PropertyChanges   { target:mainWindow; focus:true; }
+                        PropertyChanges { target:mainWindow; focus:true; }
 
                     },
 
@@ -166,4 +121,3 @@ Item {
     }
 
 }
-
