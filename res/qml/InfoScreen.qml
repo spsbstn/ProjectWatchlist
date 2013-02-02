@@ -52,9 +52,9 @@ Rectangle {
             image.visible=false;
             imageFrame.visible=false;
             imageLoadingCircle.visible=true;
-            mainWindow.focus=true;
             removeClickProtection.start();
             deactivateNameInput();
+            mainWindow.focus=true;
 
         }
     }
