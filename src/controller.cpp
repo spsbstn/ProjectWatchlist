@@ -64,6 +64,9 @@ Controller::Controller(QObject *parent) :
         QObject::connect(qi->xmlPicture_, SIGNAL(updateFinished()), rootObject, SLOT(updateInfo()));
         QObject::connect(qi, SIGNAL(htmlErrorOccured()), rootObject, SLOT(htmlError()));
 
+        //  Set WindowMinimizeButtonHint in order to be able to minimize from taskbar
+        mainWidget->setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::FramelessWindowHint);
+
 
 }
 
