@@ -24,10 +24,18 @@ property bool loadingCircleVisible: false
      GridView.onRemove:
          SequentialAnimation {
             PropertyAction { target: flipable; property: "GridView.delayRemove"; value: true }
-            NumberAnimation { target: flipable; property: "scale"; from: 1.0; to: 0.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5 }
-            PropertyAction { target: flipable; property: "GridView.delayRemove"; value: false }
-     }
+            ParallelAnimation {
+                PropertyAction { target: seasonTxt; property: "color";value: "transparent" }
+                PropertyAction { target: episodeTxt; property: "color";value: "transparent" }
 
+             NumberAnimation {
+                    target: flipable; properties: "scale"; from: 1.0; to: 0.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5; duration:700
+                }
+            NumberAnimation {
+                    target: flipable; properties: "opacity"; from: 1.0; to: 0.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5; duration:500
+             }         }   PropertyAction { target: flipable; property: "GridView.delayRemove"; value: false }
+
+}
 
 
 front: Rectangle {
