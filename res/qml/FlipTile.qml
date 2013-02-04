@@ -14,10 +14,10 @@ property bool loadingCircleVisible: false
         ParallelAnimation {
 
          NumberAnimation {
-                target: flipable; properties: "scale"; from: 0.0; to: 1.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5
+                target: flipable; properties: "scale"; from: 0.0; to: 1.0; easing.type: Easing.OutBack; easing.amplitude: 2.0; easing.period: 1.5; duration:800
             }
         NumberAnimation {
-                target: flipable; properties: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5
+                target: flipable; properties: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5; duration:600
          }
      }
 
