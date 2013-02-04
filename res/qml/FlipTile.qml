@@ -25,9 +25,6 @@ property bool loadingCircleVisible: false
          SequentialAnimation {
             PropertyAction { target: flipable; property: "GridView.delayRemove"; value: true }
             ParallelAnimation {
-                PropertyAction { target: seasonTxt; property: "color";value: "transparent" }
-                PropertyAction { target: episodeTxt; property: "color";value: "transparent" }
-
              NumberAnimation {
                     target: flipable; properties: "scale"; from: 1.0; to: 0.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5; duration:700
                 }
@@ -88,7 +85,7 @@ front: Rectangle {
             width: parent.width;
             anchors.top: parent.top
             anchors.topMargin: tileMargin +50
-            color:mainWindow.tileBackground
+            color:"transparent"
             height:22
 
             Text {
@@ -143,7 +140,7 @@ front: Rectangle {
              id: episodeTxt
              width:parent.width
              height:22
-             color:mainWindow.tileBackground
+             color:"transparent"
              anchors.top: parent.top
              anchors.topMargin: tileMargin+100
 

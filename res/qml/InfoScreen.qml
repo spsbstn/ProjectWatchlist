@@ -38,6 +38,7 @@ Rectangle {
     width:parent.width -90
     height:parent.height -100
     focus:true
+
 	
     Keys.onEscapePressed: {
 	
@@ -60,8 +61,10 @@ Rectangle {
     }
 
     //check if there is a next Episode and change focus
+
     onOpacityChanged: { if(nextEpisode==""){nextEpisodeText.text=""} else {nextEpisodeText.text="next Ep."};
                         focus=true;
+
     }
 
 
