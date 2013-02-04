@@ -9,6 +9,25 @@ import "..///js/Global.js" as GlobalJS
 property bool flipped: false
 property bool loadingCircleVisible: false
 
+     GridView.onAdd:
+
+        ParallelAnimation {
+
+         NumberAnimation {
+                target: flipable; properties: "scale"; from: 0.0; to: 1.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5
+            }
+        NumberAnimation {
+                target: flipable; properties: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5
+         }
+     }
+
+     GridView.onRemove:
+         SequentialAnimation {
+            PropertyAction { target: flipable; property: "GridView.delayRemove"; value: true }
+            NumberAnimation { target: flipable; property: "scale"; from: 1.0; to: 0.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5 }
+            PropertyAction { target: flipable; property: "GridView.delayRemove"; value: false }
+     }
+
 
 
 front: Rectangle {
