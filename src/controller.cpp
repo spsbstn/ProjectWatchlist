@@ -217,8 +217,8 @@ void Controller::checkForSeasonIcons(QApplication *app)
 {
     QDateTime now = QDateTime::currentDateTime();
 
-    //check if today is newYear (bad solution)
-    if(now.daysTo(QDateTime(QDate(now.date().year(),01,01)))==0)
+    //check if today is newYear +-1 day
+  if(abs(now.daysTo(QDateTime(QDate(now.date().year(),01,01))))-2<0)
 
     {
 
@@ -226,12 +226,30 @@ void Controller::checkForSeasonIcons(QApplication *app)
 
     }
 
-    //check if today is christmas (bad solution)
-    if(now.daysTo(QDateTime(QDate(now.date().year(),12,24)))==0)
+    //check if today is christmas +- 4 days
+   if(abs(now.daysTo(QDateTime(QDate(now.date().year(),12,24))))-5<0)
 
     {
 
     app->setWindowIcon(QIcon(":/icons/seasons/christmas.png"));
+
+    }
+
+   //check if today is easterSunday
+    if(now.daysTo(QDateTime(QDate(2013,03,31)))==0)
+
+    {
+
+    app->setWindowIcon(QIcon(":/icons/seasons/easter.png"));
+
+    }
+
+    // check if today is Watchlist's birthday
+    if(now.daysTo(QDateTime(QDate(now.date().year(),09,13)))==0)
+
+    {
+
+    app->setWindowIcon(QIcon(":/icons/seasons/birthday.png"));
 
     }
 
