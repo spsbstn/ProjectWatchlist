@@ -107,7 +107,8 @@ front: Rectangle {
                    anchors.right:parent.right
                    anchors.rightMargin: (seasonTxt.width-text2.width-(2*width))/2
                    anchors.verticalCenter: parent.verticalCenter
-                   onClicked: controller.setSeason(seriesName.text, +1);
+                   onClicked: {controller.setSeason(seriesName.text, +1);
+                   controller.setEpisode(seriesName.text,(-episode+1));}
              }
 
              Button {
@@ -120,7 +121,8 @@ front: Rectangle {
                     anchors.left:parent.left
                     anchors.leftMargin: (seasonTxt.width-text2.width-(2*width))/2
                     anchors.verticalCenter: parent.verticalCenter
-                    onClicked: controller.setSeason(seriesName.text, -1);
+                    onClicked: {controller.setSeason(seriesName.text, -1);
+                                controller.setEpisode(seriesName.text,(-episode+1));}
              }
 
              states: [
