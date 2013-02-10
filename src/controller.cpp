@@ -236,7 +236,7 @@ void Controller::checkForSeasonIcons(QApplication *app)
     }
 
    //check if today is easterSunday
-    if(now.daysTo(QDateTime(QDate(2013,03,31)))==0)
+    if(now.daysTo(QDateTime(QDate(2013,3,31)))==0)
 
     {
 
@@ -245,7 +245,7 @@ void Controller::checkForSeasonIcons(QApplication *app)
     }
 
     // check if today is Watchlist's birthday
-    if(now.daysTo(QDateTime(QDate(now.date().year(),09,13)))==0)
+    if(now.daysTo(QDateTime(QDate(now.date().year(),9,13)))==0)
 
     {
 
