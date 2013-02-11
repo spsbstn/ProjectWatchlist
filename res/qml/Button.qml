@@ -13,8 +13,10 @@ MouseArea {
   height:buttonHeight;
   smooth:true
   hoverEnabled:true
-  onExited: NumberAnimation { target: buttonActiveState; property: "opacity"; to: 0; duration: 100;}
-  onEntered: NumberAnimation { target: buttonActiveState; property: "opacity"; to: 1; duration: 100;}
+  onExited: ParallelAnimation{NumberAnimation { target: buttonActiveState; property: "opacity"; to: 0; duration: 100;}
+                               NumberAnimation { target: buttonNormalState; property: "opacity"; to: 1; duration: 100;}}
+  onEntered: ParallelAnimation{NumberAnimation { target: buttonActiveState; property: "opacity"; to: 1; duration: 100;}
+                               NumberAnimation { target: buttonNormalState; property: "opacity"; to: 0; duration: 100;}}
 
   CursorShapeArea {
       anchors.fill: parent
@@ -22,7 +24,7 @@ MouseArea {
     }
 
     Image {
-
+    id:buttonNormalState
     source:buttonNormal
            }
 
