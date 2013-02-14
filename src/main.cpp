@@ -21,11 +21,11 @@ int main(int argc, char *argv[])
     //init app
     QApplication app(argc, argv);
 
-    FvUpdater::sharedUpdater()->SetFeedURL("https://dl.dropbox.com/u/12650902/Watchlist/Appcast.xml");
-    FvUpdater::sharedUpdater()->CheckForUpdatesSilent();
-
     //init controller
     Controller* ctrl = new Controller;
+
+    FvUpdater::sharedUpdater()->SetFeedURL("https://dl.dropbox.com/u/12650902/Watchlist/Appcast.xml");
+    FvUpdater::sharedUpdater()->CheckForUpdatesSilent();
 
     // connect quit signal
     QObject::connect((QObject*)ctrl->qmlView->engine(), SIGNAL(quit()), &app, SLOT(quit()));

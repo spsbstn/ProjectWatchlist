@@ -171,3 +171,5 @@ pip-log.txt
 *.autosave
 
 *.5pre1
+
+res/qml/DebugConsole.qml

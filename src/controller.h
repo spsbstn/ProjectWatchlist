@@ -52,6 +52,7 @@ public:
 
     //
     void checkForSeasonIcons(QApplication *app);
+    void initMsgHandler();
 
     QWidget  *mainWidget;
     Database    *db;

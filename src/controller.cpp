@@ -13,19 +13,20 @@
 Controller::Controller(QObject *parent) :
     QObject(parent),
     mainWidget(new QWidget()),
-    db(new Database()),
     qmlView(new QDeclarativeView()),
     framelessHelper(new NcFramelessHelper()),
     layout(new QVBoxLayout)
 {
+    //init MsgHandler
+    initMsgHandler();
+
+    db = new Database(),
     //  Load Database
     db->load();
 
     settings = new QSettings("Watchlist");   
     //check for colorscheme-settings
     checkForFirstInit();
-
-
 
     //  Setting up Declarative View
         // Resize Mode
@@ -255,4 +256,46 @@ void Controller::checkForSeasonIcons(QApplication *app)
 
 
 }
+
+void msgHandler(QtMsgType type, const char *msg)
+ {
+    QFile file("./log.txt");
+    file.open(QIODevice::WriteOnly | QIODevice::Text |QIODevice::Append ) ;
+    QTextStream out(&file);
+     switch (type) {
+     case QtDebugMsg:
+         fprintf(stderr, "Debug: %s\n", msg);
+         out << "\n>> " << msg;
+         break;
+     case QtWarningMsg:
+         fprintf(stderr, "Warning: %s\n", msg);
+         out << "\n>> " << msg;
+         break;
+     case QtCriticalMsg:
+         fprintf(stderr, "Critical: %s\n", msg);
+         out << "\n>> " << msg;
+         break;
+     case QtFatalMsg:
+         fprintf(stderr, "Fatal: %s\n", msg);
+         out << "\n>> " << msg;
+         abort();
+     }
+ }
+
+
+
+
+void Controller::initMsgHandler() {
+
+    qInstallMsgHandler(msgHandler);
+    QFile file("./log.txt");
+    file.open(QIODevice::WriteOnly | QIODevice::Text |QIODevice::Append ) ;
+    QTextStream out(&file);
+
+    out << "\n\n\n\n" << QDateTime::currentDateTime().toString() << "\n";
+
+}
+
+
+
 
