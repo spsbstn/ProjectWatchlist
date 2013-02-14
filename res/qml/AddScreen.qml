@@ -21,7 +21,7 @@ Item {
 
         id:addScreenTile
         anchors.centerIn: addScreen
-        height: parseInt(grid.height / 5)
+        height: parseInt(grid.height / 4.5)
         width: height*3
         opacity: 1;
         color:"#00aaff"
@@ -34,7 +34,7 @@ Item {
               anchors.topMargin: parent.width/30
               color: "#ffffff"
               text: qsTr(" + New TvShow")
-              font.pixelSize: parent.width/12
+              font.pixelSize: parent.width/15
               font.family: uiFont
 
                   }
@@ -46,7 +46,7 @@ Item {
                  anchors.left: parent.left
                  anchors.leftMargin: (parent.width-width)/2
                  width: parent.width-50
-                 height: parent.width/14
+                 height: parent.width/11
                  color: "#ffffff"
 
             TextInput {
