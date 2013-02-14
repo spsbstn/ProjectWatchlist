@@ -68,5 +68,14 @@
         <file>img/blackCyanScheme.png</file>
         <file>img/darkGreenScheme.png</file>
         <file>img/darkOrangeScheme.png</file>
+        <file>img/blackCyan/watchnow_Active.png</file>
+        <file>img/blackCyan/watchnow.png</file>
+        <file>img/darkGreen/watchnow_Active.png</file>
+        <file>img/darkGreen/watchnow.png</file>
+        <file>img/darkOrange/watchnow_Active.png</file>
+        <file>img/darkOrange/watchnow.png</file>
+        <file>img/blackCyan/info_Active.png</file>
+        <file>img/darkGreen/info_Active.png</file>
+        <file>img/darkOrange/info_Active.png</file>
     </qresource>
 </RCC>

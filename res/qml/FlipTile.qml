@@ -1,5 +1,7 @@
 import QtQuick 1.0
 import "..///js/Global.js" as GlobalJS
+import "..///js/WatchNow.js" as WatchNowLink
+
 
  Flipable {
      id: flipable
@@ -216,6 +218,7 @@ front: Rectangle {
              buttonHeight:16
              buttonWidth:16
              buttonNormal: "../..///img/"+mainWindow.colorScheme+"/info.png"
+             buttonActive: "../..///img/"+mainWindow.colorScheme+"/info_Active.png"
              anchors.bottom: parent.bottom
              anchors.right:parent.right
              anchors.bottomMargin: 10
@@ -226,6 +229,20 @@ front: Rectangle {
                          grid.currentIndex = index;}
              onReleased:xmlDataRequired(title);
 
+     }
+        Button {
+
+             id:watchNowButton
+             buttonHeight:16
+             buttonWidth:16
+             buttonNormal: "../..///img/"+mainWindow.colorScheme+"/watchnow.png"
+             buttonActive: "../..///img/"+mainWindow.colorScheme+"/watchnow_Active.png"
+             anchors.bottom: parent.bottom
+             anchors.right:infoButton.left
+             anchors.bottomMargin: 10
+             anchors.rightMargin: 5
+             hoverEnabled: true
+             onPressed: {Qt.openUrlExternally(WatchNowLink.getLink(title));}
      }
     LoadingCircle{
                   id:loadingCircel
