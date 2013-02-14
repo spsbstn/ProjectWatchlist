@@ -51,7 +51,7 @@ OTHER_FILES += \
     res/js/CheckForNewEpisodes.js
 
 TARGET = Watchlist
-VERSION = 2.1
+VERSION = 2.1.1
 TEMPLATE = app
 
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
