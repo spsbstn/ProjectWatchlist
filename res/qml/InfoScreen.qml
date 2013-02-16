@@ -29,6 +29,14 @@ Rectangle {
 
     }
 
+    function getAirTime() {
+
+        airTimeBackground.color="#828282";
+
+        if(airTime==""){airTimeBackground.color='transparent'; return "";} else {return "Every " + airTime;}
+
+    }
+
     id:mainInfoWindow
     anchors.top:parent.top
     anchors.topMargin: mainWindow.topBarSize
@@ -478,7 +486,7 @@ Rectangle {
             Text {
 
                 id:airDayText
-                text:"Every " + airTime
+                text:getAirTime();
                 font.family: mainWindow.uiFont
                 font.pointSize: 30
                 color: 'white'
@@ -488,7 +496,7 @@ Rectangle {
                 z:3
 
                 Rectangle {
-
+                    id:airTimeBackground
                     color:"#828282"
                     z: -1
                     smooth:true
