@@ -110,7 +110,7 @@ Rectangle {
                             nameInputBG.opacity=1;
                             nameInput.enabled=true;
                             nameInput.focus=true;
-                            nameInput.text=showNameLabel.text;
+                            nameInput.text=showNameLabel.text.replace(".","");
                             nameInput.selectAll();
                             showNameLabel.color=mainWindow.textColor2}
 
