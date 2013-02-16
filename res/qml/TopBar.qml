@@ -1,4 +1,5 @@
 import QtQuick 1.1
+import Cursors 1.0
 
 Item {
 
@@ -141,6 +142,16 @@ Item {
                 font.pixelSize: 16
                 font.capitalization:Font.AllLowercase;
                 font.family: mainWindow.uiFont
+
+                MouseArea {
+                anchors.fill: parent;
+                onClicked: NumberAnimation { target: changelog; property: "anchors.leftMargin"; to:0; duration: 2000; }
+
+                }
+                CursorShapeArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                  }
             }
     }
 

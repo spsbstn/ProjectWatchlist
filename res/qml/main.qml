@@ -2,6 +2,7 @@ import QtQuick 1.1
 import "..///js/Global.js" as GlobalJS
 import Cursors 1.0
 import WheelArea 1.0
+import QtWebKit 1.0
 
 
 Rectangle {
@@ -88,6 +89,38 @@ Rectangle {
             width: parent.width
 
         }
+    Item {
+
+        id:changelog
+        z:1
+        width: parent.width*0.4
+        height: parent.height
+        anchors.left:mainWindow.left
+        anchors.leftMargin: -width;
+
+    Flickable {
+      id:webViewFlickr
+      width: parent.width
+      boundsBehavior: Flickable.StopAtBounds
+      height: parent.height
+      contentWidth: Math.max(parent.width,1000)
+      contentHeight: Math.max(parent.height,800)
+      pressDelay: 200
+      clip:true
+      WebView {
+      id: webView
+      anchors.fill: parent
+
+      preferredHeight: height
+      preferredWidth: Math.max(parent.width,1000)
+      url: "qrc:../..///html/ReleaseNotes.html";
+      }
+      WheelArea{
+          anchors.fill:parent
+          onVerticalWheel:if(webViewFlickr.contentY-delta>=0 && webViewFlickr.contentY-delta < webView.height-webViewFlickr.height ){webViewFlickr.contentY=webViewFlickr.contentY-delta}
+      }
+    }
+}
 
 //Leftbar
         Rectangle {
@@ -278,6 +311,9 @@ Rectangle {
             onClicked: parent.opacity=0
 
                 }
+
+
+
 
     }
 
