@@ -6,9 +6,17 @@ Rectangle{
 
     width:120
     onOpacityChanged: focus=true;
+    /* onEnterPressed doesnt work here somehow (http://stackoverflow.com/questions/9677371/qml-keys-onenterpressed-issue)
+       -> onReturnPressed */
+    Keys.onReturnPressed: {controller.remove(GlobalJS.activeSeries);
+        removeScreen.opacity=0;
+        mainWindow.focus=true;
+        removeClickProtection.start();}
+
     Keys.onEscapePressed: {removeScreen.opacity=0;
            mainWindow.focus=true;
            removeClickProtection.start();}
+
 Button {
     id:abortButton
     buttonHeight:35
