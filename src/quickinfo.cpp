@@ -1,6 +1,7 @@
 #include "quickinfo.h"
 #include <QtDebug>
 #include <QElapsedTimer>
+#include <QEventLoop>
 
 #define URL_BASE "http://services.tvrage.com/tools/quickinfo.php?show="
 
@@ -14,9 +15,10 @@ QuickInfo::QuickInfo(QObject *parent) : QObject(parent)
 
     // instance of xmlPictureLoader
     xmlPicture_ = new XmlPictureLoader(this);
+    qDebug() << "Quick Info initialised";
 
     //connect signal and slot  --> request finished
-   // QObject::connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
+    QObject::connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
 
 }
 
@@ -40,15 +42,16 @@ void QuickInfo::createConnection(QString showName)
     QElapsedTimer timer;
     timer.start();
 
-    while(!reply->isFinished())
-    {
-        qDebug() << "Loading";
-    }
+    qDebug() << "Reply is being processed";
+    QEventLoop loop;
+    QObject::connect(reply, SIGNAL(readyRead()), &loop, SLOT(quit()));
 
-    qDebug() << "Loading of Infos took"+timer.elapsed();
+    // Execute the event loop here, now we will wait here until readyRead() signal is emitted
+    // which in turn will trigger event loop quit.
+    loop.exec();
 
-    // reply is finished, load Infos into Hashmap
-    finishedSlot(reply);
+    qDebug() << "Loading of Infos took "+timer.elapsed();
+    //finishedSlot(reply);
 }
 
 // work with serverReply

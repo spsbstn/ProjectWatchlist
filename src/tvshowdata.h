@@ -16,7 +16,7 @@ public:
     {
         TitleRole = Qt::UserRole +1,
         SeasonRole,
-        EpisodeRole,
+        EpisodeRole
     };
 
     TvShowData(QObject* parent = 0);
@@ -24,7 +24,7 @@ public:
     // Adds show to the back of the vector, returns ShowIndex
     // (-1 if successfully added)
     // TODO : Inform User if already added
-    int addShow(const TvShow &show);
+    int addShow(TvShow &show);
     int addShow(const QString &name);
 
     // Overloaded functions: removes show either via the show-object or
@@ -37,6 +37,9 @@ public:
     void setSeason(const QString& name, int delta);
     void setEpisode(const QString& name, int delta);
 
+    // Find Position of Show
+    int findShowIndex(const QString& name);
+
     // change name of given show to a new name
     void alterShowName(const QString& oldName, const QString& newName);
 
@@ -44,11 +47,10 @@ public:
     int rowCount (const QModelIndex &parent = QModelIndex()) const;
     QVariant data (const QModelIndex &index, int role = Qt::DisplayRole) const;
 
+    QList<TvShow*> shows;
 private:
-    QList<TvShow> shows;
     // returns index of given show, -1 if not present
-    int findShowIndex(const QString& name);
-    int findShowIndex(const TvShow& show);
+    //int findShowIndex(const TvShow& show);
 };
 
 #endif // TVSHOWDATA_H

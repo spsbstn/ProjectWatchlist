@@ -1,17 +1,21 @@
 #ifndef TvShow_H
 #define TvShow_H
 
+#include <QObject>
 #include <QString>
+
 class QuickInfo;
 
 #define OLD_SEASON -1
 
 
-class TvShow
+class TvShow : public QObject
 {
+    Q_OBJECT
+
 public:
     // constructor with default values
-    TvShow(const QString& name = "", int seas = 1, int ep = 1 );
+    TvShow(QString name = "", int seas = 1, int ep = 1 );
 
     // set all the members individually
     void setTitle  (const QString& name) { title = name; }
@@ -56,6 +60,9 @@ private:
 
     QuickInfo* info;
 
+    //prevent copy-constructors:
+    TvShow(const TvShow&);
+    TvShow& operator = (const TvShow&);
 
 };
 

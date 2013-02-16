@@ -15,28 +15,31 @@ TvShowData::TvShowData(QObject *parent)
 }
 
 
+
+
+
+// First creates new TvShow out of name, then inserts it
+int TvShowData::addShow(const QString &name)
+{
+    TvShow* insert = new TvShow(name);
+    return addShow(*insert);
+}
+
+
 // Tries to find given Show in the vector, and adds it if not found.
 // Returns the Index of the Show if it is already present (useful for later highlighting?)
-int TvShowData::addShow(const TvShow& show)
+int TvShowData::addShow(TvShow& show)
 {
     int index = findShowIndex(show.getTitle());
     // -1 means the Show wasn´t found
     if (index == -1)
     {
         beginInsertRows(QModelIndex(), rowCount(), rowCount());
-        shows.append(show);
+        shows.append(&show);
         endInsertRows();
     }
 
     return index;
-}
-
-
-// First creates new TvShow out of name, then inserts it
-int TvShowData::addShow(const QString &name)
-{
-    TvShow* insert = new TvShow(name, 1, 1);
-    return addShow(*insert);
 }
 
 
@@ -45,19 +48,19 @@ int TvShowData::findShowIndex(const QString& name)
 {
     for(int i = 0; i < shows.size(); i++)
     {
-        if (shows.at(i).getTitle() == name)
+        if (shows.at(i)->getTitle() == name)
             return i;
     }
     return -1;
 }
 
-
+/*
 // Finds Shows position in QList through whole Show-Object
 int TvShowData::findShowIndex(const TvShow &show)
 {
     return findShowIndex(show.getTitle());
 }
-
+*/
 
 
 // Removes show from vector via its name. Returns -1 if show wasn´t found.
@@ -75,14 +78,14 @@ int TvShowData::removeShow(const QString &name)
     return index;
 }
 
-
+/*
 // Removes show via object
 int TvShowData::removeShow(const TvShow &show)
 {
 
     return removeShow(show.getTitle());
 }
-
+*/
 
 // Updates Season
 void TvShowData::setSeason(const QString &name, int delta)
@@ -93,7 +96,7 @@ void TvShowData::setSeason(const QString &name, int delta)
     {
 
         // Changes in Model
-        shows[index].setSeason(delta);
+        shows.at(index)->setSeason(delta);
 
         // Visualize changes
         QModelIndex modindex = createIndex(index, 1);
@@ -112,7 +115,7 @@ void TvShowData::setEpisode(const QString &name, int delta)
     {
 
         // Changes in Model
-        shows[index].setEpisode(delta);
+        shows.at(index)->setEpisode(delta);
 
         // Visualize changes
         QModelIndex modindex = createIndex(index, 1);
@@ -130,7 +133,7 @@ void TvShowData::alterShowName(const QString &oldName, const QString &newName)
     {
 
         // Changes in Model
-        shows[index].setTitle(newName);
+        shows.at(index)->setTitle(newName);
 
         // Visualize changes
         QModelIndex modindex = createIndex(index, 1);
@@ -146,7 +149,7 @@ QString TvShowData::toString() const
 
     for (int i = 0; i < shows.size(); i++)
     {
-        result.append(shows.at(i).toString());
+        result.append(shows.at(i)->toString());
         result.append("\n");
     }
 
@@ -168,7 +171,7 @@ QVariant TvShowData::data(const QModelIndex &index, int role) const
     if (index.row() < 0 || index.row() > shows.size())
         return QVariant();
 
-   const TvShow &show = shows.at(index.row());
+   const TvShow &show = *(shows.at(index.row()));
 
    switch (role)
    {
