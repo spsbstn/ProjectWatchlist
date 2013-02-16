@@ -1,5 +1,7 @@
 #include "quickinfo.h"
 #include <QtDebug>
+#include <QElapsedTimer>
+
 #define URL_BASE "http://services.tvrage.com/tools/quickinfo.php?show="
 
 QuickInfo::QuickInfo(QObject *parent) : QObject(parent)
@@ -14,7 +16,7 @@ QuickInfo::QuickInfo(QObject *parent) : QObject(parent)
     xmlPicture_ = new XmlPictureLoader(this);
 
     //connect signal and slot  --> request finished
-    QObject::connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
+   // QObject::connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
 
 }
 
@@ -33,6 +35,20 @@ void QuickInfo::createConnection(QString showName)
 
     // serverReply
     QNetworkReply* reply = nam->get(QNetworkRequest(url));
+
+    // wait until reply is finished (measuring time out of curiosity)
+    QElapsedTimer timer;
+    timer.start();
+
+    while(!reply->isFinished())
+    {
+        qDebug() << "Loading";
+    }
+
+    qDebug() << "Loading of Infos took"+timer.elapsed();
+
+    // reply is finished, load Infos into Hashmap
+    finishedSlot(reply);
 }
 
 // work with serverReply
