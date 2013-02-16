@@ -80,6 +80,10 @@ void QuickInfo::finishedSlot(QNetworkReply* reply)
                     showInfo->insert(key,value);
                 }
 
+                if(showInfo->value("Airtime")=="Monday, Tuesday, Wednesday, Thursday, Friday") {
+                    showInfo->insert("Airtime","workday");
+                }
+
 
 
         }
