@@ -75,7 +75,7 @@ Controller::Controller(QObject *parent) :
 void Controller::add(const QString& name)
 {
     db->data->addShow(name);
-    db->addShow(name);
+    //db->addShow(name);
 
 }
 
@@ -83,7 +83,7 @@ void Controller::add(const QString& name)
 void Controller::remove(const QString& name){
 
     db->data->removeShow(name);
-    db->removeShow(name);
+  //  db->removeShow(name);
 }
 
 
@@ -91,30 +91,31 @@ void Controller::remove(const QString& name){
 void Controller::setSeason(const QString& name, int delta)
 {
     db->data->setSeason(name, delta);
-    db->alterSeason(name,delta);
+    //db->alterSeason(name,delta);
 }
 
 // change Episode
 void Controller::setEpisode(const QString &name, int delta)
 {
     db->data->setEpisode(name, delta);
-    db->alterEpisode(name,delta);
+  //  db->alterEpisode(name,delta);
 }
 
 // alter showName
 bool Controller::alterShowName(const QString& oldName,const QString& newName)
 {
-    if(db->alterShowName(oldName,newName)){
+   // if(db->alterShowName(oldName,newName)){
 
     db->data->alterShowName(oldName,newName);
     return true;
-    }
+  //  }
 
-    else {
+ /*  else {
 
     return false;
 
     }
+    */
 }
 
 //change colorscheme
