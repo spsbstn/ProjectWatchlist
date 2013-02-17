@@ -24,7 +24,7 @@ public slots:
     void createConnection(QString showName);
 
 signals:
-
+    void showInfoFilled();
     void htmlErrorOccured();
 };
 

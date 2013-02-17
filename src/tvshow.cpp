@@ -1,15 +1,20 @@
-#include "TvShow.h"
+#include "tvshow.h"
 #include "quickinfo.h"
+
 #include <QDebug>
 
 // Constructor
 TvShow::TvShow(QString name, int seas, int ep)
-    : title(name), season(seas), episode(ep), info(new QuickInfo())
+    : title(name), season(seas), episode(ep), info(new QuickInfo(this))
 {
     // Create Connection to API
     info->createConnection(title);
+}
 
-    // Fill in gathered information
+
+// when Hashmap is loaded, values are extracted
+void TvShow::onShowInfoFilled()
+{
     setStarted(info->showInfo->value("Started"));
     setStatus(info->showInfo->value("Status"));
     setAirtime(info->showInfo->value("Airtime"));
@@ -18,8 +23,7 @@ TvShow::TvShow(QString name, int seas, int ep)
     setLatestEpisode(info->showInfo->value("Latest Episode"));
     setLatestEpisode(info->showInfo->value("Next Episode"));
 
-
-    qDebug() << title+started+status+airtime+network;
+    qDebug() << toString();
 }
 
 
@@ -27,5 +31,5 @@ TvShow::TvShow(QString name, int seas, int ep)
 QString TvShow::toString() const
 {
     return title + " " + QString::number(season) + " " +
-            QString::number(episode);
+                QString::number(episode)+ " " + started + " " + status + " " + airtime + " " + network;
 }

@@ -19,7 +19,7 @@ QuickInfo::QuickInfo(QObject *parent) : QObject(parent)
 
     //connect signal and slot  --> request finished
     QObject::connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
-
+    QObject::connect(this, SIGNAL(showInfoFilled()),parent, SLOT(onShowInfoFilled()));
 }
 
 // create connection to server
@@ -38,20 +38,8 @@ void QuickInfo::createConnection(QString showName)
     // serverReply
     QNetworkReply* reply = nam->get(QNetworkRequest(url));
 
-    // wait until reply is finished (measuring time out of curiosity)
-    QElapsedTimer timer;
-    timer.start();
-
     qDebug() << "Reply is being processed";
-    QEventLoop loop;
-    QObject::connect(reply, SIGNAL(readyRead()), &loop, SLOT(quit()));
 
-    // Execute the event loop here, now we will wait here until readyRead() signal is emitted
-    // which in turn will trigger event loop quit.
-    loop.exec();
-
-    qDebug() << "Loading of Infos took "+timer.elapsed();
-    //finishedSlot(reply);
 }
 
 // work with serverReply
@@ -119,6 +107,7 @@ void QuickInfo::finishedSlot(QNetworkReply* reply)
         emit htmlErrorOccured();
     }
 
+    emit showInfoFilled();
     //delete reply
     reply->deleteLater();
 }

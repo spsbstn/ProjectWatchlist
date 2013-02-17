@@ -2,9 +2,9 @@
 #define TvShow_H
 
 #include <QObject>
-#include <QString>
 
 class QuickInfo;
+class QString;
 
 #define OLD_SEASON -1
 
@@ -41,9 +41,12 @@ public:
     QString getLatestEpisode() const { return latestEpisode;}
     QString getNextEpisode() const { return nextEpisode;}
 
-
     // Return string for printing TvShow to console
     QString toString() const;
+    QuickInfo* info;
+
+public slots:
+    void onShowInfoFilled();
 
 
 private:
@@ -58,7 +61,6 @@ private:
     QString latestEpisode;
     QString nextEpisode;
 
-    QuickInfo* info;
 
     //prevent copy-constructors:
     TvShow(const TvShow&);
