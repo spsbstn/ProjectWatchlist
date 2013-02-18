@@ -16,6 +16,8 @@ class TvShow : public QObject
 public:
     // constructor with default values
     TvShow(QString name = "", int seas = 1, int ep = 1 );
+    // destructor
+    ~TvShow();
 
     // set all the members individually
     void setTitle  (const QString& name) { title = name; }
@@ -43,10 +45,17 @@ public:
 
     // Return string for printing TvShow to console
     QString toString() const;
+
+
     QuickInfo* info;
 
 public slots:
+    // Fills API-information into TvShow - Variables
     void onShowInfoFilled();
+
+signals:
+    // Signals, that Show can now be inserted to QList
+    void allDataLoaded(TvShow*);
 
 
 private:
@@ -60,7 +69,6 @@ private:
     QString genre;
     QString latestEpisode;
     QString nextEpisode;
-
 
     //prevent copy-constructors:
     TvShow(const TvShow&);

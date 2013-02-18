@@ -15,6 +15,7 @@ class XmlPictureLoader : public QObject
 public:
 
     explicit XmlPictureLoader(QObject *parent = 0);
+    ~XmlPictureLoader();
     QNetworkAccessManager* nam;
     void createConnection(QString showId);
     QString imageUrl;

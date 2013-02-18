@@ -18,6 +18,7 @@ class Controller : public QObject
 
 public:
     explicit Controller(QObject *parent = 0);
+    ~Controller();
 
     //database functions
     Q_INVOKABLE void add(const QString& name);

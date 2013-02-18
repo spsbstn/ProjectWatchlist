@@ -11,8 +11,13 @@ TvShow::TvShow(QString name, int seas, int ep)
     info->createConnection(title);
 }
 
+TvShow::~TvShow()
+{
+    delete info;
+}
 
-// when Hashmap is loaded, values are extracted
+
+// when API-information is loaded, values are extracted
 void TvShow::onShowInfoFilled()
 {
     setStarted(info->showInfo->value("Started"));
@@ -24,6 +29,9 @@ void TvShow::onShowInfoFilled()
     setLatestEpisode(info->showInfo->value("Next Episode"));
 
     qDebug() << toString();
+
+    // All data is loaded, now show can be added to QList
+    emit allDataLoaded(this);
 }
 
 

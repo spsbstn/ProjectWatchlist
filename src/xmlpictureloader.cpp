@@ -13,6 +13,11 @@ XmlPictureLoader::XmlPictureLoader(QObject *parent) :
     QObject::connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
 }
 
+XmlPictureLoader::~XmlPictureLoader()
+{
+    delete nam;
+}
+
 // create connection to server
 void XmlPictureLoader::createConnection(QString showId)
 {

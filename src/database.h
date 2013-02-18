@@ -18,6 +18,9 @@ public:
     void alterEpisode(QString name,int delta);
     void load();
     TvShowData* data;
+
+public slots:
+    void onAllDataLoaded(TvShow *show);
 };
 
 #endif // DATABASE_H

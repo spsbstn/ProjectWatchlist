@@ -125,6 +125,7 @@ void Database::alterEpisode(QString name,int delta){
         qDebug() << "Episode of "+ name + " changed";
 }
 
+// Loads Database into QList
 void Database::load() {
 
     QSqlQuery qry;
@@ -137,10 +138,18 @@ void Database::load() {
         for( int r=0; qry.next(); r++ ) {
 
             TvShow* tv = new TvShow(qry.value(0).toString(),qry.value(1).toInt(0),qry.value(2).toInt(0));
-            data->addShow(*tv);
-           // delete tv;
+
+            //Wait for all Data to be loaded before inserting it
+            QObject::connect(tv,SIGNAL(allDataLoaded(TvShow*)),this,SLOT(onAllDataLoaded(TvShow*)));
+
         }
       }
+}
+
+// Fill in Show in QList
+void Database::onAllDataLoaded(TvShow* show)
+{
+    data->addShow(*show);
 }
 
 

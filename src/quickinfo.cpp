@@ -22,6 +22,13 @@ QuickInfo::QuickInfo(QObject *parent) : QObject(parent)
     QObject::connect(this, SIGNAL(showInfoFilled()),parent, SLOT(onShowInfoFilled()));
 }
 
+QuickInfo::~QuickInfo()
+{
+    delete nam;
+    delete showInfo;
+    delete xmlPicture_;
+}
+
 // create connection to server
 void QuickInfo::createConnection(QString showName)
 {

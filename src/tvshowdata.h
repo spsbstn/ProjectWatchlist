@@ -20,6 +20,7 @@ public:
     };
 
     TvShowData(QObject* parent = 0);
+    ~TvShowData();
 
     // Adds show to the back of the vector, returns ShowIndex
     // (-1 if successfully added)
@@ -49,6 +50,8 @@ public:
 
     QList<TvShow*> shows;
 private:
+    TvShowData(const TvShowData&);
+    TvShowData& operator= (const TvShowData&);
     // returns index of given show, -1 if not present
     //int findShowIndex(const TvShow& show);
 };

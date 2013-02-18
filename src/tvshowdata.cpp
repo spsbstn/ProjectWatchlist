@@ -14,8 +14,11 @@ TvShowData::TvShowData(QObject *parent)
     setRoleNames(roles);
 }
 
-
-
+TvShowData::~TvShowData()
+{
+    qDeleteAll(shows.begin(), shows.end());
+    shows.clear();
+}
 
 
 // First creates new TvShow out of name, then inserts it
@@ -37,6 +40,9 @@ int TvShowData::addShow(TvShow& show)
         beginInsertRows(QModelIndex(), rowCount(), rowCount());
         shows.append(&show);
         endInsertRows();
+        QModelIndex topleft = createIndex(1, 1);
+        QModelIndex bottomright = createIndex(shows.size(),1);
+        emit dataChanged(topleft, bottomright);
     }
 
     return index;
@@ -72,6 +78,7 @@ int TvShowData::removeShow(const QString &name)
     {
 
         beginRemoveRows(QModelIndex(), index, index);
+        delete shows.at(index);
         shows.erase(shows.begin() + index);
         endRemoveRows();
     }
