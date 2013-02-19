@@ -210,7 +210,8 @@ front: Rectangle {
              anchors.rightMargin: 8
              onPressed: {GlobalJS.activeSeries = seriesName.text;
                  showClickProtection.start();}
-             onReleased:NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400}
+             onReleased:NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400
+             onCompleted: {removeScreen.loadingFinshed=true} }
 
 
         }

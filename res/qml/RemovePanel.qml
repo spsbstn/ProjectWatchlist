@@ -4,18 +4,24 @@ import "..///js/Global.js" as GlobalJS
 
 Rectangle{
 
+    property bool loadingFinshed : false;
+
     width:120
     onOpacityChanged: focus=true;
     /* onEnterPressed doesnt work here somehow (http://stackoverflow.com/questions/9677371/qml-keys-onenterpressed-issue)
        -> onReturnPressed */
-    Keys.onReturnPressed: {controller.remove(GlobalJS.activeSeries);
+    Keys.onReturnPressed: {
+        console.log(loadingFinshed);
+        if(loadingFinshed){controller.remove(GlobalJS.activeSeries);
         removeScreen.opacity=0;
         mainWindow.focus=true;
-        removeClickProtection.start();}
+        removeClickProtection.start();
+        loadingFinshed=false;}}
 
-    Keys.onEscapePressed: {removeScreen.opacity=0;
+    Keys.onEscapePressed: { if(loadingFinshed){removeScreen.opacity=0;
            mainWindow.focus=true;
-           removeClickProtection.start();}
+           removeClickProtection.start();
+           loadingFinshed=false;}}
 
 Button {
     id:abortButton
@@ -28,7 +34,8 @@ Button {
     anchors.bottomMargin:20
     onReleased: {removeScreen.opacity=0
         mainWindow.focus=true;
-        removeClickProtection.start();}
+        removeClickProtection.start();
+        loadingFinshed=false;}
 
              }
 Button {
@@ -43,7 +50,8 @@ Button {
     onPressed:controller.remove(GlobalJS.activeSeries)
     onReleased: {removeScreen.opacity=0
         mainWindow.focus=true;
-        removeClickProtection.start();}
+        removeClickProtection.start();
+        loadingFinshed=false;}
 
 }
 }
