@@ -25,6 +25,7 @@ public:
     Q_INVOKABLE bool alterShowName(const QString& oldName,const QString& newName);
     Q_INVOKABLE void setSeason(const QString& name, int delta);
     Q_INVOKABLE void setEpisode(const QString& name, int delta);
+    Q_INVOKABLE void loadDB();
 
     //colorScheme functions
     Q_INVOKABLE void changeColorScheme(const QString& color,const QString &schemeName);

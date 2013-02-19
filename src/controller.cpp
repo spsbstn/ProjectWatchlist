@@ -20,9 +20,7 @@ Controller::Controller(QObject *parent) :
     //init MsgHandler
     initMsgHandler();
 
-    db = new Database(),
-    //  Load Database
-    db->load();
+        db = new Database();
 
     settings = new QSettings("Watchlist");   
     //check for colorscheme-settings
@@ -293,6 +291,12 @@ void Controller::initMsgHandler() {
     QTextStream out(&file);
 
     out << "\n\n\n\n" << QDateTime::currentDateTime().toString() << "\n";
+
+}
+
+void Controller::loadDB() {
+
+    db->load();
 
 }
 
