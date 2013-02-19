@@ -18,7 +18,7 @@ property int rand: Math.floor(Math.random() * (10 - 5 + 1)) + 5;
         ParallelAnimation {
 
          NumberAnimation {
-                target: flipable; properties: "scale"; from: 0.0; to: 1.0; easing.type: Easing.OutBack; easing.amplitude: 2.0; easing.period: 1.5; duration:rand*100
+                target: flipable; easing.overshoot: 1.252; properties: "scale"; from: 0.0; to: 1.0; easing.type: Easing.OutBack; easing.amplitude: 2.0; easing.period: 1.5; duration:rand*100
             }
         NumberAnimation {
                 target: flipable; properties: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5; duration:rand*80
