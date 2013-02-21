@@ -4,6 +4,7 @@ Item {
 
     property bool isMaximized: true;
     property bool htmlErrorIsVisible: false;
+    property int settingsTogglePosition: settingsToggle.x+versionInfo.width-3
     Rectangle{
 
         id:topControles
@@ -60,6 +61,21 @@ Item {
             }
 
             Button {
+
+                id: settingsToggle
+                buttonHeight:12
+                buttonWidth: 12
+                buttonNormal: "qrc:../..///img/settings.png"
+                buttonActive: "qrc:../..///img/settings_Active.png"
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin:5
+                anchors.rightMargin: 10
+                anchors.right:hideButton.left
+                onClicked:settingsScreen.toggle();
+
+    }
+
+            Button {
                id:darkColorButton
                buttonHeight:12
                buttonWidth: 12
@@ -67,7 +83,7 @@ Item {
                anchors.bottom: parent.bottom
                anchors.bottomMargin:5
                anchors.rightMargin: 10
-               anchors.right:hideButton.left
+               anchors.right:settingsToggle.left
                onClicked:mainWindow.colorScheme="darkGreen"
             }
             Button {

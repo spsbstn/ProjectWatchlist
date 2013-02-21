@@ -239,6 +239,13 @@ Rectangle {
     z:1
     }
 
+    SettingsScreen {
+    id:settingsScreen
+    anchors.top:topBar.bottom
+    trianglePosition: topBar.settingsTogglePosition
+    anchors.left:grid.left
+    }
+
     //wrong show?
     Rectangle {
         id:wrongShowInfo
