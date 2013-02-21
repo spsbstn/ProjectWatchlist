@@ -64,7 +64,7 @@ Item {
         source:"qrc:///img/triangle.png"
         clip:true
         height:0
-        fillMode: Image.PreserveAspectCrop
+        fillMode: Image.Tile
 
     }
 
