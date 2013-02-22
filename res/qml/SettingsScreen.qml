@@ -216,32 +216,74 @@ Item {
         id:content1
         visible:true
         anchors.fill:parent
+        Item {
+            id:leftContent1
+            width:parent.width/2
+            anchors.left:parent.left
         ToggleOption{
-            id:option1
+            id:option1_1
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: 50
-            description:"Option 1"
-            onOptionEnabled: console.log("Option1 enabled");
-            onOptionDisabled: console.log("Option1 disabled");
+            name:"Option 1"
+            description:"Option 1 ist die erste Option!"
+            onOptionEnabled: console.log("Option 1 enabled");
+            onOptionDisabled: console.log("Option 1 disabled");
+            setEnabled:true;
         }
         ToggleOption{
-            id:option2
+            id:option1_2
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: option1.bottom
+            anchors.top: option1_1.bottom
             anchors.topMargin: 10
-            description:"Option 2"
-            onOptionEnabled: console.log("Option2 enabled");
-            onOptionDisabled: console.log("Option2 disabled");
+            name:"Option 2"
+            description:"Option 2 ist ned sooo toll, man kann nur blah!"
+            onOptionEnabled: console.log("Option 2 enabled");
+            onOptionDisabled: console.log("Option 2 disabled");
         }
         ToggleOption{
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: option2.bottom
+            anchors.top: option1_2.bottom
             anchors.topMargin: 10
-            description:"Option 3"
-            onOptionEnabled: console.log("Option3 enabled");
-            onOptionDisabled: console.log("Option3 disabled");
+            name:"Option 3"
+            description:"Option 3 ist megacool, man kann blub!"
+            onOptionEnabled: console.log("Option 3 enabled");
+            onOptionDisabled: console.log("Option 3 disabled");
         }}
+        Item {
+            id:rightContent1
+            width:parent.width/2
+            anchors.left:leftContent1.right
+        ToggleOption{
+            id:option1_4
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: 50
+            name:"Option 4"
+            description:"Option 4 ist die erste Option auf der rechten Seite!"
+            onOptionEnabled: console.log("Option 4 enabled");
+            onOptionDisabled: console.log("Option 4 disabled");
+        }
+        ToggleOption{
+            id:option1_5
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: option1_4.bottom
+            anchors.topMargin: 10
+            name:"Option 5"
+            description:"Option 5 ist die vorletzte Option!"
+            onOptionEnabled: console.log("Option 5 enabled");
+            onOptionDisabled: console.log("Option 5 disabled");
+        }
+        ToggleOption{
+            id:option1_6
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: option1_5.bottom
+            anchors.topMargin: 10
+            name:"Option 6"
+            description:"Option 6 is die letzte Option :/"
+            onOptionEnabled: console.log("Option 6 enabled");
+            onOptionDisabled: console.log("Option 6 disabled");
+        }}}
         Item {
         id:content2
         visible: false

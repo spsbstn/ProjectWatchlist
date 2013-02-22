@@ -5,13 +5,22 @@ import Cursors 1.0
 Item {
 
     property string description;
+    property string name;
     property bool enabled: false;
     signal optionEnabled
     signal optionDisabled
 
-    function toggle() {
+    function setEnabled(status)
+    {
+        if(status) {
 
-        if(enabled) {
+            enabled=true;
+            optionEnabled();
+            toggleButton.source="../..///img/toggleOn.png";
+
+        }
+
+        else {
 
             enabled=false;
             optionDisabled();
@@ -19,27 +28,47 @@ Item {
 
         }
 
+    }
+    function toggle() {
+
+        if(enabled) {
+
+            setEnabled(false);
+
+        }
+
         else {
 
-            enabled=true;
-            optionEnabled();
-            toggleButton.source="../..///img/toggleOn.png";
+            setEnabled(true);
         }
 
     }
 
-    width: parent.width / 2
+    width: parent.width*0.9
     height: 50
 
     Text {
 
         anchors.left:parent.left
         anchors.leftMargin: 10
-        text: description
+        text: name
         font.pointSize: 20
-        color:"#222222"
+        color:"#666666"
 
     }
+
+    Text {
+
+        anchors.left:parent.left
+        anchors.leftMargin: 12
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 10
+        text: description
+        font.pointSize: 12
+        color:"#999999"
+
+    }
+
 
     Image {
     id:toggleButton
