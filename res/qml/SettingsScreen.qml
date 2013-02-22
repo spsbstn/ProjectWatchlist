@@ -216,10 +216,31 @@ Item {
         id:content1
         visible:true
         anchors.fill:parent
-        Text{
-            anchors.centerIn: parent
-            text:"Content 1"
-            font.pointSize: 40
+        ToggleOption{
+            id:option1
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: 50
+            description:"Option 1"
+            onOptionEnabled: console.log("Option1 enabled");
+            onOptionDisabled: console.log("Option1 disabled");
+        }
+        ToggleOption{
+            id:option2
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: option1.bottom
+            anchors.topMargin: 10
+            description:"Option 2"
+            onOptionEnabled: console.log("Option2 enabled");
+            onOptionDisabled: console.log("Option2 disabled");
+        }
+        ToggleOption{
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: option2.bottom
+            anchors.topMargin: 10
+            description:"Option 3"
+            onOptionEnabled: console.log("Option3 enabled");
+            onOptionDisabled: console.log("Option3 disabled");
         }}
         Item {
         id:content2

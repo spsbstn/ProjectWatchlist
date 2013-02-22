@@ -81,5 +81,8 @@
         <file>img/settings.png</file>
         <file>qml/SettingsScreen.qml</file>
         <file>img/triangle.png</file>
+        <file>qml/ToggleOption.qml</file>
+        <file>img/toggleOff.png</file>
+        <file>img/toggleOn.png</file>
     </qresource>
 </RCC>
