@@ -7,6 +7,7 @@ Item {
     property string description;
     property string name;
     property bool enabled: controller.getOptionState(name);
+    property string toggleButtonSource: enabled ? "../..///img/toggleOn.png" : "../..///img/toggleOff.png";
     signal optionEnabled
     signal optionDisabled
 
@@ -73,10 +74,7 @@ Item {
     Image {
     id:toggleButton
     anchors.right: parent.right
-    source: if(enabled)
-            "../..///img/toggleOn.png";
-            else
-            "qrc:../..///img/toggleOff.png";
+    source: toggleButtonSource
 
     MouseArea {
     anchors.fill:parent

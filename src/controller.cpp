@@ -183,7 +183,7 @@ void Controller::windowHide()
 
 bool Controller::getOptionState(const QString& option)
 {
-    return true;
+    return(option.at(7).digitValue() %2 == 0);
 }
 
 // calculate frameColor according to backgroundColor and alpha
