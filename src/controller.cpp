@@ -181,6 +181,11 @@ void Controller::windowHide()
     mainWidget->showMinimized();
 }
 
+bool Controller::getOptionState(const QString& option)
+{
+    return true;
+}
+
 // calculate frameColor according to backgroundColor and alpha
 void Controller::alphaBlendFrame(QString color, double alpha)
 {

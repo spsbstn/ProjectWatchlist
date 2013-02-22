@@ -48,6 +48,9 @@ public:
     Q_INVOKABLE void windowMinimize();
     Q_INVOKABLE void windowHide();
 
+    //toggle option functions
+    Q_INVOKABLE bool getOptionState(const QString &option);
+
     // --> controller.cpp
     void checkForFirstInit();
 

@@ -229,7 +229,7 @@ Item {
             description:"Option 1 ist die erste Option!"
             onOptionEnabled: console.log("Option 1 enabled");
             onOptionDisabled: console.log("Option 1 disabled");
-            setEnabled:true;
+            //setEnabled:true;
         }
         ToggleOption{
             id:option1_2
