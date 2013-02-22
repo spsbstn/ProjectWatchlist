@@ -10,7 +10,6 @@ Item {
     property int marginLeft: (parent.width-width)/2
     property string tabColor: "#d9d9d9";
     property int tabFontSize: 30
-    onFocusChanged: if(focus==false) {toggle();}
     function toggle() {
 
         if(isHidden){
@@ -18,7 +17,6 @@ Item {
             settingsWindowBackground.visible=true;
             isHidden=false;
             showClickProtection.start();
-            focus=true;
 
         }
 
@@ -26,7 +24,6 @@ Item {
             settingsWindowBackground.visible=false;
             isHidden=true;
             removeClickProtection.start();
-            focus=false;
 
         }
     }
@@ -92,6 +89,20 @@ Item {
         fillMode: Image.Tile
 
     }
+
+    Button {
+
+        id: settingsToggle
+        buttonHeight:12
+        buttonWidth: 12
+        buttonNormal: "qrc:../..///img/settings.png"
+        buttonActive: "qrc:../..///img/settings_Active.png"
+        anchors.bottom: triangle.top
+        anchors.left: triangle.left
+        anchors.leftMargin: 2
+        onClicked:toggle();
+
+}
 
     Rectangle {
 
