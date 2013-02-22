@@ -6,55 +6,31 @@ Item {
     property bool isHidden: true;
     property int animationTime: 600;
     property int marginLeft: (parent.width-width)/2
+    property string tabColor: "#d9d9d9";
+    property int tabFontSize: 30
     function toggle() {
 
         if(isHidden){
 
-            showSettings.start();
+            settingsWindowBackground.visible=true;
             isHidden=false;
 
         }
 
     else {
-            hideSettings.start();
+            settingsWindowBackground.visible=false;
             isHidden=true;
 
         }
     }
 
-    SequentialAnimation {
-        id:showSettings
-        PropertyAnimation{target:triangle;
-        properties: "height"
-        to:16}
-
-        PropertyAnimation {
-        target: settingsWindowBackground
-        duration: animationTime
-        properties: "height"
-        to:grid.height*0.6
-        }
-
-    }
-
-    SequentialAnimation {
-        id:hideSettings
-        PropertyAnimation{
-        target: settingsWindowBackground
-        duration: animationTime
-        properties: "height"
-        to:0
-    }
-        PropertyAnimation{target:triangle;
-        properties: "height"
-        to:0}
-}
-
     anchors.top:grid.top
     anchors.topMargin: -16;
     width: grid.width*0.8
+    height:grid.height*0.6
     anchors.left: parent.left
     anchors.leftMargin:marginLeft
+    visible:false
 
     Image {
 
@@ -63,18 +39,54 @@ Item {
         x:trianglePosition - marginLeft
         source:"qrc:///img/triangle.png"
         clip:true
-        height:0
         fillMode: Image.Tile
 
     }
 
     Rectangle {
-        color:"#00aaff"
+
+        color:"white"
         height:parent.height-16
         width:parent.width
         anchors.top:parent.top
         anchors.topMargin: 16
-    }
+Item {
 
+    id:settingsContent
+    anchors.fill: parent
+        Item {
+        id:tabs
+        anchors.top:parent.top
+        anchors.topMargin: 20
+        height:parent.height*0.1
+        width:tab1Label.width+tab2Label.width+tab3Label.width
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        Text {
+        id:tab1Label
+        font.pointSize:tabFontSize
+        text:"   General   |"
+        font.weight: Font.Light
+        color:tabColor
+        font.family: mainWindow.uiFont}
+        Text {
+        id:tab2Label
+        font.pointSize:tabFontSize
+        font.weight: Font.Light
+        text:"   Appearance   |"
+        color:tabColor
+        font.family: mainWindow.uiFont
+        anchors.left:tab1Label.right}
+        Text {
+        id:tab3Label
+        font.pointSize:tabFontSize
+        font.weight: Font.Light
+        text:"   Other   "
+        color:tabColor
+        font.family: mainWindow.uiFont
+        anchors.left:tab2Label.right}
+        }
+    }
+    }
 }
 
