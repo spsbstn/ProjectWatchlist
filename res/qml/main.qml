@@ -103,9 +103,6 @@ Rectangle {
             anchors.topMargin: 0
 }
 
-//AddButton
-
-
 //GridView
         GridView {
             id: grid
@@ -189,11 +186,13 @@ Rectangle {
               anchors.fill:mainWindow
               onOpacityChanged: controller.alphaBlendFrame(appBackground,clickProtection.opacity)
 
+
         MouseArea {
             anchors.fill:parent;
             hoverEnabled:true;
             onEntered: {}
             onExited: {}
+            onClicked: focus=true;
 
         }
         CursorShapeArea{
