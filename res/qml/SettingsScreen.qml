@@ -288,10 +288,9 @@ Item {
         id:content2
         visible: false
         anchors.fill:parent
-        Text{
+        DropDown{
             anchors.centerIn: parent
-            text:"Content 2"
-            font.pointSize: 40
+            items:["Kinox.to","Movie2k.com","Watchseries.li"]
         }}
         Item {
         id:content3

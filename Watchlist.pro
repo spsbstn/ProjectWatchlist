@@ -50,7 +50,8 @@ OTHER_FILES += \
     res/js/WatchNow.js \
     res/js/CheckForNewEpisodes.js \
     res/qml/SettingsScreen.qml \
-    res/qml/ToggleOption.qml
+    res/qml/ToggleOption.qml \
+    res/qml/DropDown.qml
 
 TARGET = Watchlist
 VERSION = 2.1.1
