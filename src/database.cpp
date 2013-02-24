@@ -38,11 +38,14 @@ Database::Database(QObject *parent) :
       qry.prepare( "CREATE TABLE IF NOT EXISTS data (name VARCHAR(30) UNIQUE PRIMARY KEY, season INTEGER, episode INTEGER)" );
         if( !qry.exec() )
           {
-                qDebug() << qry.lastError();
 
+                qDebug() << qry.lastError();
                 QErrorMessage errorMessage;
-                errorMessage.showMessage("Unable to load database. Please delete data.db manually.");
+                errorMessage.showMessage("Unable to load database. Please delete data.db and restart Watchlist.");
                 errorMessage.exec();
+                QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+                QDesktopServices::openUrl(QUrl("file:///" + path));
+
         }
         else
           qDebug() << "datatable created/loaded!";
