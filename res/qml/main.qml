@@ -109,7 +109,6 @@ Rectangle {
 //GridView
         GridView {
             id: grid
-            opacity:0
             anchors.left: leftBar.right
             anchors.top: topBar.bottom
             flow: GridView.TopToBottom
@@ -236,6 +235,7 @@ Rectangle {
     id:splashScreen
     imageSource: "qrc:///img/SplashScreen.png"
     anchors.fill: mainWindow
+    onSplashScreenCompleted: controller.loadDB();
     z:1
     }
 

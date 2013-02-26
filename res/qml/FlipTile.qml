@@ -10,16 +10,18 @@ import "..///js/WatchNow.js" as WatchNowLink
 
 property bool flipped: false
 property bool loadingCircleVisible: false
+property int rand: Math.floor(Math.random() * (10 - 5 + 1)) + 5;
+
 
      GridView.onAdd:
 
         ParallelAnimation {
 
          NumberAnimation {
-                target: flipable; properties: "scale"; from: 0.0; to: 1.0; easing.type: Easing.OutBack; easing.amplitude: 2.0; easing.period: 1.5; duration:800
+                target: flipable; easing.overshoot: 1.1; properties: "scale"; from: 0.0; to: 1.0; easing.type: Easing.OutBack; easing.amplitude: 2.0; easing.period: 1.5; duration:rand*100
             }
         NumberAnimation {
-                target: flipable; properties: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5; duration:600
+                target: flipable; properties: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5; duration:rand*80
          }
      }
 
@@ -208,7 +210,8 @@ front: Rectangle {
              anchors.rightMargin: 8
              onPressed: {GlobalJS.activeSeries = seriesName.text;
                  showClickProtection.start();}
-             onReleased:NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400}
+             onReleased:NumberAnimation { target:removeScreen; property:"opacity"; to:1; duration: 400
+             onCompleted: {removeScreen.loadingFinshed=true} }
 
 
         }

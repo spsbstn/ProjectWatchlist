@@ -22,23 +22,15 @@ Rectangle {
     SequentialAnimation {
         id:splashanimation
         PauseAnimation { duration: 300 }
-        SequentialAnimation{
         PropertyAnimation {
             target: splashScreenContainer
             duration: 200
             properties: "opacity"
             to:0
         }
-        PropertyAnimation {
-            target: grid
-            duration: 2000
-            properties: "opacity"
-            to:1
-        }
-        }
         onCompleted: {
 
-            splashScreenContainer.splashScreenCompleted()
+            splashScreenContainer.splashScreenCompleted();
         }
     }
     Component.onCompleted: splashanimation.start()

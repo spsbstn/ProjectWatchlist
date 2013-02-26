@@ -20,9 +20,7 @@ Controller::Controller(QObject *parent) :
     //init MsgHandler
     initMsgHandler();
 
-    db = new Database(),
-    //  Load Database
-    db->load();
+        db = new Database();
 
     settings = new QSettings("Watchlist");   
     //check for colorscheme-settings
@@ -271,7 +269,15 @@ void Controller::checkForSeasonIcons(QApplication *app)
 
 void msgHandler(QtMsgType type, const char *msg)
  {
-    QFile file("./log.txt");
+    QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    if (!QFile::exists(path)) {
+            QDir dir;
+            dir.mkpath(path);
+     }
+     path.append(QDir::separator()).append("log.txt");
+     path = QDir::toNativeSeparators(path);
+
+    QFile file(path);
     file.open(QIODevice::WriteOnly | QIODevice::Text |QIODevice::Append ) ;
     QTextStream out(&file);
      switch (type) {
@@ -300,11 +306,25 @@ void msgHandler(QtMsgType type, const char *msg)
 void Controller::initMsgHandler() {
 
     qInstallMsgHandler(msgHandler);
-    QFile file("./log.txt");
+    QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    if (!QFile::exists(path)) {
+            QDir dir;
+            dir.mkpath(path);
+     }
+     path.append(QDir::separator()).append("log.txt");
+     path = QDir::toNativeSeparators(path);
+
+    QFile file(path);
     file.open(QIODevice::WriteOnly | QIODevice::Text |QIODevice::Append ) ;
     QTextStream out(&file);
 
     out << "\n\n\n\n" << QDateTime::currentDateTime().toString() << "\n";
+
+}
+
+void Controller::loadDB() {
+
+    db->load();
 
 }
 
