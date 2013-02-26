@@ -51,7 +51,8 @@ OTHER_FILES += \
     res/js/CheckForNewEpisodes.js \
     res/qml/SettingsScreen.qml \
     res/qml/ToggleOption.qml \
-    res/qml/DropDown.qml
+    res/qml/DropDown.qml \
+    res/qml/DropDownOption.qml
 
 TARGET = Watchlist
 VERSION = 2.1.1

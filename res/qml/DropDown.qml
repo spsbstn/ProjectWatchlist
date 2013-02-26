@@ -2,17 +2,19 @@ import QtQuick 1.0
 import Cursors 1.0
 
 Rectangle {
+           id:ddmain
+           height:30
+           width:150
+            property variant items;
+            property alias selectedItem: chosenItemText.text;
+            property alias selectedIndex: listView.currentIndex;
+            property string startValue;
+            signal comboClicked;
 
-
-            property variant items: ["Item 1", "Item 2", "Item 3"]
     Rectangle {
 
             id:comboBox
-            property alias selectedItem: chosenItemText.text;
-            property alias selectedIndex: listView.currentIndex;
-            signal comboClicked;
-            width: 180;
-            height: 30;
+anchors.fill: parent
             smooth:true;
 
             CursorShapeArea {
@@ -30,7 +32,7 @@ Rectangle {
                     anchors.leftMargin: 8;
                     anchors.verticalCenter: parent.verticalCenter
                     id:chosenItemText
-                    text:items[0];
+                    text:startValue;
                     font.family: mainWindow.uiFont
                     font.pointSize: 20;
                 }
@@ -65,16 +67,19 @@ Rectangle {
                     model: items
                     currentIndex: 0
                     delegate: Rectangle{
+
                         id:item
                         width:comboBox.width+1;
                         height: comboBox.height;
 
                         CursorShapeArea {
+
                             anchors.fill: parent
                             cursorShape: Qt.PointingHandCursor
                           }
 
                         Text {
+
                             text: modelData
                             anchors.top: parent.top;
                             anchors.left: parent.left;
@@ -82,6 +87,7 @@ Rectangle {
 
                         }
                         MouseArea {
+
                             id:dropDownMouseArea
                             anchors.fill: parent;
                             hoverEnabled: true
@@ -92,23 +98,14 @@ Rectangle {
                                 var prevSelection = chosenItemText.text
                                 chosenItemText.text = modelData
                                 if(chosenItemText.text != prevSelection){
-                                    comboBox.comboClicked();
+                                    ddmain.comboClicked();
                                 }
+
                                 listView.currentIndex = index;
-                            }
-                        }
+                            }     
+                    }
 
-                        }
-
-                }
-            }
-
-            Component {
-                id: highlight
-                Rectangle {
-                    width:comboBox.width;
-                    height:comboBox.height;
-                    color: "red";
+                   }
                 }
             }
 

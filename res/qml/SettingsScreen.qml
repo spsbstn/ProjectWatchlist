@@ -288,10 +288,15 @@ Item {
         id:content2
         visible: false
         anchors.fill:parent
-        DropDown{
-            anchors.centerIn: parent
-            items:["Kinox.to","Movie2k.com","Watchseries.li"]
-        }}
+       DropDownOption{
+       anchors.top:parent.top
+       anchors.topMargin: 50
+       name:"WatchNowHoster"
+       description: "Choose which hoster will be used"
+       options:["Kinox.to","Watchseries.li","Movie2k.com"]
+       startValue: "Watchseries.li"
+       onSelectionChanged: console.log("selcetion changed to " + selectedItem)
+       }}
         Item {
         id:content3
         visible: false

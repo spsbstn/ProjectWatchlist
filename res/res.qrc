@@ -86,5 +86,6 @@
         <file>img/toggleOn.png</file>
         <file>qml/DropDown.qml</file>
         <file>img/dropDown.png</file>
+        <file>qml/DropDownOption.qml</file>
     </qresource>
 </RCC>
