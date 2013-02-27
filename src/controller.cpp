@@ -83,9 +83,8 @@ Controller::~Controller()
 // add new show
 void Controller::add(const QString& name)
 {
-    db->data->addShow(name);
-    db->addShow(name);
-
+    TvShow* insert = new TvShow(name);
+    QObject::connect(insert, SIGNAL(allDataLoaded(TvShow*)), db, SLOT(onAllDataLoaded(TvShow*)));
 }
 
 // remove show

@@ -35,7 +35,9 @@ Database::Database(QObject *parent) :
 
       QSqlQuery qry;
 
-      qry.prepare( "CREATE TABLE IF NOT EXISTS data (name VARCHAR(30) UNIQUE PRIMARY KEY, season INTEGER, episode INTEGER)" );
+      qry.prepare( "CREATE TABLE IF NOT EXISTS data (name VARCHAR(30) UNIQUE PRIMARY KEY, season INTEGER, episode INTEGER, "
+                   "started DATE, status VARCHAR(30), airtime VARCHAR(35), network VARCHAR(30), genre VARCHAR(30), "
+                   "latestepisode DATE, nextepisode DATE)" );
         if( !qry.exec() )
           {
 
@@ -51,17 +53,28 @@ Database::Database(QObject *parent) :
           qDebug() << "datatable created/loaded!";
 }
 
-void Database::addShow(QString name) {
+void Database::addShow(TvShow &show) {
 
     QSqlQuery qry;
 
-    qry.prepare( "INSERT INTO data (name, season, episode) VALUES (:name, 1, 1)");
-    qry.bindValue(":name",name);
+    qry.prepare( "INSERT INTO data (name, season, episode, started, status, airtime, network, genre, latestepisode, "
+                 "nextepisode) VALUES (:name, 1, 1, :started, :status, :airtime, :network, :genre, :latestepisode, "
+                 ":nextepisode)" );
+    qry.bindValue(":name", show.getTitle());
+    qry.bindValue(":started", show.getStarted());
+    qry.bindValue(":status", show.getStatus());
+    qry.bindValue(":airtime", show.getAirtime());
+    qry.bindValue(":network", show.getNetwork());
+    qry.bindValue(":genre", show.getGenre());
+    qry.bindValue(":latestepisode", show.getLatestEpisode());
+    qry.bindValue(":nextepisode", show.getNextEpisode());
+
+    qDebug() << qry.boundValues();
 	
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-          qDebug() << name + " inserted!";
+          qDebug() << show.getTitle() + " inserted!";
 
 }
 
@@ -133,10 +146,15 @@ void Database::load() {
       {
         for( int r=0; qry.next(); r++ ) {
 
-            TvShow* tv = new TvShow(qry.value(0).toString(),qry.value(1).toInt(0),qry.value(2).toInt(0));
+            TvShow* tv = new TvShow(qry.value(0).toString(), qry.value(1).toInt(0), qry.value(2).toInt(0),
+                                    qry.value(3).toString(), qry.value(4).toString(), qry.value(5).toString(),
+                                    qry.value(6).toString(), qry.value(7).toString(), qry.value(8).toString(),
+                                    qry.value(9).toString());
 
+            data->addShow(*tv);
+            qDebug() << tv->toString();
             //Wait for all Data to be loaded before inserting it
-            QObject::connect(tv,SIGNAL(allDataLoaded(TvShow*)),this,SLOT(onAllDataLoaded(TvShow*)));
+            //QObject::connect(tv,SIGNAL(allDataLoaded(TvShow*)),this,SLOT(onAllDataLoaded(TvShow*)));
 
         }
       }
@@ -145,6 +163,7 @@ void Database::load() {
 // Fill in Show in QList
 void Database::onAllDataLoaded(TvShow* show)
 {
+    addShow(*show);
     data->addShow(*show);
 }
 

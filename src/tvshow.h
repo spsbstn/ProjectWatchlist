@@ -14,8 +14,11 @@ class TvShow : public QObject
     Q_OBJECT
 
 public:
-    // constructor with default values
+    // constructor with default values (is used when first adding show)
     TvShow(QString name = "", int seas = 1, int ep = 1 );
+    // constructor with no default values (is used when loading from database)
+    TvShow(QString name, int seas, int ep, QString started, QString status, QString airtime,
+           QString network, QString genre, QString latestEp, QString nextEp);
     // destructor
     ~TvShow();
 

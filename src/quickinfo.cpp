@@ -15,7 +15,6 @@ QuickInfo::QuickInfo(QObject *parent) : QObject(parent)
 
     // instance of xmlPictureLoader
     xmlPicture_ = new XmlPictureLoader(this);
-    qDebug() << "Quick Info initialised";
 
     //connect signal and slot  --> request finished
     QObject::connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
