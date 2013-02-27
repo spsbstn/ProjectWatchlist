@@ -59,7 +59,7 @@ Controller::Controller(QObject *parent) :
 
     // register quickInfo Signals and Slots
         QObject *rootObject = dynamic_cast<QObject*>(qmlView->rootObject());
-        QObject::connect(rootObject, SIGNAL(xmlDataRequired(QString)), qi, SLOT(createConnection(QString)));
+        //QObject::connect(rootObject, SIGNAL(xmlDataRequired(QString)), db->data , SLOT());
         QObject::connect(qi->xmlPicture_, SIGNAL(updateFinished()), rootObject, SLOT(updateInfo()));
         QObject::connect(qi, SIGNAL(htmlErrorOccured()), rootObject, SLOT(htmlError()));
 

@@ -44,7 +44,18 @@ public:
     // change name of given show to a new name
     void alterShowName(const QString& oldName, const QString& newName);
 
+    // InfoScreen functions
+    QString getStarted(const QString& name);
+    QString getStatus(const QString& name);
+    QString getAirtime(const QString& name);
+    QString getNetwork(const QString& name);
+    QString getGenre(const QString& name);
+    QString getLatestEp(const QString& name);
+    QString getNextEp(const QString& name);
+
+    // Debug String
     QString toString() const;
+
     int rowCount (const QModelIndex &parent = QModelIndex()) const;
     QVariant data (const QModelIndex &index, int role = Qt::DisplayRole) const;
 

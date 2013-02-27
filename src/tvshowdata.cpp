@@ -149,6 +149,91 @@ void TvShowData::alterShowName(const QString &oldName, const QString &newName)
     }
 }
 
+QString TvShowData::getStarted(const QString &name)
+{
+    int index = findShowIndex(name);
+    if (index != -1)
+        return shows.at(index)->getStarted();
+    else
+    {
+        qDebug() << "ERROR when getting Started from Show "+name;
+        return "ERROR when getting Started from Show "+name;
+    }
+}
+
+QString TvShowData::getStatus(const QString &name)
+{
+    int index = findShowIndex(name);
+    if (index != -1)
+        return shows.at(index)->getStatus();
+    else
+    {
+        qDebug() << "ERROR when getting Status from Show "+ name;
+        return "ERROR when getting Status from Show "+ name;
+    }
+}
+
+QString TvShowData::getAirtime(const QString &name)
+{
+    int index = findShowIndex(name);
+    if (index != -1)
+        return shows.at(index)->getAirtime();
+    else
+    {
+        qDebug() << "ERROR when getting Airtime from Show "+ name;
+        return "ERROR when getting Airtime from Show "+ name;
+    }
+}
+
+QString TvShowData::getNetwork(const QString &name)
+{
+    int index = findShowIndex(name);
+    if (index != -1)
+        return shows.at(index)->getNetwork();
+    else
+    {
+        qDebug() << "ERROR when getting Network from Show "+ name;
+        return "ERROR when getting Network from Show "+ name;
+    }
+}
+
+QString TvShowData::getGenre(const QString &name)
+{
+    int index = findShowIndex(name);
+    if (index != -1)
+        return shows.at(index)->getGenre();
+    else
+    {
+        qDebug() << "ERROR when getting Genre from Show "+ name;
+        return "ERROR when getting Genre from Show "+ name;
+    }
+}
+
+QString TvShowData::getLatestEp(const QString &name)
+{
+    int index = findShowIndex(name);
+    if (index != -1)
+        return shows.at(index)->getLatestEpisode();
+    else
+    {
+        qDebug() << "ERROR when getting Latest Ep from Show "+ name;
+        return "ERROR when getting Latest Ep from Show "+ name;
+    }
+}
+
+QString TvShowData::getNextEp(const QString &name)
+{
+    int index = findShowIndex(name);
+    if (index != -1)
+        return shows.at(index)->getNextEpisode();
+    else
+    {
+        qDebug() << "ERROR when getting next ep from Show "+ name;
+        return "ERROR when getting next ep from Show "+ name;
+    }
+}
+
+
 // Returns Debug-String
 QString TvShowData::toString() const
 {

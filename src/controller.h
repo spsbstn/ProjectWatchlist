@@ -3,9 +3,10 @@
 #include <QObject>
 #include <QSettings>
 #include "quickinfo.h"
+#include "database.h"
 
 class MainView;
-class Database;
+//class Database;
 class QDeclarativeView;
 class QVBoxLayout;
 class NcFramelessHelper;
@@ -34,14 +35,14 @@ public:
     Q_INVOKABLE void alphaBlendFrame(QString color, double alpha);
 
     //quickInfo functions
-    Q_INVOKABLE QString getName() {return qi->showInfo->value("Show Name");}
-    Q_INVOKABLE QString getStarted() {return qi->showInfo->value("Started");}
-    Q_INVOKABLE QString getStatus() {return qi->showInfo->value("Status");}
-    Q_INVOKABLE QString getAirtime() {return qi->showInfo->value("Airtime");}
-    Q_INVOKABLE QString getNetwork() {return qi->showInfo->value("Network");}
-    Q_INVOKABLE QString getGenre() {return  qi->showInfo->value("Genres");}
-    Q_INVOKABLE QString getLatestEpisode() {return qi->showInfo->value("Latest Episode");}
-    Q_INVOKABLE QString getNextEpisode() {return qi->showInfo->value("Next Episode");}
+   // Q_INVOKABLE QString getName(const QString& name) {return db->data->getName();}
+    Q_INVOKABLE QString getStarted(const QString& name) {return db->data->getStarted(name);}
+    Q_INVOKABLE QString getStatus(const QString& name) {return db->data->getStatus(name);}
+    Q_INVOKABLE QString getAirtime(const QString& name) {return db->data->getAirtime(name);}
+    Q_INVOKABLE QString getNetwork(const QString& name) {return db->data->getNetwork(name);}
+    Q_INVOKABLE QString getGenre(const QString& name) {return  db->data->getGenre(name);}
+    Q_INVOKABLE QString getLatestEpisode(const QString& name) {return db->data->getLatestEp(name);}
+    Q_INVOKABLE QString getNextEpisode(const QString& name) {return db->data->getNextEp(name);}
     Q_INVOKABLE QString getImageUrl() {return qi->getImageUrl();}
 
     //window functions

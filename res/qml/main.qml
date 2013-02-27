@@ -18,19 +18,19 @@ Rectangle {
         source: "qrc:../..///fonts/Frutiger Light.ttf"
                 }
 
+    onXmlDataRequired: updateInfo(showName)
+    function updateInfo(showName) {
 
-    function updateInfo() {
 
-
-        infoScreen.showName=controller.getName();
-        infoScreen.status=controller.getStatus();
-        infoScreen.airTime = controller.getAirtime;
-        infoScreen.network = controller.getNetwork();
-        infoScreen.genre = controller.getGenre();
-        infoScreen.started = controller.getStarted();
-        infoScreen.imageSource=controller.getImageUrl();
-        infoScreen.latestEpisode = controller.getLatestEpisode();
-        infoScreen.nextEpisode = controller.getNextEpisode();
+        infoScreen.showName=showName;
+        infoScreen.status=controller.getStatus(showName);
+        infoScreen.airTime = controller.getAirtime(showName);
+        infoScreen.network = controller.getNetwork(showName);
+        infoScreen.genre = controller.getGenre(showName);
+        infoScreen.started = controller.getStarted(showName);
+        infoScreen.imageSource=controller.getImageUrl(showName);
+        infoScreen.latestEpisode = controller.getLatestEpisode(showName);
+        infoScreen.nextEpisode = controller.getNextEpisode(showName);
         infoScreen.mainOpacity=1;
         grid.currentItem.loadingCircleVisible=false;
         showClickProtection.start();
