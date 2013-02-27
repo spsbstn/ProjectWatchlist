@@ -207,14 +207,20 @@ bool Database::alterTable(QSqlQuery &qry, const QString& tableStructure)
         qry.prepare("ALTER TABLE data ADD COLUMN started DATE, status VARCHAR(30), airtime VARCHAR(35), "
                     "network VARCHAR(30), genre VARCHAR(30), latestepisode DATE, nextepisode DATE");
         if(!qry.exec())
+        {
             qDebug() << qry.lastError();
+            return false;
+        }
     }
 
     if(!tableStructure.contains("imageurl")) // v2_database
     {
         qry.prepare("ALTER TABLE data ADD COLUMN imageurl VARCHAR(50)");
         if(!qry.exec())
+        {
             qDebug() << qry.lastError();
+            return false;
+        }
         else
             return true;
     }
