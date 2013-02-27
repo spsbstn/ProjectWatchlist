@@ -55,6 +55,7 @@ public:
 public slots:
     // Fills API-information into TvShow - Variables
     void onShowInfoFilled();
+    void debugString(TvShow* show);
 
 signals:
     // Signals, that Show can now be inserted to QList

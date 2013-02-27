@@ -42,6 +42,11 @@ void TvShow::onShowInfoFilled()
     emit allDataLoaded(this);
 }
 
+void TvShow::debugString(TvShow *show)
+{
+    qDebug() << show->toString();
+}
+
 
 // Returns Debug-String
 QString TvShow::toString() const

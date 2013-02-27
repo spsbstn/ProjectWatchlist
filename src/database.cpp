@@ -69,12 +69,10 @@ void Database::addShow(TvShow &show) {
     qry.bindValue(":latestepisode", show.getLatestEpisode());
     qry.bindValue(":nextepisode", show.getNextEpisode());
 
-    qDebug() << qry.boundValues();
-	
-      if( !qry.exec() )
+    if( !qry.exec() )
         qDebug() << qry.lastError();
-      else
-          qDebug() << show.getTitle() + " inserted!";
+    else
+        qDebug() << show.getTitle() + " inserted!";
 
 }
 
@@ -153,9 +151,6 @@ void Database::load() {
 
             data->addShow(*tv);
             qDebug() << tv->toString();
-            //Wait for all Data to be loaded before inserting it
-            //QObject::connect(tv,SIGNAL(allDataLoaded(TvShow*)),this,SLOT(onAllDataLoaded(TvShow*)));
-
         }
       }
 }
@@ -164,7 +159,6 @@ void Database::load() {
 void Database::onAllDataLoaded(TvShow* show)
 {
     addShow(*show);
-    data->addShow(*show);
 }
 
 

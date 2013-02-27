@@ -84,6 +84,9 @@ Controller::~Controller()
 void Controller::add(const QString& name)
 {
     TvShow* insert = new TvShow(name);
+    // insert into QList right away and update in background
+    db->data->addShow(*insert);
+    // wait for everything to be loaded before adding to database
     QObject::connect(insert, SIGNAL(allDataLoaded(TvShow*)), db, SLOT(onAllDataLoaded(TvShow*)));
 }
 
