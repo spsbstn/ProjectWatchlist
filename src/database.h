@@ -18,6 +18,8 @@ public:
     void alterEpisode(QString name,int delta);
     void updateShow(TvShow &show);
     void load();
+    QString checkTableStructure(QSqlQuery& qry);
+    bool alterTable(QSqlQuery& qry, const QString &tableStructure);
 
     TvShowData* data;
 

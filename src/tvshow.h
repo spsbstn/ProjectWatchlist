@@ -18,7 +18,7 @@ public:
     TvShow(QString name = "", int seas = 1, int ep = 1 );
     // constructor with no default values (is used when loading from database)
     TvShow(QString name, int seas, int ep, QString started, QString status, QString airtime,
-           QString network, QString genre, QString latestEp, QString nextEp);
+           QString network, QString genre, QString latestEp, QString nextEp, QString imageUrl);
     // destructor
     ~TvShow();
 
@@ -33,6 +33,7 @@ public:
     void setGenre(const QString& genre) { this->genre = genre; }
     void setLatestEpisode(const QString& latestEp) { latestEpisode = latestEp; }
     void setNextEpisode(const QString& nextEp) { nextEpisode = nextEp; }
+    void setImageUrl(const QString& imageUrl) { this->imageUrl = imageUrl;}
 
     // getter-functions
     QString getTitle() const { return title; }
@@ -45,6 +46,7 @@ public:
     QString getGenre() const { return genre;}
     QString getLatestEpisode() const { return latestEpisode;}
     QString getNextEpisode() const { return nextEpisode;}
+    QString getImageUrl() const { return imageUrl;}
 
     // Return string for printing TvShow to console
     QString toString() const;
@@ -73,6 +75,7 @@ private:
     QString genre;
     QString latestEpisode;
     QString nextEpisode;
+    QString imageUrl;
 
     //prevent copy-constructors:
     TvShow(const TvShow&);

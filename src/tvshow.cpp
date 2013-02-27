@@ -13,9 +13,9 @@ TvShow::TvShow(QString name, int seas, int ep)
 
 // Constructor for loading from database
 TvShow::TvShow(QString name, int seas, int ep, QString started, QString status, QString airtime, QString network,
-               QString genre, QString latestEp, QString nextEp)
+               QString genre, QString latestEp, QString nextEp, QString imageUrl)
     : title(name), season(seas), episode(ep), started(started), status(status), airtime(airtime), network(network),
-      genre(genre), latestEpisode(latestEp), nextEpisode(nextEp), info(new QuickInfo(this))
+      genre(genre), latestEpisode(latestEp), nextEpisode(nextEp), imageUrl(imageUrl) ,info(new QuickInfo(this))
 {
 }
 

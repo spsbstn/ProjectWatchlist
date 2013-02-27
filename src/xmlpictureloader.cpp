@@ -11,6 +11,7 @@ XmlPictureLoader::XmlPictureLoader(QObject *parent) :
 
     //connect signal and slot  --> request finished
     QObject::connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
+    QObject::connect(this, SIGNAL(updateFinished()), parent, SIGNAL(showInfoFilled()));
 }
 
 XmlPictureLoader::~XmlPictureLoader()
@@ -46,6 +47,7 @@ void XmlPictureLoader::finishedSlot(QNetworkReply* reply)
 
         // get imageUrl
         imageUrl=list.at(0).toElement().text();
+        qDebug() << imageUrl;
 
     }
 

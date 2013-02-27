@@ -113,7 +113,7 @@ void QuickInfo::finishedSlot(QNetworkReply* reply)
         emit htmlErrorOccured();
     }
 
-    emit showInfoFilled();
+    //emit showInfoFilled();
     //delete reply
     reply->deleteLater();
 }
