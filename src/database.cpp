@@ -20,7 +20,7 @@ Database::Database(QObject *parent) :
           QDir dir;
           dir.mkpath(path);
       }
-      path.append(QDir::separator()).append("data.db");
+      path.append(QDir::separator()).append("datav2.db");
       path = QDir::toNativeSeparators(path);
 
       db.setDatabaseName(path);
