@@ -77,5 +77,6 @@
         <file>img/blackCyan/info_Active.png</file>
         <file>img/darkGreen/info_Active.png</file>
         <file>img/darkOrange/info_Active.png</file>
+        <file>qml/i18n/translation_de_DE.qm</file>
     </qresource>
 </RCC>

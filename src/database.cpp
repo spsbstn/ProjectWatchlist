@@ -68,7 +68,6 @@ void Database::addShow(QString name) {
 void Database::removeShow(QString name) {
 
     QSqlQuery qry;
-
     qry.prepare( "DELETE FROM data WHERE name=:name");
     qry.bindValue(":name",name);
       if( !qry.exec() )
