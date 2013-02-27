@@ -8,7 +8,7 @@ Item {
 
     function submit() {
 
-            if(nameInput.text != "Name" && nameInput.text != "") {
+        if(nameInput.text != "Name" && nameInput.text != "") {
 
                     controller.add(nameInput.text.toLowerCase(),
                     addScreen.opacity=0,
@@ -76,7 +76,7 @@ Item {
 
             Button {
 
-                id:closeScreen
+                id:closeButton
                 anchors.top:parent.top
                 anchors.topMargin: -11
                 anchors.rightMargin: -11
@@ -100,6 +100,7 @@ Item {
                  anchors.right: addScreenTile.right
                  anchors.rightMargin: 15
                  onClicked:submit();
+
              }
 
             states: [ State {
@@ -117,7 +118,6 @@ Item {
                     }
 
              ]
-
     }
 
 }

@@ -6,6 +6,7 @@ MouseArea {
   property int buttonHeight;
   property int buttonWidth;
   property url buttonNormal;
+    //use normale image if no ActiveImage is declared
   property url buttonActive:buttonNormal;
 
 
@@ -13,25 +14,39 @@ MouseArea {
   height:buttonHeight;
   smooth:true
   hoverEnabled:true
-  onExited: ParallelAnimation{NumberAnimation { target: buttonActiveState; property: "opacity"; to: 0; duration: 100;}
-                               NumberAnimation { target: buttonNormalState; property: "opacity"; to: 1; duration: 100;}}
-  onEntered: ParallelAnimation{NumberAnimation { target: buttonActiveState; property: "opacity"; to: 1; duration: 100;}
-                               NumberAnimation { target: buttonNormalState; property: "opacity"; to: 0; duration: 100;}}
+  onExited: ParallelAnimation{
+
+      NumberAnimation { target: buttonActiveState; property: "opacity"; to: 0; duration: 100;}
+      NumberAnimation { target: buttonNormalState; property: "opacity"; to: 1; duration: 100;}
+
+  }
+
+  onEntered: ParallelAnimation{
+
+      NumberAnimation { target: buttonActiveState; property: "opacity"; to: 1; duration: 100;}
+      NumberAnimation { target: buttonNormalState; property: "opacity"; to: 0; duration: 100;}
+
+  }
 
   CursorShapeArea {
+
       anchors.fill: parent
       cursorShape: Qt.PointingHandCursor
+
     }
 
     Image {
+
     id:buttonNormalState
     source:buttonNormal
-           }
+
+    }
 
     Image {
 
     id:buttonActiveState
     opacity:0
     source:buttonActive
-          }
+
+    }
 }

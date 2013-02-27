@@ -2,14 +2,15 @@ import QtQuick 1.1
 
 
 Item {
-    anchors.fill: parent
 
     property string toolTip
     property bool showToolTip: false
 
-    Rectangle {
-        id: toolTipRectangle
+    anchors.fill: parent
 
+    Rectangle {
+
+        id: toolTipRectangle
         anchors.left:parent.left
         anchors.leftMargin:20
         anchors.top: parent.top
@@ -24,6 +25,7 @@ Item {
         border.color: "white"
 
         Text {
+
             id: toolTipText
             text: toolTip
             color: "white"
@@ -39,16 +41,20 @@ Item {
     }
 
     MouseArea {
+
         id: mouseArea
         anchors.fill: parent
         onEntered: showTimer.start()
         onExited: { showToolTip = false; showTimer.stop(); }
         hoverEnabled: true
+
     }
 
     Timer {
+
         id: showTimer
         interval: 250
         onTriggered: showToolTip = true;
+
     }
 }
