@@ -36,8 +36,6 @@ void TvShow::onShowInfoFilled()
     setLatestEpisode(info->showInfo->value("Latest Episode"));
     setLatestEpisode(info->showInfo->value("Next Episode"));
 
-    qDebug() << toString();
-
     // All data is loaded, now show can be added to QList
     emit allDataLoaded(this);
 }

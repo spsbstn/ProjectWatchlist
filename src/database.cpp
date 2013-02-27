@@ -129,7 +129,27 @@ void Database::alterEpisode(QString name,int delta){
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
-        qDebug() << "Episode of "+ name + " changed";
+          qDebug() << "Episode of "+ name + " changed";
+}
+
+void Database::updateShow(TvShow &show)
+{
+    QSqlQuery qry;
+    qry.prepare( "UPDATE data SET started=:started, status=:status, airtime=:airtime, network=:network, genre=:genre, "
+                 "latestepisode=:latestep ,nextepisode=:nextep WHERE name=:name" );
+    qry.bindValue(":name", show.getTitle());
+    qry.bindValue(":started", show.getStarted());
+    qry.bindValue(":status", show.getStatus());
+    qry.bindValue(":airtime", show.getAirtime());
+    qry.bindValue(":network", show.getNetwork());
+    qry.bindValue(":genre", show.getGenre());
+    qry.bindValue(":latestep", show.getLatestEpisode());
+    qry.bindValue(":nextep", show.getNextEpisode());
+
+    if( !qry.exec() )
+        qDebug() << qry.lastError();
+    else
+        qDebug() << "Updated: " + show.toString();
 }
 
 // Loads Database into QList
@@ -158,7 +178,7 @@ void Database::load() {
 // Fill in Show in QList
 void Database::onAllDataLoaded(TvShow* show)
 {
-    addShow(*show);
+    updateShow(*show);
 }
 
 

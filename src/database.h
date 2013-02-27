@@ -16,7 +16,9 @@ public:
     void alterSeason(QString name,int delta);
     bool alterShowName(QString oldName,QString newName);
     void alterEpisode(QString name,int delta);
+    void updateShow(TvShow &show);
     void load();
+
     TvShowData* data;
 
 public slots:
