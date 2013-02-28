@@ -195,7 +195,6 @@ void Database::load() {
                                     qry.value(9).toString(), qry.value(10).toString());
 
             data->addShow(*tv);
-            qDebug() << tv->toString();
         }
       }
       emit dbLoaded();
