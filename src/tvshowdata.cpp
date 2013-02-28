@@ -264,7 +264,9 @@ void TvShowData::getExtraInformation()
 {
     for(int i=0; i < shows.size(); i++)
     {
-        shows.at(i)->getExtraInformation();
+        TvShow* show = shows.at(i);
+        QObject::connect(show, SIGNAL(allDataLoaded(TvShow*)), this, SIGNAL(allDataLoaded(TvShow*)));
+        show->getExtraInformation();
     }
 }
 

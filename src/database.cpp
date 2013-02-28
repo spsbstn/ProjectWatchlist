@@ -11,11 +11,12 @@
 //init or load database
 Database::Database(QObject *parent) :
     QObject(parent),
-    data(new TvShowData()),
+    data(new TvShowData(this)),
     currTable("data"),
     oldTable("not used")
 {
     QObject::connect(this, SIGNAL(dbLoaded()), data, SLOT(onDbLoaded()));
+    QObject::connect(data, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(onAllDataLoaded(TvShow*)));
 
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
 

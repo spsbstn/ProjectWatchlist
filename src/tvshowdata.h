@@ -67,6 +67,8 @@ public:
 
 public slots:
     void onDbLoaded();
+signals:
+    void allDataLoaded(TvShow* show);
 
 private:
     TvShowData(const TvShowData&);
