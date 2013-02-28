@@ -14,17 +14,20 @@ class QuickInfo: public QObject
 public:
 
     explicit QuickInfo(QObject *parent = 0);
+    ~QuickInfo();
     QNetworkAccessManager* nam;
     QMap<QString, QString>* showInfo;
     XmlPictureLoader *xmlPicture_;
+
     QString getImageUrl() {return xmlPicture_->imageUrl;}
 
 public slots:
     void finishedSlot(QNetworkReply*);
     void createConnection(QString showName);
+    void onImageUrlLoaded(const QString& imageUrl);
 
 signals:
-
+    void showInfoFilled();
     void htmlErrorOccured();
 };
 

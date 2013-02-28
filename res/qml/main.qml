@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import QtQuick 1.1
 import "..///js/Global.js" as GlobalJS
 import Cursors 1.0
@@ -20,6 +21,7 @@ Rectangle {
     property string uiFont: frutigerLight.name
     property string colorScheme: controller.loadColorScheme();
     signal xmlDataRequired(string showName);
+    onXmlDataRequired: updateInfo(showName);	
     focus:true
     width: 1366
     height: 768
@@ -44,17 +46,18 @@ Rectangle {
         }
     }
 
-    function updateInfo() {
+    function updateInfo(showName) {
 
-        infoScreen.showName=controller.getName();
-        infoScreen.status=controller.getStatus();
-        infoScreen.airTime = controller.getAirtime;
-        infoScreen.network = controller.getNetwork();
-        infoScreen.genre = controller.getGenre();
-        infoScreen.started = controller.getStarted();
-        infoScreen.imageSource=controller.getImageUrl();
-        infoScreen.latestEpisode = controller.getLatestEpisode();
-        infoScreen.nextEpisode = controller.getNextEpisode();
+
+        infoScreen.showName=showName;
+        infoScreen.status=controller.getStatus(showName);
+        infoScreen.airTime = controller.getAirtime(showName);
+        infoScreen.network = controller.getNetwork(showName);
+        infoScreen.genre = controller.getGenre(showName);
+        infoScreen.started = controller.getStarted(showName);
+        infoScreen.imageSource=controller.getImageUrl(showName);
+        infoScreen.latestEpisode = controller.getLatestEpisode(showName);
+        infoScreen.nextEpisode = controller.getNextEpisode(showName);
         infoScreen.mainOpacity=1;
         grid.currentItem.loadingCircleVisible=false;
         showClickProtection.start();

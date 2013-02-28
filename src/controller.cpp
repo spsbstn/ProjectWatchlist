@@ -55,13 +55,13 @@ Controller::Controller(QObject *parent) :
         framelessHelper->setWidgetResizable(true);
 
     //  setup quickInfoObject
-        qi = new QuickInfo(this);
+        //qi = new QuickInfo(this);
 
     // register quickInfo Signals and Slots
         QObject *rootObject = dynamic_cast<QObject*>(qmlView->rootObject());
-        QObject::connect(rootObject, SIGNAL(xmlDataRequired(QString)), qi, SLOT(createConnection(QString)));
-        QObject::connect(qi->xmlPicture_, SIGNAL(updateFinished()), rootObject, SLOT(updateInfo()));
-        QObject::connect(qi, SIGNAL(htmlErrorOccured()), rootObject, SLOT(htmlError()));
+        //QObject::connect(rootObject, SIGNAL(xmlDataRequired(QString)), db->data , SLOT());
+  //      QObject::connect(qi->xmlPicture_, SIGNAL(updateFinished()), rootObject, SLOT(updateInfo()));
+   //     QObject::connect(qi, SIGNAL(htmlErrorOccured()), rootObject, SLOT(htmlError()));
 
         //  Set WindowMinimizeButtonHint in order to be able to minimize from taskbar
         mainWidget->setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::FramelessWindowHint);
@@ -69,12 +69,31 @@ Controller::Controller(QObject *parent) :
 
 }
 
+Controller::~Controller()
+{
+    // hides the widget
+    mainWidget->hide();
+
+    // delete everything in correct order
+    delete db;
+  //  delete qi;
+    delete settings;
+    delete layout;
+    delete framelessHelper;
+    delete qmlView;
+    delete mainWidget;
+}
+
 // add new show
 void Controller::add(const QString& name)
 {
-    db->data->addShow(name);
-    db->addShow(name);
+    TvShow* insert = new TvShow(name);
 
+    // insert into QList right away and update in background
+    db->data->addShow(*insert);
+    db->addShow(*insert);
+    // wait for everything to be loaded before adding to database
+    QObject::connect(insert, SIGNAL(allDataLoaded(TvShow*)), db, SLOT(onAllDataLoaded(TvShow*)));
 }
 
 // remove show
@@ -113,6 +132,7 @@ bool Controller::alterShowName(const QString& oldName,const QString& newName)
     return false;
 
     }
+
 }
 
 //change colorscheme
@@ -311,9 +331,7 @@ void Controller::initMsgHandler() {
 }
 
 void Controller::loadDB() {
-
     db->load();
-
 }
 
 

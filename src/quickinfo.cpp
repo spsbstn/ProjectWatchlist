@@ -1,5 +1,8 @@
 #include "quickinfo.h"
 #include <QtDebug>
+#include <QElapsedTimer>
+#include <QEventLoop>
+
 #define URL_BASE "http://services.tvrage.com/tools/quickinfo.php?show="
 
 QuickInfo::QuickInfo(QObject *parent) : QObject(parent)
@@ -15,7 +18,14 @@ QuickInfo::QuickInfo(QObject *parent) : QObject(parent)
 
     //connect signal and slot  --> request finished
     QObject::connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
+    QObject::connect(this, SIGNAL(showInfoFilled()),parent, SLOT(onShowInfoFilled()));
+}
 
+QuickInfo::~QuickInfo()
+{
+    delete nam;
+    delete showInfo;
+    delete xmlPicture_;
 }
 
 // create connection to server
@@ -33,6 +43,12 @@ void QuickInfo::createConnection(QString showName)
 
     // serverReply
     QNetworkReply* reply = nam->get(QNetworkRequest(url));
+}
+
+void QuickInfo::onImageUrlLoaded(const QString &imageUrl)
+{
+    showInfo->insert("Image Url", imageUrl);
+    emit showInfoFilled();
 }
 
 // work with serverReply
@@ -100,6 +116,7 @@ void QuickInfo::finishedSlot(QNetworkReply* reply)
         emit htmlErrorOccured();
     }
 
+    //emit showInfoFilled();
     //delete reply
     reply->deleteLater();
 }
