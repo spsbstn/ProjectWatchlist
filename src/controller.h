@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QSettings>
 #include "quickinfo.h"
+#include "localizer.h"
 
 class MainView;
 class Database;

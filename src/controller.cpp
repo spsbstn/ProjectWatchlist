@@ -17,10 +17,12 @@ Controller::Controller(QObject *parent) :
     framelessHelper(new NcFramelessHelper()),
     layout(new QVBoxLayout)
 {
+
     //init MsgHandler
     initMsgHandler();
 
-        db = new Database();
+    db = new Database();
+    Localizer *loc = new Localizer();
 
     settings = new QSettings("Watchlist");   
     //check for colorscheme-settings
@@ -34,6 +36,7 @@ Controller::Controller(QObject *parent) :
         QDeclarativeContext *ctxt = qmlView->rootContext();
         ctxt->setContextProperty("datalist", db->data);
         ctxt->setContextProperty("controller", this);
+        ctxt->setContextProperty("localizer", loc);
         ctxt->setContextProperty("mainwindow", mainWidget);
         qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
         qmlRegisterType<WheelArea>("WheelArea", 1, 0, "WheelArea");

@@ -27,16 +27,7 @@ int main(int argc, char *argv[])
 
     QTranslator translator;
 
-    /* the ":/" is a special directory Qt uses to
-     * distinguish resources;
-     * NB this will look for a filename matching locale + ".qm";
-     * if that's not found, it will truncate the locale to
-     * the first two characters (e.g. "en_GB" to "en") and look
-     * for that + ".qm"; if not found, it will look for a
-     * qml-translations.qm file; if not found, no translation is done
-     */
-    qDebug()<<":/translation_" << locale;
-    if (translator.load(":/qml/i18n/translation_" + locale))
+    if (translator.load(":/translations/translation_" + locale))
       app.installTranslator(&translator);
 
     //init controller

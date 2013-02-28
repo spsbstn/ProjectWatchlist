@@ -47,11 +47,11 @@ Rectangle {
     function updateInfo() {
 
         infoScreen.showName=controller.getName();
-        infoScreen.status=controller.getStatus();
+        infoScreen.status=localizer.trans(controller.getStatus(),1);
         infoScreen.airTime = controller.getAirtime;
         infoScreen.network = controller.getNetwork();
-        infoScreen.genre = controller.getGenre();
-        infoScreen.started = controller.getStarted();
+        infoScreen.genre = localizer.trans(controller.getGenre(),2);
+        infoScreen.started = localizer.trans(controller.getStarted(),0);
         infoScreen.imageSource=controller.getImageUrl();
         infoScreen.latestEpisode = controller.getLatestEpisode();
         infoScreen.nextEpisode = controller.getNextEpisode();
