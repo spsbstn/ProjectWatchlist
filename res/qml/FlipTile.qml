@@ -59,7 +59,7 @@ import "..///js/WatchNow.js" as WatchNowLink
             PropertyAction { target: flipable; property: "GridView.delayRemove"; value: false }
     }
 
-
+//front
 front: Rectangle {
 
     width: parent.width - tileMargin
@@ -81,6 +81,20 @@ front: Rectangle {
             capitalization: Font.AllUppercase;
             pointSize: mainWindow.tileHeaderFontSize
         }
+    }
+
+    Image {
+
+        id: newEpisodes
+        height: 35
+        width: 35
+        visible:false
+        source: "qrc:///img/new.png"
+        anchors.right:parent.right
+        anchors.rightMargin: 5
+        anchors.bottom:parent.bottom
+        anchors.bottomMargin: 5
+
     }
 
     //MouseArea to flip tile
