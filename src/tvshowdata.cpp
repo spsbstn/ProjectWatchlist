@@ -262,7 +262,7 @@ QString TvShowData::toString() const
 
 void TvShowData::getExtraInformation()
 {
-    for(int i=0; shows.size(); i++)
+    for(int i=0; i < shows.size(); i++)
     {
         shows.at(i)->getExtraInformation();
     }

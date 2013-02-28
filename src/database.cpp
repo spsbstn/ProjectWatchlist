@@ -15,8 +15,7 @@ Database::Database(QObject *parent) :
     currTable("data"),
     oldTable("not used")
 {
-
-    //QObject::connect(this, SIGNAL(dbLoaded()), data, SLOT(onDbLoaded()));
+    QObject::connect(this, SIGNAL(dbLoaded()), data, SLOT(onDbLoaded()));
 
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
 
