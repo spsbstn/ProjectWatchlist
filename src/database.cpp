@@ -175,8 +175,6 @@ void Database::updateShow(TvShow &show)
 
     if( !qry.exec() )
         qDebug() << qry.lastError();
-    else
-        qDebug() << "Updated: " + show.toString();
 }
 
 // Loads Database into QList

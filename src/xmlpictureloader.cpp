@@ -47,8 +47,6 @@ void XmlPictureLoader::finishedSlot(QNetworkReply* reply)
 
         // get imageUrl
         imageUrl=list.at(0).toElement().text();
-        qDebug() << imageUrl;
-
     }
 
     else

@@ -89,8 +89,6 @@ void Controller::add(const QString& name)
 {
     TvShow* insert = new TvShow(name);
 
-    qDebug() << "Before Update: " + insert->toString();
-
     // insert into QList right away and update in background
     db->data->addShow(*insert);
     db->addShow(*insert);

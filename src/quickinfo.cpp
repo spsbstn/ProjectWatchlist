@@ -43,9 +43,6 @@ void QuickInfo::createConnection(QString showName)
 
     // serverReply
     QNetworkReply* reply = nam->get(QNetworkRequest(url));
-
-    qDebug() << "Reply is being processed";
-
 }
 
 void QuickInfo::onImageUrlLoaded(const QString &imageUrl)
