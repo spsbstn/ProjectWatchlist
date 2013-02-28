@@ -48,7 +48,7 @@ Rectangle {
 
         infoScreen.showName=controller.getName();
         infoScreen.status=localizer.trans(controller.getStatus(),1);
-        infoScreen.airTime = controller.getAirtime;
+        infoScreen.airTime = localizer.trans(controller.getAirtime(),3)
         infoScreen.network = controller.getNetwork();
         infoScreen.genre = localizer.trans(controller.getGenre(),2);
         infoScreen.started = localizer.trans(controller.getStarted(),0);

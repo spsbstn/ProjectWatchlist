@@ -27,7 +27,7 @@ QString Localizer::started(QString text) {
 
    QLocale locale  = QLocale(QLocale::English, QLocale::UnitedStates);
    QDate date = locale.toDate(text,"MMM/dd/yyyy");
-   return date.toString("dd.MM.yyyy");
+   return date.toString(Qt::SystemLocaleLongDate);
 
 }
 
@@ -67,8 +67,8 @@ QString Localizer::genre(QString text){
     text.replace("Discovery/Science",QObject::tr("Discovery/Science"));
     text.replace("Drama",QObject::tr("Drama"));
     text.replace("Educational",QObject::tr("Educational"));
-    text.replace("Adult Cartoon",QObject::tr("Adult Cartoon"));
-    text.replace("Cartoon",QObject::tr("Cartoon"));
+    text.replace("Adult Cartoons",QObject::tr("Adult Cartoons"));
+    text.replace("Cartoons",QObject::tr("Cartoons"));
     text.replace("Family",QObject::tr("Family"));
     text.replace("Fantasy",QObject::tr("Fantasy"));
     text.replace("Fashion/Make-up",QObject::tr("Fashion/Make-up"));
@@ -103,12 +103,30 @@ QString Localizer::genre(QString text){
     text.replace("Travel",QObject::tr("Travel"));
     text.replace("Western",QObject::tr("Western"));
 
+
     return text;
 
 }
 
 QString Localizer::airtime(QString text){
 
-    return "";
+    text.replace("at",tr("at"));
+    text.replace("Monday",tr("Monday"));
+    text.replace("Tuesday",tr("Tuesday"));
+    text.replace("Wednesday",tr("Wednesday"));
+    text.replace("Thursday",tr("Thursday"));
+    text.replace("Friday",tr("Friday"));
+    text.replace("Saturday",tr("Saturday"));
+    text.replace("Sunday",tr("Sunday"));
+    text.replace("Monday, Tuesday, Wednesday, Thursday, Friday",tr("weekday"));
+
+    QLocale locale  = QLocale(QLocale::English, QLocale::UnitedStates);
+    int i = 0;
+    while(text.at(i).isLetter())
+    {i++;}
+    QTime time = locale.toTime(text.right(i+1),"hh:mm ap");
+    locale = QLocale::system().name();
+    return text.left(i+4)+time.toString(Qt::SystemLocaleDate) + tr(" ");
+
 }
 
