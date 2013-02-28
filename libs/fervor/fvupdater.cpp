@@ -498,15 +498,8 @@ bool FvUpdater::searchDownloadedFeedForUpdates(QString xmlTitle,
 											   unsigned long xmlEnclosureLength,
 											   QString xmlEnclosureType)
 {
-    qDebug() << "Title:" << xmlTitle;
-    qDebug() << "Link:" << xmlLink;
-    qDebug() << "Release notes link:" << xmlReleaseNotesLink;
-    qDebug() << "Pub. date:" << xmlPubDate;
-    qDebug() << "Enclosure URL:" << xmlEnclosureUrl;
-    qDebug() << "Enclosure version:" << xmlEnclosureVersion;
-    qDebug() << "Enclosure platform:" << xmlEnclosurePlatform;
-    qDebug() << "Enclosure length:" << xmlEnclosureLength;
-    qDebug() << "Enclosure type:" << xmlEnclosureType;
+    qDebug() << "Checking for updates...";
+    qDebug() << "Version on Server:" << xmlEnclosureVersion;
 
 	// Validate
 	if (xmlReleaseNotesLink.isEmpty()) {
