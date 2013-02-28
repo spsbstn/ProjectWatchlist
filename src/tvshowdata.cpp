@@ -260,6 +260,14 @@ QString TvShowData::toString() const
     return result;
 }
 
+void TvShowData::getExtraInformation()
+{
+    for(int i=0; shows.size(); i++)
+    {
+        shows.at(i)->getExtraInformation();
+    }
+}
+
 
 // Required by QAbstractListModel - Interface
 int TvShowData::rowCount(const QModelIndex &parent) const
@@ -291,4 +299,9 @@ QVariant TvShowData::data(const QModelIndex &index, int role) const
    default:
        return QVariant();
    }
+}
+
+void TvShowData::onDbLoaded()
+{
+    getExtraInformation();
 }

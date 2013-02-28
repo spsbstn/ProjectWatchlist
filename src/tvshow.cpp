@@ -51,5 +51,10 @@ void TvShow::debugString(TvShow *show)
 QString TvShow::toString() const
 {
     return title + " " + QString::number(season) + " " +
-                QString::number(episode)+ " " + started + " " + status + " " + airtime + " " + network;
+            QString::number(episode)+ " " + started + " " + status + " " + airtime + " " + network;
+}
+
+void TvShow::getExtraInformation()
+{
+    info->createConnection(title);
 }

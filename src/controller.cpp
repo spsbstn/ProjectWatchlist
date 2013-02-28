@@ -333,9 +333,7 @@ void Controller::initMsgHandler() {
 }
 
 void Controller::loadDB() {
-
     db->load();
-
 }
 
 

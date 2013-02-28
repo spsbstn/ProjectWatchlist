@@ -11,6 +11,7 @@ Rectangle {
     height: 768
     color: appBackground
     signal xmlDataRequired(string showName);
+    onXmlDataRequired: updateInfo(showName)
 
     FontLoader {
 
@@ -18,7 +19,6 @@ Rectangle {
         source: "qrc:../..///fonts/Frutiger Light.ttf"
                 }
 
-    onXmlDataRequired: updateInfo(showName)
     function updateInfo(showName) {
 
 

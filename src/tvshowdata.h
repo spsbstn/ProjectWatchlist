@@ -57,10 +57,17 @@ public:
     // Debug String
     QString toString() const;
 
+    // Load extra Information for every show
+    void getExtraInformation();
+
     int rowCount (const QModelIndex &parent = QModelIndex()) const;
     QVariant data (const QModelIndex &index, int role = Qt::DisplayRole) const;
 
     QList<TvShow*> shows;
+
+public slots:
+    void onDbLoaded();
+
 private:
     TvShowData(const TvShowData&);
     TvShowData& operator= (const TvShowData&);

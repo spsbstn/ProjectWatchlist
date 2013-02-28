@@ -51,6 +51,9 @@ public:
     // Return string for printing TvShow to console
     QString toString() const;
 
+    // Load extra information for show
+    void getExtraInformation();
+
 
     QuickInfo* info;
 

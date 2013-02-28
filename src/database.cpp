@@ -7,6 +7,7 @@
 #include "tvshow.h"
 
 
+
 //init or load database
 Database::Database(QObject *parent) :
     QObject(parent),
@@ -14,6 +15,8 @@ Database::Database(QObject *parent) :
     currTable("data"),
     oldTable("not used")
 {
+
+    //QObject::connect(this, SIGNAL(dbLoaded()), data, SLOT(onDbLoaded()));
 
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
 
@@ -197,6 +200,7 @@ void Database::load() {
             qDebug() << tv->toString();
         }
       }
+      emit dbLoaded();
 }
 
 // Returns a string that contains the name of every column in the table

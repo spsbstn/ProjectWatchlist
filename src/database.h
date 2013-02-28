@@ -28,6 +28,9 @@ public:
 public slots:
     void onAllDataLoaded(TvShow *show);
 
+signals:
+    void dbLoaded();
+
 private:
     QString currTable;
     QString oldTable;
