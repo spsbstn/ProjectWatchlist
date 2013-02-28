@@ -14,11 +14,10 @@ import "..///js/WatchNow.js" as WatchNowLink
     property string currentEp;
     // random number between 5 and 10 (animation)
     property int rand: Math.floor(Math.random() * (10 - 5 + 1)) + 5;
+    onOpacityChanged: if(opacity==1) {checkForNewEpisodes();}
 
     //addAnimation
     GridView.onAdd:
-
-        checkForNewEpisodes();
 
         ParallelAnimation {
 
