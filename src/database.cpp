@@ -10,7 +10,9 @@
 //init or load database
 Database::Database(QObject *parent) :
     QObject(parent),
-    data(new TvShowData())
+    data(new TvShowData()),
+    currTable("data"),
+    oldTable("not used")
 {
 
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
@@ -20,8 +22,10 @@ Database::Database(QObject *parent) :
         QDir dir;
         dir.mkpath(path);
     }
-
-    path.append(QDir::separator()).append("datav2.db");
+    
+    QChar c = 'c';
+    c.digitValue()
+    path.append(QDir::separator()).append("data.db");
     path = QDir::toNativeSeparators(path);
 
     db.setDatabaseName(path);
@@ -35,9 +39,9 @@ Database::Database(QObject *parent) :
 
     QSqlQuery qry;
 
-    qry.prepare( "CREATE TABLE IF NOT EXISTS data (name VARCHAR(30) UNIQUE PRIMARY KEY, season INTEGER, episode INTEGER, "
-                   "started DATE, status VARCHAR(30), airtime VARCHAR(35), network VARCHAR(30), genre VARCHAR(30), "
-                   "latestepisode DATE, nextepisode DATE, imageurl VARCHAR(50))" );
+    qry.prepare( "CREATE TABLE IF NOT EXISTS "+currTable+" (name VARCHAR(30) UNIQUE PRIMARY KEY, season INTEGER, episode INTEGER, "
+                   "genre VARCHAR(30), started DATE, status VARCHAR(30), airtime VARCHAR(35), network VARCHAR(30), "
+                   "latestepisode DATE, nextepisode DATE, imageurl VARCHAR(70))" );
     if( !qry.exec() )
     {
         qDebug() << qry.lastError();
@@ -48,27 +52,44 @@ Database::Database(QObject *parent) :
         QDesktopServices::openUrl(QUrl("file:///" + path));
     }
     else
-        qDebug() << "datatable created/loaded!";
+        qDebug() << "Main datatable created/loaded!";
 
     // Check if "data" is an old database-version and update it in case
-    if( !alterTable(qry, checkTableStructure(qry)) )
-        qDebug() << "ERROR while altering Database Table";
 
+    if( !checkForOldDatabase(qry, checkTableStructure(qry, currTable)) )
+        qDebug() << "ERROR while creating new Database Table";
+
+}
+
+Database::~Database()
+{
+    QSqlQuery qry;
+    if(currTable != "data")
+    {
+        qry.prepare("ALTER TABLE "+currTable+" RENAME TO data");
+        if(!qry.exec())
+        {
+            qDebug() << qry.lastError();
+            qDebug() << "ERROR when renaming Table to data";
+        }
+
+        qDebug() << "Resetting Table name to 'Data'";
+    }
 }
 
 void Database::addShow(TvShow &show) {
 
     QSqlQuery qry;
 
-    qry.prepare( "INSERT INTO data (name, season, episode, started, status, airtime, network, genre, latestepisode, "
-                 "nextepisode, imageurl) VALUES (:name, 1, 1, :started, :status, :airtime, :network, :genre, :latestepisode, "
-                 ":nextepisode, :imageurl)" );
+    qry.prepare( "INSERT INTO "+currTable+" (name, season, episode, genre, started, status, airtime, network, latestepisode, "
+                 "nextepisode, imageurl) VALUES (:name, 1, 1, :genre, :started, :status, :airtime, :network, "
+                 ":latestepisode, :nextepisode, :imageurl)" );
     qry.bindValue(":name", show.getTitle());
+    qry.bindValue(":genre", show.getGenre());
     qry.bindValue(":started", show.getStarted());
     qry.bindValue(":status", show.getStatus());
     qry.bindValue(":airtime", show.getAirtime());
     qry.bindValue(":network", show.getNetwork());
-    qry.bindValue(":genre", show.getGenre());
     qry.bindValue(":latestepisode", show.getLatestEpisode());
     qry.bindValue(":nextepisode", show.getNextEpisode());
     qry.bindValue(":imageurl", show.getImageUrl());
@@ -84,7 +105,7 @@ void Database::removeShow(QString name) {
 
     QSqlQuery qry;
 
-    qry.prepare( "DELETE FROM data WHERE name=:name");
+    qry.prepare( "DELETE FROM "+currTable+" WHERE name=:name");
     qry.bindValue(":name",name);
       if( !qry.exec() )
         qDebug() << qry.lastError();
@@ -96,7 +117,7 @@ bool Database::alterShowName(QString oldName,QString newName){
 
     QSqlQuery qry;
 
-    qry.prepare( "UPDATE data SET name=:newName WHERE name=:oldName" );
+    qry.prepare( "UPDATE "+currTable+" SET name=:newName WHERE name=:oldName" );
     qry.bindValue(":oldName",oldName);
     qry.bindValue(":newName",newName);
       if( !qry.exec() ) {
@@ -114,7 +135,7 @@ void Database::alterSeason(QString name,int delta){
 
     QSqlQuery qry;
 
-    qry.prepare( "UPDATE data SET season=season+:delta WHERE name=:number" );
+    qry.prepare( "UPDATE "+currTable+" SET season=season+:delta WHERE name=:number" );
     qry.bindValue(":delta",QString::number(delta));
     qry.bindValue(":name",name);
       if( !qry.exec() )
@@ -127,7 +148,7 @@ void Database::alterEpisode(QString name,int delta){
 
     QSqlQuery qry;
 
-    qry.prepare( "UPDATE data SET episode=episode+:delta WHERE name=:name");
+    qry.prepare( "UPDATE "+currTable+" SET episode=episode+:delta WHERE name=:name");
     qry.bindValue(":delta", QString::number(delta));
     qry.bindValue(":name", name);
       if( !qry.exec() )
@@ -139,14 +160,14 @@ void Database::alterEpisode(QString name,int delta){
 void Database::updateShow(TvShow &show)
 {
     QSqlQuery qry;
-    qry.prepare( "UPDATE data SET started=:started, status=:status, airtime=:airtime, network=:network, genre=:genre, "
+    qry.prepare( "UPDATE "+currTable+" SET genre=:genre, started=:started, status=:status, airtime=:airtime, network=:network, "
                  "latestepisode=:latestep ,nextepisode=:nextep, imageurl=:imageurl WHERE name=:name" );
     qry.bindValue(":name", show.getTitle());
+    qry.bindValue(":genre", show.getGenre());
     qry.bindValue(":started", show.getStarted());
     qry.bindValue(":status", show.getStatus());
     qry.bindValue(":airtime", show.getAirtime());
     qry.bindValue(":network", show.getNetwork());
-    qry.bindValue(":genre", show.getGenre());
     qry.bindValue(":latestep", show.getLatestEpisode());
     qry.bindValue(":nextep", show.getNextEpisode());
     qry.bindValue(":imageurl", show.getImageUrl());
@@ -162,7 +183,7 @@ void Database::load() {
 
     QSqlQuery qry;
 
-    qry.prepare( "SELECT * FROM data ORDER BY name" );
+    qry.prepare( "SELECT * FROM "+currTable+" ORDER BY name" );
       if( !qry.exec() )
         qDebug() << qry.lastError();
       else
@@ -180,14 +201,16 @@ void Database::load() {
       }
 }
 
-QString Database::checkTableStructure(QSqlQuery &qry)
+// Returns a string that contains the name of every column in the table
+QString Database::checkTableStructure(QSqlQuery &qry, const QString &tablename)
 {
     QString tableStructure="";
     qry.finish();
-    qry.prepare("PRAGMA table_info (data)");
+    qry.prepare("PRAGMA table_info ("+tablename+")");
     if(!qry.exec())
     {
         qDebug() << qry.lastError();
+        qry.finish();
         return " ";
     }
     else
@@ -195,29 +218,47 @@ QString Database::checkTableStructure(QSqlQuery &qry)
         while (qry.next())
             tableStructure+=qry.value(1).toString()+" ";
 
+        qry.finish();
+
         return tableStructure;
     }
 }
 
-bool Database::alterTable(QSqlQuery &qry, const QString& tableStructure)
+
+// Adds missing columns to old databases
+bool Database::checkForOldDatabase(QSqlQuery &qry, const QString& tableStructure)
 {
-    if(!tableStructure.contains("started")) // Old database version
+    //qDebug() << tableStructure;
+
+    if(!tableStructure.contains("imageurl"))
     {
-        //add started, status, ... , nextepisode to the table
-        qry.prepare("ALTER TABLE data ADD COLUMN started DATE, status VARCHAR(30), airtime VARCHAR(35), "
-                    "network VARCHAR(30), genre VARCHAR(30), latestepisode DATE, nextepisode DATE");
+        qDebug() << "Old Database! Converting to new one";
+
+        //get new names for tables
+        getNewTableNames();
+
+        qry.prepare("CREATE TABLE IF NOT EXISTS "+currTable+" (name VARCHAR(30) UNIQUE PRIMARY KEY, season INTEGER, episode INTEGER, "
+                    "genre VARCHAR(30), started DATE, status VARCHAR(30), airtime VARCHAR(35), network VARCHAR(30), "
+                    "latestepisode DATE, nextepisode DATE, imageurl VARCHAR(70)) ");
         if(!qry.exec())
         {
+            qDebug() << "Creating new Table failed";
             qDebug() << qry.lastError();
             return false;
         }
-    }
 
-    if(!tableStructure.contains("imageurl")) // v2_database
-    {
-        qry.prepare("ALTER TABLE data ADD COLUMN imageurl VARCHAR(50)");
+        qry.prepare("INSERT INTO "+currTable+" (name, season, episode, genre) SELECT name, season, episode, genre FROM "+oldTable);
         if(!qry.exec())
         {
+            qDebug() << "Inserting failed";
+            qDebug() << qry.lastError();
+            return false;
+        }
+
+        qry.prepare("DROP TABLE "+oldTable);
+        if(!qry.exec())
+        {
+            qDebug() << "Deleting failed";
             qDebug() << qry.lastError();
             return false;
         }
@@ -226,13 +267,18 @@ bool Database::alterTable(QSqlQuery &qry, const QString& tableStructure)
     }
     else
         return true;
-
 }
 
 // Fill in Show in QList
 void Database::onAllDataLoaded(TvShow* show)
 {
     updateShow(*show);
+}
+
+void Database::getNewTableNames()
+{
+    oldTable = currTable;
+    currTable += "1";
 }
 
 

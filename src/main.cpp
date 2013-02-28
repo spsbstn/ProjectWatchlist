@@ -22,21 +22,21 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     //init controller
-    Controller* ctrl = new Controller;
+    Controller ctrl;
 
     FvUpdater::sharedUpdater()->SetFeedURL("https://dl.dropbox.com/u/12650902/Watchlist/Appcast.xml");
     FvUpdater::sharedUpdater()->CheckForUpdatesSilent();
 
     // connect quit signal
-    QObject::connect((QObject*)ctrl->qmlView->engine(), SIGNAL(quit()), &app, SLOT(quit()));
+    QObject::connect((QObject*)ctrl.qmlView->engine(), SIGNAL(quit()), &app, SLOT(quit()));
 
     //maximize Window
-    ctrl->windowMaximize();
+    ctrl.windowMaximize();
 
     //show Window
-    ctrl->mainWidget->show();
+    ctrl.mainWidget->show();
 
-    ctrl->checkForSeasonIcons(&app);
+    ctrl.checkForSeasonIcons(&app);
 
 
     return app.exec();

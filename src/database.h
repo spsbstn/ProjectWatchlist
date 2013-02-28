@@ -11,6 +11,8 @@ class Database : public QObject
 
 public:
     explicit Database(QObject *parent = 0);
+    ~Database();
+
     void addShow(TvShow &show);
     void removeShow(QString name);
     void alterSeason(QString name,int delta);
@@ -18,13 +20,18 @@ public:
     void alterEpisode(QString name,int delta);
     void updateShow(TvShow &show);
     void load();
-    QString checkTableStructure(QSqlQuery& qry);
-    bool alterTable(QSqlQuery& qry, const QString &tableStructure);
+    QString checkTableStructure(QSqlQuery& qry, const QString &tablename);
+    bool checkForOldDatabase(QSqlQuery& qry, const QString &tableStructure);
 
     TvShowData* data;
 
 public slots:
     void onAllDataLoaded(TvShow *show);
+
+private:
+    QString currTable;
+    QString oldTable;
+    void getNewTableNames();
 };
 
 #endif // DATABASE_H

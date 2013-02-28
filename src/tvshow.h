@@ -17,8 +17,8 @@ public:
     // constructor with default values (is used when first adding show)
     TvShow(QString name = "", int seas = 1, int ep = 1 );
     // constructor with no default values (is used when loading from database)
-    TvShow(QString name, int seas, int ep, QString started, QString status, QString airtime,
-           QString network, QString genre, QString latestEp, QString nextEp, QString imageUrl);
+    TvShow(QString name, int seas, int ep, QString genre, QString started, QString status, QString airtime,
+           QString network, QString latestEp, QString nextEp, QString imageUrl);
     // destructor
     ~TvShow();
 
@@ -26,11 +26,11 @@ public:
     void setTitle  (const QString& name) { title = name; }
     void setSeason (int delta)           { season += delta; }
     void setEpisode(int delta)           { episode += delta; }
+    void setGenre(const QString& genre) { this->genre = genre; }
     void setStarted(const QString& started) { this->started = started; }
     void setStatus(const QString& status) { this->status = status; }
     void setAirtime(const QString& airtime) { this->airtime = airtime; }
     void setNetwork(const QString& network) { this->network = network; }
-    void setGenre(const QString& genre) { this->genre = genre; }
     void setLatestEpisode(const QString& latestEp) { latestEpisode = latestEp; }
     void setNextEpisode(const QString& nextEp) { nextEpisode = nextEp; }
     void setImageUrl(const QString& imageUrl) { this->imageUrl = imageUrl;}
@@ -39,11 +39,11 @@ public:
     QString getTitle() const { return title; }
     int    getSeason() const { return season; }
     int   getEpisode() const { return episode; }
+    QString getGenre() const { return genre;}
     QString getStarted() const { return started;}
     QString getStatus() const { return status;}
     QString getAirtime() const { return airtime;}
     QString getNetwork() const { return network;}
-    QString getGenre() const { return genre;}
     QString getLatestEpisode() const { return latestEpisode;}
     QString getNextEpisode() const { return nextEpisode;}
     QString getImageUrl() const { return imageUrl;}
@@ -68,11 +68,11 @@ private:
     QString title;
     int     season;
     int     episode;
+    QString genre;
     QString started;
     QString status;
     QString airtime;
     QString network;
-    QString genre;
     QString latestEpisode;
     QString nextEpisode;
     QString imageUrl;

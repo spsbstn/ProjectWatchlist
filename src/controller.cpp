@@ -55,13 +55,13 @@ Controller::Controller(QObject *parent) :
         framelessHelper->setWidgetResizable(true);
 
     //  setup quickInfoObject
-        qi = new QuickInfo(this);
+        //qi = new QuickInfo(this);
 
     // register quickInfo Signals and Slots
         QObject *rootObject = dynamic_cast<QObject*>(qmlView->rootObject());
         //QObject::connect(rootObject, SIGNAL(xmlDataRequired(QString)), db->data , SLOT());
-        QObject::connect(qi->xmlPicture_, SIGNAL(updateFinished()), rootObject, SLOT(updateInfo()));
-        QObject::connect(qi, SIGNAL(htmlErrorOccured()), rootObject, SLOT(htmlError()));
+  //      QObject::connect(qi->xmlPicture_, SIGNAL(updateFinished()), rootObject, SLOT(updateInfo()));
+   //     QObject::connect(qi, SIGNAL(htmlErrorOccured()), rootObject, SLOT(htmlError()));
 
         //  Set WindowMinimizeButtonHint in order to be able to minimize from taskbar
         mainWidget->setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::FramelessWindowHint);
@@ -71,13 +71,17 @@ Controller::Controller(QObject *parent) :
 
 Controller::~Controller()
 {
-    delete mainWidget;
+    // hides the widget
+    mainWidget->hide();
+
+    // delete everything in correct order
     delete db;
-    delete qmlView;
-    delete framelessHelper;
-    delete layout;
-    delete qi;
+  //  delete qi;
     delete settings;
+    delete layout;
+    delete framelessHelper;
+    delete qmlView;
+    delete mainWidget;
 }
 
 // add new show

@@ -11,7 +11,7 @@ XmlPictureLoader::XmlPictureLoader(QObject *parent) :
 
     //connect signal and slot  --> request finished
     QObject::connect(nam, SIGNAL(finished(QNetworkReply*)),this, SLOT(finishedSlot(QNetworkReply*)));
-    QObject::connect(this, SIGNAL(updateFinished()), parent, SIGNAL(showInfoFilled()));
+    QObject::connect(this, SIGNAL(imageUrlLoaded(QString)), parent, SLOT(onImageUrlLoaded(QString)));
 }
 
 XmlPictureLoader::~XmlPictureLoader()
@@ -57,7 +57,7 @@ void XmlPictureLoader::finishedSlot(QNetworkReply* reply)
     }
 
     // emit signal that all data is retrieved
-    emit updateFinished();
+    emit imageUrlLoaded(imageUrl);
 
     // delete reply
     reply->deleteLater();

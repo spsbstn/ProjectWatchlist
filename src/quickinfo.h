@@ -24,6 +24,7 @@ public:
 public slots:
     void finishedSlot(QNetworkReply*);
     void createConnection(QString showName);
+    void onImageUrlLoaded(const QString& imageUrl);
 
 signals:
     void showInfoFilled();

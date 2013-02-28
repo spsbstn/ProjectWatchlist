@@ -43,7 +43,7 @@ public:
     Q_INVOKABLE QString getGenre(const QString& name) {return  db->data->getGenre(name);}
     Q_INVOKABLE QString getLatestEpisode(const QString& name) {return db->data->getLatestEp(name);}
     Q_INVOKABLE QString getNextEpisode(const QString& name) {return db->data->getNextEp(name);}
-    Q_INVOKABLE QString getImageUrl() {return qi->getImageUrl();}
+   // Q_INVOKABLE QString getImageUrl() {return qi->getImageUrl();}
 
     //window functions
     Q_INVOKABLE void windowMaximize();
@@ -62,7 +62,7 @@ public:
     QDeclarativeView  *qmlView;
     NcFramelessHelper *framelessHelper;
     QVBoxLayout *layout;
-    QuickInfo *qi;
+    //QuickInfo *qi;
     QSettings* settings;
 
 };

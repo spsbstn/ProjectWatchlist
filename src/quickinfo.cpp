@@ -48,6 +48,12 @@ void QuickInfo::createConnection(QString showName)
 
 }
 
+void QuickInfo::onImageUrlLoaded(const QString &imageUrl)
+{
+    showInfo->insert("Image Url", imageUrl);
+    emit showInfoFilled();
+}
+
 // work with serverReply
 void QuickInfo::finishedSlot(QNetworkReply* reply)
 {

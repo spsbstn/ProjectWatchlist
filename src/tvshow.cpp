@@ -12,10 +12,10 @@ TvShow::TvShow(QString name, int seas, int ep)
 }
 
 // Constructor for loading from database
-TvShow::TvShow(QString name, int seas, int ep, QString started, QString status, QString airtime, QString network,
-               QString genre, QString latestEp, QString nextEp, QString imageUrl)
-    : title(name), season(seas), episode(ep), started(started), status(status), airtime(airtime), network(network),
-      genre(genre), latestEpisode(latestEp), nextEpisode(nextEp), imageUrl(imageUrl) ,info(new QuickInfo(this))
+TvShow::TvShow(QString name, int seas, int ep, QString genre, QString started, QString status, QString airtime,
+               QString network, QString latestEp, QString nextEp, QString imageUrl)
+    : title(name), season(seas), episode(ep), genre(genre), started(started), status(status), airtime(airtime), network(network),
+      latestEpisode(latestEp), nextEpisode(nextEp), imageUrl(imageUrl) ,info(new QuickInfo(this))
 {
 }
 
@@ -35,6 +35,7 @@ void TvShow::onShowInfoFilled()
     setGenre(info->showInfo->value("Genres"));
     setLatestEpisode(info->showInfo->value("Latest Episode"));
     setLatestEpisode(info->showInfo->value("Next Episode"));
+    setImageUrl(info->showInfo->value("Image Url"));
 
     // All data is loaded, now show can be added to QList
     emit allDataLoaded(this);

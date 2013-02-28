@@ -23,7 +23,7 @@ public:
 
 signals:
 
-    void updateFinished();
+    void imageUrlLoaded(const QString& imageUrl);
     
 public slots:
 
