@@ -11,12 +11,14 @@ import "..///js/WatchNow.js" as WatchNowLink
 
     property bool flipped: false
     property bool loadingCircleVisible: false
+    property string currentEp;
     // random number between 5 and 10 (animation)
     property int rand: Math.floor(Math.random() * (10 - 5 + 1)) + 5;
 
-
     //addAnimation
     GridView.onAdd:
+
+        checkForNewEpisodes();
 
         ParallelAnimation {
 
@@ -32,6 +34,7 @@ import "..///js/WatchNow.js" as WatchNowLink
                 target: flipable; properties: "opacity"; from: 0.0; to: 1.0;
                 easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5; duration:rand*80
          }
+
     }
 
     //removeAnimation
@@ -57,6 +60,34 @@ import "..///js/WatchNow.js" as WatchNowLink
             }
 
             PropertyAction { target: flipable; property: "GridView.delayRemove"; value: false }
+    }
+
+    //check if new Episodes are available
+    function checkForNewEpisodes () {
+
+
+        if(controller.getLatestEpisode(seriesName.text).substr(0,2)*1>season*1) {
+
+            newEpisodes.visible=true;
+
+        }
+
+        else {
+
+            if(controller.getLatestEpisode(seriesName.text).substr(3,2)*1>episode*1) {
+
+                newEpisodes.visible=true;
+
+            }
+
+            else {
+
+                newEpisodes.visible=false;
+
+            }
+
+        }
+
     }
 
 //front
@@ -154,6 +185,7 @@ back: Rectangle {
                 controller.setSeason(seriesName.text, +1);
                 // set Episode to 1
                 controller.setEpisode(seriesName.text,(-episode+1));
+                checkForNewEpisodes ();
             }
         }
 
@@ -171,6 +203,7 @@ back: Rectangle {
                 controller.setSeason(seriesName.text, -1);
                 // set Episode to 1
                 controller.setEpisode(seriesName.text,(-episode+1));
+                checkForNewEpisodes ();
             }
         }
 
@@ -221,7 +254,8 @@ back: Rectangle {
             anchors.right:parent.right
             anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2
             anchors.verticalCenter: parent.verticalCenter
-            onClicked: controller.setEpisode(seriesName.text, +1);
+            onClicked: {controller.setEpisode(seriesName.text, +1);
+                        checkForNewEpisodes();}
 
         }
 
@@ -235,7 +269,8 @@ back: Rectangle {
             anchors.left:parent.left
             anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2
             anchors.verticalCenter: parent.verticalCenter
-            onClicked: controller.setEpisode(seriesName.text, -1);
+            onClicked: {controller.setEpisode(seriesName.text, -1);
+                        checkForNewEpisodes ();}
         }
 
         states: [
