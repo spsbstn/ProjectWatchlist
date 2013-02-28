@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import QtQuick 1.1
 import "..///js/Global.js" as GlobalJS
 import Cursors 1.0
