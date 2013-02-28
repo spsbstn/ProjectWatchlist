@@ -34,7 +34,7 @@ void TvShow::onShowInfoFilled()
     setNetwork(info->showInfo->value("Network"));
     setGenre(info->showInfo->value("Genres"));
     setLatestEpisode(info->showInfo->value("Latest Episode"));
-    setLatestEpisode(info->showInfo->value("Next Episode"));
+    setNextEpisode(info->showInfo->value("Next Episode"));
     setImageUrl(info->showInfo->value("Image Url"));
 
     // All data is loaded, now show can be added to QList
@@ -51,7 +51,8 @@ void TvShow::debugString(TvShow *show)
 QString TvShow::toString() const
 {
     return title + " " + QString::number(season) + " " +
-            QString::number(episode)+ " " + started + " " + status + " " + airtime + " " + network;
+            QString::number(episode)+ " " + started + " " + status + " " + airtime + " " + network
+            + " " + latestEpisode + " " + nextEpisode;
 }
 
 void TvShow::getExtraInformation()
