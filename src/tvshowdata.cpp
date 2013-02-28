@@ -233,6 +233,18 @@ QString TvShowData::getNextEp(const QString &name)
     }
 }
 
+QString TvShowData::getImageUrl(const QString &name)
+{
+    int index = findShowIndex(name);
+    if (index != -1)
+        return shows.at(index)->getImageUrl();
+    else
+    {
+        qDebug() << "ERROR when getting imageurl from Show "+ name;
+        return "ERROR when getting imageurl from Show "+ name;
+    }
+}
+
 
 // Returns Debug-String
 QString TvShowData::toString() const

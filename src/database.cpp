@@ -22,9 +22,7 @@ Database::Database(QObject *parent) :
         QDir dir;
         dir.mkpath(path);
     }
-    
-    QChar c = 'c';
-    c.digitValue()
+
     path.append(QDir::separator()).append("data.db");
     path = QDir::toNativeSeparators(path);
 

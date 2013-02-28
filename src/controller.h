@@ -43,7 +43,7 @@ public:
     Q_INVOKABLE QString getGenre(const QString& name) {return  db->data->getGenre(name);}
     Q_INVOKABLE QString getLatestEpisode(const QString& name) {return db->data->getLatestEp(name);}
     Q_INVOKABLE QString getNextEpisode(const QString& name) {return db->data->getNextEp(name);}
-   // Q_INVOKABLE QString getImageUrl() {return qi->getImageUrl();}
+    Q_INVOKABLE QString getImageUrl(const QString& name) {return db->data->getImageUrl(name);}
 
     //window functions
     Q_INVOKABLE void windowMaximize();

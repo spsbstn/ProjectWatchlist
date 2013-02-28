@@ -52,6 +52,7 @@ public:
     QString getGenre(const QString& name);
     QString getLatestEp(const QString& name);
     QString getNextEp(const QString& name);
+    QString getImageUrl(const QString& name);
 
     // Debug String
     QString toString() const;
