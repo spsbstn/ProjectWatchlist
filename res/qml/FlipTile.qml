@@ -73,10 +73,19 @@ import "..///js/WatchNow.js" as WatchNowLink
 
         else {
 
-            if(controller.getLatestEpisode(seriesName.text).substr(3,2)*1>episode*1) {
+            if(controller.getLatestEpisode(seriesName.text).substr(0,2)*1==season*1){
 
-                newEpisodes.visible=true;
+                if(controller.getLatestEpisode(seriesName.text).substr(3,2)*1>episode*1) {
 
+                    newEpisodes.visible=true;
+
+                }
+
+                else {
+
+                    newEpisodes.visible=false;
+
+                }
             }
 
             else {
@@ -84,9 +93,7 @@ import "..///js/WatchNow.js" as WatchNowLink
                 newEpisodes.visible=false;
 
             }
-
         }
-
     }
 
 //front
