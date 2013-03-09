@@ -10,6 +10,7 @@
 #include "wheelarea.h"
 #include <QApplication>
 
+
 Controller::Controller(QObject *parent) :
     QObject(parent),
     mainWidget(new QWidget()),
@@ -20,7 +21,7 @@ Controller::Controller(QObject *parent) :
     //init MsgHandler
     initMsgHandler();
 
-        db = new Database();
+    db = new Database();
 
     settings = new QSettings("Watchlist");   
     //check for colorscheme-settings
@@ -275,58 +276,12 @@ void Controller::checkForSeasonIcons(QApplication *app)
 
 }
 
-void msgHandler(QtMsgType type, const char *msg)
- {
-    QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
-    if (!QFile::exists(path)) {
-            QDir dir;
-            dir.mkpath(path);
-     }
-     path.append(QDir::separator()).append("log.txt");
-     path = QDir::toNativeSeparators(path);
-
-    QFile file(path);
-    file.open(QIODevice::WriteOnly | QIODevice::Text |QIODevice::Append ) ;
-    QTextStream out(&file);
-     switch (type) {
-     case QtDebugMsg:
-         fprintf(stderr, "Debug: %s\n", msg);
-         out << "\n>> " << msg;
-         break;
-     case QtWarningMsg:
-         fprintf(stderr, "Warning: %s\n", msg);
-         out << "\n>> " << msg;
-         break;
-     case QtCriticalMsg:
-         fprintf(stderr, "Critical: %s\n", msg);
-         out << "\n>> " << msg;
-         break;
-     case QtFatalMsg:
-         fprintf(stderr, "Fatal: %s\n", msg);
-         out << "\n>> " << msg;
-         abort();
-     }
- }
-
-
-
-
 void Controller::initMsgHandler() {
 
-    qInstallMsgHandler(msgHandler);
-    QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
-    if (!QFile::exists(path)) {
-            QDir dir;
-            dir.mkpath(path);
-     }
-     path.append(QDir::separator()).append("log.txt");
-     path = QDir::toNativeSeparators(path);
+    qInstallMsgHandler(Logger::Handler);
 
-    QFile file(path);
-    file.open(QIODevice::WriteOnly | QIODevice::Text |QIODevice::Append ) ;
-    QTextStream out(&file);
-
-    out << "\n\n\n\n" << QDateTime::currentDateTime().toString() << "\n";
+    //log timestamp
+    qDebug() << "::" << QDateTime::currentDateTime().toString("dd.MM.yyyy-hh:mm:ss").toAscii().data()  << "::";
 
 }
 

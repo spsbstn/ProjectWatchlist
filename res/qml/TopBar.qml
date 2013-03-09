@@ -27,7 +27,10 @@ Item {
             anchors.bottomMargin: 5
             anchors.rightMargin: 10
             anchors.right:parent.right
-            onReleased: Qt.quit()
+            onReleased: {
+                console.log("Terminating Watchlist with no errors.\n");
+                Qt.quit();
+            }
         }
 
         Button {

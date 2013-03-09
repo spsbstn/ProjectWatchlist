@@ -6,7 +6,8 @@ SOURCES += src/main.cpp \
     src/cursorshapearea.cpp \
     libs/NcFramelessHelper.cpp \
     src/xmlpictureloader.cpp \
-    src/quickinfo.cpp
+    src/quickinfo.cpp \
+    src/logger.cpp
 
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
@@ -24,7 +25,8 @@ HEADERS += \
     libs/NcFramelessHelper.h \
     src/xmlpictureloader.h \
     src/quickinfo.h \
-    src/wheelarea.h
+    src/wheelarea.h \
+    src/logger.h
 
 
 OTHER_FILES += \

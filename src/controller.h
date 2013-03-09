@@ -4,6 +4,8 @@
 #include <QSettings>
 #include "quickinfo.h"
 #include "database.h"
+#include "logger.h"
+
 
 class MainView;
 //class Database;
