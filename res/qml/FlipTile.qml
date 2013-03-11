@@ -131,7 +131,7 @@ front: Rectangle {
         height: 35
         width: 35
         visible:checkForNewEpisodes();
-        source: "qrc:///img/new.png"
+        source: "../..///img/"+mainWindow.colorScheme+"/new.png"
         anchors.right:parent.right
         anchors.rightMargin: 5
         anchors.bottom:parent.bottom
@@ -369,6 +369,8 @@ transform: Rotation {
     origin.x: (flipable.width-tileMargin)/2
     origin.y: flipable.height/2
     axis.x: 0; axis.y: 1; axis.z: 0
+    angle: 0.01    // the default angle
+
 }
 
 states: [

@@ -50,7 +50,7 @@ Rectangle {
     anchors.topMargin: mainWindow.topBarSize
     anchors.horizontalCenter: parent.horizontalCenter
     opacity: mainOpacity
-    color:"#00aaff"
+    color:mainWindow.tileBackground
     width:parent.width -90
     height:parent.height -100
     focus:true
@@ -598,6 +598,13 @@ Rectangle {
             onEntered: wrongShow.color="#eeeeee"
             onClicked:wrongShowInfo.opacity=1;
         }
+    }
+
+    transform: Rotation {
+
+        id: rotation
+        angle: 0.01    // the default angle
+
     }
 }
 

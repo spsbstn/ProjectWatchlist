@@ -3,8 +3,6 @@
         <file>qml/FlipTile.qml</file>
         <file>qml/main.qml</file>
         <file>qml/Scrollbar.qml</file>
-        <file>img/addIcon_Active.png</file>
-        <file>img/addIcon.png</file>
         <file>qml/AddScreen.qml</file>
         <file>img/SplashScreen.png</file>
         <file>qml/SplashScreen.qml</file>
@@ -77,6 +75,32 @@
         <file>img/blackCyan/info_Active.png</file>
         <file>img/darkGreen/info_Active.png</file>
         <file>img/darkOrange/info_Active.png</file>
-        <file>img/new.png</file>
+        <file>img/redGreyScheme.png</file>
+        <file>img/redGrey/abort_Active.png</file>
+        <file>img/redGrey/abort.png</file>
+        <file>img/redGrey/confirm_Active.png</file>
+        <file>img/redGrey/confirm.png</file>
+        <file>img/redGrey/info_Active.png</file>
+        <file>img/redGrey/info.png</file>
+        <file>img/redGrey/leftButton_Active.png</file>
+        <file>img/redGrey/leftButton.png</file>
+        <file>img/redGrey/removeIcon_Active.png</file>
+        <file>img/redGrey/removeIcon.png</file>
+        <file>img/redGrey/rightButton_Active.png</file>
+        <file>img/redGrey/rightButton.png</file>
+        <file>img/redGrey/watchnow_Active.png</file>
+        <file>img/redGrey/watchnow.png</file>
+        <file>img/blackCyan/addIcon_Active.png</file>
+        <file>img/blackCyan/addIcon.png</file>
+        <file>img/darkGreen/addIcon_Active.png</file>
+        <file>img/darkGreen/addIcon.png</file>
+        <file>img/darkOrange/addIcon_Active.png</file>
+        <file>img/darkOrange/addIcon.png</file>
+        <file>img/redGrey/addIcon_Active.png</file>
+        <file>img/redGrey/addIcon.png</file>
+        <file>img/blackCyan/new.png</file>
+        <file>img/darkGreen/new.png</file>
+        <file>img/darkOrange/new.png</file>
+        <file>img/redGrey/new.png</file>
     </qresource>
 </RCC>

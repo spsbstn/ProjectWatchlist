@@ -176,8 +176,8 @@ Rectangle {
         anchors.bottomMargin: 20
         anchors.left: leftBar.left
         anchors.leftMargin: 20
-        buttonNormal:"qrc:../..///img/addIcon.png"
-        buttonActive:"qrc:../..///img/addIcon_Active.png"
+        buttonNormal:"../..///img/"+colorScheme+"/addIcon.png"
+        buttonActive:"../..///img/"+colorScheme+"/addIcon_Active.png"
         buttonHeight: 35
         buttonWidth: 35
 
@@ -295,6 +295,13 @@ Rectangle {
             font.pixelSize: parent.width/20
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             font.family: uiFont
+
+            transform: Rotation {
+
+                id: rotation
+                angle: 0.01    // the default angle
+
+            }
         }
 
         Button {
@@ -332,7 +339,7 @@ Rectangle {
                     PropertyChanges{target:mainWindow;appBackground:"#333333"},
                     PropertyChanges {target:mainWindow;tileBackground:"#30bf6e"},
                     PropertyChanges{target:mainWindow;textColor:"#000000"},
-                    PropertyChanges{target:mainWindow;textColor2:"#00aaff"},
+                    PropertyChanges{target:mainWindow;textColor2:"#30bf6e"},
                     StateChangeScript { script:controller.changeColorScheme("#333333","darkGreen")}
                 ]
         },
@@ -342,10 +349,22 @@ Rectangle {
                  changes: [
 
                     PropertyChanges{target:mainWindow;appBackground:"#333333"},
-                    PropertyChanges {target:mainWindow;tileBackground:"#ee771c"},
+                    PropertyChanges{target:mainWindow;tileBackground:"#FF5333"},
                     PropertyChanges{target:mainWindow;textColor:"#000000"},
-                    PropertyChanges{target:mainWindow;textColor2:"#00aaff"},
+                    PropertyChanges{target:mainWindow;textColor2:"#FF5333"},
                     StateChangeScript { script:controller.changeColorScheme("#333333","darkOrange")}
+                 ]
+        },
+
+        State {
+                 when: colorScheme=="redGrey"
+                 changes: [
+
+                    PropertyChanges{target:mainWindow;appBackground:"#E2E2E2"},
+                    PropertyChanges{target:mainWindow;tileBackground:"#CC0001"},
+                    PropertyChanges{target:mainWindow;textColor:"#FFFFFF"},
+                    PropertyChanges{target:mainWindow;textColor2:"#CC0001"},
+                    StateChangeScript { script:controller.changeColorScheme("#E2E2E2","redGrey")}
                  ]
         }
     ]

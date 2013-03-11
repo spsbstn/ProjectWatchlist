@@ -74,7 +74,7 @@ Item {
 
         Button {
 
-            id:darkColorButton
+            id:greenButton
             buttonHeight:12
             buttonWidth: 12
             buttonNormal: "qrc:../..///img/darkGreenScheme.png"
@@ -87,28 +87,41 @@ Item {
 
         Button {
 
-            id: lightColorButton
+            id: cyanButton
             buttonHeight:12
             buttonWidth: 12
             buttonNormal: "qrc:../..///img/blackCyanScheme.png"
             anchors.bottom: parent.bottom
             anchors.bottomMargin:5
             anchors.rightMargin: 10
-            anchors.right:darkColorButton.left
+            anchors.right:greenButton.left
             onClicked:mainWindow.colorScheme="blackCyan"
         }
 
         Button {
 
-            id: redColorButton
+            id: orangeButton
             buttonHeight:12
             buttonWidth: 12
             buttonNormal: "qrc:../..///img/darkOrangeScheme.png"
             anchors.bottom: parent.bottom
             anchors.bottomMargin:5
             anchors.rightMargin: 10
-            anchors.right:lightColorButton.left
+            anchors.right:cyanButton.left
             onClicked:mainWindow.colorScheme="darkOrange"
+        }
+
+        Button {
+
+            id: redButton
+            buttonHeight:12
+            buttonWidth: 12
+            buttonNormal: "qrc:../..///img/redGreyScheme.png"
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin:5
+            anchors.rightMargin: 10
+            anchors.right:orangeButton.left
+            onClicked:mainWindow.colorScheme="redGrey"
         }
 
         Text {
@@ -122,7 +135,7 @@ Item {
             anchors.bottom: parent.bottom
             anchors.bottomMargin:2
             anchors.rightMargin: 10
-            anchors.right:redColorButton.left
+            anchors.right:redButton.left
         }
 
         Text {
@@ -149,7 +162,7 @@ Item {
         Text {
 
             anchors.centerIn: parent
-            text:"Watchlist 2.1.1"
+            text:"Watchlist 2.2"
             color:mainWindow.textColor2
             font.pixelSize: 16
             font.capitalization:Font.AllLowercase;

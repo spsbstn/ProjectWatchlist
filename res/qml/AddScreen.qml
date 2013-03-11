@@ -24,7 +24,7 @@ Item {
         height: parseInt(grid.height / 4.5)
         width: height*3
         opacity: 1;
-        color:"#00aaff"
+        color:mainWindow.tileBackground
 
         Text {
 
