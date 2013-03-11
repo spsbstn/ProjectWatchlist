@@ -10,7 +10,6 @@ import "..///js/WatchNow.js" as WatchNowLink
     height: width - tileMargin
 
     property bool flipped: false
-    property bool loadingCircleVisible: false
     property string currentEp;
     // random number between 5 and 10 (animation)
     property int rand: Math.floor(Math.random() * (10 - 5 + 1)) + 5;
@@ -336,7 +335,6 @@ Button {
     hoverEnabled: true
     onPressed: {
 
-        loadingCircleVisible=true;
         topBar.htmlErrorIsVisible=false;
         grid.currentIndex = index;
     }
@@ -363,17 +361,6 @@ Button {
     }
 }
 
-LoadingCircle {
-
-    id:loadingCircel
-    circleDiameter:20
-    radiusPoints: 2
-    visible: loadingCircleVisible;
-    anchors.left:parent.left
-    anchors.leftMargin: 10
-    anchors.bottom:parent.bottom
-    anchors.bottomMargin: 8
-}
  }
 
 transform: Rotation {
@@ -382,7 +369,6 @@ transform: Rotation {
     origin.x: (flipable.width-tileMargin)/2
     origin.y: flipable.height/2
     axis.x: 0; axis.y: 1; axis.z: 0
-    angle: 0.01    // the default angle
 }
 
 states: [

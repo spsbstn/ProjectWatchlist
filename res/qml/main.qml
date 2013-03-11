@@ -58,7 +58,6 @@ Rectangle {
         infoScreen.latestEpisode = controller.getLatestEpisode(showName);
         infoScreen.nextEpisode = controller.getNextEpisode(showName);
         infoScreen.mainOpacity=1;
-        grid.currentItem.loadingCircleVisible=false;
         showClickProtection.start();
 
     }
