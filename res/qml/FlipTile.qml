@@ -128,14 +128,15 @@ front: Rectangle {
     Image {
 
         id: newEpisodes
-        height: 35
-        width: 35
+        height:sourceSize.height
+        width: sourceSize.width
+        smooth:true;
         visible:checkForNewEpisodes();
         source: "../..///img/"+mainWindow.colorScheme+"/new.png"
         anchors.right:parent.right
-        anchors.rightMargin: 5
+        anchors.rightMargin: -10
         anchors.bottom:parent.bottom
-        anchors.bottomMargin: 5
+        anchors.bottomMargin: 0
 
     }
 
