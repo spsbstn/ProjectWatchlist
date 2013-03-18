@@ -134,10 +134,9 @@ front: Rectangle {
         visible:checkForNewEpisodes();
         source: "../..///img/"+mainWindow.colorScheme+"/new.png"
         anchors.right:parent.right
-        anchors.rightMargin: -10
+        anchors.rightMargin: 5
         anchors.bottom:parent.bottom
-        anchors.bottomMargin: 0
-
+        anchors.bottomMargin: 5
     }
 
     //MouseArea to flip tile
@@ -197,6 +196,7 @@ back: Rectangle {
                 controller.setSeason(seriesName.text, +1);
                 // set Episode to 1
                 controller.setEpisode(seriesName.text,(-episode+1));
+                newEpisodes.visible=checkForNewEpisodes();
             }
         }
 
@@ -214,6 +214,7 @@ back: Rectangle {
                 controller.setSeason(seriesName.text, -1);
                 // set Episode to 1
                 controller.setEpisode(seriesName.text,(-episode+1));
+                newEpisodes.visible=checkForNewEpisodes();
             }
         }
 
@@ -264,7 +265,8 @@ back: Rectangle {
             anchors.right:parent.right
             anchors.rightMargin: (episodeTxt.width-text1.width-(2*width))/2
             anchors.verticalCenter: parent.verticalCenter
-            onClicked: {controller.setEpisode(seriesName.text, +1);}
+            onClicked: {controller.setEpisode(seriesName.text, +1);
+            newEpisodes.visible=checkForNewEpisodes();}
 
         }
 
@@ -278,7 +280,8 @@ back: Rectangle {
             anchors.left:parent.left
             anchors.leftMargin: (episodeTxt.width-text1.width-(2*width))/2
             anchors.verticalCenter: parent.verticalCenter
-            onClicked: {controller.setEpisode(seriesName.text, -1);}
+            onClicked: {controller.setEpisode(seriesName.text, -1);
+            newEpisodes.visible=checkForNewEpisodes();}
         }
 
         states: [
