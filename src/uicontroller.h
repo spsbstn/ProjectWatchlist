@@ -15,7 +15,7 @@ public:
     explicit UIController(QWidget *mainWidget,QApplication *app, QObject *parent = 0);
     ~UIController();
 
-    Q_INVOKABLE void alphaBlendFrame(QString color, double alpha);
+    Q_INVOKABLE void alphaBlendFrame(const QString& color,const double &alpha);
     Q_INVOKABLE void changeColorScheme(const QString& color,const QString &schemeName);
     Q_INVOKABLE QString loadColorScheme();
 

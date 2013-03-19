@@ -62,7 +62,7 @@ void UIController::checkForFirstInit(){
 }
 
 // calculate frameColor according to backgroundColor and alpha
-void UIController::alphaBlendFrame(QString color, double alpha)
+void UIController::alphaBlendFrame(const QString &color, const double &alpha)
 {
 
     // sepearte hexString
