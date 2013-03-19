@@ -11,7 +11,6 @@ UIController::UIController(QWidget *widget,QApplication *app, QObject *parent) :
 
 UIController::~UIController()
 {
-    //  delete qi;
     delete settings;
     delete mainWidget;
 }
