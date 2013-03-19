@@ -6,43 +6,41 @@
 #include <QWidget>
 #include "cursorshapearea.h"
 #include "libs/NcFramelessHelper.h"
+#include "uicontroller.h"
 #include "database.h"
 #include "wheelarea.h"
 #include <QApplication>
 
 
-Controller::Controller(QObject *parent) :
+Controller::Controller(QApplication *app,QObject *parent) :
     QObject(parent),
     mainWidget(new QWidget()),
     qmlView(new QDeclarativeView()),
     framelessHelper(new NcFramelessHelper()),
-    layout(new QVBoxLayout)
+    layout(new QVBoxLayout),
+    uicontroller(new UIController(mainWidget,app))
 {
     //init MsgHandler
-    initMsgHandler();
+      initMsgHandler();
 
-    db = new Database();
+      db = new Database();
 
-    settings = new QSettings("Watchlist");   
-    //check for colorscheme-settings
-    checkForFirstInit();
-
-    //  Setting up Declarative View
-        // Resize Mode
+     // set Resize Mode
         qmlView->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 
-        // C++ - QML Connection
+     // C++ - QML Connection
         QDeclarativeContext *ctxt = qmlView->rootContext();
         ctxt->setContextProperty("datalist", db->data);
         ctxt->setContextProperty("controller", this);
         ctxt->setContextProperty("mainwindow", mainWidget);
+        ctxt->setContextProperty("uicontroller", uicontroller);
         qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
         qmlRegisterType<WheelArea>("WheelArea", 1, 0, "WheelArea");
 
-        // Set main qml-file
+    // Set main qml-file
         qmlView->setSource(QUrl("qrc:///qml/main.qml"));
 
-        // Minimum Size
+    // Minimum Size
         qmlView->setMinimumSize(QSize(1100,700));
 
 
@@ -55,16 +53,7 @@ Controller::Controller(QObject *parent) :
         framelessHelper->setWidgetMovable(false);
         framelessHelper->setWidgetResizable(true);
 
-    //  setup quickInfoObject
-        //qi = new QuickInfo(this);
-
-    // register quickInfo Signals and Slots
-        QObject *rootObject = dynamic_cast<QObject*>(qmlView->rootObject());
-        //QObject::connect(rootObject, SIGNAL(xmlDataRequired(QString)), db->data , SLOT());
-  //      QObject::connect(qi->xmlPicture_, SIGNAL(updateFinished()), rootObject, SLOT(updateInfo()));
-   //     QObject::connect(qi, SIGNAL(htmlErrorOccured()), rootObject, SLOT(htmlError()));
-
-        //  Set WindowMinimizeButtonHint in order to be able to minimize from taskbar
+   //  Set WindowMinimizeButtonHint in order to be able to minimize from taskbar
         mainWidget->setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::FramelessWindowHint);
 
 
@@ -77,8 +66,8 @@ Controller::~Controller()
 
     // delete everything in correct order
     delete db;
-  //  delete qi;
-    delete settings;
+
+    //  delete qi;
     delete layout;
     delete framelessHelper;
     delete qmlView;
@@ -136,51 +125,6 @@ bool Controller::alterShowName(const QString& oldName,const QString& newName)
 
 }
 
-//change colorscheme
-void Controller::changeColorScheme(const QString &color,const QString &schemeName){
-
-    // change frame color
-     mainWidget->setStyleSheet("background:'"+color+"'");
-
-     // save current scheme name and hexColor to settings
-     settings->setValue("colorScheme", schemeName);
-     settings->setValue("color",color);
-
-}
-
-//load colorScheme
-QString Controller::loadColorScheme(){
-
-    // load name und hexColor from settingsfile
-    QString schemeName = settings->value("colorScheme").toString();
-    QString color = settings->value("color").toString();
-
-    // change frame color
-    mainWidget->setStyleSheet("background:'"+color+"'");
-
-    // return name of scheme
-    return schemeName;
-
-}
-
-
-// check if app starts for the first time --> use default color scheme
-void Controller::checkForFirstInit(){
-
-    // check ich colorScheme information exists
-    if(settings->contains("colorScheme")){
-
-        return;
-
-    }
-
-    else { //create default values
-
-        settings->setValue("colorScheme", "blackCyan");
-        settings->setValue("color","#111111");
-    }
-
-}
 
 //maximize window
 void Controller::windowMaximize()
@@ -202,79 +146,6 @@ void Controller::windowHide()
     mainWidget->showMinimized();
 }
 
-// calculate frameColor according to backgroundColor and alpha
-void Controller::alphaBlendFrame(QString color, double alpha)
-{
-
-    // sepearte hexString
-    QString hexRed=color.mid(1,2);
-    QString hexGreen=color.mid(3,2);
-    QString hexBlue=color.mid(5,2);
-
-    bool ok; // useless
-
-    // convert hexStrings to decimalNumbers
-    int red=hexRed.toInt(&ok, 16);
-    int green=hexGreen.toInt(&ok, 16);
-    int blue=hexBlue.toInt(&ok, 16);
-
-    //blend black (rgba(0,0,0)) over color (A*alpha + (1-alpha)*B)
-
-    red = (1-alpha)*red+1;
-    green = (1-alpha)*green+1;
-    blue = (1-alpha)*blue+1;
-
-    //create hexString
-    QString blendedColor = QColor(red,green,blue,1 ).name();
-
-    //change frame color
-    mainWidget->setStyleSheet("background:'"+blendedColor+"'");
-
-}
-
-void Controller::checkForSeasonIcons(QApplication *app)
-
-{
-    QDateTime now = QDateTime::currentDateTime();
-
-    //check if today is newYear +-1 day
-  if(abs(now.daysTo(QDateTime(QDate(now.date().year(),01,01))))-2<0)
-
-    {
-
-    app->setWindowIcon(QIcon(":/icons/seasons/newYear.png"));
-
-    }
-
-    //check if today is christmas +- 4 days
-   if(abs(now.daysTo(QDateTime(QDate(now.date().year(),12,24))))-5<0)
-
-    {
-
-    app->setWindowIcon(QIcon(":/icons/seasons/christmas.png"));
-
-    }
-
-   //check if today is easterSunday
-    if(now.daysTo(QDateTime(QDate(2013,3,31)))==0)
-
-    {
-
-    app->setWindowIcon(QIcon(":/icons/seasons/easter.png"));
-
-    }
-
-    // check if today is Watchlist's birthday
-    if(now.daysTo(QDateTime(QDate(now.date().year(),9,13)))==0)
-
-    {
-
-    app->setWindowIcon(QIcon(":/icons/seasons/birthday.png"));
-
-    }
-
-
-}
 
 void Controller::initMsgHandler() {
 

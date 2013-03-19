@@ -18,7 +18,7 @@ Rectangle {
     property string textColor: "#484848"
     property string textColor2: "#00aaff"
     property string uiFont: frutigerLight.name
-    property string colorScheme: controller.loadColorScheme();
+    property string colorScheme: uicontroller.loadColorScheme();
     signal xmlDataRequired(string showName);
     onXmlDataRequired: updateInfo(showName);	
     focus:true
@@ -204,7 +204,7 @@ Rectangle {
         color:"#000000"
         opacity: 0;
         anchors.fill:mainWindow
-        onOpacityChanged: controller.alphaBlendFrame(appBackground,clickProtection.opacity);
+        onOpacityChanged: uicontroller.alphaBlendFrame(appBackground,clickProtection.opacity);
 
         //filter mouse events
         MouseArea {
@@ -328,7 +328,7 @@ Rectangle {
                     PropertyChanges {target:mainWindow;tileBackground:"#00AAFF"},
                     PropertyChanges {target:mainWindow;textColor:"#000000"},
                     PropertyChanges{target:mainWindow;textColor2:"#00aaff"},
-                    StateChangeScript { script:controller.changeColorScheme("#111111","blackCyan")}
+                    StateChangeScript { script:uicontroller.changeColorScheme("#111111","blackCyan")}
                 ]
         },
 
@@ -340,7 +340,7 @@ Rectangle {
                     PropertyChanges {target:mainWindow;tileBackground:"#30bf6e"},
                     PropertyChanges{target:mainWindow;textColor:"#000000"},
                     PropertyChanges{target:mainWindow;textColor2:"#30bf6e"},
-                    StateChangeScript { script:controller.changeColorScheme("#333333","darkGreen")}
+                    StateChangeScript { script:uicontroller.changeColorScheme("#333333","darkGreen")}
                 ]
         },
 
@@ -352,7 +352,7 @@ Rectangle {
                     PropertyChanges{target:mainWindow;tileBackground:"#FF5333"},
                     PropertyChanges{target:mainWindow;textColor:"#000000"},
                     PropertyChanges{target:mainWindow;textColor2:"#FF5333"},
-                    StateChangeScript { script:controller.changeColorScheme("#333333","darkOrange")}
+                    StateChangeScript { script:uicontroller.changeColorScheme("#333333","darkOrange")}
                  ]
         },
 
@@ -364,7 +364,7 @@ Rectangle {
                     PropertyChanges{target:mainWindow;tileBackground:"#CC0001"},
                     PropertyChanges{target:mainWindow;textColor:"#FFFFFF"},
                     PropertyChanges{target:mainWindow;textColor2:"#CC0001"},
-                    StateChangeScript { script:controller.changeColorScheme("#E2E2E2","redGrey")}
+                    StateChangeScript { script:uicontroller.changeColorScheme("#E2E2E2","redGrey")}
                  ]
         }
     ]
