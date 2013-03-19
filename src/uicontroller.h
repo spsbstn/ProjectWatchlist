@@ -2,15 +2,15 @@
 #define UICONTROLLER_H
 
 #include <QObject>
-#include <QApplication>
-#include <QSettings>
-#include <QWidget>
-#include <QDate>
-#include <QIcon>
+
+class QWidget;
+class QApplication;
+class QSettings;
 
 class UIController : public QObject
 {
     Q_OBJECT
+
 public:
     explicit UIController(QWidget *mainWidget,QApplication *app, QObject *parent = 0);
     ~UIController();

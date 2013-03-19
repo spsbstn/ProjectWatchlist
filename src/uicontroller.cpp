@@ -1,4 +1,9 @@
 #include "uicontroller.h"
+#include <QApplication>
+#include <QSettings>
+#include <QWidget>
+#include <QDate>
+#include <QIcon>
 
 UIController::UIController(QWidget *widget,QApplication *app, QObject *parent) :
     QObject(parent)
