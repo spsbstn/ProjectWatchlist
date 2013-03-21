@@ -313,11 +313,16 @@ void TvShowData::onDbLoaded()
     getExtraInformation();
 }
 
-
 void TvShowData::checkForNewEpisodes(TvShow *show)
 {
-    int index = findShowIndex(show->getTitle());
-    shows.at(index)->checkForNewEpisodes(show);
+    checkForNewEpisodes(show->getTitle());
+}
+
+
+void TvShowData::checkForNewEpisodes(const QString &show)
+{
+    int index = findShowIndex(show);
+    shows.at(index)->checkForNewEpisodes();
 
     // Visualize Changes
     QModelIndex modIndex = createIndex(index, 1);

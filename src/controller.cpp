@@ -162,6 +162,11 @@ void Controller::loadDB() {
     db->load();
 }
 
+void Controller::checkForNewEpisodes(const QString &title)
+{
+    db->data->checkForNewEpisodes(title);
+}
+
 
 
 

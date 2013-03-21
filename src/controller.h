@@ -30,6 +30,7 @@ public:
     Q_INVOKABLE void setSeason(const QString& name, int delta);
     Q_INVOKABLE void setEpisode(const QString& name, int delta);
     Q_INVOKABLE void loadDB();
+    Q_INVOKABLE void checkForNewEpisodes(const QString &title);
 
     //quickInfo functions
     Q_INVOKABLE QString getStarted(const QString& name) {return db->data->getStarted(name);}

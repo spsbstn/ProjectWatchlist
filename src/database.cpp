@@ -202,6 +202,7 @@ void Database::load() {
                                     qry.value(6).toString(), qry.value(7).toString(), qry.value(8).toString(),
                                     qry.value(9).toString(), qry.value(10).toString());
             // Adds show to QList
+            tv->checkForNewEpisodes();
             data->addShow(*tv);
         }
       }

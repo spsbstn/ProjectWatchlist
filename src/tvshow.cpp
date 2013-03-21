@@ -62,7 +62,7 @@ void TvShow::getExtraInformation()
 
 
 // check if there are new episodes availabe
-void TvShow::checkForNewEpisodes(TvShow *show)
+void TvShow::checkForNewEpisodes()
 {
     // check if latestEpisode is empty
     if(latestEpisode.isEmpty())
@@ -82,7 +82,7 @@ void TvShow::checkForNewEpisodes(TvShow *show)
     }
 
     // Check if there are new Episodes:
-    if(_season < season)
+    if(_season > season)
     {
         newEpisodeAvailable = true;
         return;

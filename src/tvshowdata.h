@@ -61,10 +61,13 @@ public:
     // Load extra Information for every show
     void getExtraInformation();
 
+    void checkForNewEpisodes(const QString &show);
+
     int rowCount (const QModelIndex &parent = QModelIndex()) const;
     QVariant data (const QModelIndex &index, int role = Qt::DisplayRole) const;
 
     QList<TvShow*> shows;
+
 
 public slots:
     void onDbLoaded();
