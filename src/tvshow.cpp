@@ -5,7 +5,7 @@
 
 // Constructor
 TvShow::TvShow(QString name, int seas, int ep)
-    : title(name), season(seas), episode(ep), info(new QuickInfo(this))
+    : title(name), season(seas), episode(ep), info(new QuickInfo(this)), newEpisodeAvailable(false)
 {
     // Create Connection to API
     info->createConnection(title);
@@ -15,7 +15,7 @@ TvShow::TvShow(QString name, int seas, int ep)
 TvShow::TvShow(QString name, int seas, int ep, QString genre, QString started, QString status, QString airtime,
                QString network, QString latestEp, QString nextEp, QString imageUrl)
     : title(name), season(seas), episode(ep), genre(genre), started(started), status(status), airtime(airtime), network(network),
-      latestEpisode(latestEp), nextEpisode(nextEp), imageUrl(imageUrl) ,info(new QuickInfo(this))
+      latestEpisode(latestEp), nextEpisode(nextEp), imageUrl(imageUrl) ,info(new QuickInfo(this)), newEpisodeAvailable(false)
 {
 }
 
@@ -58,4 +58,47 @@ QString TvShow::toString() const
 void TvShow::getExtraInformation()
 {
     info->createConnection(title);
+}
+
+
+// check if there are new episodes availabe
+void TvShow::checkForNewEpisodes(TvShow *show)
+{
+    // check if latestEpisode is empty
+    if(latestEpisode.isEmpty())
+    {
+        qDebug() << "Error when checking for new Episodes: String is empty";
+        return;
+    }
+
+    // extract Ints from latestEpisode-String
+    int _season  = latestEpisode.left(2).toInt();
+    int _episode = latestEpisode.mid(3,2).toInt();
+
+    if(_season == 0 || _episode == 0) // toInt returns 0 if conversion failed
+    {
+        qDebug() << "Error when checking for new Episodes: String could not be converted to Int";
+        return;
+    }
+
+    // Check if there are new Episodes:
+    if(_season < season)
+    {
+        newEpisodeAvailable = true;
+        return;
+    }
+
+    else {
+
+        if(_season == season)
+        {
+            newEpisodeAvailable = (_episode > episode);
+            return;
+        }
+        else
+        {
+            newEpisodeAvailable = false;
+            return;
+        }
+   }
 }

@@ -11,7 +11,10 @@ TvShowData::TvShowData(QObject *parent)
     roles[TitleRole]   = "title";
     roles[SeasonRole]  = "season";
     roles[EpisodeRole] = "episode";
+    roles[NewEpisodeAvailableRole] = "newEpisodeAvailable";
     setRoleNames(roles);
+
+    QObject::connect(this, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(checkForNewEpisodes(TvShow* show)));
 }
 
 TvShowData::~TvShowData()
@@ -40,9 +43,6 @@ int TvShowData::addShow(TvShow& show)
         beginInsertRows(QModelIndex(), rowCount(), rowCount());
         shows.append(&show);
         endInsertRows();
-        QModelIndex topleft = createIndex(1, 1);
-        QModelIndex bottomright = createIndex(shows.size(),1);
-        emit dataChanged(topleft, bottomright);
     }
 
     return index;
@@ -298,6 +298,9 @@ QVariant TvShowData::data(const QModelIndex &index, int role) const
    case EpisodeRole:
        return show.getEpisode();
 
+   case NewEpisodeAvailableRole:
+       return show.getNewEpisodesAvailable();
+
    default:
        return QVariant();
    }
@@ -308,4 +311,16 @@ QVariant TvShowData::data(const QModelIndex &index, int role) const
 void TvShowData::onDbLoaded()
 {
     getExtraInformation();
+}
+
+
+void TvShowData::checkForNewEpisodes(TvShow *show)
+{
+    int index = findShowIndex(show->getTitle());
+
+    shows.at(index)->checkForNewEpisodes(show);
+
+    // Visualize Changes
+    QModelIndex modIndex = createIndex(index, 1);
+    emit dataChanged(modIndex, modIndex);
 }

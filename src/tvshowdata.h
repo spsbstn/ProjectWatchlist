@@ -16,7 +16,8 @@ public:
     {
         TitleRole = Qt::UserRole +1,
         SeasonRole,
-        EpisodeRole
+        EpisodeRole,
+        NewEpisodeAvailableRole
     };
 
     TvShowData(QObject* parent = 0);
@@ -67,6 +68,8 @@ public:
 
 public slots:
     void onDbLoaded();
+    void checkForNewEpisodes(TvShow* show);
+
 signals:
     void allDataLoaded(TvShow* show);
 

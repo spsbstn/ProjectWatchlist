@@ -13,14 +13,16 @@ import "..///js/WatchNow.js" as WatchNowLink
     property string currentEp;
     // random number between 5 and 10 (animation)
     property int rand: Math.floor(Math.random() * (10 - 5 + 1)) + 5;
-
+/*
     Connections {
 
         target:datalist
-        onAllDataLoaded: newEpisodes.visible=checkForNewEpisodes();
-
+        onAllDataLoaded: {
+            console.log("signal emitted")
+            newEpisodes.visible=checkForNewEpisodes();
+            }
     }
-
+*/
     //addAnimation
     GridView.onAdd:
 
@@ -65,7 +67,7 @@ import "..///js/WatchNow.js" as WatchNowLink
 
             PropertyAction { target: flipable; property: "GridView.delayRemove"; value: false }
     }
-
+/*
     //check if new Episodes are available
     function checkForNewEpisodes () {
 
@@ -100,7 +102,7 @@ import "..///js/WatchNow.js" as WatchNowLink
             }
         }
     }
-
+*/
 //front
 front: Rectangle {
 
@@ -131,7 +133,7 @@ front: Rectangle {
         height:sourceSize.height
         width: sourceSize.width
         smooth:true;
-        visible:checkForNewEpisodes();
+        visible: newEpisodeAvailable;
         source: "../..///img/"+mainWindow.colorScheme+"/new.png"
         anchors.right:parent.right
         anchors.rightMargin: 5

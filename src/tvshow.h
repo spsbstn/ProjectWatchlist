@@ -34,6 +34,7 @@ public:
     void setLatestEpisode(const QString& latestEp) { latestEpisode = latestEp; }
     void setNextEpisode(const QString& nextEp) { nextEpisode = nextEp; }
     void setImageUrl(const QString& imageUrl) { this->imageUrl = imageUrl;}
+    void setNewEpisodesAvailable(const bool newEp) { newEpisodeAvailable = newEp; }
 
     // getter-functions
     QString getTitle() const { return title; }
@@ -47,6 +48,7 @@ public:
     QString getLatestEpisode() const { return latestEpisode;}
     QString getNextEpisode() const { return nextEpisode;}
     QString getImageUrl() const { return imageUrl;}
+    bool    getNewEpisodesAvailable() const { return newEpisodeAvailable;}
 
     // Return string for printing TvShow to console
     QString toString() const;
@@ -54,13 +56,13 @@ public:
     // Load extra information for show
     void getExtraInformation();
 
-
     QuickInfo* info;
 
 public slots:
     // Fills API-information into TvShow - Variables
     void onShowInfoFilled();
     void debugString(TvShow* show);
+    void checkForNewEpisodes(TvShow* show);
 
 signals:
     // Signals, that Show can now be inserted to QList
@@ -79,6 +81,7 @@ private:
     QString latestEpisode;
     QString nextEpisode;
     QString imageUrl;
+    bool    newEpisodeAvailable;
 
     //prevent copy-constructors:
     TvShow(const TvShow&);
