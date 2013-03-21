@@ -67,7 +67,8 @@ void TvShow::checkForNewEpisodes()
     // check if latestEpisode is empty
     if(latestEpisode.isEmpty())
     {
-        qDebug() << "Error when checking for new Episodes: String is empty";
+        qDebug() << "Error when checking for new Episodes: String is empty\n"
+                    "Show was: "+title;
         return;
     }
 

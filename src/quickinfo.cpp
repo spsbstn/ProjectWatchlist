@@ -104,6 +104,14 @@ void QuickInfo::finishedSlot(QNetworkReply* reply)
 
         }
 
+        // Check if API showed server-error-message
+        if(showInfo->value("Show ID").isEmpty() || showInfo->value("Show ID").isNull())
+        {
+            qDebug() << "Error when connecting to TvRage-API: "+string;
+            reply->deleteLater();
+            return;
+        }
+
         //load picture (showId of hashmap)
         xmlPicture_->createConnection(showInfo->value("Show ID"));
 
