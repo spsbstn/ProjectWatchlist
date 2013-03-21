@@ -65,6 +65,10 @@ Database::Database(QObject *parent) :
 Database::~Database()
 {
     QSqlQuery qry;
+
+    // checks if database was renamed at some point and renames it back to data
+    // renaming happens when watchlist is started with an old database-version
+
     if(currTable != "data")
     {
         qry.prepare("ALTER TABLE "+currTable+" RENAME TO data");
@@ -78,6 +82,7 @@ Database::~Database()
     }
 }
 
+// Adds Show to Database. This method is only called when all Information is already loaded
 void Database::addShow(TvShow &show) {
 
     QSqlQuery qry;
@@ -102,6 +107,8 @@ void Database::addShow(TvShow &show) {
 
 }
 
+
+// Delete show from Database
 void Database::removeShow(QString name) {
 
     QSqlQuery qry;
@@ -183,22 +190,26 @@ void Database::load() {
     QSqlQuery qry;
 
     qry.prepare( "SELECT * FROM "+currTable+" ORDER BY name" );
-      if( !qry.exec() )
+    if( !qry.exec() )
         qDebug() << qry.lastError();
-      else
-      {
+    else
+    {
         for( int r=0; qry.next(); r++ ) {
 
+            // Show gets all information out of Database, no API-Information is retrieved
             TvShow* tv = new TvShow(qry.value(0).toString(), qry.value(1).toInt(0), qry.value(2).toInt(0),
                                     qry.value(3).toString(), qry.value(4).toString(), qry.value(5).toString(),
                                     qry.value(6).toString(), qry.value(7).toString(), qry.value(8).toString(),
                                     qry.value(9).toString(), qry.value(10).toString());
-
+            // Adds show to QList
             data->addShow(*tv);
         }
       }
+
+      // Database is Loaded, check for API-Information now
       emit dbLoaded();
 }
+
 
 // Returns a string that contains the name of every column in the table
 QString Database::checkTableStructure(QSqlQuery &qry, const QString &tablename)
@@ -214,8 +225,11 @@ QString Database::checkTableStructure(QSqlQuery &qry, const QString &tablename)
     }
     else
     {
+        // Read result into String
         while (qry.next())
+        {
             tableStructure+=qry.value(1).toString()+" ";
+        }
 
         qry.finish();
 
@@ -227,14 +241,14 @@ QString Database::checkTableStructure(QSqlQuery &qry, const QString &tablename)
 // Adds missing columns to old databases
 bool Database::checkForOldDatabase(QSqlQuery &qry, const QString& tableStructure)
 {
-    //qDebug() << tableStructure;
-
     if(!tableStructure.contains("imageurl"))
     {
         qDebug() << "Old Database! Converting to new one";
 
-        //get new names for tables
+        // Get new names for tables
         getNewTableNames();
+
+        // Adds a new Table to Database
 
         qry.prepare("CREATE TABLE IF NOT EXISTS "+currTable+" (name VARCHAR(30) UNIQUE PRIMARY KEY, season INTEGER, episode INTEGER, "
                     "genre VARCHAR(30), started DATE, status VARCHAR(30), airtime VARCHAR(35), network VARCHAR(30), "
@@ -246,6 +260,9 @@ bool Database::checkForOldDatabase(QSqlQuery &qry, const QString& tableStructure
             return false;
         }
 
+
+        // Insert all columns from old table into new one
+
         qry.prepare("INSERT INTO "+currTable+" (name, season, episode, genre) SELECT name, season, episode, genre FROM "+oldTable);
         if(!qry.exec())
         {
@@ -253,6 +270,9 @@ bool Database::checkForOldDatabase(QSqlQuery &qry, const QString& tableStructure
             qDebug() << qry.lastError();
             return false;
         }
+
+
+        // Delete old table
 
         qry.prepare("DROP TABLE "+oldTable);
         if(!qry.exec())
@@ -264,9 +284,12 @@ bool Database::checkForOldDatabase(QSqlQuery &qry, const QString& tableStructure
         else
             return true;
     }
+
+    // database has right form
     else
         return true;
 }
+
 
 // Fill in Show in QList
 void Database::onAllDataLoaded(TvShow* show)
@@ -274,6 +297,8 @@ void Database::onAllDataLoaded(TvShow* show)
     updateShow(*show);
 }
 
+
+// Renames Tables in order to copy and then delete old table
 void Database::getNewTableNames()
 {
     oldTable = currTable;

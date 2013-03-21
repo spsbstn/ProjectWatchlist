@@ -303,6 +303,8 @@ QVariant TvShowData::data(const QModelIndex &index, int role) const
    }
 }
 
+
+// When Database is loaded, API-Information is retrieved/updated
 void TvShowData::onDbLoaded()
 {
     getExtraInformation();
