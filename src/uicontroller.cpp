@@ -107,6 +107,7 @@ void UIController::checkForSeasonIcons(QApplication *app)
     {
 
     app->setWindowIcon(QIcon(":/icons/seasons/newYear.png"));
+    return;
 
     }
 
@@ -116,6 +117,7 @@ void UIController::checkForSeasonIcons(QApplication *app)
     {
 
     app->setWindowIcon(QIcon(":/icons/seasons/christmas.png"));
+    return;
 
     }
 
@@ -125,6 +127,7 @@ void UIController::checkForSeasonIcons(QApplication *app)
     {
 
     app->setWindowIcon(QIcon(":/icons/seasons/easter.png"));
+    return;
 
     }
 
@@ -134,6 +137,7 @@ void UIController::checkForSeasonIcons(QApplication *app)
     {
 
     app->setWindowIcon(QIcon(":/icons/seasons/birthday.png"));
+    return;
 
     }
 
