@@ -14,29 +14,26 @@ int main(int argc, char *argv[])
     QApplication::setOrganizationName("cloudsunderneath");
     QApplication::setOrganizationDomain("cloudsunderneath.com");
 
-    // switch to different graphicSystem for better performance
+    // switch to different graphicsSystem for better performance
     QApplication::setGraphicsSystem(QLatin1String("raster"));
 
     //init app
     QApplication app(argc, argv);
 
     //init controller
-    Controller *ctrl = new Controller(&app);
+    Controller ctrl(&app);
 
     FvUpdater::sharedUpdater()->SetFeedURL("https://dl.dropbox.com/u/12650902/Watchlist/Appcast.xml");
     FvUpdater::sharedUpdater()->CheckForUpdatesSilent();
 
     // connect quit signal
-    QObject::connect((QObject*)ctrl->qmlView->engine(), SIGNAL(quit()), &app, SLOT(quit()));
+    QObject::connect((QObject*)ctrl.qmlView->engine(), SIGNAL(quit()), &app, SLOT(quit()));
 
     //maximize Window
-    ctrl->windowMaximize();
+    ctrl.windowMaximize();
 
     //show Window
-    ctrl->mainWidget->show();
-
-    //ctrl.checkForSeasonIcons(&app);
-
+    ctrl.mainWidget->show();
 
     return app.exec();
 }
