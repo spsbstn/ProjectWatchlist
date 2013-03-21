@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import "..///js/WatchNow.js" as WatchNowLink
+import "..///js/Global.js" as GlobalJS
 import Cursors 1.0
 
 Rectangle {
@@ -488,7 +489,7 @@ Rectangle {
                     anchors.leftMargin: 20
                     buttonNormal: "qrc:../..///img/watchnow.png"
                     buttonActive: "qrc:../..///img/watchnow_Active.png"
-                    onClicked:Qt.openUrlExternally(WatchNowLink.getLink(showName));
+                    onClicked:Qt.openUrlExternally(WatchNowLink.getLink(showName,GlobalJS.hoster));
                 }
             }
         }

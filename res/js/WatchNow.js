@@ -1,10 +1,20 @@
 var link;
 
-function getLink(name) {
+function getLink(name,hoster) {
 
-            link="";
+    link="";
+
+    if(hoster=="kinox") {
+
             link = "http://kinox.to/Search.html?q="
-            link += name.replace(/[^A-Za-z\s\']/g, "").trim().split(' ').join('+');
-            return link;
 
+}
+    if(hoster=="tvlinkseu") {
+
+        link = "http://www.tv-links.eu/_search/?s="
+
+    }
+
+    link += name.replace(/[^A-Za-z\s\']/g, "").trim().split(' ').join('+');
+    return link;
 }

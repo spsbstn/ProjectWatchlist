@@ -43,6 +43,23 @@ Rectangle {
                          showAddScreen.start();
                          showClickProtection.start();
         }
+
+                      if ( (event.key === Qt.Key_W) && event.modifiers === Qt.ControlModifier) {
+
+
+            if(GlobalJS.hoster==="kinox") {
+
+                GlobalJS.hoster="tvlinkseu";
+
+            }
+
+            else {
+
+                GlobalJS.hoster="kinox";
+
+            }
+                   console.log("WatchNowhoster changed to "+ GlobalJS.hoster);
+}
     }
 
     function updateInfo(showName) {
