@@ -28,15 +28,16 @@ void Logger::Handler(QtMsgType type, const char *msg)
     QFile debuglog(path);
 
     //if logfilesize is > 500kb, clear logfile, else append new log
-    if(debuglog.size() > 512000){
+   if(debuglog.size() > 512000){
 
-        Q_ASSERT(debuglog.open(QIODevice::WriteOnly | QIODevice::Text));
+       debuglog.open(QIODevice::WriteOnly | QIODevice::Text);
 
     }
 
     else {
 
-        Q_ASSERT(debuglog.open(QIODevice::WriteOnly | QIODevice::Text |QIODevice::Append ));
+
+       debuglog.open(QIODevice::WriteOnly | QIODevice::Text |QIODevice::Append );
 
     }
 
