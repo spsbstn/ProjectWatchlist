@@ -362,7 +362,7 @@ Button {
     hoverEnabled: true
     onPressed: {
 
-        Qt.openUrlExternally(WatchNowLink.getLink(title));
+        Qt.openUrlExternally(WatchNowLink.getLink(title,GlobalJS.hoster));
 
     }
 }
