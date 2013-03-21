@@ -20,9 +20,11 @@ Controller::Controller(QApplication *app,QObject *parent) :
     layout(new QVBoxLayout),
     uicontroller(new UIController(mainWidget,app))
 {
-    //init MsgHandler
-      initMsgHandler();
 
+#ifdef QT_NO_DEBUG
+    //init MsgHandler if debugMode is off
+      initMsgHandler();
+#endif
       db = new Database();
 
      // set Resize Mode
