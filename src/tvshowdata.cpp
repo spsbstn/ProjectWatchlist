@@ -14,7 +14,7 @@ TvShowData::TvShowData(QObject *parent)
     roles[NewEpisodeAvailableRole] = "newEpisodeAvailable";
     setRoleNames(roles);
 
-    QObject::connect(this, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(checkForNewEpisodes(TvShow* show)));
+    QObject::connect(this, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(checkForNewEpisodes(TvShow*)));
 }
 
 TvShowData::~TvShowData()
@@ -317,7 +317,6 @@ void TvShowData::onDbLoaded()
 void TvShowData::checkForNewEpisodes(TvShow *show)
 {
     int index = findShowIndex(show->getTitle());
-
     shows.at(index)->checkForNewEpisodes(show);
 
     // Visualize Changes
