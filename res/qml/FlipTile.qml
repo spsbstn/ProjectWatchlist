@@ -317,7 +317,7 @@ Button {
     anchors.bottomMargin: 10
     anchors.rightMargin: 5
     hoverEnabled: true
-    onPressed: {
+    onReleased: {
 
         Qt.openUrlExternally(WatchNowLink.getLink(title,GlobalJS.hoster));
 
