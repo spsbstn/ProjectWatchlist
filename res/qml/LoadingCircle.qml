@@ -7,6 +7,7 @@ Item {
     property int radiusPoints: 4
     property int circleDiameter:50
     property string colorPoints: 'white'
+    property string dotColor: 'black'
     property int spinningDuration:3000;
     property real t;
 
@@ -76,7 +77,7 @@ Item {
 
         height: radiusPoints
         radius: 10
-        color: "black"
+        color: dotColor
 
         x: parent.width / 2 + parent.width / 3 * Math.sin((t+0.4) * Math.PI * 2) - width / 2.;
         y: parent.height / 2 + parent.height / 3 * Math.cos((t+0.4) * Math.PI * 2) - height / 2.;

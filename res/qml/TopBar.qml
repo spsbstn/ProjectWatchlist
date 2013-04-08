@@ -162,13 +162,29 @@ Item {
         Text {
 
             anchors.centerIn: parent
+            id:versionInfoText
             text:"Watchlist 2.2"
             color:mainWindow.textColor2
             font.pixelSize: 16
             font.capitalization:Font.AllLowercase;
             font.family: mainWindow.uiFont
         }
+
+        LoadingCircle {
+
+            anchors.bottom:versionInfoText.bottom
+            anchors.left: versionInfoText.right
+            anchors.leftMargin: 5
+            radiusPoints: 2
+            colorPoints: mainWindow.tileBackground
+            dotColor: mainWindow.tileBackground
+            circleDiameter: versionInfo.height/2-5
+
+
+        }
     }
+
+
 
     Rectangle {
 
