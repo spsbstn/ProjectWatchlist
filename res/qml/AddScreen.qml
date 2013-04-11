@@ -10,10 +10,10 @@ Item {
 
         if(nameInput.text != "Name" && nameInput.text != "") {
 
-                    controller.add(nameInput.text.toLowerCase(),
-                    addScreen.opacity=0,
-                    removeClickProtection.start());
-                    grid.positionViewAtEnd();
+                    controller.add(nameInput.text.toLowerCase());
+                    nameInput.enabled=false;
+                    nameInput.color="grey";
+                    addCircle.visible=true;
            }
         }
 
@@ -48,6 +48,17 @@ Item {
                  width: parent.width-50
                  height: parent.width/11
                  color: "#ffffff"
+
+            LoadingCircle
+            {
+                id:addCircle
+                anchors.right: parent.right
+                anchors.bottom:parent.bottom
+                circleDiameter: parent.height
+                radiusPoints: 3
+                visible: false;
+                colorPoints: mainWindow.tileBackground
+            }
 
             TextInput {
 

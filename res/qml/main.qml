@@ -64,7 +64,12 @@ Rectangle {
 
     function networkUpdateFinished() {
 
+        console.log("uh");
+
         topBar.busyIndicatorVisible=false;
+        addScreen.opacity=0;
+        removeClickProtection.start();
+        grid.positionViewAtEnd();
 
     }
 
