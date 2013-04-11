@@ -29,6 +29,7 @@ public slots:
 signals:
     void showInfoFilled();
     void htmlErrorOccured();
+    void apiErrorOccured();
 };
 
 
