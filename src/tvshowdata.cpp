@@ -7,6 +7,7 @@
 TvShowData::TvShowData(QObject *parent)
     : QAbstractListModel(parent)
 {
+    showsFullyLoaded=0;
     QHash<int, QByteArray> roles;
     roles[TitleRole]   = "title";
     roles[SeasonRole]  = "season";
@@ -15,6 +16,7 @@ TvShowData::TvShowData(QObject *parent)
     setRoleNames(roles);
 
     QObject::connect(this, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(checkForNewEpisodes(TvShow*)));
+    QObject::connect(this, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(updateLoadedCount(TvShow*)));
 }
 
 TvShowData::~TvShowData()
@@ -316,6 +318,22 @@ void TvShowData::onDbLoaded()
 void TvShowData::checkForNewEpisodes(TvShow *show)
 {
     checkForNewEpisodes(show->getTitle());
+}
+
+void TvShowData::updateLoadedCount(TvShow* show)
+{
+    if(++showsFullyLoaded == shows.size())
+    {
+        emit everyShowLoaded();
+        qDebug() << "All Shows loaded";
+        qDebug() << showsFullyLoaded;
+        qDebug() << shows.size();
+    }
+    else
+    {
+        qDebug() << showsFullyLoaded;
+        qDebug() << shows.size();
+    }
 }
 
 

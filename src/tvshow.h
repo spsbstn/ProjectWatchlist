@@ -54,8 +54,6 @@ public:
     QString getNextEpisode() const { return nextEpisode;}
     QString getImageUrl() const { return imageUrl;}
     bool    getNewEpisodesAvailable() const { return newEpisodeAvailable;}
-    static int getInstances()  { return INSTANCES; }
-    static int getShowsFullyLoaded() { return SHOWS_FULLY_LOADED; }
 
     // Return string for printing TvShow to console
     QString toString() const;
@@ -64,21 +62,19 @@ public:
     void getExtraInformation();
 
     QuickInfo* info;
-    static int SHOWS_FULLY_LOADED;
-    static int INSTANCES;
 
 public slots:
     // Fills API-information into TvShow - Variables
     void onShowInfoFilled();
     void debugString(TvShow* show);
     void checkForNewEpisodes();
-    void onEveryShowLoaded();
+
+
+    //void onEveryShowLoaded();
 
 signals:
     // Signals, that Show can now be inserted to QList
     void allDataLoaded(TvShow*);
-    // All TvShows are loaded, all API-Connections closed
-    void everyShowLoaded();
 
 
 private:

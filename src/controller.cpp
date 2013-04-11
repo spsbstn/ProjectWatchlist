@@ -57,8 +57,6 @@ Controller::Controller(QApplication *app,QObject *parent) :
 
    //  Set WindowMinimizeButtonHint in order to be able to minimize from taskbar
         mainWidget->setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::FramelessWindowHint);
-
-
 }
 
 Controller::~Controller()

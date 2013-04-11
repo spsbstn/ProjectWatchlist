@@ -7,8 +7,6 @@
 TvShow::TvShow(QString name, int seas, int ep)
     : title(name), season(seas), episode(ep), info(new QuickInfo(this)), newEpisodeAvailable(false)
 {
-    QObject::connect(this, SIGNAL(everyShowLoaded()), this, SLOT(onEveryShowLoaded()));
-    INSTANCES++;
     // Create Connection to API
     info->createConnection(title);
 }
@@ -19,20 +17,12 @@ TvShow::TvShow(QString name, int seas, int ep, QString genre, QString started, Q
     : title(name), season(seas), episode(ep), genre(genre), started(started), status(status), airtime(airtime), network(network),
       latestEpisode(latestEp), nextEpisode(nextEp), imageUrl(imageUrl) ,info(new QuickInfo(this)), newEpisodeAvailable(false)
 {
-    QObject::connect(this, SIGNAL(everyShowLoaded()), this, SLOT(onEveryShowLoaded()));
-    INSTANCES++;
 }
 
 TvShow::~TvShow()
 {
-    INSTANCES--;
-    SHOWS_FULLY_LOADED--;
     delete info;
 }
-
-int TvShow::INSTANCES = 0;
-int TvShow::SHOWS_FULLY_LOADED = 0;
-
 
 
 // when API-information is loaded, values are extracted
@@ -49,13 +39,6 @@ void TvShow::onShowInfoFilled()
 
     // All data is loaded, now show can be added to QList
     emit allDataLoaded(this);
-
-    // Check if all shows have been fully loaded
-    if (++SHOWS_FULLY_LOADED == INSTANCES)
-    {
-        emit everyShowLoaded();
-    }
-
 }
 
 void TvShow::debugString(TvShow *show)
@@ -119,10 +102,4 @@ void TvShow::checkForNewEpisodes()
             return;
         }
     }
-}
-
-void TvShow::onEveryShowLoaded()
-{
-    qDebug() << "Hallo";
-    qDebug() << TvShow::getShowsFullyLoaded();
 }

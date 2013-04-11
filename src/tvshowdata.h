@@ -59,6 +59,9 @@ public:
     QString getNextEp(const QString& name);
     QString getImageUrl(const QString& name);
 
+    // How Many Shows have been completely loaded?
+    int getShowsFullyLoaded() const { return showsFullyLoaded; }
+
     // Debug String
     QString toString() const;
 
@@ -70,19 +73,23 @@ public:
     int rowCount (const QModelIndex &parent = QModelIndex()) const;
     QVariant data (const QModelIndex &index, int role = Qt::DisplayRole) const;
 
+
     QList<TvShow*> shows;
 
 
 public slots:
     void onDbLoaded();
     void checkForNewEpisodes(TvShow* show);
+    void updateLoadedCount(TvShow *show);
 
 signals:
     void allDataLoaded(TvShow* show);
+    void everyShowLoaded();
 
 private:
     TvShowData(const TvShowData&);
     TvShowData& operator= (const TvShowData&);
+    int showsFullyLoaded;
     // returns index of given show, -1 if not present
     //int findShowIndex(const TvShow& show);
 };
