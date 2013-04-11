@@ -55,6 +55,10 @@ Controller::Controller(QApplication *app,QObject *parent) :
         framelessHelper->setWidgetMovable(false);
         framelessHelper->setWidgetResizable(true);
 
+        QObject *rootObject = dynamic_cast<QObject*>(qmlView->rootObject());
+        QObject::connect(db->data, SIGNAL(everyShowLoaded()), rootObject, SLOT(networkUpdateFinished()));
+
+
    //  Set WindowMinimizeButtonHint in order to be able to minimize from taskbar
         mainWidget->setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::FramelessWindowHint);
 }

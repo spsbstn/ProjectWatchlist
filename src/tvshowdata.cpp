@@ -325,15 +325,9 @@ void TvShowData::updateLoadedCount(TvShow* show)
     if(++showsFullyLoaded == shows.size())
     {
         emit everyShowLoaded();
-        qDebug() << "All Shows loaded";
-        qDebug() << showsFullyLoaded;
-        qDebug() << shows.size();
+        qDebug() << "Network Update finished without errors.";
     }
-    else
-    {
-        qDebug() << showsFullyLoaded;
-        qDebug() << shows.size();
-    }
+
 }
 
 

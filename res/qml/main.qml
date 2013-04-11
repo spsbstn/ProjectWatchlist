@@ -62,6 +62,12 @@ Rectangle {
 }
     }
 
+    function networkUpdateFinished() {
+
+        topBar.busyIndicatorVisible=false;
+
+    }
+
     function updateInfo(showName) {
 
 
@@ -79,6 +85,7 @@ Rectangle {
 
     }
 
+    /* Currently Not Working */
     function htmlError() {
 
         topBar.htmlErrorIsVisible=true;

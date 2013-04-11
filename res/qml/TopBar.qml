@@ -4,6 +4,7 @@ Item {
 
     property bool isMaximized: true;
     property bool htmlErrorIsVisible: false;
+    property bool busyIndicatorVisible: true;
 
     Rectangle{
 
@@ -176,6 +177,7 @@ Item {
             anchors.left: versionInfoText.right
             anchors.leftMargin: 5
             radiusPoints: 2
+            visible: busyIndicatorVisible;
             colorPoints: mainWindow.tileBackground
             dotColor: mainWindow.tileBackground
             circleDiameter: versionInfo.height/2-5
