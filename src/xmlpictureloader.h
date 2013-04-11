@@ -8,6 +8,11 @@
 
 #include <QObject>
 
+/*
+ *  XmlPictureLoader Class for parsing xml-file downloaded from TvRage API:
+ *  Loads http://services.tvrage.com/feeds/full_show_info.php?sid=SHOW_ID and extracts ImageUrl
+ */
+
 class XmlPictureLoader : public QObject
 {
     Q_OBJECT

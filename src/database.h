@@ -5,6 +5,11 @@
 #include "tvshowdata.h"
 #include <QtSql>
 
+/*
+ * SQLITE Database which saves all TvShows to database File in local AppData-Directory.
+ * Maintained at runtime in addition to TvShowData-List.
+ */
+
 class Database : public QObject
 {
     Q_OBJECT

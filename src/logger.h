@@ -3,6 +3,10 @@
 #include <QtGui>
 #include <QMutex>
 
+/*
+ * Class for redirecting Debug-Messages to LogFile in local AppData-Directory
+ */
+
 class Logger: public QObject
 {
     Q_OBJECT

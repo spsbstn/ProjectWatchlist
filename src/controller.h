@@ -14,6 +14,10 @@ class NcFramelessHelper;
 class QApplication;
 class UIController;
 
+/*
+ * Interface Class between GUI and Data. Handles most of the User Requests regarding
+ * the underlying data model.
+ */
 
 class Controller : public QObject
 {

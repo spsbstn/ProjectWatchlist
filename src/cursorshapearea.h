@@ -3,6 +3,10 @@
 
 #include <QDeclarativeItem>
 
+/*
+ * Class for setting different CursorShapes in GUI
+ */
+
 class QsltCursorShapeArea : public QDeclarativeItem
 {
   Q_OBJECT

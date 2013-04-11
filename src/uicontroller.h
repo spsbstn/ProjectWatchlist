@@ -7,6 +7,13 @@ class QWidget;
 class QApplication;
 class QSettings;
 
+
+/*
+ * UIController handles UI changes such as
+ * - seasonal Icons
+ * - color Schemes
+ */
+
 class UIController : public QObject
 {
     Q_OBJECT

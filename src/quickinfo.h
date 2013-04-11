@@ -7,6 +7,12 @@
 #include <QMap>
 #include "xmlpictureloader.h"
 
+/*
+ * QuickInfo class connects to Tv Rage API at http://services.tvrage.com/tools/quickinfo.php?show=SHOW_TITLE
+ * and loads information into showInfo - HashMap
+ */
+
+
 class QuickInfo: public QObject
 {
      Q_OBJECT

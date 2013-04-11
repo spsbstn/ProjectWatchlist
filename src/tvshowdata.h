@@ -5,6 +5,10 @@
 #include <QAbstractListModel>
 #include "tvshow.h"
 
+/*
+ * TvShowData holds all TvShows at Runtime and implements QAbstractListModel Interface
+ * for C++ - QML Communication
+ */
 
 class TvShowData : public QAbstractListModel
 {

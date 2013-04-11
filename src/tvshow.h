@@ -8,6 +8,11 @@ class QString;
 
 #define OLD_SEASON -1
 
+/*
+ * TvShow Object which holds all relevant information of a TvShow.
+ * QuickInfo member connects to TvRage API in order to load Data such as
+ * next/latest episodes, airtime, start date, and more.
+ */
 
 class TvShow : public QObject
 {
