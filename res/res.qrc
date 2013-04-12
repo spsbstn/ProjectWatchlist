@@ -102,5 +102,6 @@
         <file>img/darkGreen/new.png</file>
         <file>img/darkOrange/new.png</file>
         <file>img/redGrey/new.png</file>
+        <file>qml/ListDelegate.qml</file>
     </qresource>
 </RCC>
