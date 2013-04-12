@@ -13,6 +13,13 @@ TvShowData::TvShowData(QObject *parent)
     roles[SeasonRole]  = "season";
     roles[EpisodeRole] = "episode";
     roles[NewEpisodeAvailableRole] = "newEpisodeAvailable";
+    roles[StartedRole] = "started";
+    roles[StatusRole]  = "status";
+    roles[AirtimeRole] = "airtime";
+    roles[NetworkRole] = "network";
+    roles[LatestEpisodeRole] = "latestEpisode";
+    roles[NextEpisodeRole]   = "nextEpisode";
+    roles[ImageUrlRole] = "imageUrl";
     setRoleNames(roles);
 
     QObject::connect(this, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(checkForNewEpisodes(TvShow*)));
@@ -304,6 +311,28 @@ QVariant TvShowData::data(const QModelIndex &index, int role) const
 
    case NewEpisodeAvailableRole:
        return show.getNewEpisodesAvailable();
+
+   case StartedRole:
+       return show.getStarted();
+
+   case StatusRole:
+       return show.getStatus();
+
+   case AirtimeRole:
+       return show.getAirtime();
+
+   case NetworkRole:
+       return show.getNetwork();
+
+   case LatestEpisodeRole:
+       return show.getLatestEpisode();
+
+   case NextEpisodeRole:
+       return show.getNextEpisode();
+
+   case ImageUrlRole:
+       return show.getImageUrl();
+
 
    default:
        return QVariant();

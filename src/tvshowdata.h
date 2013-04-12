@@ -21,7 +21,14 @@ public:
         TitleRole = Qt::UserRole +1,
         SeasonRole,
         EpisodeRole,
-        NewEpisodeAvailableRole
+        NewEpisodeAvailableRole,
+        StartedRole,
+        StatusRole,
+        AirtimeRole,
+        NetworkRole,
+        LatestEpisodeRole,
+        NextEpisodeRole,
+        ImageUrlRole
     };
 
     TvShowData(QObject* parent = 0);
