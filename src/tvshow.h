@@ -58,6 +58,9 @@ public:
     // Return string for printing TvShow to console
     QString toString() const;
 
+    // Returns the Date of the NextEpisode-String
+    QString getNextEpisodeDate() const;
+
     // Load extra information for show
     void getExtraInformation();
 
