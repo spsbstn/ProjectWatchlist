@@ -45,6 +45,7 @@ int TvShowData::addShow(TvShow& show)
         beginInsertRows(QModelIndex(), rowCount(), rowCount());
         shows.append(&show);
         endInsertRows();
+        emit newShowAdded();
     }
 
     return index;

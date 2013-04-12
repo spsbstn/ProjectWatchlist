@@ -295,7 +295,10 @@ bool Database::checkForOldDatabase(QSqlQuery &qry, const QString& tableStructure
 // Fill in Show in QList
 void Database::onAllDataLoaded(TvShow* show)
 {
+    //update Database
     updateShow(*show);
+    //Fill in QList
+    this->data->addShow(*show);
 }
 
 

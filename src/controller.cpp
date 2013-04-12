@@ -55,8 +55,12 @@ Controller::Controller(QApplication *app,QObject *parent) :
         framelessHelper->setWidgetMovable(false);
         framelessHelper->setWidgetResizable(true);
 
+    //  When every show is loaded, busyIndicator is turned off
+    //  When a new Show is Added, AddScreen is removed
         QObject *rootObject = dynamic_cast<QObject*>(qmlView->rootObject());
         QObject::connect(db->data, SIGNAL(everyShowLoaded()), rootObject, SLOT(networkUpdateFinished()));
+        QObject::connect(db->data, SIGNAL(newShowAdded()), rootObject, SLOT(newShowAdded()));
+
 
 
    //  Set WindowMinimizeButtonHint in order to be able to minimize from taskbar
@@ -83,10 +87,11 @@ void Controller::add(const QString& name)
 {
     TvShow* insert = new TvShow(name);
 
-    // insert into QList right away and update in background
-    db->data->addShow(*insert);
+    // Add to Database immediatly. The Show is then updated in background, and then updated in Database
+    // and added to TvShowData Object
     db->addShow(*insert);
-    // wait for everything to be loaded before adding to database
+
+    // Connect Signals in order to Update fully Loaded Show in Database
     QObject::connect(insert, SIGNAL(allDataLoaded(TvShow*)), db, SLOT(onAllDataLoaded(TvShow*)));
 }
 

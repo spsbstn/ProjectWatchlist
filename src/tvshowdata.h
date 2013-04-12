@@ -85,6 +85,7 @@ public slots:
 signals:
     void allDataLoaded(TvShow* show);
     void everyShowLoaded();
+    void newShowAdded();
 
 private:
     TvShowData(const TvShowData&);

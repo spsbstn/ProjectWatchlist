@@ -63,14 +63,13 @@ Rectangle {
     }
 
     function networkUpdateFinished() {
-
-        console.log("uh");
-
         topBar.busyIndicatorVisible=false;
+    }
+
+    function newShowAdded() {
         addScreen.opacity=0;
         removeClickProtection.start();
         grid.positionViewAtEnd();
-
     }
 
     function updateInfo(showName) {
