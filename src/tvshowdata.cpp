@@ -46,6 +46,7 @@ int TvShowData::addShow(TvShow& show)
         shows.append(&show);
         endInsertRows();
         emit newShowAdded();
+        checkForNewEpisodes(show.getTitle());
     }
 
     return index;
