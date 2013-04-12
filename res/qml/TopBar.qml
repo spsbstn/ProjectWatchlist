@@ -156,7 +156,7 @@ Item {
     Rectangle{
 
         id:versionInfo
-        color:mainWindow.appBackground
+        color:"transparent"
         height:parent.height
         width:160
 
