@@ -17,6 +17,11 @@ Item {
            }
         }
 
+    function activateInput() {
+        nameInput.enabled=true;
+        nameInput.color="black";
+        addCircle.visible=false;}
+
     Rectangle {
 
         id:addScreenTile

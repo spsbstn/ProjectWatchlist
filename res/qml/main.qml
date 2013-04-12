@@ -68,6 +68,7 @@ Rectangle {
 
     function newShowAdded() {
         addScreen.opacity=0;
+        addScreen.activateInput();
         removeClickProtection.start();
         grid.positionViewAtEnd();
     }
