@@ -64,8 +64,6 @@ Rectangle {
 
     function networkUpdateFinished() {
 
-        console.log("uh");
-
         topBar.busyIndicatorVisible=false;
         addScreen.opacity=0;
         removeClickProtection.start();
@@ -301,6 +299,13 @@ Rectangle {
         z:1
 
     }
+
+    Settingspanel {
+        id:settingsScreen
+        anchors.top:topBar.bottom
+        trianglePosition: topBar.settingsTogglePosition
+        anchors.left:grid.left
+        }
 
     //wrong show?
     Rectangle {

@@ -102,5 +102,18 @@
         <file>img/darkGreen/new.png</file>
         <file>img/darkOrange/new.png</file>
         <file>img/redGrey/new.png</file>
+        <file>img/triangle.png</file>
+        <file>img/blackCyan/settings.png</file>
+        <file>qml/Settingspanel.qml</file>
+        <file>qml/Settings/ThemeSettings.qml</file>
+        <file>qml/Settings/ToggleOption.qml</file>
+        <file>img/blackCyan/toggleOff.png</file>
+        <file>img/blackCyan/toggleOn.png</file>
+        <file>img/darkcyan.png</file>
+        <file>img/green.png</file>
+        <file>img/orange.png</file>
+        <file>img/redandwhite.png</file>
+        <file>qml/Settings/CoverFlow.qml</file>
+        <file>qml/Settings/CoverFlowDelegate.qml</file>
     </qresource>
 </RCC>
