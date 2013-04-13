@@ -108,6 +108,7 @@ Rectangle {
     function apiError() {
         addScreen.apiErrorVisible = true;
         addScreen.activateInput();
+        controller.remove(addScreen.getTxt());
     }
 
 

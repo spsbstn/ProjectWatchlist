@@ -23,6 +23,10 @@ Item {
         nameInput.color="black";
         addCircle.visible=false;}
 
+    function getTxt(){
+        return nameInput.text;
+    }
+
     Rectangle {
 
         id:addScreenTile
