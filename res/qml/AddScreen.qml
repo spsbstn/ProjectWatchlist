@@ -38,6 +38,7 @@ Item {
                     controller.add(nameInput.text.toLowerCase());
                     nameInput.enabled=false;
                     nameInput.color="grey";
+                    closeButton.visible=false;
                     addCircle.visible=true;
                     showInDatabaseTxt.visible=false;
                     apiErrorVisible=false;
@@ -57,7 +58,9 @@ Item {
         nameInput.enabled=true;
         nameInput.color="black";
         addCircle.visible=false;
-        nameInput.focus=true;}
+        nameInput.focus=true;
+        closeButton.visible=true;
+        }
 
     // returns User Input for series name
     function getTxt(){
