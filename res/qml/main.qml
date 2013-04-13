@@ -131,7 +131,7 @@ Rectangle {
         anchors.top: parent.top
         height: topBarSize
         width: parent.width
-        z:1
+
     }
 
     //Leftbar
@@ -149,37 +149,23 @@ Rectangle {
         anchors.topMargin: 0
     }
 
+    //ListView
     ListView {
-    id:list
-    visible: false;
-    anchors.left: leftBar.right
-    anchors.top: topBar.bottom
-    width: parent.width - leftBar.width
-    height: parent.height - topBar.height - bottomBar.height
-    model:datalist
-    spacing:20
-    delegate:
 
-        Text {
+        id:list
+        visible: false;
+        anchors.left: leftBar.right
+        anchors.top: topBar.bottom
+        width: parent.width - leftBar.width
+        height: parent.height - topBar.height - bottomBar.height - 40
+        snapMode:ListView.SnapToItem
+        model:datalist
+        spacing:40
+        clip:true
+        header: Rectangle{height:20}
+        footer: Rectangle{height:40}
+        delegate:ListDelegate{}
 
-            id: seriesName
-            color: mainWindow.textColor
-            text: title + " Episode "+episode+ " Season " + season
-            smooth:true
-            horizontalAlignment: Text.AlignHCenter
-            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-            font {
-                family:mainWindow.uiFont
-                capitalization: Font.AllUppercase;
-                pointSize: mainWindow.tileHeaderFontSize;
- }
-    Rectangle{
-        height:parent.height+10
-        width:parent.width+20
-        anchors.centerIn: parent
-        z:-1
-        color:if(index%2==0) {mainWindow.tileBackground} else {"white"}
-    }}
     }
 
 
