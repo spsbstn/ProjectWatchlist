@@ -52,8 +52,7 @@ OTHER_FILES += \
     res/fonts/Helvetica Neue UltraLight.ttf \
     res/qml/LoadingCircle.qml \
     res/js/WatchNow.js \
-    res/js/CheckForNewEpisodes.js \
-    res/qml/ListDelegate.qml
+    res/js/CheckForNewEpisodes.js
 
 TARGET = Watchlist
 VERSION = 2.1.1
