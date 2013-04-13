@@ -105,6 +105,11 @@ Rectangle {
 
     }
 
+    function apiError() {
+        addScreen.apiErrorVisible = true;
+        addScreen.activateInput();
+    }
+
 
 
     // DragArea to move window

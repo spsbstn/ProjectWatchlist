@@ -93,6 +93,7 @@ void Controller::add(const QString& name)
 
     // Connect Signals in order to Update fully Loaded Show in Database
     QObject::connect(insert, SIGNAL(allDataLoaded(TvShow*)), db, SLOT(onAllDataLoaded(TvShow*)));
+    QObject::connect(insert, SIGNAL(apiError()), qmlView->rootObject(), SLOT(apiError()));
 }
 
 // remove show

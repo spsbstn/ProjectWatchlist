@@ -4,6 +4,7 @@ Item {
 
     id:addScreen
     property int offset:5
+    property bool apiErrorVisible: false;
     anchors.fill:parent
 
     function submit() {
@@ -32,7 +33,7 @@ Item {
         color:mainWindow.tileBackground
 
         Text {
-
+              id:newShowTxt
               anchors.left: parent.left
               anchors.leftMargin: 20
               anchors.top: parent.top
@@ -43,6 +44,19 @@ Item {
               font.family: uiFont
 
                   }
+
+
+        Text {
+            x: 95
+            y: 0
+
+            visible:apiErrorVisible
+
+            text:qsTr("Connection Error: Show doesnt exist or Internet Connection is down.")
+            color:"red"
+            font.pixelSize: 16
+            font.family: mainWindow.uiFont
+        }
 
             Rectangle {
 

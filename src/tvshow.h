@@ -78,6 +78,7 @@ public slots:
 signals:
     // Signals, that Show can now be inserted to QList
     void allDataLoaded(TvShow*);
+    void apiError();
 
 
 private:
