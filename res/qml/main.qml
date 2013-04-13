@@ -105,7 +105,7 @@ Rectangle {
 
     // Display apiError, reactivate Input and remove non-existing Show from Database
     function apiError() {
-        addScreen.apiErrorVisible = true;
+        addScreen.showErrorPanel(addScreen.apiErrorVisible = true);
         addScreen.activateInput();
         controller.remove(addScreen.getTxt());
     }

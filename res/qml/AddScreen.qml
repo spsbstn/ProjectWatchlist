@@ -7,7 +7,18 @@ Item {
     property bool apiErrorVisible: false;
     anchors.fill:parent
 
+    NumberAnimation {id: showErrorPanelAnimation; target:errorPanel; property: "height"; to:40;   duration: 400}
+    NumberAnimation {id: hideErrorPanelAnimation; target:errorPanel; property: "height"; to:0;   duration: 400}
+
+    function showErrorPanel() {
+
+        showErrorPanelAnimation.start();
+    }
+
     function submit() {
+
+        //remove errorPanel
+        hideErrorPanelAnimation.start();
 
         //Check if show is in Database
         var showIsInDB = (controller.find(nameInput.text.toLowerCase()) !== -1);
@@ -25,7 +36,7 @@ Item {
         else if(showIsInDB) //display showInDatabaseTxt and activate input
         {
             apiErrorVisible=false;
-            showInDatabaseTxt.visible=true;
+            showErrorPanelAnimation.start(showInDatabaseTxt.visible=true);
             nameInput.enabled=false;
             activateInput();
         }
@@ -63,33 +74,39 @@ Item {
               font.pixelSize: parent.width/15
               font.family: uiFont
 
-                  }
+         }
 
+        Rectangle {
 
-        Text {
-            x: 95
-            y: 0
-            id:apiErrorTxt
-            visible:apiErrorVisible
+            id:errorPanel
+            color:"white"
+            anchors.top:addScreenTile.bottom
+            anchors.horizontalCenter:addScreenTile.horizontalCenter
+            height: 0
+            width:addScreenTile.width-60
 
-            text:qsTr("Connection Error: Show doesnt exist or Internet Connection is down.")
-            color:"red"
-            font.pixelSize: 16
-            font.family: mainWindow.uiFont
+            Text {
+
+                id:apiErrorTxt
+                visible:apiErrorVisible
+                anchors.centerIn: parent
+                text:qsTr("Connection Error: \nShow doesn't exist or Internet Connection is down.")
+                color:"black"
+                font.pixelSize: 16
+                font.family: mainWindow.uiFont
         }
 
         Text {
-            x: 95
-            y: 0
+
             id:showInDatabaseTxt
             visible:false;
-
+            anchors.centerIn: parent
             text:qsTr("Show is already in Database")
-            color:"red"
+            color:"black"
             font.pixelSize: 16
             font.family: mainWindow.uiFont
         }
-
+}
 
 
             Rectangle {
