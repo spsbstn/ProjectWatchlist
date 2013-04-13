@@ -46,6 +46,9 @@ public:
     Q_INVOKABLE QString getNextEpisode(const QString& name) {return db->data->getNextEp(name);}
     Q_INVOKABLE QString getImageUrl(const QString& name) {return db->data->getImageUrl(name);}
 
+
+    Q_INVOKABLE int find(const QString& name) { return db->data->findShowIndex(name); }
+
     //window functions
     Q_INVOKABLE void windowMaximize();
     Q_INVOKABLE void windowMinimize();

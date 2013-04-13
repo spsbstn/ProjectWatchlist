@@ -9,20 +9,36 @@ Item {
 
     function submit() {
 
-        if(nameInput.text != "Name" && nameInput.text != "") {
+        //Check if show is in Database
+        var showIsInDB = (controller.find(nameInput.text.toLowerCase()) !== -1);
+
+        if(nameInput.text != "Name" && nameInput.text != "" && !showIsInDB) {
 
                     controller.add(nameInput.text.toLowerCase());
                     nameInput.enabled=false;
                     nameInput.color="grey";
                     addCircle.visible=true;
+                    showInDatabaseTxt.visible=false;
+                    apiErrorVisible=false;
+
            }
+        else if(showIsInDB) //display showInDatabaseTxt and activate input
+        {
+            apiErrorVisible=false;
+            showInDatabaseTxt.visible=true;
+            nameInput.enabled=false;
+            activateInput();
         }
+
+    }
 
     function activateInput() {
         nameInput.enabled=true;
         nameInput.color="black";
-        addCircle.visible=false;}
+        addCircle.visible=false;
+        nameInput.focus=true;}
 
+    // returns User Input for series name
     function getTxt(){
         return nameInput.text;
     }
@@ -53,7 +69,7 @@ Item {
         Text {
             x: 95
             y: 0
-
+            id:apiErrorTxt
             visible:apiErrorVisible
 
             text:qsTr("Connection Error: Show doesnt exist or Internet Connection is down.")
@@ -61,6 +77,20 @@ Item {
             font.pixelSize: 16
             font.family: mainWindow.uiFont
         }
+
+        Text {
+            x: 95
+            y: 0
+            id:showInDatabaseTxt
+            visible:false;
+
+            text:qsTr("Show is already in Database")
+            color:"red"
+            font.pixelSize: 16
+            font.family: mainWindow.uiFont
+        }
+
+
 
             Rectangle {
 

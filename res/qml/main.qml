@@ -37,7 +37,10 @@ Rectangle {
 
     }
 
-    //ctrl+t shortcut
+    /* Keyboard Shortcuts: ctrl+M switches between grid and listview
+     *                     ctrl+T displays AddScreen
+     *                     ctrl+W changes Hoster for WatchNowLink
+     */
     Keys.onPressed: {
         if ( (event.key === Qt.Key_M) && event.modifiers === Qt.ControlModifier) {
 
@@ -51,22 +54,17 @@ Rectangle {
                          showClickProtection.start();
         }
 
-                      if ( (event.key === Qt.Key_W) && event.modifiers === Qt.ControlModifier) {
-
+        if ( (event.key === Qt.Key_W) && event.modifiers === Qt.ControlModifier) {
 
             if(GlobalJS.hoster==="kinox") {
-
                 GlobalJS.hoster="tvlinkseu";
-
             }
 
             else {
-
                 GlobalJS.hoster="kinox";
-
             }
-                   console.log("WatchNowhoster changed to "+ GlobalJS.hoster);
-}
+                console.log("WatchNowhoster changed to "+ GlobalJS.hoster);
+        }
     }
 
     function networkUpdateFinished() {
@@ -105,6 +103,7 @@ Rectangle {
 
     }
 
+    // Display apiError, reactivate Input and remove non-existing Show from Database
     function apiError() {
         addScreen.apiErrorVisible = true;
         addScreen.activateInput();
