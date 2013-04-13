@@ -10,6 +10,16 @@ Item {
     NumberAnimation {id: showErrorPanelAnimation; target:errorPanel; property: "height"; to:40;   duration: 400}
     NumberAnimation {id: hideErrorPanelAnimation; target:errorPanel; property: "height"; to:0;   duration: 400}
 
+    function closeAddScreen() {
+
+        addScreen.opacity=0;
+        removeClickProtection.start();
+        errorPanel.height=0;
+        apiErrorVisible=false;
+        showInDatabaseTxt.visible=false;
+
+    }
+
     function showErrorPanel() {
 
         showErrorPanelAnimation.start();
@@ -143,7 +153,7 @@ Item {
                 text: qsTr("Name")
                 font.pixelSize: height-(height/5)
                 onAccepted: submit();
-                Keys.onEscapePressed: {addScreen.opacity=0;removeClickProtection.start();}
+                Keys.onEscapePressed: {closeAddScreen();}
 
                 MouseArea {
 
@@ -165,7 +175,7 @@ Item {
                 buttonHeight:22
                 buttonWidth: 22
                 buttonNormal: "qrc:../..///img/closeScreenButton.png"
-                onClicked: {addScreen.opacity=0;removeClickProtection.start();}
+                onClicked: { closeAddScreen();}
 
             }
 
