@@ -64,7 +64,7 @@ Item {
 
     // returns User Input for series name
     function getTxt(){
-        return nameInput.text;
+        return nameInput.text.toLowerCase();
     }
 
     Rectangle {
