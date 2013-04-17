@@ -166,8 +166,16 @@ void Controller::initMsgHandler() {
 
 }
 
+
+/*
+ * Load Shows from SQLite-Database.
+ * Momentarily disconnect newShowAdded Signal, in order to prevent Grid from jumping to the right,
+ * when Watchlist is first started
+ */
 void Controller::loadDB() {
+    db->data->disconnect(SIGNAL(newShowAdded()));
     db->load();
+    QObject::connect(db->data, SIGNAL(newShowAdded()), qmlView->rootObject(), SLOT(newShowAdded()));
 }
 
 void Controller::checkForNewEpisodes(const QString &title)
