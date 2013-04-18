@@ -5,6 +5,7 @@
 
 class QuickInfo;
 class QString;
+class QDate;
 
 #define OLD_SEASON -1
 
@@ -58,8 +59,10 @@ public:
     // Return string for printing TvShow to console
     QString toString() const;
 
-    // Returns the Date of the NextEpisode-String
-    QString getNextEpisodeDate() const;
+    // Returns the Date of the NextEpisode-String in String-Form
+    QString getNextEpisodeDateString() const;
+    // Returns the Date of the NextEpisode-String in Date-Form
+    QDate getNextEpisodeDate() const;
 
     // Load extra information for show
     void getExtraInformation();

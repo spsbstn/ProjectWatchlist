@@ -20,6 +20,7 @@ TvShowData::TvShowData(QObject *parent)
     roles[LatestEpisodeRole] = "latestEpisode";
     roles[NextEpisodeRole]   = "nextEpisode";
     roles[ImageUrlRole] = "imageUrl";
+    roles[SortRole] = "sortRole";
     setRoleNames(roles);
 
     QObject::connect(this, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(checkForNewEpisodes(TvShow*)));
@@ -332,6 +333,9 @@ QVariant TvShowData::data(const QModelIndex &index, int role) const
 
    case ImageUrlRole:
        return show.getImageUrl();
+
+   case SortRole:
+       return show.getNextEpisodeDate();
 
 
    default:

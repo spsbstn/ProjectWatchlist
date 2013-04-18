@@ -154,6 +154,7 @@ Rectangle {
         anchors.topMargin: 0
     }
 
+
     //ListView
     ListView {
 
@@ -164,7 +165,7 @@ Rectangle {
         width: parent.width - leftBar.width
         height: parent.height - topBar.height - bottomBar.height - 40
         snapMode:ListView.SnapToItem
-        model:datalist
+        model:sortedFilteredData
         spacing:40
         clip:true
         header: Rectangle{height:20}
@@ -172,6 +173,7 @@ Rectangle {
         delegate:ListDelegate{}
 
     }
+
 
 
     //GridView

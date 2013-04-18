@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QRegExp>
+#include <QDate>
 
 // Constructor
 TvShow::TvShow(QString name, int seas, int ep)
@@ -59,12 +60,21 @@ QString TvShow::toString() const
 }
 
 // Extracts Date Information String from NextEpisode-Member
-QString TvShow::getNextEpisodeDate() const
+QString TvShow::getNextEpisodeDateString() const
 {
     // NextEpisode-Format: 3Letters/2digits/4digits$  [$ marks end of string]
     QRegExp rex("([A-Z|a-z]{3,3}/[0-9]{1,2}/[0-9]{4,4})$");
     rex.indexIn(nextEpisode);
     return rex.cap(1);
+}
+
+
+// Returns QDate of the next Episode of Show
+QDate TvShow::getNextEpisodeDate() const
+{
+    QString _nextEp = getNextEpisodeDateString().replace('/',"");
+    QDate nextEp = QDate::fromString(_nextEp, "MMMddyyyy");
+    return nextEp;
 }
 
 void TvShow::getExtraInformation()

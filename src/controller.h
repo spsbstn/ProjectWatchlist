@@ -13,6 +13,7 @@ class QVBoxLayout;
 class NcFramelessHelper;
 class QApplication;
 class UIController;
+class QSortFilterProxyModel;
 
 /*
  * Interface Class between GUI and Data. Handles most of the User Requests regarding
@@ -62,6 +63,7 @@ public:
     NcFramelessHelper *framelessHelper;
     QVBoxLayout *layout;
     UIController *uicontroller;
+    QSortFilterProxyModel *proxModel;
 
 };
 

@@ -28,7 +28,8 @@ public:
         NetworkRole,
         LatestEpisodeRole,
         NextEpisodeRole,
-        ImageUrlRole
+        ImageUrlRole,
+        SortRole
     };
 
     TvShowData(QObject* parent = 0);

@@ -10,6 +10,7 @@
 #include "database.h"
 #include "wheelarea.h"
 #include <QApplication>
+#include <QSortFilterProxyModel>
 
 
 Controller::Controller(QApplication *app,QObject *parent) :
@@ -18,7 +19,8 @@ Controller::Controller(QApplication *app,QObject *parent) :
     qmlView(new QDeclarativeView()),
     framelessHelper(new NcFramelessHelper()),
     layout(new QVBoxLayout),
-    uicontroller(new UIController(mainWidget,app))
+    uicontroller(new UIController(mainWidget,app)),
+    proxModel(new QSortFilterProxyModel(this))
 {
 
 #ifdef QT_NO_DEBUG
@@ -30,12 +32,20 @@ Controller::Controller(QApplication *app,QObject *parent) :
      // set Resize Mode
         qmlView->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 
+
+     // initialize proxyModel
+        proxModel->setSourceModel(db->data);
+        proxModel->setSortRole(db->data->SortRole);
+        proxModel->sort(0, Qt::AscendingOrder);
+
+
      // C++ - QML Connection
         QDeclarativeContext *ctxt = qmlView->rootContext();
         ctxt->setContextProperty("datalist", db->data);
         ctxt->setContextProperty("controller", this);
         ctxt->setContextProperty("mainwindow", mainWidget);
         ctxt->setContextProperty("uicontroller", uicontroller);
+        ctxt->setContextProperty("sortedFilteredData", proxModel);
         qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
         qmlRegisterType<WheelArea>("WheelArea", 1, 0, "WheelArea");
 
