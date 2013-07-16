@@ -32,27 +32,22 @@ HEADERS += \
 
 
 OTHER_FILES += \
-    qml/Watchlist/main.qml \
     res/qml/Scrollbar.qml \
     res/qml/main.qml \
     res/qml/FlipTile.qml \
     res/qml/AddScreen.qml \
     res/qml/SplashScreen.qml \
-    res/qml/MinusButtonDark .qml \
-    res/qml/MinusButtonDark .qml \
     icons.rc \
     res/js/Global.js \
     res/qml/RemoveScreen.qml \
     res/qml/TopBar.qml \
     res/qml/RemovePanel.qml \
     res/qml/ToolTip.qml \
-    imdb.js \
     res/qml/Button.qml \
     res/qml/InfoScreen.qml \
     res/fonts/Helvetica Neue UltraLight.ttf \
     res/qml/LoadingCircle.qml \
     res/js/WatchNow.js \
-    res/js/CheckForNewEpisodes.js \
     res/qml/ListDelegate.qml \
     res/qml/HosterSelectScreen.qml
 
