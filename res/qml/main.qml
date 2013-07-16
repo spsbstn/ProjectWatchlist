@@ -29,6 +29,9 @@ Rectangle {
     NumberAnimation {id: showClickProtection; target:clickProtection; property: "opacity"; to:0.5; duration: 800}
     NumberAnimation {id: removeClickProtection; target:clickProtection; property: "opacity"; to:0; duration: 800}
     NumberAnimation {id: showAddScreen; target:addScreen; property: "opacity"; to:1;   duration: 400}
+    NumberAnimation {id: showHosterScreen; target:hosterScreen; property: "opacity"; to:1;   duration: 400}
+
+
 
     FontLoader {
 
@@ -56,14 +59,8 @@ Rectangle {
 
         if ( (event.key === Qt.Key_W) && event.modifiers === Qt.ControlModifier) {
 
-            if(GlobalJS.hoster==="kinox") {
-                GlobalJS.hoster="tvlinkseu";
-            }
+         showHosterSelect();
 
-            else {
-                GlobalJS.hoster="kinox";
-            }
-                console.log("WatchNowhoster changed to "+ GlobalJS.hoster);
         }
     }
 
@@ -76,6 +73,13 @@ Rectangle {
         addScreen.activateInput();
         removeClickProtection.start();
         grid.positionViewAtEnd();
+    }
+
+    function showHosterSelect() {
+
+        showClickProtection.start();
+        showHosterScreen.start();
+
     }
 
     function updateInfo(showName) {
@@ -323,6 +327,11 @@ Rectangle {
 
         id:infoScreen
         mainOpacity: 0
+
+    }
+
+    HosterSelectScreen {
+        id:hosterScreen
 
     }
 

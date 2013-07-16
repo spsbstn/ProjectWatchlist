@@ -53,7 +53,8 @@ OTHER_FILES += \
     res/qml/LoadingCircle.qml \
     res/js/WatchNow.js \
     res/js/CheckForNewEpisodes.js \
-    res/qml/ListDelegate.qml
+    res/qml/ListDelegate.qml \
+    res/qml/HosterSelectScreen.qml
 
 TARGET = Watchlist
 VERSION = 2.1.1

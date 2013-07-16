@@ -125,6 +125,22 @@ Item {
             onClicked:mainWindow.colorScheme="redGrey"
         }
 
+        Button {
+
+            id: remoteButton
+            buttonHeight:12
+            buttonWidth: 12
+            buttonNormal: "qrc:../..///img/remoteIcon.png"
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin:5
+            anchors.rightMargin: 11
+            anchors.right:redButton.left
+            onClicked:{
+
+                mainWindow.showHosterSelect();
+            }
+        }
+
         Text {
 
             id:totalShows
@@ -135,8 +151,8 @@ Item {
             font.family: mainWindow.uiFont
             anchors.bottom: parent.bottom
             anchors.bottomMargin:2
-            anchors.rightMargin: 10
-            anchors.right:redButton.left
+            anchors.rightMargin: 9
+            anchors.right:remoteButton.left
         }
 
         Text {

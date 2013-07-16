@@ -103,5 +103,13 @@
         <file>img/darkOrange/new.png</file>
         <file>img/redGrey/new.png</file>
         <file>qml/ListDelegate.qml</file>
+        <file>qml/HosterSelectScreen.qml</file>
+        <file>img/remoteIcon.png</file>
+        <file>img/selectHoster.png</file>
+        <file>img/kinox.png</file>
+        <file>img/tvmuse.png</file>
+        <file>img/vodly.png</file>
+        <file>img/hulu.png</file>
+        <file>img/arrow_left.png</file>
     </qresource>
 </RCC>

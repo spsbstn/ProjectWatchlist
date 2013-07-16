@@ -9,11 +9,23 @@ function getLink(name,hoster) {
             link = "http://kinox.to/Search.html?q="
 
 }
-    if(hoster=="tvlinkseu") {
+    if(hoster=="tvmuse") {
 
-        link = "http://www.tv-links.eu/_search/?s="
+        link = "http://www.tvmuse.eu/_search/?s="
 
     }
+
+    if(hoster=="hulu") {
+
+            link = "http://www.hulu.com/search?q="
+
+        }
+
+    if(hoster=="vodly") {
+
+            link = "http://vodly.to/index.php?search_keywords="
+
+        }
 
     link += name.replace(/[^A-Za-z\s\']/g, "").trim().split(' ').join('+');
     return link;
