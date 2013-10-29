@@ -10,14 +10,13 @@ Rectangle {
     property int topBarSize: 50
     property int barSize: 120
     property int tileMargin: 6
-    property int tileHeaderFontSize: (parseInt(grid.height / 3) - tileMargin)/10
+    property int tileHeaderFontSize: (parseInt(grid.height / 3) - tileMargin)/12
     property int tileInfoFontSize: 16
     property int appHeaderFontSize: 36
     property string appBackground: "#EEEEEE"
     property string tileBackground: "#CCCCCC"
     property string textColor: "#484848"
     property string textColor2: "#00aaff"
-    property string uiFont: frutigerLight.name
     property string colorScheme: uicontroller.loadColorScheme();
     signal xmlDataRequired(string showName);
     onXmlDataRequired: updateInfo(showName);	
@@ -35,10 +34,13 @@ Rectangle {
 
     FontLoader {
 
-        id: frutigerLight
-        source: "qrc:../..///fonts/Frutiger Light.ttf"
+        id: openSans
+        source: "qrc:../..///fonts/OpenSans.ttf"
 
     }
+
+    property string uiFont: openSans.name
+
 
     /* Keyboard Shortcuts: ctrl+M switches between grid and listview
      *                     ctrl+T displays AddScreen
@@ -65,7 +67,10 @@ Rectangle {
     }
 
     function networkUpdateFinished() {
-        topBar.busyIndicatorVisible=false;
+        topBar.busyIndicatorSpinning=false;
+        topBar.lastSync = Qt.formatDateTime(new Date(), "hh:mm dd.MM.yyyy");
+        topBar.lastSyncTextVisible = true;
+
     }
 
     function newShowAdded() {
