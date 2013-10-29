@@ -49,7 +49,8 @@ OTHER_FILES += \
     res/qml/LoadingCircle.qml \
     res/js/WatchNow.js \
     res/qml/ListDelegate.qml \
-    res/qml/HosterSelectScreen.qml
+    res/qml/HosterSelectScreen.qml \
+    res/qml/SyncIndicator.qml
 
 TARGET = Watchlist
 VERSION = 2.1.1

@@ -4,7 +4,9 @@ Item {
 
     property bool isMaximized: true;
     property bool htmlErrorIsVisible: false;
-    property bool busyIndicatorVisible: true;
+    property bool busyIndicatorSpinning: true;
+    property bool lastSyncTextVisible: false;
+    property string lastSync: "";
 
     Rectangle{
 
@@ -187,23 +189,44 @@ Item {
             font.family: mainWindow.uiFont
         }
 
-        LoadingCircle {
 
+
+        Button {
+
+            id: syncButton
+            buttonHeight:32
+            buttonWidth: 32
+            buttonNormal: "../..///img/"+mainWindow.colorScheme+"/sync.png"
             anchors.bottom:versionInfoText.bottom
+            anchors.bottomMargin: -4
             anchors.left: versionInfoText.right
             anchors.leftMargin: 5
-            radiusPoints: 2
-            visible: busyIndicatorVisible;
-            colorPoints: mainWindow.tileBackground
-            dotColor: mainWindow.tileBackground
-            circleDiameter: versionInfo.height/2-5
 
+            SyncIndicator {
+               anchors.left: parent.left
+               anchors.top: parent.top
+               anchors.leftMargin: 11
+               anchors.topMargin:11
+               spinning: busyIndicatorSpinning
+            }
 
         }
-    }
 
+       Text {
 
+           anchors.bottom:versionInfoText.bottom
+           anchors.bottomMargin: 1
+           anchors.left: syncButton.right
+           anchors.leftMargin: 5
+           visible: lastSyncTextVisible;
+           text:"Latest Sync:" + lastSync;
+           color:mainWindow.textColor2
+           font.pixelSize: 12
+           font.capitalization:Font.AllLowercase;
+           font.family: mainWindow.uiFont
 
+       }
+}
     Rectangle {
 
         id:border

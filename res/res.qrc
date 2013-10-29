@@ -34,7 +34,6 @@
         <file>img/hide.png</file>
         <file>img/shutdown_Active.png</file>
         <file>img/shutdown.png</file>
-        <file>fonts/Frutiger Light.ttf</file>
         <file>img/darkOrange/info.png</file>
         <file>img/darkOrange/leftButton_Active.png</file>
         <file>img/darkOrange/leftButton.png</file>
@@ -111,5 +110,9 @@
         <file>img/vodly.png</file>
         <file>img/hulu.png</file>
         <file>img/arrow_left.png</file>
+        <file>img/blackCyan/sync.png</file>
+        <file>img/blackCyan/syncIndicator.png</file>
+        <file>qml/SyncIndicator.qml</file>
+        <file>fonts/OpenSans.ttf</file>
     </qresource>
 </RCC>
