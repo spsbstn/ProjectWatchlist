@@ -224,6 +224,7 @@ Rectangle {
         id:imageArea
         anchors.top: topBar.bottom
         anchors.left:mainInfoWindow.left
+        anchors.leftMargin: 40
         width:parent.width-infoArea.width-40
         height:parent.height*0.7
 
@@ -601,12 +602,6 @@ Rectangle {
         }
     }
 
-    transform: Rotation {
-
-        id: rotation
-        angle: 0.01    // the default angle
-
-    }
 }
 
 
