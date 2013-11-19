@@ -27,6 +27,6 @@ function getLink(name,hoster) {
 
         }
 
-    link += name.replace(/[^A-Za-z\s\']/g, "").trim().split(' ').join('+');
+    link += name.replace(/\({1}\d+\){1}/g, "").trim().split(' ').join('+');
     return link;
 }
