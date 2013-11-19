@@ -22,6 +22,6 @@ Item {
         width: scrollBar.pageSize * (scrollBar.width-2)
         height: parent.height
         radius: height/2 - 1
-        color: '#00aaff'
+        color: mainWindow.tileBackground
     }
 }
