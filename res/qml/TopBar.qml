@@ -219,7 +219,7 @@ Item {
            anchors.left: syncButton.right
            anchors.leftMargin: 5
            visible: lastSyncTextVisible;
-           text:"Latest Sync:" + lastSync;
+           text:"Latest Sync: " + lastSync;
            color:mainWindow.textColor2
            font.pixelSize: 12
            font.capitalization:Font.AllLowercase;

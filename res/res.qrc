@@ -114,5 +114,11 @@
         <file>img/blackCyan/syncIndicator.png</file>
         <file>qml/SyncIndicator.qml</file>
         <file>fonts/OpenSans.ttf</file>
+        <file>img/redGrey/sync.png</file>
+        <file>img/redGrey/syncIndicator.png</file>
+        <file>img/darkOrange/sync.png</file>
+        <file>img/darkOrange/syncIndicator.png</file>
+        <file>img/darkGreen/sync.png</file>
+        <file>img/darkGreen/syncIndicator.png</file>
     </qresource>
 </RCC>
