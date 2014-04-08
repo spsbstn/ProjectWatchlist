@@ -105,7 +105,7 @@ Item {
                 anchors.centerIn: parent
                 text:qsTr("Connection Error: \nShow doesn't exist or Internet Connection is down.")
                 color:"black"
-                font.pixelSize: 16
+                font.pixelSize: 12
                 font.family: mainWindow.uiFont
         }
 
