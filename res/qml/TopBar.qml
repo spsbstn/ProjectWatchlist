@@ -5,8 +5,7 @@ Item {
     property bool isMaximized: true;
     property bool htmlErrorIsVisible: false;
     property bool busyIndicatorSpinning: true;
-    property bool lastSyncTextVisible: false;
-    property string lastSync: "";
+    property string lastSync: "Syncing...";
 
     Rectangle{
 
@@ -204,6 +203,8 @@ Item {
             onReleased: {
                 busyIndicatorSpinning = true;
                 controller.manualNetworkUpdate();
+                lastSync = "Syncing..."
+
 
             }
 
@@ -219,12 +220,12 @@ Item {
 
        Text {
 
+           id : syncText
            anchors.bottom:versionInfoText.bottom
            anchors.bottomMargin: 1
            anchors.left: syncButton.right
            anchors.leftMargin: 5
-           visible: lastSyncTextVisible;
-           text:"Latest Sync: " + lastSync;
+           text:lastSync;
            color:mainWindow.textColor2
            font.pixelSize: 12
            font.capitalization:Font.AllLowercase;

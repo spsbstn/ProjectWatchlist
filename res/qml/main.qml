@@ -68,8 +68,7 @@ Rectangle {
 
     function networkUpdateFinished() {
         topBar.busyIndicatorSpinning=false;
-        topBar.lastSync = Qt.formatDateTime(new Date(), "hh:mm dd.MM.yyyy");
-        topBar.lastSyncTextVisible = true;
+        topBar.lastSync = "Last Update: " + Qt.formatDateTime(new Date(), "hh:mm dd.MM.yyyy");
 
     }
 
