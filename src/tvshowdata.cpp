@@ -258,6 +258,7 @@ QString TvShowData::getImageUrl(const QString &name)
 }
 
 
+
 // Returns Debug-String
 QString TvShowData::toString() const
 {
@@ -274,6 +275,7 @@ QString TvShowData::toString() const
 
 void TvShowData::getExtraInformation()
 {
+    showsFullyLoaded = 0;
     for(int i=0; i < shows.size(); i++)
     {
         TvShow* show = shows.at(i);

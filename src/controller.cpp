@@ -195,4 +195,11 @@ void Controller::checkForNewEpisodes(const QString &title)
 
 
 
+void Controller::manualNetworkUpdate()
+{
+    db->data->getExtraInformation();
+}
+
+
+
 

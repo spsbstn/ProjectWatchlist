@@ -67,6 +67,7 @@ public:
     QString getNextEp(const QString& name);
     QString getImageUrl(const QString& name);
 
+
     // How Many Shows have been completely loaded?
     int getShowsFullyLoaded() const { return showsFullyLoaded; }
 

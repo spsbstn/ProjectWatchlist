@@ -201,6 +201,11 @@ Item {
             anchors.bottomMargin: -4
             anchors.left: versionInfoText.right
             anchors.leftMargin: 5
+            onReleased: {
+                busyIndicatorSpinning = true;
+                controller.manualNetworkUpdate();
+
+            }
 
             SyncIndicator {
                anchors.left: parent.left
