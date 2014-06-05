@@ -4,46 +4,101 @@ import Cursors 1.0
 
 Rectangle {
 
-    onOpacityChanged: {
+    property variant sources: ["kinox","vodly","hulu","tvmuse"]
+    property int index: 0
+    property string currentSource: GlobalJS.hoster
 
-                          selectHoster(GlobalJS.hoster)
-                          selectHosterScreen.focus = true
-                      }
+    ParallelAnimation {
 
-    function resetAll() {
+        id:wobble
 
-        kinoxSelected.opacity = 0
-        vodlySelected.opacity = 0
-        huluSelected.opacity = 0
-        tvmuseSelected.opacity = 0
+    NumberAnimation {
+
+        target: selectArea; easing.overshoot: 1.1; properties: "scale"; from: 0.0; to: 1.0;
+        easing.type: Easing.OutBack;easing.amplitude: 2.0; easing.period: 1.5; duration:rand*100
+
     }
 
-    function selectHoster(hoster) {
+    NumberAnimation {
 
-        if (hoster == "kinox") {
+            target: selectArea; properties: "opacity"; from: 0.0; to: 1.0;
+            easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5; duration:rand*80
+     }
 
-            kinoxSelected.opacity = 1
-        }
-        if (hoster == "tvmuse") {
+}
 
-            tvmuseSelected.opacity = 1
-        }
+    Keys.onRightPressed: {
 
-        if (hoster == "hulu") {
+        increaseIndex();
+        currentSource = sources[index];
+        GlobalJS.hoster = currentSource;
+        wobble.start();
+    }
 
-            huluSelected.opacity = 1
-        }
+    Keys.onLeftPressed: {
 
-        if (hoster == "vodly") {
-
-            vodlySelected.opacity = 1
-        }
+        decreaseIndex();
+        currentSource = sources[index];
+        GlobalJS.hoster = currentSource;
+        wobble.start();
     }
 
     Keys.onEscapePressed: {
 
-        selectHosterScreen.opacity = 0
-        removeClickProtection.start()
+    selectHosterScreen.opacity = 0
+    removeClickProtection.start()
+
+    }
+
+    Keys.onEnterPressed: {
+
+    selectHosterScreen.opacity = 0
+    removeClickProtection.start()
+
+    }
+
+
+    function getCurrentIndex(term) {
+
+        var index;
+
+        for (var i=0; i<sources.length; i++)
+            if (sources[i]==term)
+                return i;
+
+        return null;
+
+    }
+
+    onOpacityChanged: {
+
+        if (opacity == 1) {
+
+            selectHosterScreen.focus = true
+            index = getCurrentIndex(currentSource)
+        }
+    }
+
+    function increaseIndex() {
+
+        if(index==sources.length-1) {
+            index = 0;
+        }
+
+        else {
+            index += 1;
+        }
+    }
+
+    function decreaseIndex() {
+
+        if(index==0) {
+            index = sources.length-1;
+        }
+
+        else {
+            index -= 1;
+        }
     }
 
     id: selectHosterScreen
@@ -56,156 +111,90 @@ Rectangle {
     Item {
         id: headline
         anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        width: 400
-        height: 140
+        anchors.topMargin: parent.height/20
+        anchors.left:parent.left
+        anchors.leftMargin: -width*0.01
+        width: parent.width*0.7
+        height: 40
 
-        Image {
+        Rectangle {
+            color:"white"
+            anchors.fill: parent
+            Text {
+                 anchors.centerIn: parent
+                 color: mainWindow.appBackground
+                 text: "Please select a default streaming-source:"
+                 font {
+                     family: mainWindow.uiFont
+                     capitalization: Font.AllUppercase
+                     pointSize: 20
+                 }
+            }
 
-            height: 80
-            width: 400
-            anchors.centerIn: parent
-            source: "qrc:../..///img/selectHoster.png"
+        }
+
+
+    }
+
+
+
+    Rectangle {
+         id:selectArea
+         width: parent.width/3.5
+         height: parent.width/3.5
+         color: "white"
+         anchors.centerIn: parent
+         border.color: "white"
+         border.width: 1
+         radius: width*0.5
+         Text {
+             id:selectedHoster
+              anchors.centerIn: parent
+              color: mainWindow.tileBackground
+              text: currentSource
+              height:50
+              font {
+                  family: mainWindow.uiFont
+                  capitalization: Font.AllUppercase
+                  pointSize: 40
+              }
+         }
+    }
+
+    Button {
+
+        id: buttonLeft
+        buttonHeight: 18
+        buttonWidth: 18
+        buttonNormal: "../..///img/"+mainWindow.colorScheme+"/leftButton.png"
+        buttonActive: "../..///img/"+mainWindow.colorScheme+"/leftButton_Active.png"
+        anchors.right:selectArea.left
+        anchors.rightMargin: 20
+        anchors.verticalCenter: parent.verticalCenter
+        onClicked: {
+            decreaseIndex();
+            currentSource = sources[index];
+            GlobalJS.hoster = currentSource;
+            wobble.start();
         }
     }
 
-    Rectangle {
+    Button {
 
-        id: kinoxto
-        color: "transparent"
-        height: 67
-        width: 267
-        anchors.top: headline.bottom
-        anchors.topMargin: 20
-        anchors.left: parent.left
-        anchors.leftMargin: 80
+        id: buttonRight
+        buttonHeight: 18
+        buttonWidth: 18
+        buttonNormal: "../..///img/"+mainWindow.colorScheme+"/rightButton.png"
+        buttonActive: "../..///img/"+mainWindow.colorScheme+"/rightButton_Active.png"
+        anchors.left:selectArea.right
+        anchors.leftMargin: 20
+        anchors.verticalCenter: parent.verticalCenter
+        onClicked: {
+            increaseIndex();
+            currentSource = sources[index];
+            GlobalJS.hoster = currentSource;
+            wobble.start();
 
-        Button {
-
-            buttonHeight: 67
-            buttonWidth: 200
-            buttonNormal: "qrc:../..///img/kinox.png"
-            anchors.left: parent.left
-            onClicked: {
-
-                resetAll()
-                kinoxSelected.opacity = 1
-                GlobalJS.hoster = "kinox"
-            }
-        }
-
-        Image {
-
-            id: kinoxSelected
-            height: 67
-            width: 67
-            opacity: 0
-            anchors.right: parent.right
-            source: "qrc:../..///img/arrow_left.png"
-        }
-    }
-
-    Rectangle {
-
-        id: vodlyto
-        color: "transparent"
-        height: 67
-        width: 267
-        anchors.top: headline.bottom
-        anchors.topMargin: 20
-        anchors.right: parent.right
-        anchors.rightMargin: 80
-
-        Button {
-
-            buttonHeight: 67
-            buttonWidth: 200
-            buttonNormal: "qrc:../..///img/vodly.png"
-            anchors.right: parent.right
-            onClicked: {
-
-                resetAll()
-                vodlySelected.opacity = 1
-                GlobalJS.hoster = "vodly"
-            }
-        }
-        Image {
-
-            id: vodlySelected
-            height: 67
-            width: 67
-            opacity: 0
-            anchors.left: parent.left
-            source: "qrc:../..///img/arrow_left.png"
-        }
-    }
-
-    Rectangle {
-
-        id: hulu
-        color: "transparent"
-        height: 67
-        width: 267
-        anchors.top: kinoxto.bottom
-        anchors.left: kinoxto.left
-        anchors.topMargin: 20
-
-        Button {
-
-            buttonHeight: 67
-            buttonWidth: 200
-            buttonNormal: "qrc:../..///img/hulu.png"
-            anchors.left: parent.left
-            onClicked: {
-
-                resetAll()
-                huluSelected.opacity = 1
-                GlobalJS.hoster = "hulu"
-            }
-        }
-        Image {
-
-            id: huluSelected
-            height: 67
-            width: 67
-            opacity: 0
-            anchors.right: parent.right
-            source: "qrc:../..///img/arrow_left.png"
-        }
-    }
-
-    Rectangle {
-
-        id: tvmuse
-        color: "transparent"
-        height: 67
-        width: 267
-        anchors.top: vodlyto.bottom
-        anchors.right: vodlyto.right
-        anchors.topMargin: 20
-
-        Button {
-
-            buttonHeight: 67
-            buttonWidth: 200
-            buttonNormal: "qrc:../..///img/tvmuse.png"
-            anchors.right: parent.right
-            onClicked: {
-
-                resetAll()
-                tvmuseSelected.opacity = 1
-                GlobalJS.hoster = "tvmuse"
-            }
-        }
-
-        Image {
-
-            id: tvmuseSelected
-            height: 67
-            width: 67
-            opacity: 0
-            anchors.left: parent.left
-            source: "qrc:../..///img/arrow_left.png"
         }
     }
 
@@ -225,7 +214,7 @@ Rectangle {
             id: done
             anchors.centerIn: parent
             color: mainWindow.tileBackground
-            text: "Done."
+            text: "Done"
             smooth: true
             width: parent.width
             horizontalAlignment: Text.AlignHCenter
