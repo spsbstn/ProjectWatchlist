@@ -21,7 +21,7 @@ Item {
 
         opacity: toolTip != "" && showToolTip ? 1 : 0
 
-        color: "#00aaff"
+        color: mainWindow.tileBackground
         border.color: "white"
 
         Text {
