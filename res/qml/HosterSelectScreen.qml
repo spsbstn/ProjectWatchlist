@@ -108,33 +108,6 @@ Rectangle {
     width: 0.6 * parent.width
     color: mainWindow.tileBackground
 
-    Item {
-        id: headline
-        anchors.top: parent.top
-        anchors.topMargin: parent.height/20
-        anchors.left:parent.left
-        anchors.leftMargin: -width*0.01
-        width: parent.width*0.7
-        height: 40
-
-        Rectangle {
-            color:"white"
-            anchors.fill: parent
-            Text {
-                 anchors.centerIn: parent
-                 color: mainWindow.appBackground
-                 text: "Please select a default streaming-source:"
-                 font {
-                     family: mainWindow.uiFont
-                     capitalization: Font.AllUppercase
-                     pointSize: 20
-                 }
-            }
-
-        }
-
-
-    }
 
 
 
@@ -160,6 +133,28 @@ Rectangle {
               }
          }
     }
+
+    Item {
+        id: headline
+        anchors.bottom: selectArea.top
+        anchors.bottomMargin: parent.height/10
+        width: parent.width
+            Text {
+                 color: "white"
+                 text: "Stream with"
+                 anchors.centerIn: parent
+                 font {
+                     family: mainWindow.uiFont
+                     capitalization: Font.AllUppercase
+                     pointSize: 25
+                 }
+
+
+        }
+
+
+    }
+
 
     Button {
 
