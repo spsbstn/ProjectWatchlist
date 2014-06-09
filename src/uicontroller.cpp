@@ -11,7 +11,7 @@ UIController::UIController(QWidget *widget,QApplication *app, QObject *parent) :
     mainWidget = widget;
     settings = new QSettings("Watchlist");
     checkForSeasonIcons(app);
-
+    checkForFirstInit();
 }
 
 UIController::~UIController()
