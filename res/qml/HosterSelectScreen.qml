@@ -7,6 +7,8 @@ Rectangle {
     property variant sources: ["kinox","vodly","hulu","tvmuse"]
     property int index: 0
     property string currentSource: GlobalJS.hoster
+    // random number between 5 and 10 (animation)
+    property int rand: Math.floor(Math.random() * (10 - 5 + 1)) + 5;
 
     ParallelAnimation {
 
@@ -15,14 +17,14 @@ Rectangle {
     NumberAnimation {
 
         target: selectArea; easing.overshoot: 1.1; properties: "scale"; from: 0.0; to: 1.0;
-        easing.type: Easing.OutBack;easing.amplitude: 2.0; easing.period: 1.5; duration:rand*100
+        easing.type: Easing.OutBack;easing.amplitude: 2.0; easing.period: 1.5; //duration:rand*100
 
     }
 
     NumberAnimation {
 
             target: selectArea; properties: "opacity"; from: 0.0; to: 1.0;
-            easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5; duration:rand*80
+            easing.type: Easing.OutQuad; easing.amplitude: 2.0; easing.period: 1.5; // duration:rand*80
      }
 
 }
