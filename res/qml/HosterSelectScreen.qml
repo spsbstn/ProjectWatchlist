@@ -135,6 +135,7 @@ Rectangle {
     }
 
     Item {
+
         id: headline
         anchors.bottom: selectArea.top
         anchors.bottomMargin: parent.height/10
@@ -148,13 +149,8 @@ Rectangle {
                      capitalization: Font.AllUppercase
                      pointSize: 25
                  }
-
-
-        }
-
-
+            }
     }
-
 
     Button {
 
