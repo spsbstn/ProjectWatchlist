@@ -26,7 +26,8 @@ void XmlPictureLoader::createConnection(QString showId)
     QUrl url(URL_BASE+ showId);
 
     // serverReply
-    QNetworkReply* reply = nam->get(QNetworkRequest(url));
+
+    nam->get(QNetworkRequest(url));
 }
 
 // work with serverReply
