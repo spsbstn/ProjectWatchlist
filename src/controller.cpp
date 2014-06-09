@@ -20,7 +20,8 @@ Controller::Controller(QApplication *app,QObject *parent) :
     framelessHelper(new NcFramelessHelper()),
     layout(new QVBoxLayout),
     uicontroller(new UIController(mainWidget,app)),
-    proxModel(new QSortFilterProxyModel(this))
+    proxModel(new QSortFilterProxyModel(this)),
+    settingsController(new SettingsController(this))
 {
 
 #ifdef QT_NO_DEBUG
@@ -45,6 +46,7 @@ Controller::Controller(QApplication *app,QObject *parent) :
         ctxt->setContextProperty("controller", this);
         ctxt->setContextProperty("mainwindow", mainWidget);
         ctxt->setContextProperty("uicontroller", uicontroller);
+        ctxt->setContextProperty("settingscontroller", settingsController);
         ctxt->setContextProperty("sortedFilteredData", proxModel);
         qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
         qmlRegisterType<WheelArea>("WheelArea", 1, 0, "WheelArea");

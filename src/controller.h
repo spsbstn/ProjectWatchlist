@@ -5,6 +5,7 @@
 #include "quickinfo.h"
 #include "database.h"
 #include "logger.h"
+#include "settingscontroller.h"
 
 
 class MainView;
@@ -65,6 +66,7 @@ public:
     QVBoxLayout *layout;
     UIController *uicontroller;
     QSortFilterProxyModel *proxModel;
+    SettingsController *settingsController;
 
 };
 

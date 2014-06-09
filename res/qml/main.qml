@@ -83,6 +83,8 @@ Rectangle {
 
         showClickProtection.start();
         showHosterScreen.start();
+        hosterScreen.currentSource = GlobalJS.hoster;
+
 
     }
 
@@ -345,7 +347,10 @@ Rectangle {
         id:splashScreen
         imageSource: "qrc:///img/SplashScreen.png"
         anchors.fill: mainWindow
-        onSplashScreenCompleted: controller.loadDB(); // load Database --> animationeffect
+        onSplashScreenCompleted: {
+            GlobalJS.hoster = settingscontroller.loadHoster();
+            controller.loadDB(); // load Database --> animationeffect
+        }
         z:1
 
     }

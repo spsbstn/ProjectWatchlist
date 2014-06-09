@@ -5,8 +5,8 @@ import Cursors 1.0
 Rectangle {
 
     property variant sources: ["kinox","vodly","hulu","tvmuse"]
+    property string currentSource: ''
     property int index: 0
-    property string currentSource: GlobalJS.hoster
     // random number between 5 and 10 (animation)
     property int rand: Math.floor(Math.random() * (10 - 5 + 1)) + 5;
 
@@ -167,7 +167,7 @@ Rectangle {
         onClicked: {
             decreaseIndex();
             currentSource = sources[index];
-            GlobalJS.hoster = currentSource;
+            //GlobalJS.hoster = currentSource;
             wobble.start();
         }
     }
@@ -185,7 +185,7 @@ Rectangle {
         onClicked: {
             increaseIndex();
             currentSource = sources[index];
-            GlobalJS.hoster = currentSource;
+            //GlobalJS.hoster = currentSource;
             wobble.start();
 
         }
@@ -226,7 +226,8 @@ Rectangle {
                 doneButton.color="white";
             }
             onClicked: {
-
+                GlobalJS.hoster = currentSource;
+                settingscontroller.changeHoster(GlobalJS.hoster);
                 selectHosterScreen.opacity = 0
                 removeClickProtection.start()
             }

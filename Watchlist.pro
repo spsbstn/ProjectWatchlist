@@ -8,7 +8,8 @@ SOURCES += src/main.cpp \
     src/xmlpictureloader.cpp \
     src/quickinfo.cpp \
     src/logger.cpp \
-    src/uicontroller.cpp
+    src/uicontroller.cpp \
+    src/settingscontroller.cpp
 
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
@@ -28,7 +29,8 @@ HEADERS += \
     src/quickinfo.h \
     src/wheelarea.h \
     src/logger.h \
-    src/uicontroller.h
+    src/uicontroller.h \
+    src/settingscontroller.h
 
 
 OTHER_FILES += \
