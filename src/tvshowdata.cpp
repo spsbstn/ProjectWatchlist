@@ -257,6 +257,38 @@ QString TvShowData::getImageUrl(const QString &name)
     }
 }
 
+void TvShowData::editShow(const QString &oldName, const QString &newName)
+{
+    int index = findShowIndex(oldName);
+
+    if (index != -1)
+    {
+        TvShow* edit = shows.at(index);
+
+        QObject::connect(edit, SIGNAL(showEdited(bool,const QString&)), this, SLOT(onShowEdited(bool,const QString&)));
+        edit->editShow(newName);
+    }
+    else
+    {
+        qDebug() << "ERROR when trying to edit Show " + oldName + ". It was not found in Database";
+    }
+}
+
+void TvShowData::editComplete(const QString &oldName, const QString &newName)
+{
+    int index = findShowIndex(newName);
+    if (index != -1)
+    {
+        TvShow* editted = shows.at(findShowIndex(newName));
+        emit showEditedDBUpdate(editted, oldName);
+        QObject::disconnect(editted, SIGNAL(showEdited(bool)),this, SLOT(showEdited(bool)));
+    }
+    else
+    {
+        qDebug() << "ERROR when trying to disconnect Edit Signal after editting";
+    }
+}
+
 
 
 // Returns Debug-String
@@ -288,6 +320,7 @@ void TvShowData::getExtraInformation()
 // Required by QAbstractListModel - Interface
 int TvShowData::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return shows.size();
 }
 
@@ -359,10 +392,25 @@ void TvShowData::checkForNewEpisodes(TvShow *show)
 
 void TvShowData::updateLoadedCount(TvShow* show)
 {
+    Q_UNUSED(show);
     if(++showsFullyLoaded == shows.size())
     {
         emit everyShowLoaded();
         qDebug() << "Network Update finished without errors.";
+    }
+
+}
+
+void TvShowData::onShowEdited(bool success, const QString& name)
+{
+    if (success)
+    {
+        qDebug() << "Show Edited: " + name;
+        emit showEditSuccess();
+    }
+    else
+    {
+        emit showEditFailure();
     }
 
 }

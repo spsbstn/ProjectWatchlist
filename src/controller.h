@@ -49,6 +49,9 @@ public:
     Q_INVOKABLE QString getNextEpisode(const QString& name) {return db->data->getNextEp(name);}
     Q_INVOKABLE QString getImageUrl(const QString& name) {return db->data->getImageUrl(name);}
 
+    Q_INVOKABLE void editShowName(const QString& oldName, const QString& newName);
+    Q_INVOKABLE void editComplete(const QString& oldName, const QString &newName);
+
 
     Q_INVOKABLE int find(const QString& name) { return db->data->findShowIndex(name); }
 

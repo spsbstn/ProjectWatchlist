@@ -36,6 +36,7 @@ signals:
     void showInfoFilled();
     void htmlErrorOccured();
     void apiErrorOccured();
+    void showEdited(bool, const QString&);
 };
 
 

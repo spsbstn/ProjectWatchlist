@@ -32,6 +32,7 @@ public:
 
 public slots:
     void onAllDataLoaded(TvShow *show);
+    void onShowEditedDBUpdate(TvShow* show, const QString &oldName);
 
 signals:
     void dbLoaded();

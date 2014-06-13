@@ -67,6 +67,8 @@ public:
     QString getNextEp(const QString& name);
     QString getImageUrl(const QString& name);
 
+    void editShow(const QString& oldName, const QString& newName);
+    void editComplete(const QString& oldName, const QString &newName);
 
     // How Many Shows have been completely loaded?
     int getShowsFullyLoaded() const { return showsFullyLoaded; }
@@ -90,11 +92,15 @@ public slots:
     void onDbLoaded();
     void checkForNewEpisodes(TvShow* show);
     void updateLoadedCount(TvShow *show);
+    void onShowEdited(bool success, const QString &name);
 
 signals:
     void allDataLoaded(TvShow* show);
     void everyShowLoaded();
     void newShowAdded();
+    void showEditSuccess();
+    void showEditFailure();
+    void showEditedDBUpdate(TvShow* show, const QString& oldName);
 
 private:
     TvShowData(const TvShowData&);

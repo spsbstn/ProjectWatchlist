@@ -32,6 +32,7 @@ TvShow::~TvShow()
 // when API-information is loaded, values are extracted
 void TvShow::onShowInfoFilled()
 {
+    setTitle(info->showInfo->value("Show Name"));
     setStarted(info->showInfo->value("Started"));
     setStatus(info->showInfo->value("Status"));
     setAirtime(info->showInfo->value("Airtime"));
@@ -75,6 +76,12 @@ QDate TvShow::getNextEpisodeDate() const
     QString _nextEp = getNextEpisodeDateString().replace('/',"");
     QDate nextEp = QDate::fromString(_nextEp, "MMMddyyyy");
     return nextEp;
+}
+
+void TvShow::editShow(const QString &newName)
+{
+    QObject::connect(info, SIGNAL(showEdited(bool,const QString&)), this, SIGNAL(showEdited(bool,const QString&)));
+    this->info->createConnection(newName);
 }
 
 void TvShow::getExtraInformation()
