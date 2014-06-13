@@ -33,7 +33,6 @@ Rectangle {
     }
 
     function editSuccess () {
-            console.log("After Editting: Get Infoscreen values for show ", title)
             controller.editComplete(showName,title);
             xmlDataRequired(title);
             spinCircle.visible = false;
@@ -41,7 +40,14 @@ Rectangle {
     }
 
     function editError () {
+
+        // TODO
+
+        // show "better" error.
+
+
         nameInput.text = "ERROR";
+        spinCircle.visible = false;
     }
 
     function getAirTime() {
@@ -188,18 +194,22 @@ Rectangle {
                         color:"white";
                         enabled: false;
                         onAccepted: {
+                            var newName = nameInput.text.toLowerCase();
 
-                            // check if new name equals old name
-                           if(showName.toLowerCase().localeCompare(nameInput.text.toLowerCase())==0) {
+                            // check if new name equals old name or name is already in Database
+                           var showIsInDB = (controller.find(nameInput.text.toLowerCase()) !== -1);
+                           var noChangeInName = showName.toLowerCase().localeCompare(nameInput.text.toLowerCase())==0;
+                           if(noChangeInName) {
                                deactivateNameInput();
                            }
+                           else if (showIsInDB) {
+                               nameInput.text = "Already in Database."
+                           }
                            else {
-                               var newName = nameInput.text.toLowerCase();
+                               // Actually Edit showName
+
                                title = newName;
                                controller.editShowName(showName.toLowerCase(), newName);
-
-                               // TODO
-                               //
                                spinCircle.visible = true;
 
                            }
