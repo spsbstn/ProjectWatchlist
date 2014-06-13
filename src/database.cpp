@@ -17,6 +17,7 @@ Database::Database(QObject *parent) :
 {
     QObject::connect(this, SIGNAL(dbLoaded()), data, SLOT(onDbLoaded()));
     QObject::connect(data, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(onAllDataLoaded(TvShow*)));
+    QObject::connect(data, SIGNAL(showEditedDBUpdate(TvShow*,const QString&)), this, SLOT(onShowEditedDBUpdate(TvShow*, const QString&)));
 
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
 
@@ -299,6 +300,12 @@ void Database::onAllDataLoaded(TvShow* show)
     updateShow(*show);
     //Fill in QList
     this->data->addShow(*show);
+}
+
+void Database::onShowEditedDBUpdate(TvShow *show, const QString& oldName)
+{
+    alterShowName(oldName, show->getTitle());
+    updateShow(*show);
 }
 
 

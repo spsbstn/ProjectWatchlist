@@ -64,10 +64,12 @@ public:
     // Returns the Date of the NextEpisode-String in Date-Form
     QDate getNextEpisodeDate() const;
 
+    // Tries to get new API Information for altered ShowName;
+    void editShow(const QString& newName);
+
     // Load extra information for show
     void getExtraInformation();
 
-    QuickInfo* info;
 
 public slots:
     // Fills API-information into TvShow - Variables
@@ -82,6 +84,7 @@ signals:
     // Signals, that Show can now be inserted to QList
     void allDataLoaded(TvShow*);
     void apiError();
+    void showEdited(bool success,const QString& name);
 
 
 private:
@@ -96,6 +99,7 @@ private:
     QString latestEpisode;
     QString nextEpisode;
     QString imageUrl;
+    QuickInfo* info;
     bool    newEpisodeAvailable;
 
     //prevent copy-constructors:

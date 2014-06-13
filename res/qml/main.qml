@@ -120,7 +120,13 @@ Rectangle {
         controller.remove(addScreen.getTxt());
     }
 
+    function onShowEditSuccess() {
+        infoScreen.editSuccess();
+    }
 
+    function onShowEditFailure() {
+        infoScreen.editError();
+    }
 
     // DragArea to move window
     MouseArea {

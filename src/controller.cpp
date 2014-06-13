@@ -74,6 +74,8 @@ Controller::Controller(QApplication *app,QObject *parent) :
         QObject::connect(db->data, SIGNAL(newShowAdded()), rootObject, SLOT(newShowAdded()));
 
 
+        QObject::connect(db->data, SIGNAL(showEditSuccess()), rootObject, SLOT(onShowEditSuccess()));
+        QObject::connect(db->data, SIGNAL(showEditFailure()), rootObject, SLOT(onShowEditFailure()));
 
    //  Set WindowMinimizeButtonHint in order to be able to minimize from taskbar
         mainWidget->setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::FramelessWindowHint);
@@ -200,6 +202,16 @@ void Controller::checkForNewEpisodes(const QString &title)
 void Controller::manualNetworkUpdate()
 {
     db->data->getExtraInformation();
+}
+
+void Controller::editShowName(const QString &oldName, const QString &newName)
+{
+    db->data->editShow(oldName, newName);
+}
+
+void Controller::editComplete(const QString &oldName, const QString& newName)
+{
+    db->data->editComplete(oldName, newName);
 }
 
 

@@ -42,13 +42,14 @@ void QuickInfo::createConnection(QString showName)
     showInfo->insert("Show Name",showName);
 
     // serverReply
-    QNetworkReply* reply = nam->get(QNetworkRequest(url));
+    nam->get(QNetworkRequest(url));
 }
 
 void QuickInfo::onImageUrlLoaded(const QString &imageUrl)
 {
     showInfo->insert("Image Url", imageUrl);
     emit showInfoFilled();
+    emit showEdited(true, showInfo->value("Show Name"));
 }
 
 // work with serverReply
@@ -112,6 +113,7 @@ void QuickInfo::finishedSlot(QNetworkReply* reply)
 
             // Report API Error
             emit apiErrorOccured();
+            emit showEdited(false,showInfo->value("Show Name"));
 
             return;
         }
@@ -124,6 +126,7 @@ void QuickInfo::finishedSlot(QNetworkReply* reply)
     {
         qDebug() << "ERROR: Http-Error occurred";
         emit htmlErrorOccured();
+        emit showEdited(false,showInfo->value("Show Name"));
     }
 
     //emit showInfoFilled();

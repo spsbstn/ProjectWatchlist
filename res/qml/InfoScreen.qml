@@ -17,6 +17,8 @@ Rectangle {
     property string latestEpisode;
     property string nextEpisode;
 
+    property string title: ""
+
 
     // remove nameInputField and change Focus
     function deactivateNameInput() {
@@ -28,6 +30,18 @@ Rectangle {
         infoScreen.focus=true;
         nameInput.text=""
 
+    }
+
+    function editSuccess () {
+            console.log("After Editting: Get Infoscreen values for show ", title)
+            controller.editComplete(showName,title);
+            xmlDataRequired(title);
+            spinCircle.visible = false;
+            deactivateNameInput();
+    }
+
+    function editError () {
+        nameInput.text = "ERROR";
     }
 
     function getAirTime() {
@@ -176,30 +190,18 @@ Rectangle {
                         onAccepted: {
 
                             // check if new name equals old name
-                           if(showName.toLowerCase().localeCompare(nameInput.text.toLowerCase())==0)
-
-                           {
+                           if(showName.toLowerCase().localeCompare(nameInput.text.toLowerCase())==0) {
                                deactivateNameInput();
                            }
-
                            else {
+                               var newName = nameInput.text.toLowerCase();
+                               title = newName;
+                               controller.editShowName(showName.toLowerCase(), newName);
 
-                               //check if nameChange was successfull
-                               if(controller.alterShowName(showName.toLowerCase(),nameInput.text.toLowerCase()))
+                               // TODO
+                               //
+                               spinCircle.visible = true;
 
-                               {
-                                   showName=nameInput.text;
-                                   xmlDataRequired(nameInput.text);
-                                   deactivateNameInput();
-                                   image.visible=false;
-                                   imageFrame.visible=false;
-                                   imageLoadingCircle.visible=true;
-                               }
-
-                               // else show error
-                               else {
-                                   inputError.opacity=1;
-                               }
                            }
                         }
                     }
@@ -214,6 +216,18 @@ Rectangle {
                         text:qsTr(" Show already in database")
                         font.pointSize: nameInput.font.pointSize/2
                     }
+
+                    LoadingCircle
+                    {
+                        id:spinCircle
+                        anchors.right: parent.right
+                        anchors.bottom:parent.bottom
+                        circleDiameter: parent.height
+                        radiusPoints: 3
+                        visible: false;
+                        colorPoints: mainWindow.tileBackground
+                    }
+
                 }
             }
         }

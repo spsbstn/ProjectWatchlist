@@ -19,6 +19,7 @@ Logger * Logger::instance()
 
 void Logger::Handler(QtMsgType type, const char *msg)
 {
+    Q_UNUSED(type);
     //get path to logfile
     QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
     path.append(QDir::separator()).append("log.txt");
