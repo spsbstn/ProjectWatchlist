@@ -281,7 +281,7 @@ void TvShowData::editComplete(const QString &oldName, const QString &newName)
     {
         TvShow* editted = shows.at(findShowIndex(newName));
         emit showEditedDBUpdate(editted, oldName);
-        QObject::disconnect(editted, SIGNAL(showEdited(bool)),this, SLOT(showEdited(bool)));
+        QObject::disconnect(editted, SIGNAL(showEdited(bool,const QString &)),this, SLOT(onShowEdited(bool, const QString &)));
     }
     else
     {
@@ -405,7 +405,6 @@ void TvShowData::onShowEdited(bool success, const QString& name)
 {
     if (success)
     {
-        qDebug() << "Show Edited: " + name;
         emit showEditSuccess();
     }
     else
