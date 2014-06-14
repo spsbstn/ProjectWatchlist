@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import "..///js/Global.js" as GlobalJS
+import "..///js/Time.js" as TimeAgo
 import Cursors 1.0
 import WheelArea 1.0
 
@@ -17,6 +18,7 @@ Rectangle {
     property string tileBackground: "#CCCCCC"
     property string textColor: "#484848"
     property string textColor2: "#00aaff"
+    property int latestUpdate
     property string colorScheme: uicontroller.loadColorScheme();
     signal xmlDataRequired(string showName);
     onXmlDataRequired: updateInfo(showName);	
@@ -66,9 +68,31 @@ Rectangle {
         }
     }
 
+    function updateLastSync() {
+
+        var timeStamp = TimeAgo.fuzzyTime(latestUpdate);
+        topBar.lastSync = "Latest Sync: " + timeStamp;
+
+    }
+
+    Timer {
+          id:fuzzyTimeTimer
+          interval: 62000
+          running: false
+          repeat: true
+
+          onTriggered: {
+            updateLastSync();
+          }
+        }
+
+
+
     function networkUpdateFinished() {
         topBar.busyIndicatorSpinning=false;
-        topBar.lastSync = "Last Update: " + Qt.formatDateTime(new Date(), "hh:mm dd.MM.yyyy");
+        latestUpdate = Math.round(+new Date()/1000);
+        updateLastSync();
+        fuzzyTimeTimer.start();
 
     }
 

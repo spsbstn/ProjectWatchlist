@@ -52,7 +52,8 @@ OTHER_FILES += \
     res/js/WatchNow.js \
     res/qml/ListDelegate.qml \
     res/qml/HosterSelectScreen.qml \
-    res/qml/SyncIndicator.qml
+    res/qml/SyncIndicator.qml \
+    res/js/Time.js
 
 TARGET = Watchlist
 VERSION = 2.1.1

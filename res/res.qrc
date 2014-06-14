@@ -120,5 +120,6 @@
         <file>img/darkOrange/syncIndicator.png</file>
         <file>img/darkGreen/sync.png</file>
         <file>img/darkGreen/syncIndicator.png</file>
+        <file>js/Time.js</file>
     </qresource>
 </RCC>

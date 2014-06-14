@@ -203,6 +203,7 @@ Item {
             onReleased: {
                 busyIndicatorSpinning = true;
                 controller.manualNetworkUpdate();
+                fuzzyTimeTimer.stop();
                 lastSync = "Syncing..."
 
 
