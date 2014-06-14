@@ -74,33 +74,15 @@
         <file>img/blackCyan/info_Active.png</file>
         <file>img/darkGreen/info_Active.png</file>
         <file>img/darkOrange/info_Active.png</file>
-        <file>img/redGreyScheme.png</file>
-        <file>img/redGrey/abort_Active.png</file>
-        <file>img/redGrey/abort.png</file>
-        <file>img/redGrey/confirm_Active.png</file>
-        <file>img/redGrey/confirm.png</file>
-        <file>img/redGrey/info_Active.png</file>
-        <file>img/redGrey/info.png</file>
-        <file>img/redGrey/leftButton_Active.png</file>
-        <file>img/redGrey/leftButton.png</file>
-        <file>img/redGrey/removeIcon_Active.png</file>
-        <file>img/redGrey/removeIcon.png</file>
-        <file>img/redGrey/rightButton_Active.png</file>
-        <file>img/redGrey/rightButton.png</file>
-        <file>img/redGrey/watchnow_Active.png</file>
-        <file>img/redGrey/watchnow.png</file>
         <file>img/blackCyan/addIcon_Active.png</file>
         <file>img/blackCyan/addIcon.png</file>
         <file>img/darkGreen/addIcon_Active.png</file>
         <file>img/darkGreen/addIcon.png</file>
         <file>img/darkOrange/addIcon_Active.png</file>
         <file>img/darkOrange/addIcon.png</file>
-        <file>img/redGrey/addIcon_Active.png</file>
-        <file>img/redGrey/addIcon.png</file>
         <file>img/blackCyan/new.png</file>
         <file>img/darkGreen/new.png</file>
         <file>img/darkOrange/new.png</file>
-        <file>img/redGrey/new.png</file>
         <file>qml/ListDelegate.qml</file>
         <file>qml/HosterSelectScreen.qml</file>
         <file>img/remoteIcon.png</file>
@@ -114,12 +96,30 @@
         <file>img/blackCyan/syncIndicator.png</file>
         <file>qml/SyncIndicator.qml</file>
         <file>fonts/OpenSans.ttf</file>
-        <file>img/redGrey/sync.png</file>
-        <file>img/redGrey/syncIndicator.png</file>
         <file>img/darkOrange/sync.png</file>
         <file>img/darkOrange/syncIndicator.png</file>
         <file>img/darkGreen/sync.png</file>
         <file>img/darkGreen/syncIndicator.png</file>
         <file>js/Time.js</file>
+        <file>img/mint/abort_Active.png</file>
+        <file>img/mint/abort.png</file>
+        <file>img/mint/addIcon_Active.png</file>
+        <file>img/mint/addIcon.png</file>
+        <file>img/mint/confirm_Active.png</file>
+        <file>img/mint/confirm.png</file>
+        <file>img/mint/info_Active.png</file>
+        <file>img/mint/info.png</file>
+        <file>img/mint/leftButton_Active.png</file>
+        <file>img/mint/leftButton.png</file>
+        <file>img/mint/new.png</file>
+        <file>img/mint/removeIcon_Active.png</file>
+        <file>img/mint/removeIcon.png</file>
+        <file>img/mint/rightButton_Active.png</file>
+        <file>img/mint/rightButton.png</file>
+        <file>img/mint/sync.png</file>
+        <file>img/mint/syncIndicator.png</file>
+        <file>img/mint/watchnow_Active.png</file>
+        <file>img/mint/watchnow.png</file>
+        <file>img/mintScheme.png</file>
     </qresource>
 </RCC>

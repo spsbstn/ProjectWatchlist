@@ -118,12 +118,12 @@ Item {
             id: redButton
             buttonHeight:12
             buttonWidth: 12
-            buttonNormal: "qrc:../..///img/redGreyScheme.png"
+            buttonNormal: "qrc:../..///img/mintScheme.png"
             anchors.bottom: parent.bottom
             anchors.bottomMargin:5
             anchors.rightMargin: 10
             anchors.right:orangeButton.left
-            onClicked:mainWindow.colorScheme="redGrey"
+            onClicked:mainWindow.colorScheme="mint"
         }
 
         Button {

@@ -117,9 +117,9 @@ Rectangle {
          id:selectArea
          width: parent.width/3.5
          height: parent.width/3.5
-         color: "white"
+         color: mainWindow.appBackground
          anchors.centerIn: parent
-         border.color: "white"
+         border.color: mainWindow.appBackground
          border.width: 1
          radius: width*0.5
          Text {
@@ -167,7 +167,6 @@ Rectangle {
         onClicked: {
             decreaseIndex();
             currentSource = sources[index];
-            //GlobalJS.hoster = currentSource;
             wobble.start();
         }
     }

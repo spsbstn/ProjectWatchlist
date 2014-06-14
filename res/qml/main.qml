@@ -469,14 +469,14 @@ Rectangle {
         },
 
         State {
-                 when: colorScheme=="redGrey"
+                 when: colorScheme=="mint"
                  changes: [
 
                     PropertyChanges{target:mainWindow;appBackground:"#30A084"},
                     PropertyChanges{target:mainWindow;tileBackground:"#F5F1E5"},
                     PropertyChanges{target:mainWindow;textColor:"#222222"},
                     PropertyChanges{target:mainWindow;textColor2:"#F5F1E5"},
-                    StateChangeScript { script:uicontroller.changeColorScheme("#30A084","redGrey")}
+                    StateChangeScript { script:uicontroller.changeColorScheme("#30A084","mint")}
                  ]
         }
     ]
