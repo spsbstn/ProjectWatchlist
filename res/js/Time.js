@@ -21,6 +21,7 @@ function fuzzyTime(time) {
     if (days < 1) {
         return hours + (hours > 1 ? ' hours ago' : ' hour ago');
     }
+    // Practically useless from here on, but eh, you never know.
     var weeks = days / 7;
     days = Math.floor(days % 7);
     if (weeks < 1) {
