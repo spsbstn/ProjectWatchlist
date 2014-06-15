@@ -82,7 +82,7 @@ Item {
               anchors.leftMargin: 20
               anchors.top: parent.top
               anchors.topMargin: parent.width/30
-              color: "#ffffff"
+              color: mainWindow.textColor3
               text: qsTr(" + New TvShow")
               font.pixelSize: parent.width/15
               font.family: uiFont
