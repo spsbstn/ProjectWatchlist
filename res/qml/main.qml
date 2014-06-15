@@ -16,8 +16,9 @@ Rectangle {
     property int appHeaderFontSize: 36
     property string appBackground: "#EEEEEE"
     property string tileBackground: "#CCCCCC"
-    property string textColor: "#484848"
-    property string textColor2: "#00aaff"
+    property string textColor: "#484848" //text of tiles
+    property string textColor2: "#00aaff" //text of topbar
+    property string textColor3: "#FFFFFF" //uiTextColor
     property int latestUpdate
     property string colorScheme: uicontroller.loadColorScheme();
     signal xmlDataRequired(string showName);
@@ -439,7 +440,8 @@ Rectangle {
                     PropertyChanges {target:mainWindow;appBackground:"#111111"},
                     PropertyChanges {target:mainWindow;tileBackground:"#00AAFF"},
                     PropertyChanges {target:mainWindow;textColor:"#000000"},
-                    PropertyChanges{target:mainWindow;textColor2:"#00aaff"},
+                    PropertyChanges {target:mainWindow;textColor2:"#00aaff"},
+                    PropertyChanges {target:mainWindow;textColor3:"#FFFFFF"},
                     StateChangeScript { script:uicontroller.changeColorScheme("#111111","blackCyan")}
                 ]
         },
@@ -448,10 +450,11 @@ Rectangle {
                 when: colorScheme=="darkGreen"
                 changes: [
 
-                    PropertyChanges{target:mainWindow;appBackground:"#333333"},
+                    PropertyChanges {target:mainWindow;appBackground:"#333333"},
                     PropertyChanges {target:mainWindow;tileBackground:"#30bf6e"},
-                    PropertyChanges{target:mainWindow;textColor:"#000000"},
-                    PropertyChanges{target:mainWindow;textColor2:"#30bf6e"},
+                    PropertyChanges {target:mainWindow;textColor:"#000000"},
+                    PropertyChanges {target:mainWindow;textColor2:"#30bf6e"},
+                    PropertyChanges {target:mainWindow;textColor3:"#FFFFFF"},
                     StateChangeScript { script:uicontroller.changeColorScheme("#333333","darkGreen")}
                 ]
         },
@@ -464,6 +467,7 @@ Rectangle {
                     PropertyChanges{target:mainWindow;tileBackground:"#FF5333"},
                     PropertyChanges{target:mainWindow;textColor:"#000000"},
                     PropertyChanges{target:mainWindow;textColor2:"#FF5333"},
+                    PropertyChanges{target:mainWindow;textColor3:"#FFFFFF"},
                     StateChangeScript { script:uicontroller.changeColorScheme("#333333","darkOrange")}
                  ]
         },
@@ -476,6 +480,7 @@ Rectangle {
                     PropertyChanges{target:mainWindow;tileBackground:"#F5F1E5"},
                     PropertyChanges{target:mainWindow;textColor:"#222222"},
                     PropertyChanges{target:mainWindow;textColor2:"#F5F1E5"},
+                    PropertyChanges{target:mainWindow;textColor3:"#30A084"},
                     StateChangeScript { script:uicontroller.changeColorScheme("#30A084","mint")}
                  ]
         }

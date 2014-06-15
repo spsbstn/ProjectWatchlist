@@ -15,20 +15,20 @@ Item {
         anchors.leftMargin:20
         anchors.top: parent.top
         anchors.topMargin: -40
-        width: toolTipText.width + 4
-        height: toolTipText.height + 4
+        width: toolTipText.width + 10
+        height: toolTipText.height + 10
         z: 800
 
         opacity: toolTip != "" && showToolTip ? 1 : 0
 
         color: mainWindow.tileBackground
-        border.color: "white"
+        border.color: mainWindow.textColor
 
         Text {
 
             id: toolTipText
             text: toolTip
-            color: "white"
+            color: mainWindow.textColor3
             anchors.centerIn: parent
         }
 

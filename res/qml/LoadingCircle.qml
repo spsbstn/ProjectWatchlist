@@ -6,7 +6,7 @@ Item {
 
     property int radiusPoints: 4
     property int circleDiameter:50
-    property string colorPoints: 'white'
+    property string colorPoints: mainWindow.textColor3
     property string dotColor: 'black'
     property int spinningDuration:3000;
     property real t;

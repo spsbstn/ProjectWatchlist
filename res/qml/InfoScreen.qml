@@ -334,7 +334,7 @@ Rectangle {
                 horizontalAlignment: Text.AlignLeft
                 font.family: mainWindow.uiFont
                 font.pointSize: infoArea.infoFontSize
-                color: 'white'
+                color: mainWindow.textColor3
                 height: parent.height
                 width:parent.width/2
                 anchors.right:parent.right
@@ -367,7 +367,7 @@ Rectangle {
                     horizontalAlignment: Text.AlignLeft
                     font.family: mainWindow.uiFont
                     font.pointSize: infoArea.infoFontSize
-                    color: 'white'
+                    color: mainWindow.textColor3
                     height: parent.height
                     width:parent.width/2
                     anchors.right:parent.right
@@ -401,7 +401,7 @@ Rectangle {
                 horizontalAlignment: Text.AlignLeft
                 font.family: mainWindow.uiFont
                 font.pointSize: infoArea.infoFontSize
-                color: 'white'
+                color: mainWindow.textColor3
                 height:paintedHeight
                 elide:Text.ElideRight
                 width:infoArea.width-genreLabel.width
@@ -436,7 +436,7 @@ Rectangle {
                 horizontalAlignment: Text.AlignLeft
                 font.family: mainWindow.uiFont
                 font.pointSize: infoArea.infoFontSize
-                color: 'white'
+                color: mainWindow.textColor3
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 height:parent.height
                 width:infoArea.width-latestEpisodeText.width-10
@@ -471,7 +471,7 @@ Rectangle {
                 horizontalAlignment: Text.AlignLeft
                 font.family: mainWindow.uiFont
                 font.pointSize: infoArea.infoFontSize
-                color: 'white'
+                color: mainWindow.textColor3
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 height:parent.height
                 width:infoArea.width-nextEpisodeText.width-10
@@ -604,7 +604,7 @@ Rectangle {
         horizontalAlignment: Text.AlignLeft
         font.family: mainWindow.uiFont
         font.pointSize: 20
-        color: 'white'
+        color: mainWindow.textColor3
         height:45
         anchors.left:parent.left
         anchors.leftMargin: 20
@@ -620,7 +620,7 @@ Rectangle {
 
             anchors.fill: parent
             hoverEnabled:true
-            onExited:  wrongShow.color="white"
+            onExited:  wrongShow.color=mainWindow.textColor3
             onEntered: wrongShow.color="#eeeeee"
             onClicked:wrongShowInfo.opacity=1;
         }

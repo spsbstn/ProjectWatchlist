@@ -143,7 +143,7 @@ Rectangle {
         anchors.bottomMargin: parent.height/10
         width: parent.width
             Text {
-                 color: "white"
+                 color: mainWindow.textColor3
                  text: "Stream with"
                  anchors.centerIn: parent
                  font {
@@ -184,7 +184,6 @@ Rectangle {
         onClicked: {
             increaseIndex();
             currentSource = sources[index];
-            //GlobalJS.hoster = currentSource;
             wobble.start();
 
         }
@@ -193,7 +192,7 @@ Rectangle {
     Rectangle {
 
         id:doneButton
-        color: "white"
+        color: mainWindow.textColor3
         width: 200
         height: 40
         anchors.bottom: parent.bottom
@@ -221,9 +220,6 @@ Rectangle {
         MouseArea {
             hoverEnabled: true
             anchors.fill: parent
-            onEntered: {
-                doneButton.color="white";
-            }
             onClicked: {
                 GlobalJS.hoster = currentSource;
                 settingscontroller.changeHoster(GlobalJS.hoster);
