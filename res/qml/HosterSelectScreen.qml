@@ -62,8 +62,6 @@ Rectangle {
 
     function getCurrentIndex(term) {
 
-        var index;
-
         for (var i=0; i<sources.length; i++)
             if (sources[i]==term)
                 return i;
