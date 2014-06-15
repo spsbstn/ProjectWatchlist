@@ -76,54 +76,15 @@ Item {
 
         Button {
 
-            id:greenButton
+            id: themeButton
             buttonHeight:12
             buttonWidth: 12
-            buttonNormal: "qrc:../..///img/darkGreenScheme.png"
+            buttonNormal: "qrc:../..///img/themes.png"
             anchors.bottom: parent.bottom
             anchors.bottomMargin:5
             anchors.rightMargin: 10
             anchors.right:hideButton.left
-            onClicked:mainWindow.colorScheme="darkGreen"
-        }
-
-        Button {
-
-            id: cyanButton
-            buttonHeight:12
-            buttonWidth: 12
-            buttonNormal: "qrc:../..///img/blackCyanScheme.png"
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin:5
-            anchors.rightMargin: 10
-            anchors.right:greenButton.left
-            onClicked:mainWindow.colorScheme="blackCyan"
-        }
-
-        Button {
-
-            id: orangeButton
-            buttonHeight:12
-            buttonWidth: 12
-            buttonNormal: "qrc:../..///img/darkOrangeScheme.png"
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin:5
-            anchors.rightMargin: 10
-            anchors.right:cyanButton.left
-            onClicked:mainWindow.colorScheme="darkOrange"
-        }
-
-        Button {
-
-            id: redButton
-            buttonHeight:12
-            buttonWidth: 12
-            buttonNormal: "qrc:../..///img/mintScheme.png"
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin:5
-            anchors.rightMargin: 10
-            anchors.right:orangeButton.left
-            onClicked:mainWindow.colorScheme="mint"
+            onClicked:mainWindow.showThemeSelect();
         }
 
         Button {
@@ -135,7 +96,7 @@ Item {
             anchors.bottom: parent.bottom
             anchors.bottomMargin:5
             anchors.rightMargin: 11
-            anchors.right:redButton.left
+            anchors.right:themeButton.left
             onClicked:{
 
                 mainWindow.showHosterSelect();

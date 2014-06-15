@@ -32,6 +32,8 @@ Rectangle {
     NumberAnimation {id: removeClickProtection; target:clickProtection; property: "opacity"; to:0; duration: 800}
     NumberAnimation {id: showAddScreen; target:addScreen; property: "opacity"; to:1;   duration: 400}
     NumberAnimation {id: showHosterScreen; target:hosterScreen; property: "opacity"; to:1;   duration: 400}
+    NumberAnimation {id: showThemeScreen; target:themeScreen; property: "opacity"; to:1;   duration: 400}
+
 
 
 
@@ -65,6 +67,12 @@ Rectangle {
         if ( (event.key === Qt.Key_W) && event.modifiers === Qt.ControlModifier) {
 
          showHosterSelect();
+
+        }
+
+        if ( (event.key === Qt.Key_D) && event.modifiers === Qt.ControlModifier) {
+
+         showThemeSelect();
 
         }
     }
@@ -111,6 +119,12 @@ Rectangle {
         hosterScreen.currentSource = GlobalJS.hoster;
 
 
+    }
+
+    function showThemeSelect() {
+
+        showClickProtection.start();
+        showThemeScreen.start();
     }
 
     function updateInfo(showName) {
@@ -369,6 +383,11 @@ Rectangle {
 
     HosterSelectScreen {
         id:hosterScreen
+
+    }
+
+    ThemeSelectScreen {
+        id:themeScreen
 
     }
 
