@@ -62,9 +62,6 @@
         <file>img/blackCyan/removeIcon.png</file>
         <file>img/blackCyan/rightButton_Active.png</file>
         <file>img/blackCyan/rightButton.png</file>
-        <file>img/blackCyanScheme.png</file>
-        <file>img/darkGreenScheme.png</file>
-        <file>img/darkOrangeScheme.png</file>
         <file>img/blackCyan/watchnow_Active.png</file>
         <file>img/blackCyan/watchnow.png</file>
         <file>img/darkGreen/watchnow_Active.png</file>
@@ -86,12 +83,6 @@
         <file>qml/ListDelegate.qml</file>
         <file>qml/HosterSelectScreen.qml</file>
         <file>img/remoteIcon.png</file>
-        <file>img/selectHoster.png</file>
-        <file>img/kinox.png</file>
-        <file>img/tvmuse.png</file>
-        <file>img/vodly.png</file>
-        <file>img/hulu.png</file>
-        <file>img/arrow_left.png</file>
         <file>img/blackCyan/sync.png</file>
         <file>img/blackCyan/syncIndicator.png</file>
         <file>qml/SyncIndicator.qml</file>
@@ -120,6 +111,7 @@
         <file>img/mint/syncIndicator.png</file>
         <file>img/mint/watchnow_Active.png</file>
         <file>img/mint/watchnow.png</file>
-        <file>img/mintScheme.png</file>
+        <file>qml/ThemeSelectScreen.qml</file>
+        <file>img/themes.png</file>
     </qresource>
 </RCC>
