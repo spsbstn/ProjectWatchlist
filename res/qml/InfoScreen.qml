@@ -37,6 +37,7 @@ Rectangle {
             xmlDataRequired(title);
             spinCircle.visible = false;
             deactivateNameInput();
+            imageLoadingCircle.visible = true;
     }
 
     function editError () {
@@ -211,6 +212,8 @@ Rectangle {
                                title = newName;
                                controller.editShowName(showName.toLowerCase(), newName);
                                spinCircle.visible = true;
+                               image.visible=false;
+                               imageFrame.visible=false;
 
                            }
                         }
