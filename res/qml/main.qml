@@ -413,15 +413,13 @@ Rectangle {
         height: parseInt(grid.height / 2)
         width: height*2
         opacity: 0
-        color:tileBackground
-        border.width: 5
-        border.color: "black"
+        color:appBackground
 
         Text {
 
             anchors.centerIn: parent
             horizontalAlignment: Text.AlignJustify
-            color: textColor
+            color: textColor2
             width:parent.width-60
             text: qsTr("If the wrong showdata is displayed, you propably didn't enter the exact showname. Go to www.tvrage.com and look for the exact name.\nEt voilà, it will work like a charm ;)")
             font.pixelSize: parent.width/20

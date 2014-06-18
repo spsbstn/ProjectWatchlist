@@ -102,6 +102,8 @@ Rectangle {
 
     onOpacityChanged: {
 
+        wrongShow.color=mainWindow.textColor3;
+
         if(nextEpisode==""){
 
             nextEpisodeText.text="";
@@ -624,7 +626,7 @@ Rectangle {
             anchors.fill: parent
             hoverEnabled:true
             onExited:  wrongShow.color=mainWindow.textColor3
-            onEntered: wrongShow.color="#eeeeee"
+            onEntered: wrongShow.color=mainWindow.textColor
             onClicked:wrongShowInfo.opacity=1;
         }
     }
