@@ -14,6 +14,13 @@ MouseArea {
   height:buttonHeight;
   smooth:true
   hoverEnabled:true
+  onCanceled: ParallelAnimation{
+
+      NumberAnimation { target: buttonActiveState; property: "opacity"; to: 0; duration: 100;}
+      NumberAnimation { target: buttonNormalState; property: "opacity"; to: 1; duration: 100;}
+
+  }
+
   onExited: ParallelAnimation{
 
       NumberAnimation { target: buttonActiveState; property: "opacity"; to: 0; duration: 100;}
