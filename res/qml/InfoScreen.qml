@@ -29,10 +29,12 @@ Rectangle {
         showNameLabel.color="black"
         infoScreen.focus=true;
         nameInput.text=""
+        error.opacity = 0
 
     }
 
     function editSuccess () {
+            error.opacity = 0
             controller.editComplete(showName,title);
             xmlDataRequired(title);
             spinCircle.visible = false;
@@ -42,12 +44,9 @@ Rectangle {
 
     function editError () {
 
-        // TODO
-
-        // show "better" error.
-
-
-        nameInput.text = "ERROR";
+        error.opacity = 1
+        nameInput.selectAll();
+        errorText.text = "Ooops!\nWe could not find the show you are looking for.\nEither your network is down or the show is not in our database.\nPlease try again.";
         spinCircle.visible = false;
     }
 
@@ -83,6 +82,8 @@ Rectangle {
         if(nameInput.enabled==true) {
 
             deactivateNameInput();
+            error.opacity = 0
+
         }
 
         else {
@@ -187,8 +188,11 @@ Rectangle {
                         id:nameInput
                         font.pointSize: showNameLabel.font.pointSize*0.6
                         font.family: mainWindow.uiFont
-                        anchors.fill:parent
-                        anchors.margins: 5;
+                        height:parent.height - 10
+                        width: parent.width - spinCircle.width - 10
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.leftMargin: 10
+                        anchors.left: parent.left
                         onTextChanged: inputError.opacity=0;
                         //if focus is lost deactivate Input
                         onFocusChanged: if(!focus){
@@ -204,13 +208,17 @@ Rectangle {
                            var noChangeInName = showName.toLowerCase().localeCompare(nameInput.text.toLowerCase())==0;
                            if(noChangeInName) {
                                deactivateNameInput();
+                               image.visible=true;
+                               imageFrame.visible=true;
                            }
                            else if (showIsInDB) {
-                               nameInput.text = "Already in Database."
+
+                               nameInput.selectAll();
+                               errorText.text = "Bad news:\nSeems like this show is already in your database.\nYou can't add a show twice :(";
+                               error.opacity = 1
                            }
                            else {
                                // Actually Edit showName
-
                                title = newName;
                                controller.editShowName(showName.toLowerCase(), newName);
                                spinCircle.visible = true;
@@ -296,7 +304,6 @@ Rectangle {
             anchors.centerIn: image
         }
     }
-
 
     Item  {
 
@@ -631,6 +638,34 @@ Rectangle {
         }
     }
 
+    Item {
+
+        id:error
+        opacity: 0
+        anchors.fill:parent
+
+        Rectangle {
+
+            color:mainWindow.tileBackground
+            width: mainInfoWindow.width
+            height: mainInfoWindow.height-topBar.height
+            anchors.bottom:parent.bottom
+
+
+            Text {
+             id:errorText
+             anchors.centerIn: parent
+             font.family: mainWindow.uiFont
+             font.pointSize: infoArea.infoFontSize
+             color: mainWindow.textColor3
+             elide:Text.ElideLeft
+            }
+
+        }
+
+
+
+    }
 }
 
 
