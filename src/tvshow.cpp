@@ -92,13 +92,9 @@ QDate TvShow::getNextEpisodeDate() const
 
     QDate nextEp = QDate::fromString(_nextEp, "MMMddyyyy");
 
-    qDebug() << nextEp;
-
     if (!nextEp.isValid()) // Error occured, try parsing MMMyyyy
     {
-        //qDebug() << _nextEp;
         nextEp = QDate::fromString(_nextEp, "MMMyyyy");
-        qDebug() << nextEp;
     }
 
     return nextEp;
