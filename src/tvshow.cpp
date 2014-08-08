@@ -67,7 +67,14 @@ QString TvShow::getNextEpisodeDateString() const
 {
     // NextEpisode-Format: 3Letters/2digits/4digits$  [$ marks end of string]
     QRegExp rex("([A-Z|a-z]{3,3}/[0-9]{1,2}/[0-9]{4,4})$");
-    rex.indexIn(nextEpisode);
+    int index = rex.indexIn(nextEpisode);
+
+    if(index == -1) // Error occured try parsing: 3Letters/4digits [no Day specified]
+    {
+        rex = QRegExp("([A-Z|a-z]{3,3}/[0-9]{4,4})$");
+        index = rex.indexIn(nextEpisode);
+    }
+
     return rex.cap(1);
 }
 
@@ -76,7 +83,24 @@ QString TvShow::getNextEpisodeDateString() const
 QDate TvShow::getNextEpisodeDate() const
 {
     QString _nextEp = getNextEpisodeDateString().replace('/',"");
+
+    // Convert to German Short Month names
+    _nextEp = _nextEp.replace("Oct","Okt")
+                     .replace("Dec","Dez")
+                     .replace("May","Mai")
+                     .replace("Mar",QString::fromUtf8("Mär"));
+
     QDate nextEp = QDate::fromString(_nextEp, "MMMddyyyy");
+
+    qDebug() << nextEp;
+
+    if (!nextEp.isValid()) // Error occured, try parsing MMMyyyy
+    {
+        //qDebug() << _nextEp;
+        nextEp = QDate::fromString(_nextEp, "MMMyyyy");
+        qDebug() << nextEp;
+    }
+
     return nextEp;
 }
 
