@@ -146,10 +146,8 @@ Rectangle {
 
     /* Currently Not Working */
     function htmlError() {
-
         topBar.htmlErrorIsVisible=true;
-        grid.currentItem.loadingCircleVisible=false;
-
+        addScreen.showErrorPanel();
     }
 
     // Display apiError, reactivate Input and remove non-existing Show from Database

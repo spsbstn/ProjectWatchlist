@@ -8,6 +8,12 @@
 
 int main(int argc, char *argv[])
 {
+
+    QDate date1;
+    QDate date2(2013,4,5);
+
+    qDebug() <<( date1 < date2);
+
     // set applicationName
     QApplication::setApplicationName("Watchlist");
     QApplication::setApplicationVersion(APP_VERSION);

@@ -12,6 +12,7 @@ TvShow::TvShow(QString name, int seas, int ep)
     // Create Connection to API
     info->createConnection(title);
     QObject::connect(info, SIGNAL(apiErrorOccured()), this, SIGNAL(apiError()));
+    QObject::connect(info, SIGNAL(htmlErrorOccured()), this, SIGNAL(htmlErrorOccured()));
 }
 
 // Constructor for loading from database
@@ -21,6 +22,7 @@ TvShow::TvShow(QString name, int seas, int ep, QString genre, QString started, Q
       latestEpisode(latestEp), nextEpisode(nextEp), imageUrl(imageUrl) ,info(new QuickInfo(this)), newEpisodeAvailable(false)
 {
     QObject::connect(info, SIGNAL(apiErrorOccured()), this, SIGNAL(apiError()));
+    QObject::connect(info, SIGNAL(htmlErrorOccured()), this, SIGNAL(htmlErrorOccured()));
 }
 
 TvShow::~TvShow()

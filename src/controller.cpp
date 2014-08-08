@@ -1,16 +1,19 @@
 #include "controller.h"
+
+#include <QApplication>
 #include <QDebug>
 #include <QDeclarativeView>
 #include <QtDeclarative>
 #include <QVBoxLayout>
 #include <QWidget>
-#include "cursorshapearea.h"
+
 #include "libs/NcFramelessHelper.h"
-#include "uicontroller.h"
+#include "cursorshapearea.h"
 #include "database.h"
+#include "tvshowproxymodel.h"
+#include "uicontroller.h"
 #include "wheelarea.h"
-#include <QApplication>
-#include <QSortFilterProxyModel>
+
 
 
 Controller::Controller(QApplication *app,QObject *parent) :
@@ -20,7 +23,7 @@ Controller::Controller(QApplication *app,QObject *parent) :
     framelessHelper(new NcFramelessHelper()),
     layout(new QVBoxLayout),
     uicontroller(new UIController(mainWidget,app)),
-    proxModel(new QSortFilterProxyModel(this)),
+    proxyModel(new TvShowProxyModel(this)),
     settingsController(new SettingsController(this))
 {
 
@@ -35,9 +38,7 @@ Controller::Controller(QApplication *app,QObject *parent) :
 
 
      // initialize proxyModel
-        proxModel->setSourceModel(db->data);
-        proxModel->setSortRole(db->data->SortRole);
-        proxModel->sort(0, Qt::AscendingOrder);
+        initializeProxyModel();
 
 
      // C++ - QML Connection
@@ -47,7 +48,7 @@ Controller::Controller(QApplication *app,QObject *parent) :
         ctxt->setContextProperty("mainwindow", mainWidget);
         ctxt->setContextProperty("uicontroller", uicontroller);
         ctxt->setContextProperty("settingscontroller", settingsController);
-        ctxt->setContextProperty("sortedFilteredData", proxModel);
+        ctxt->setContextProperty("sortedFilteredData", proxyModel);
         qmlRegisterType<QsltCursorShapeArea>("Cursors", 1, 0, "CursorShapeArea");
         qmlRegisterType<WheelArea>("WheelArea", 1, 0, "WheelArea");
 
@@ -77,6 +78,8 @@ Controller::Controller(QApplication *app,QObject *parent) :
         QObject::connect(db->data, SIGNAL(showEditSuccess()), rootObject, SLOT(onShowEditSuccess()));
         QObject::connect(db->data, SIGNAL(showEditFailure()), rootObject, SLOT(onShowEditFailure()));
 
+        QObject::connect(db->data,SIGNAL(htmlErrorOccured()), rootObject, SLOT(htmlError()));
+
    //  Set WindowMinimizeButtonHint in order to be able to minimize from taskbar
         mainWidget->setWindowFlags(Qt::WindowMinimizeButtonHint | Qt::FramelessWindowHint);
 }
@@ -96,6 +99,17 @@ Controller::~Controller()
     delete mainWidget;
 }
 
+void Controller::initializeProxyModel()
+{
+    proxyModel->setSourceModel(db->data);
+    proxyModel->setDynamicSortFilter(true);
+    proxyModel->setSortRole(db->data->SortRole);
+    proxyModel->sort(0, Qt::AscendingOrder);
+    // Only show TvShows whose nextEpisodeString is not empty
+    proxyModel->setFilterRole(db->data->NextEpisodeRole);
+    proxyModel->setFilterRegExp(QRegExp("^(?!\s*$).+"));
+}
+
 // add new show
 void Controller::add(const QString& name)
 {
@@ -108,6 +122,7 @@ void Controller::add(const QString& name)
     // Connect Signals in order to Update fully Loaded Show in Database
     QObject::connect(insert, SIGNAL(allDataLoaded(TvShow*)), db, SLOT(onAllDataLoaded(TvShow*)));
     QObject::connect(insert, SIGNAL(apiError()), qmlView->rootObject(), SLOT(apiError()));
+    QObject::connect(insert, SIGNAL(htmlErrorOccured()), qmlView->rootObject(), SLOT(htmlError()));
 }
 
 // remove show

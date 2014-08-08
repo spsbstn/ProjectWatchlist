@@ -85,6 +85,7 @@ signals:
     void allDataLoaded(TvShow*);
     void apiError();
     void showEdited(bool success,const QString& name);
+    void htmlErrorOccured();
 
 
 private:

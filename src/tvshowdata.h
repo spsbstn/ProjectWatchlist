@@ -101,6 +101,7 @@ signals:
     void showEditSuccess();
     void showEditFailure();
     void showEditedDBUpdate(TvShow* show, const QString& oldName);
+    void htmlErrorOccured();
 
 private:
     TvShowData(const TvShowData&);

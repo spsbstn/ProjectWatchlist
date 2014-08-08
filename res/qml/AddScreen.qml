@@ -23,6 +23,10 @@ Item {
     function showErrorPanel() {
 
         showErrorPanelAnimation.start();
+        apiErrorVisible=true;
+        addCircle.visible=false;
+        removeClickProtection.start();
+        closeButton.visible=true;
     }
 
     function submit() {

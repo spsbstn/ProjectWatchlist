@@ -14,7 +14,7 @@ class QVBoxLayout;
 class NcFramelessHelper;
 class QApplication;
 class UIController;
-class QSortFilterProxyModel;
+class TvShowProxyModel;
 
 /*
  * Interface Class between GUI and Data. Handles most of the User Requests regarding
@@ -61,6 +61,7 @@ public:
     Q_INVOKABLE void windowHide();
 
     void initMsgHandler();
+    void initializeProxyModel();
 
     QWidget *mainWidget;
     Database *db;
@@ -68,7 +69,7 @@ public:
     NcFramelessHelper *framelessHelper;
     QVBoxLayout *layout;
     UIController *uicontroller;
-    QSortFilterProxyModel *proxModel;
+    TvShowProxyModel *proxyModel;
     SettingsController *settingsController;
 
 };

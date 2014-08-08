@@ -312,6 +312,7 @@ void TvShowData::getExtraInformation()
     {
         TvShow* show = shows.at(i);
         QObject::connect(show, SIGNAL(allDataLoaded(TvShow*)), this, SIGNAL(allDataLoaded(TvShow*)));
+        QObject::connect(show, SIGNAL(htmlErrorOccured()), this, SIGNAL(htmlErrorOccured()));
         show->getExtraInformation();
     }
 }
@@ -371,7 +372,6 @@ QVariant TvShowData::data(const QModelIndex &index, int role) const
 
    case SortRole:
        return show.getNextEpisodeDate();
-
 
    default:
        return QVariant();
