@@ -58,7 +58,8 @@ OTHER_FILES += \
     res/qml/HosterSelectScreen.qml \
     res/qml/SyncIndicator.qml \
     res/js/Time.js \
-    res/qml/ThemeSelectScreen.qml
+    res/qml/ThemeSelectScreen.qml \
+    res/qml/AboutScreen.qml
 
 TARGET = Watchlist
 VERSION = 2.1.1

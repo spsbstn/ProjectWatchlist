@@ -33,7 +33,7 @@ Rectangle {
     NumberAnimation {id: showAddScreen; target:addScreen; property: "opacity"; to:1;   duration: 400}
     NumberAnimation {id: showHosterScreen; target:hosterScreen; property: "opacity"; to:1;   duration: 400}
     NumberAnimation {id: showThemeScreen; target:themeScreen; property: "opacity"; to:1;   duration: 400}
-
+    NumberAnimation {id: showAboutScreen; target:aboutScreen; property: "opacity"; to:1;   duration: 400}
 
 
 
@@ -118,6 +118,13 @@ Rectangle {
         showHosterScreen.start();
         hosterScreen.currentSource = GlobalJS.hoster;
 
+
+    }
+
+    function showAbout() {
+
+        showClickProtection.start();
+        showAboutScreen.start();
 
     }
 
@@ -381,6 +388,11 @@ Rectangle {
 
     HosterSelectScreen {
         id:hosterScreen
+
+    }
+
+    AboutScreen {
+        id:aboutScreen
 
     }
 
