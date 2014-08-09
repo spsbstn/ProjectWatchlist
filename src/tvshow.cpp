@@ -84,11 +84,15 @@ QDate TvShow::getNextEpisodeDate() const
 {
     QString _nextEp = getNextEpisodeDateString().replace('/',"");
 
-    // Convert to German Short Month names
-    _nextEp = _nextEp.replace("Oct","Okt")
-                     .replace("Dec","Dez")
-                     .replace("May","Mai")
-                     .replace("Mar",QString::fromUtf8("Mär"));
+    if (!(QDate::shortMonthName(12) == "Dec"))
+    {
+        // Convert to German Short Month names
+        qDebug() << "Converting to German short names";
+        _nextEp = _nextEp.replace("Oct","Okt")
+                         .replace("Dec","Dez")
+                         .replace("May","Mai")
+                         .replace("Mar",QString::fromUtf8("Mär"));
+    }
 
     QDate nextEp = QDate::fromString(_nextEp, "MMMddyyyy");
 

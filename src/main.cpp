@@ -8,6 +8,16 @@
 
 int main(int argc, char *argv[])
 {
+
+
+    qDebug() << "---------------------------";
+    qDebug() << "Short Month Names";
+    for (int i = 1; i < 13; i++)
+    {
+        qDebug() << QDate::shortMonthName(i) << "\n";
+    }
+    qDebug() << "----------------------------";
+
     // set applicationName
     QApplication::setApplicationName("Watchlist");
     QApplication::setApplicationVersion(APP_VERSION);
