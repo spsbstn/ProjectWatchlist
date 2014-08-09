@@ -13,6 +13,7 @@ SOURCES += src/main.cpp \
     src/tvshowproxymodel.cpp \
     src/utils.cpp
 
+
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
 
@@ -37,6 +38,7 @@ HEADERS += \
     src/utils.h
 
 
+
 OTHER_FILES += \
     res/qml/Scrollbar.qml \
     res/qml/main.qml \
@@ -58,7 +60,8 @@ OTHER_FILES += \
     res/qml/HosterSelectScreen.qml \
     res/qml/SyncIndicator.qml \
     res/js/Time.js \
-    res/qml/ThemeSelectScreen.qml
+    res/qml/ThemeSelectScreen.qml \
+    res/qml/AboutScreen.qml
 
 TARGET = Watchlist
 VERSION = 2.1.1

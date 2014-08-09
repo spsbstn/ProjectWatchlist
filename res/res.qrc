@@ -113,5 +113,6 @@
         <file>img/mint/watchnow.png</file>
         <file>qml/ThemeSelectScreen.qml</file>
         <file>img/themes.png</file>
+        <file>qml/AboutScreen.qml</file>
     </qresource>
 </RCC>
