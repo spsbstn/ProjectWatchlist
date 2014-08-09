@@ -7,7 +7,7 @@
 TvShowData::TvShowData(QObject *parent)
     : QAbstractListModel(parent)
 {
-    showsFullyLoaded=0;
+    showIndex=0;
     QHash<int, QByteArray> roles;
     roles[TitleRole]   = "title";
     roles[SeasonRole]  = "season";
@@ -305,9 +305,21 @@ QString TvShowData::toString() const
     return result;
 }
 
+void TvShowData::updateShowAtCurrentIndex()
+{
+    TvShow* show = shows.at(showIndex);
+    QObject::connect(show, SIGNAL(allDataLoaded(TvShow*)), this, SIGNAL(allDataLoaded(TvShow*)));
+    QObject::connect(show, SIGNAL(htmlErrorOccured()), this, SIGNAL(htmlErrorOccured()));
+    show->getExtraInformation();
+}
+
 void TvShowData::getExtraInformation()
 {
-    showsFullyLoaded = 0;
+    showIndex = 0;
+    updateShowAtCurrentIndex();
+
+/*
+
     for(int i=0; i < shows.size(); i++)
     {
         TvShow* show = shows.at(i);
@@ -315,6 +327,7 @@ void TvShowData::getExtraInformation()
         QObject::connect(show, SIGNAL(htmlErrorOccured()), this, SIGNAL(htmlErrorOccured()));
         show->getExtraInformation();
     }
+    */
 }
 
 
@@ -392,13 +405,18 @@ void TvShowData::checkForNewEpisodes(TvShow *show)
 
 void TvShowData::updateLoadedCount(TvShow* show)
 {
-    Q_UNUSED(show);
-    if(++showsFullyLoaded == shows.size())
+    QObject::disconnect(show, SIGNAL(allDataLoaded(TvShow*)), this, SIGNAL(allDataLoaded(TvShow*)));
+    QObject::disconnect(show, SIGNAL(htmlErrorOccured()), this, SIGNAL(htmlErrorOccured()));
+
+    if(++showIndex == shows.size())
     {
         emit everyShowLoaded();
         qDebug() << "Network Update finished without errors.";
     }
-
+    else
+    {
+        updateShowAtCurrentIndex();
+    }
 }
 
 void TvShowData::onShowEdited(bool success, const QString& name)

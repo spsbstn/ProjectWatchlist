@@ -144,8 +144,9 @@ Rectangle {
 
     }
 
-    /* Currently Not Working */
     function htmlError() {
+        topBar.lastSync = "Syncing failed ";
+        topBar.busyIndicatorSpinning=false;
         topBar.htmlErrorIsVisible=true;
         addScreen.showErrorPanel();
     }

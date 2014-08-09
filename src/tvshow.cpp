@@ -107,24 +107,8 @@ QDate TvShow::getNextEpisodeDate() const
     }
 
     return QDate(year,month,day);
-
-
-/*
-    month = Utils::monthToInt(dates.at(0));
-    day   = dates.at(1).toInt();
-    year  = dates.at(2).toInt();
-
-    QDate nextEp = QDate::fromString(_nextEp, "MMMddyyyy");
-
-    if (!nextEp.isValid()) // Error occured, try parsing MMMyyyy
-    {
-        nextEp = QDate::fromString(_nextEp, "MMMyyyy");
-    }
-
-    return nextEp;
-*/
-
 }
+
 
 void TvShow::editShow(const QString &newName)
 {

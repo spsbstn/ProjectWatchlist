@@ -71,7 +71,7 @@ public:
     void editComplete(const QString& oldName, const QString &newName);
 
     // How Many Shows have been completely loaded?
-    int getShowsFullyLoaded() const { return showsFullyLoaded; }
+    int getShowsFullyLoaded() const { return showIndex; }
 
     // Debug String
     QString toString() const;
@@ -88,6 +88,7 @@ public:
     QList<TvShow*> shows;
 
 
+    void updateShowAtCurrentIndex();
 public slots:
     void onDbLoaded();
     void checkForNewEpisodes(TvShow* show);
@@ -106,7 +107,7 @@ signals:
 private:
     TvShowData(const TvShowData&);
     TvShowData& operator= (const TvShowData&);
-    int showsFullyLoaded;
+    int showIndex;
     // returns index of given show, -1 if not present
     //int findShowIndex(const TvShow& show);
 };

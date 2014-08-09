@@ -10,7 +10,8 @@ SOURCES += src/main.cpp \
     src/logger.cpp \
     src/uicontroller.cpp \
     src/settingscontroller.cpp \
-    src/tvshowproxymodel.cpp
+    src/tvshowproxymodel.cpp \
+    src/utils.cpp
 
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
@@ -32,7 +33,8 @@ HEADERS += \
     src/logger.h \
     src/uicontroller.h \
     src/settingscontroller.h \
-    src/tvshowproxymodel.h
+    src/tvshowproxymodel.h \
+    src/utils.h
 
 
 OTHER_FILES += \

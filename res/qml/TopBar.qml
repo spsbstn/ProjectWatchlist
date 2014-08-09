@@ -120,7 +120,7 @@ Item {
         Text {
 
             visible:htmlErrorIsVisible
-            text:qsTr("Connection Error: Please try again.")
+            text:qsTr("Connection Error: Please check your connection and try syncing.")
             color:"red"
             font.pixelSize: 16
             font.family: mainWindow.uiFont
@@ -162,12 +162,14 @@ Item {
             anchors.left: versionInfoText.right
             anchors.leftMargin: 5
             onReleased: {
-                busyIndicatorSpinning = true;
-                controller.manualNetworkUpdate();
-                fuzzyTimeTimer.stop();
-                lastSync = "Syncing..."
-
-
+                if (!busyIndicatorSpinning)
+                {
+                    htmlErrorIsVisible = false;
+                    busyIndicatorSpinning = true;
+                    controller.manualNetworkUpdate();
+                    fuzzyTimeTimer.stop();
+                    lastSync = "Syncing..."
+                }
             }
 
             SyncIndicator {
