@@ -1,9 +1,12 @@
 #include "tvshow.h"
+
 #include "quickinfo.h"
+#include "utils.h"
 
 #include <QDebug>
 #include <QRegExp>
 #include <QDate>
+#include <QStringList>
 
 // Constructor
 TvShow::TvShow(QString name, int seas, int ep)
@@ -82,17 +85,34 @@ QString TvShow::getNextEpisodeDateString() const
 // Returns QDate of the next Episode of Show
 QDate TvShow::getNextEpisodeDate() const
 {
-    QString _nextEp = getNextEpisodeDateString().replace('/',"");
+    QStringList dates = getNextEpisodeDateString().split('/');
 
-    if (!(QDate::shortMonthName(12) == "Dec"))
+    int month, day, year;
+
+    month =  Utils::monthToInt(dates.at(0));
+
+    if (dates.size() == 2) // Day is not specified
     {
-        // Convert to German Short Month names
-        qDebug() << "Converting to German short names";
-        _nextEp = _nextEp.replace("Oct","Okt")
-                         .replace("Dec","Dez")
-                         .replace("May","Mai")
-                         .replace("Mar",QString::fromUtf8("Mär"));
+        day   = 1;
+        year  = dates.at(1).toInt();
     }
+    else if (dates.size() == 3) // Day is specified
+    {
+        day  = dates.at(1).toInt();
+        year = dates.at(2).toInt();
+    }
+    else
+    {
+        return QDate();
+    }
+
+    return QDate(year,month,day);
+
+
+/*
+    month = Utils::monthToInt(dates.at(0));
+    day   = dates.at(1).toInt();
+    year  = dates.at(2).toInt();
 
     QDate nextEp = QDate::fromString(_nextEp, "MMMddyyyy");
 
@@ -102,6 +122,8 @@ QDate TvShow::getNextEpisodeDate() const
     }
 
     return nextEp;
+*/
+
 }
 
 void TvShow::editShow(const QString &newName)
