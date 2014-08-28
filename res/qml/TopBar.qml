@@ -8,6 +8,7 @@ Item {
     property bool htmlErrorIsVisible: false;
     property bool busyIndicatorSpinning: true;
     property string lastSync: "Syncing...";
+    property bool isTileMode: true;
 
     Rectangle{
 
@@ -81,7 +82,7 @@ Item {
             id: themeButton
             buttonHeight:12
             buttonWidth: 12
-            buttonNormal: "qrc:../..///img/themes.png"
+            buttonNormal: "../..///img/"+mainWindow.colorScheme+"/themes.png"
             anchors.bottom: parent.bottom
             anchors.bottomMargin:5
             anchors.rightMargin: 10
@@ -94,7 +95,7 @@ Item {
             id: remoteButton
             buttonHeight:12
             buttonWidth: 12
-            buttonNormal: "qrc:../..///img/remoteIcon.png"
+            buttonNormal: "../..///img/"+mainWindow.colorScheme+"/switchChannel.png"
             anchors.bottom: parent.bottom
             anchors.bottomMargin:5
             anchors.rightMargin: 11
@@ -102,6 +103,31 @@ Item {
             onClicked:{
 
                 mainWindow.showHosterSelect();
+            }
+        }
+
+        Button {
+
+            id: switchLayoutButton
+            buttonHeight:12
+            buttonWidth: 12
+            buttonNormal: "../..///img/"+mainWindow.colorScheme+"/lineMode.png"
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin:5
+            anchors.rightMargin: 11
+            anchors.right:remoteButton.left
+            onClicked:{
+
+                if(isTileMode) {
+                    switchLayoutButton.buttonNormal= "../..///img/"+mainWindow.colorScheme+"/tileMode.png";
+                    isTileMode = false;
+                }
+
+                else {
+                switchLayoutButton.buttonNormal= "../..///img/"+mainWindow.colorScheme+"/lineMode.png";
+                    isTileMode = true;
+                }
+                mainWindow.switchLayout();
             }
         }
 
@@ -116,7 +142,7 @@ Item {
             anchors.bottom: parent.bottom
             anchors.bottomMargin:2
             anchors.rightMargin: 9
-            anchors.right:remoteButton.left
+            anchors.right:switchLayoutButton.left
         }
 
         Text {

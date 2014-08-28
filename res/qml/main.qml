@@ -54,8 +54,7 @@ Rectangle {
     Keys.onPressed: {
         if ( (event.key === Qt.Key_M) && event.modifiers === Qt.ControlModifier) {
 
-                                grid.visible=!grid.visible;
-                                list.visible=!list.visible;
+                                switchLayout();
                }
 
         if ( (event.key === Qt.Key_T) && event.modifiers === Qt.ControlModifier) {
@@ -75,6 +74,12 @@ Rectangle {
          showThemeSelect();
 
         }
+    }
+
+    function switchLayout() {
+
+        grid.visible=!grid.visible;
+        list.visible=!list.visible;
     }
 
     function updateLastSync() {

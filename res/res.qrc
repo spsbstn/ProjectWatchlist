@@ -82,7 +82,6 @@
         <file>img/darkOrange/new.png</file>
         <file>qml/ListDelegate.qml</file>
         <file>qml/HosterSelectScreen.qml</file>
-        <file>img/remoteIcon.png</file>
         <file>img/blackCyan/sync.png</file>
         <file>img/blackCyan/syncIndicator.png</file>
         <file>qml/SyncIndicator.qml</file>
@@ -112,7 +111,22 @@
         <file>img/mint/watchnow_Active.png</file>
         <file>img/mint/watchnow.png</file>
         <file>qml/ThemeSelectScreen.qml</file>
-        <file>img/themes.png</file>
         <file>qml/AboutScreen.qml</file>
+        <file>img/mint/lineMode.png</file>
+        <file>img/mint/tileMode.png</file>
+        <file>img/darkOrange/lineMode.png</file>
+        <file>img/darkOrange/tileMode.png</file>
+        <file>img/blackCyan/lineMode.png</file>
+        <file>img/blackCyan/tileMode.png</file>
+        <file>img/darkGreen/lineMode.png</file>
+        <file>img/darkGreen/tileMode.png</file>
+        <file>img/mint/switchChannel.png</file>
+        <file>img/darkOrange/switchChannel.png</file>
+        <file>img/blackCyan/switchChannel.png</file>
+        <file>img/darkGreen/switchChannel.png</file>
+        <file>img/mint/themes.png</file>
+        <file>img/blackCyan/themes.png</file>
+        <file>img/darkGreen/themes.png</file>
+        <file>img/darkOrange/themes.png</file>
     </qresource>
 </RCC>
