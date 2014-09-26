@@ -48,13 +48,15 @@ Rectangle {
     Keys.onEscapePressed: {
 
     selectHosterScreen.opacity = 0
+    selectHosterScreen.focus = false;
     removeClickProtection.start()
 
     }
 
-    Keys.onEnterPressed: {
+    Keys.onReturnPressed: {
 
     selectHosterScreen.opacity = 0
+    selectHosterScreen.focus = false;
     removeClickProtection.start()
 
     }
@@ -221,8 +223,9 @@ Rectangle {
             onClicked: {
                 GlobalJS.hoster = currentSource;
                 settingscontroller.changeHoster(GlobalJS.hoster);
-                selectHosterScreen.opacity = 0
-                removeClickProtection.start()
+                selectHosterScreen.opacity = 0;
+                selectHosterScreen.focus = false;
+                removeClickProtection.start();
             }
         }
 

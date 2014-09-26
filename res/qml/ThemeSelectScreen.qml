@@ -55,15 +55,17 @@ Rectangle {
 
     Keys.onEscapePressed: {
 
-    selectThemeScreen.opacity = 0
-    removeClickProtection.start()
+    selectThemeScreen.opacity = 0;
+    selectThemeScreen.focus = false;
+    removeClickProtection.start();
 
     }
 
-    Keys.onEnterPressed: {
+    Keys.onReturnPressed: {
 
-    selectThemeScreen.opacity = 0
-    removeClickProtection.start()
+    selectThemeScreen.opacity = 0;
+    selectThemeScreen.focus = false;
+    removeClickProtection.start();
 
     }
 
@@ -208,8 +210,9 @@ Rectangle {
             hoverEnabled: true
             anchors.fill: parent
             onClicked: {
-                selectThemeScreen.opacity = 0
-                removeClickProtection.start()
+                selectThemeScreen.opacity = 0;
+                removeClickProtection.start();
+                selectThemeScreen.focus = false;
             }
         }
 

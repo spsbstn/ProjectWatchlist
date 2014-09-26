@@ -13,6 +13,8 @@ bool TvShowProxyModel::lessThan(const QModelIndex &left, const QModelIndex &righ
     QVariant leftData = sourceModel()->data(left,this->sortRole());
     QVariant rightData = sourceModel()->data(right,this->sortRole());
 
+
+
     if(leftData.type() == QVariant::Date)
     {
         QDate ldate(leftData.toDate());
