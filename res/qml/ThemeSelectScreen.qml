@@ -32,6 +32,7 @@ Rectangle {
 
         currentTheme = themes[index]
         mainWindow.colorScheme = currentTheme
+        mainWindow.colorizeModeIcon();
         uicontroller.alphaBlendFrame(mainWindow.appBackground,0.5);
         wobble.start();
 
@@ -56,7 +57,7 @@ Rectangle {
     Keys.onEscapePressed: {
 
     selectThemeScreen.opacity = 0;
-    selectThemeScreen.focus = false;
+    mainWindow.focus = true;
     removeClickProtection.start();
 
     }
@@ -64,7 +65,7 @@ Rectangle {
     Keys.onReturnPressed: {
 
     selectThemeScreen.opacity = 0;
-    selectThemeScreen.focus = false;
+    mainWindow.focus = true;
     removeClickProtection.start();
 
     }
@@ -212,7 +213,7 @@ Rectangle {
             onClicked: {
                 selectThemeScreen.opacity = 0;
                 removeClickProtection.start();
-                selectThemeScreen.focus = false;
+                mainWindow.focus = true;
             }
         }
 

@@ -54,8 +54,18 @@ Rectangle {
     Keys.onPressed: {
         if ( (event.key === Qt.Key_M) && event.modifiers === Qt.ControlModifier) {
 
-                                switchLayout();
-               }
+            if(topBar.isTileMode) {
+                topBar.switchLogoUrl= "../..///img/"+colorScheme+"/tileMode.png";
+                topBar.isTileMode = false;
+            }
+
+            else {
+                topBar.switchLogoUrl= "../..///img/"+colorScheme+"/lineMode.png";
+                topBar.isTileMode = true;
+            }
+
+            switchLayout();
+        }
 
         if ( (event.key === Qt.Key_T) && event.modifiers === Qt.ControlModifier) {
 
@@ -124,6 +134,19 @@ Rectangle {
         hosterScreen.currentSource = GlobalJS.hoster;
 
 
+    }
+
+    function colorizeModeIcon() {
+
+        if(topBar.isTileMode) {
+            topBar.switchLogoUrl= "../..///img/"+colorScheme+"/lineMode.png";
+            topBar.isTileMode=true;
+        }
+
+        else {
+            topBar.switchLogoUrl= "../..///img/"+colorScheme+"/tileMode.png";
+            topBar.isTileMode=false;
+        }
     }
 
     function showAbout() {
