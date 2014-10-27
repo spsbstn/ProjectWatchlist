@@ -9,6 +9,7 @@ Item {
     property bool busyIndicatorSpinning: false;
     property string lastSync: "";
     property bool isTileMode: true;
+    property string switchLogoUrl: "../..///img/"+mainWindow.colorScheme+"/lineMode.png";
 
     Rectangle{
 
@@ -111,7 +112,7 @@ Item {
             id: switchLayoutButton
             buttonHeight:12
             buttonWidth: 12
-            buttonNormal: "../..///img/"+mainWindow.colorScheme+"/lineMode.png"
+            buttonNormal: switchLogoUrl
             anchors.bottom: parent.bottom
             anchors.bottomMargin:5
             anchors.rightMargin: 11
@@ -119,12 +120,12 @@ Item {
             onClicked:{
 
                 if(isTileMode) {
-                    switchLayoutButton.buttonNormal= "../..///img/"+mainWindow.colorScheme+"/tileMode.png";
+                    switchLogoUrl= "../..///img/"+mainWindow.colorScheme+"/tileMode.png";
                     isTileMode = false;
                 }
 
                 else {
-                switchLayoutButton.buttonNormal= "../..///img/"+mainWindow.colorScheme+"/lineMode.png";
+                    switchLogoUrl= "../..///img/"+mainWindow.colorScheme+"/lineMode.png";
                     isTileMode = true;
                 }
                 mainWindow.switchLayout();
