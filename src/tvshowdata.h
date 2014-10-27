@@ -103,7 +103,6 @@ signals:
     void showEditFailure();
     void showEditedDBUpdate(TvShow* show, const QString& oldName);
     void htmlErrorOccured();
-    void synching();
 
 private:
     TvShowData(const TvShowData&);
