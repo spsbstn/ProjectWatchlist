@@ -87,7 +87,6 @@ signals:
     void showEdited(bool success,const QString& name);
     void htmlErrorOccured();
 
-
 private:
     QString title;
     int     season;

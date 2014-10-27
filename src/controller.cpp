@@ -113,6 +113,7 @@ void Controller::initializeProxyModel()
 // add new show
 void Controller::add(const QString& name)
 {
+    QMetaObject::invokeMethod(dynamic_cast<QObject*>(qmlView->rootObject()), "synching", Qt::DirectConnection);
     TvShow* insert = new TvShow(name);
 
     // Add to Database immediatly. The Show is then updated in background, and then updated in Database

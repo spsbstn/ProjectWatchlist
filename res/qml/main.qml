@@ -178,6 +178,11 @@ Rectangle {
         infoScreen.editError();
     }
 
+    function synching() {
+        topBar.lastSync = "Syncing...";
+        topBar.busyIndicatorSpinning = true;
+    }
+
     // DragArea to move window
     MouseArea {
 

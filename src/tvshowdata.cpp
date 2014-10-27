@@ -316,7 +316,10 @@ void TvShowData::updateShowAtCurrentIndex()
 void TvShowData::getExtraInformation()
 {
     showIndex = 0;
-    updateShowAtCurrentIndex();
+    if (shows.size() > 0)
+    {
+        updateShowAtCurrentIndex();
+    }
 
 /*
 
@@ -395,7 +398,10 @@ QVariant TvShowData::data(const QModelIndex &index, int role) const
 // When Database is loaded, API-Information is retrieved/updated
 void TvShowData::onDbLoaded()
 {
-    getExtraInformation();
+    if (this->shows.size() > 0)
+    {
+        getExtraInformation();
+    }
 }
 
 void TvShowData::checkForNewEpisodes(TvShow *show)

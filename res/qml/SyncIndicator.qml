@@ -2,7 +2,7 @@ import QtQuick 1.1
 
 Image {
     property int rot: 0;
-    property bool spinning: true;
+    property bool spinning: false;
     id: circle;
     smooth: true
     source:"../..///img/"+mainWindow.colorScheme+"/syncIndicator.png";

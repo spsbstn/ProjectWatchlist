@@ -6,8 +6,8 @@ Item {
 
     property bool isMaximized: true;
     property bool htmlErrorIsVisible: false;
-    property bool busyIndicatorSpinning: true;
-    property string lastSync: "Syncing...";
+    property bool busyIndicatorSpinning: false;
+    property string lastSync: "";
     property bool isTileMode: true;
 
     Rectangle{
