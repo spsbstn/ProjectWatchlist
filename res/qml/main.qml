@@ -6,7 +6,6 @@ import WheelArea 1.0
 
 
 Rectangle {
-
     id: mainWindow
     property int topBarSize: 50
     property int barSize: 120
@@ -125,6 +124,7 @@ Rectangle {
         addScreen.activateInput();
         removeClickProtection.start();
         grid.positionViewAtEnd();
+        networkUpdateFinished();
     }
 
     function showHosterSelect() {

@@ -74,6 +74,7 @@ public:
     int getShowsFullyLoaded() const { return showIndex; }
 
     // Debug String
+    int size() const { return shows.size(); }
     QString toString() const;
 
     // Load extra Information for every show

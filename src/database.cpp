@@ -208,8 +208,10 @@ void Database::load() {
         }
       }
 
-      // Database is Loaded, check for API-Information now
-      emit dbLoaded();
+      // Database is Loaded, check for API-Information now (only if Database is not empty)
+    if (data->size() > 0) {
+        emit dbLoaded();
+    }
 }
 
 
