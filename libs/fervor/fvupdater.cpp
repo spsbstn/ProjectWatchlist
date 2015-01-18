@@ -87,7 +87,7 @@ void FvUpdater::installTranslator()
 	QTranslator translator;
 	QString locale = QLocale::system().name();
 	translator.load(QString("fervor_") + locale);
-	QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
+    //QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
 	qApp->installTranslator(&translator);
 }
 
@@ -289,7 +289,12 @@ void FvUpdater::startDownloadFeed(QUrl url)
 {
 	m_xml.clear();
 
-	m_reply = m_qnam.get(QNetworkRequest(url));
+	QNetworkRequest request;
+ 	request.setHeader(QNetworkRequest::ContentTypeHeader, "application/xml");
+ 	request.setHeader(QNetworkRequest::UserAgentHeader, QApplication::applicationName());
+ 	request.setUrl(url);
+
+	m_reply = m_qnam.get(request);
 
 	connect(m_reply, SIGNAL(readyRead()), this, SLOT(httpFeedReadyRead()));
 	connect(m_reply, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(httpFeedUpdateDataReadProgress(qint64, qint64)));
@@ -409,17 +414,13 @@ bool FvUpdater::xmlParseFeed()
                             if (! candidateVersion.isEmpty()) {
                                 xmlEnclosureVersion = candidateVersion;
                             }
-                        } else {
-                            xmlEnclosureVersion = "";
                         }
                         if (attribs.hasAttribute("fervor:version")) {
                             QString candidateVersion = attribs.value("fervor:version").toString().trimmed();
                             if (! candidateVersion.isEmpty()) {
                                 xmlEnclosureVersion = candidateVersion;
                             }
-						} else {
-							xmlEnclosureVersion = "";
-						}
+                        }
 
 						if (attribs.hasAttribute("length")) {
 							xmlEnclosureLength = attribs.value("length").toString().toLong();
@@ -483,6 +484,10 @@ bool FvUpdater::xmlParseFeed()
 
 		}
 	}
+
+    // No updates were found if we're at this point
+    // (not a single <item> element found)
+    showInformationDialog(tr("No updates were found."), false);
 
 	return false;
 }
