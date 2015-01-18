@@ -109,7 +109,7 @@ void Controller::initializeProxyModel()
     proxyModel->sort(0, Qt::AscendingOrder);
     // Only show TvShows whose nextEpisodeString is not empty
     proxyModel->setFilterRole(db->data->NextEpisodeRole);
-    proxyModel->setFilterRegExp(QRegExp("^(?!\s*$).+"));
+    proxyModel->setFilterRegExp(QRegExp("^(?!\\s*$).+"));
 }
 
 // add new show
@@ -191,10 +191,10 @@ void Controller::windowHide()
 
 void Controller::initMsgHandler() {
 
-    qInstallMsgHandler(Logger::Handler);
+    qInstallMessageHandler(Logger::Handler);
 
     //log timestamp
-    qDebug() << "::" << QDateTime::currentDateTime().toString("dd.MM.yyyy-hh:mm:ss").toAscii().data()  << "::";
+    qDebug() << "::" << QDateTime::currentDateTime().toString("dd.MM.yyyy-hh:mm:ss")  << "::";
 
 }
 

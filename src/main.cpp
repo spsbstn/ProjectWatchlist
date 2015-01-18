@@ -1,4 +1,4 @@
-#include <QtGui/QApplication>
+#include <QApplication>
 #include "qmlapplicationviewer.h"
 #include "fvupdater.h"
 #include <QStyle>
@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     QApplication::setOrganizationDomain("cloudsunderneath.com");
 
     // switch to different graphicsSystem for better performance
-    QApplication::setGraphicsSystem(QLatin1String("raster"));
+    //QApplication::setGraphicsSystem(QLatin1String("raster"));
 
     //init app
     QApplication app(argc, argv);

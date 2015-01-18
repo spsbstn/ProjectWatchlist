@@ -21,7 +21,7 @@ Database::Database(QObject *parent) :
 
     QSqlDatabase db = QSqlDatabase::addDatabase( "QSQLITE" );
 
-    QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    QString path = QStandardPaths::standardLocations(QStandardPaths::DataLocation).at(0);
     if (!QFile::exists(path)) {
         QDir dir;
         dir.mkpath(path);
@@ -50,7 +50,7 @@ Database::Database(QObject *parent) :
         QErrorMessage errorMessage;
         errorMessage.showMessage("Unable to load database. Please delete data.db and restart Watchlist.");
         errorMessage.exec();
-        QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+        QString path = QStandardPaths::standardLocations(QStandardPaths::DataLocation).at(0);
         QDesktopServices::openUrl(QUrl("file:///" + path));
     }
     else
