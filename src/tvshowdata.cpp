@@ -8,6 +8,18 @@ TvShowData::TvShowData(QObject *parent)
     : QAbstractListModel(parent)
 {
     showIndex=0;
+    QObject::connect(this, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(checkForNewEpisodes(TvShow*)));
+    QObject::connect(this, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(updateLoadedCount(TvShow*)));
+}
+
+TvShowData::~TvShowData()
+{
+    qDeleteAll(shows.begin(), shows.end());
+    shows.clear();
+}
+
+QHash<int, QByteArray> TvShowData::roleNames() const
+{
     QHash<int, QByteArray> roles;
     roles[TitleRole]   = "title";
     roles[SeasonRole]  = "season";
@@ -21,17 +33,9 @@ TvShowData::TvShowData(QObject *parent)
     roles[NextEpisodeRole]   = "nextEpisode";
     roles[ImageUrlRole] = "imageUrl";
     roles[SortRole] = "sortRole";
-    setRoleNames(roles);
-
-    QObject::connect(this, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(checkForNewEpisodes(TvShow*)));
-    QObject::connect(this, SIGNAL(allDataLoaded(TvShow*)), this, SLOT(updateLoadedCount(TvShow*)));
+    return roles;
 }
 
-TvShowData::~TvShowData()
-{
-    qDeleteAll(shows.begin(), shows.end());
-    shows.clear();
-}
 
 
 // First creates new TvShow out of name, then inserts it
@@ -425,7 +429,7 @@ void TvShowData::updateLoadedCount(TvShow* show)
     }
 }
 
-void TvShowData::onShowEdited(bool success, const QString& name)
+void TvShowData::onShowEdited(bool success)
 {
     if (success)
     {

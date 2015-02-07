@@ -87,14 +87,12 @@ public:
 
 
     QList<TvShow*> shows;
-
-
     void updateShowAtCurrentIndex();
 public slots:
     void onDbLoaded();
     void checkForNewEpisodes(TvShow* show);
     void updateLoadedCount(TvShow *show);
-    void onShowEdited(bool success, const QString &name);
+    void onShowEdited(bool success);
 
 signals:
     void allDataLoaded(TvShow* show);
@@ -111,6 +109,8 @@ private:
     int showIndex;
     // returns index of given show, -1 if not present
     //int findShowIndex(const TvShow& show);
+protected:
+    QHash<int, QByteArray> roleNames() const;
 };
 
 #endif // TVSHOWDATA_H

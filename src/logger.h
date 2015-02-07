@@ -13,7 +13,7 @@ class Logger: public QObject
 
 public:
     static Logger *instance();
-    static void Handler(QtMsgType type, const char *msg);
+    static void Handler(QtMsgType type, const QMessageLogContext& context, const QString& msg);
 
 private:
     static Logger* _instance;

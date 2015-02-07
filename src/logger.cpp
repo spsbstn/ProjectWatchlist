@@ -17,11 +17,11 @@ Logger * Logger::instance()
     return _instance;
 }
 
-void Logger::Handler(QtMsgType type, const char *msg)
+void Logger::Handler(QtMsgType type, const QMessageLogContext &context, const QString& msg)
 {
     Q_UNUSED(type);
     //get path to logfile
-    QString path = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    QString path = QStandardPaths::standardLocations(QStandardPaths::DataLocation).at(0);
     path.append(QDir::separator()).append("log.txt");
     path = QDir::toNativeSeparators(path);
 
@@ -43,7 +43,9 @@ void Logger::Handler(QtMsgType type, const char *msg)
     }
 
     QTextStream out(&debuglog);
-    fprintf(stderr, "%s\n", msg);
+    //msg.toCFString() is not really the right way to do this, but it works
+    //maybe take a look at this later
+    fprintf(stderr, "%s\n", msg.toCFString());
     out << msg << "\n";
 
     debuglog.flush();
